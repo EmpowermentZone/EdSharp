@@ -22,7 +22,7 @@ The same interface was also implemented in the package of JAWS
 scripts and tools called [HomerKit.](http://www.empowermentzone.com/kitsetup.exe)
 
 EdSharp requires the  
-[.NET Framework 2.0(http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=19)  
+[.NET Framework 2.0](http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=19)  
 to run -- a free Microsoft download.
 
 
