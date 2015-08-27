@@ -1,0 +1,88 @@
+LaTeX-access
+
+Python scripts for processing LaTeX source into niemeth braille and Jaws scripts to enable audible speech. 
+readme for version 1.0
+Scripts written by Alastair Irving. 
+Documentation supported and maintained by Robin Williams.  
+Website: 
+http://latex-access.sourceforge.net
+
+Overview 
+
+  These scripts, written in the Python language, are designed to process a line of LaTeX source, and translate it into niemeth braille on a refreshable braille display. They only handle a single line of LaTeX at any one time, however when scrolling through a LaTeX document the braille is refreshed on the fly. Accompanying the Python scripts are a set of Jaws scripts, which provide audible speech output for many mathematical areas, including vectors and calculus, as well as superscripts and subscripts. Whilst the Jaws scripts enable a user to navigate and read a LaTeX document without use of a braille display, use of the scripts in accompanyment with a braille display is highly recommended. At the present time, support for cursor rooting facilities on braille displays is not supported, and it is advised that the user does not try to edit documents using the cursor rooting buttons, and should use standard arrow keys instead. It is hoped that cursor rooting will be implemented in a later version. 
+
+  The Python scripts provide braille output in a large area of mathematics, such as fractions, superscripts and subscripts, calculus notation, set theory notation, and a large number of mathematical symbols. 
+
+  For instructions on using the matrix processor, see the HomePage given above.
+
+  The scripts currently interface to Jaws for Windows, version 5 and above. 
+  To install the scripts on a machine running windows and Jaws version 5 or higher, do the following. 
+
+1. Download the latest stable release of the Python software from 
+www.python.org 
+and install it. 
+
+2. Download the pywin32 windows extension file from 
+https://sourceforge.net/projects/pywin32
+ensuring you have the correct file to match your version of python. Install this.
+
+ 3. Create a directory on the c: drive named latex-access. (The name of the directory or it's level of depth in the filesystem does not matter, however choosing a directory with a name easy to remember and not too deep in the filesystem makes the next step easier. 
+
+4. Go to the HomePage of the project, 
+http://latex-access.sourceforge.net 
+and download the latest daily snapshot. This is a zip file containing several files and one folder, it is the most up-to-date version of the scripts at the time of downloading. 
+
+Alternatively, use SVN to obtain the very latest code.  The SVN address is 
+https://svn.sourceforge.net/svnroot/latex-access
+
+5. Extract the files and folder in the zip file to the latex_access folder you created earlier. To do this, either simply run the zip file with an application such as winrar and copy everything to the folder, or extract the files and folder to the relevant location by right clicking (or equivalent) on the file within windows explorer. 
+
+6. Copy the files from within the jaws folder to the folder where your jaws scripts are located. These are usually in a path such as 
+c:\documents and settings\%username%\application data\freedom scientific\jaws\%jaws version%\settings\enu 
+
+7. Now open a command prompt by going to run, and typing 'cmd'. 
+Switch to the latex-access directory by typing 
+'cd %directory%' 
+for example, type 
+'cd c:\latex-access'         
+
+8. Now switch Jaws to say all, by pressing jaws key+s. Type  
+'latex_access_com.py'  
+you should hear 'latex_access registered'. 
+Now register the matrix processor object by typing 
+'matrix_processor.py' 
+You should hear a similar message. 
+Switch Jaws back to speak highlighted text by pressing jaws key+s twice, and exit the command prompt by typing exit.    
+
+9. Finally, add a line to the bottom of the confignames.ini file in the folder where you copied the Jaws scripts. As many different applications can be used to read or write LaTeX, the scripts have a generic name latex.j**. Therefore, we use this file to add an alias, so that many different applications can be used without needing to change the name of each Jaws script to match the executable name of the application used to write LaTeX. So for example, as a user of winedt, I have 
+'winedt=latex'  
+If you use notepad to write and read LaTeX, you should add 
+'notepad=latex' 
+etc. 
+  If you are one of multiple users on the computer, you may have to search to find the confignames.ini file. The file will be found within the same file structure, within the all users (or something similar) directory, within the documents and settings directory. 
+
+10. Load the relevant program for writing/reading LaTeX, and press ctrl+m to initialise the scripts. Repeat this keystroke to turn them off. You should be able to navigate the document and listen to audible speech output, as well as reading the mathematical translation on the braille display.     
+----------
+
+Instructions for the new matrix browser 
+How to use the matrix browser
+Note that, unlike most of this project, there is no braille support for the matrix browser, as this is unnecessary. Note that you can, of course, read a particular row of a matrix on the braille display, and obviously a particular column by scrolling up and down (we recommend that the user use designated keys on the braille display for this). To take advantage of the features offered in the matrix browser do the following. 
+Place the cursor at the top row of the matrix and highlight the matrix (using control+shift+downarrow in most windows applications). Only highlight the elements in the matrix, do not highlight the \begin and \end commands at the top and bottom of the matrix. 
+Press the key combination "control+shift+m". You should hear 
+initialised m by n matrix 
+Where m is the number of rows of the matrix and n the number of columns. 
+The following key combinations can then be used after the matrix has been initialised in the browser. 
+To read a particular row of the matrix, press 
+control+shift+"row number" 
+for example to read the third row of a matrix press the key combination 
+control+shift+3 
+To read a particular column of a matrix, press the key combination 
+control+shift+"column number" 
+For example, to read the second column of a matrix, press the key combination 
+control+shift+2 
+A typical use of the matrix browser might be to multiply two matrices. To do this, we recommend that the user (if using Jaws), uses the invisible cursor to read the first row of the first matrix, and uses the matrix browser to read columns from the second matrix. Note that this requires a fair amount of practice so please don't give up straight away! More coming soon... 
+
+Last edit 
+29/01/2007 
+Robin Williams. 
+ 

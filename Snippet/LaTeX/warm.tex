@@ -1,0 +1,74 @@
+\documentclass{article}
+\pagestyle{empty}
+
+\usepackage{graphicx}
+\usepackage{txfonts,shortvrb}
+\MakeShortVerb{|}
+\newcommand\scaledfig[2]{\scalebox{#1}{\includegraphics{#2}}}
+\def\xyWARMinclude#1{\scaledfig{.99}{#1}}
+\usepackage[all,import]{xy}
+\xyoption{import}
+\usepackage{warmread}
+
+\begin{document}
+
+\title{Trivial Experiments with \texttt{WARMread.sty}}
+\author{Radhakrishnan}
+\maketitle
+
+\noindent This is the first result I got from a small document with
+|WARMread.sty|. The code is given below:
+\begin{verbatim}
+\WARMprocessEPS{mac}{eps}{bb}
+\renewcommand\labelmathstyle{\scriptstyle}
+\renewcommand\labeltextstyle{\footnotesize}
+$$\begin{xy}
+  \xyMarkedImport{}
+   \xyMarkedMathPoints{1-3}
+   \xyMarkedPos{4}*\txt{\rotatebox{90}{Integral curve of $X$}}
+%   \xyMarkedPos{3}*\txt{\rotatebox{190}{\large Great $X$}}
+   \xyMarkedMathPoints{5}
+   \xyMarkedPos{6}*\txt{\rotatebox{90}%
+    {\Huge$\frac{(a+b)(\alpha-\gamma)}{2}$}}
+\end{xy}$$
+\end{verbatim}
+
+My concern was whether we can rotate the labels and of course, as usual
+Ross Moore was there for all out help and indeed his tips worked well.
+It seems that the labelling problems are solved to a greater extend. It
+is a matter of great relief that the |WARMread.sty| works well with
+pdf\LaTeX{} as evidenced by this document.
+
+\WARMprocessEPS{mac}{eps}{bb}
+\renewcommand\labelmathstyle{\scriptstyle}
+\renewcommand\labeltextstyle{\footnotesize}
+$$\begin{xy}
+  \xyMarkedImport{}
+   \xyMarkedMathPoints{1-3}
+   \xyMarkedPos{4}*\txt{\rotatebox{90}{Integral curve of $X$}}
+%   \xyMarkedPos{3}*\txt{\rotatebox{15}{\large Great $X$}}
+   \xyMarkedMathPoints{5}
+   \xyMarkedPos{6}*\txt{\rotatebox{90}{$\frac{(a+b)(\alpha-\gamma)}{2}$}}
+\end{xy}$$
+
+The |mac.bb| is given below which is generated with a text editor by
+getting the co-ordinates from |ghostscript|:
+\begin{verbatim}
+%!PS-Adobe-3.0 EPSF-3.0
+%%Creator: Adobe Illustrator(TM) 3.0
+%%Title: mac.eps
+%%CreationDate: (2/21/92) (9:51)
+%%BoundingBox: 208 328 373 469
+%%Cordinates: LL
+%%StartMarkedPoints
+%%MarkedPoint: (265,422) 1 %F(t_\lambda)
+%%MarkedPoint: (315,431) 2 %{{ab}\over{2}}
+%%MarkedPoint: (320,461) 3 %\sum_{n=0}^\infty
+%%MarkedPoint: (219,420) 4 %
+%%MarkedPoint: (290,340) 5 %m_\lambda=F_\lambda(m)
+%%MarkedPoint: (364,417) 6 %
+%%EndMarkedPoints
+\end{verbatim}
+
+\end{document}
+

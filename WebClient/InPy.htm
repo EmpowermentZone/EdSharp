@@ -1,0 +1,451 @@
+<html>
+<head>
+<title>InPy</title>
+</head>
+<body>
+Version 1.9<br>
+May 27, 2010<br>
+Copyright 2008 - 2010 by Jamal Mazrui<br>
+GNU Lesser General Public License (LGPL)
+
+<h1>Contents</h1>
+<ul>
+<li><a href="#A1">Introduction</a></li>
+<li><a href="#A2">Python Modules</a></li>
+<li><a href="#A3">Web Client Utilities</a></li>
+<li><a href="#A4">Change Log</a></li>
+</ul>
+
+<h1><a name="A1">Introduction</a1></h1>
+<p>
+InPy (short for Interactive Python) is a free, console mode environment for testing and evaluating code in the Python language.  InPy seeks to enhance the default shell environment of Python for Windows in ways that make it more productive, especially for screen reader users.  The program works well with a screen reader, since new output to the console is automatically read.  InPy may also be used as a speech-friendly calculator or workspace, since various math and science modules are available for Python, e.g., from the SciPy page at<br>
+<a href="http://scipy.org">http://scipy.org</a>
+<p>
+Python is being used as the development language in several accessibility-related projects, including the following:
+<p>
+accessible_output - Library to provide speech and braille output to a variety of different screen readers and other accessibility solutions<br>
+<a href="http://pypi.python.org/pypi/accessible_output/0.4.1">http://pypi.python.org/pypi/accessible_output/0.4.1</a>
+<p>
+dragonfly - Speech recognition extension library<br>
+<a href="http://pypi.python.org/pypi/dragonfly/0.6.5">http://pypi.python.org/pypi/dragonfly/0.6.5</a>
+<p>
+InPy - A custom Python interpreter optimized for web client utilities<br>
+<a href="http://EmpowermentZone.com/InPy.zip">http://EmpowermentZone.com/InPy.zip</a>
+<p>
+latex-access - Making LaTex math syntax more readable with speech or braille<br>
+<a href="http://latex-access.sourceforge.net">http://latex-access.sourceforge.net</a>
+<p>
+macspeechX - A module to access speech synthesis module on MacOSX<br>
+<a href="http://pypi.python.org/pypi/macspeechX/1.0">http://pypi.python.org/pypi/macspeechX/1.0</a>
+<p>
+McTwit - A Twitter client for Windows<br>
+<a href="http://EmpowermentZone.com/mtsetup.exe">http://EmpowermentZone.com/mtsetup.exe</a>
+<p>
+NonVisual Desktop Access (NVDA) - A screen reader for Windows<br>
+<a href="http://www.nvda-project.org/">http://www.nvda-project.org/</a>
+<p>
+Orca - A screen reader for Linux and Solaris<br>
+<a href="http://live.gnome.org/Orca">http://live.gnome.org/Orca</a>
+<p>
+PyFest - A simple interface to the Festival speech server<br>
+<a href="http://pypi.python.org/pypi/PyFest/0.1">http://pypi.python.org/pypi/PyFest/0.1</a>
+<p>
+pytext - Simple text to speech pre-processor<br>
+<a href="http://dexrow.blogspot.com/2009/06/python-voice-preprocessor.html">http://dexrow.blogspot.com/2009/06/python-voice-preprocessor.html</a>
+<p>
+pyTTS - Python Text-to-Speech for Windows<br>
+<a href="http://pypi.python.org/pypi/pyTTS/3.0">http://pypi.python.org/pypi/pyTTS/3.0</a>
+<p>
+pyttsx - Cross platform text-to-speech<br>
+<a href="http://pypi.python.org/pypi/pyttsx/1.0">http://pypi.python.org/pypi/pyttsx/1.0</a>
+<p>
+Qwitter - a Twitter client for Windows<br>
+<a href="http://www.qwitter-client.net/">http://www.qwitter-client.net/</a>
+<p>
+SayTools - Collection of command-line utilities and a COM server to add direct speech messages to Windows applications<br>
+<a href="http://EmpowermentZone.com/saysetup.exe">http://EmpowermentZone.com/saysetup.exe</a>
+<p>
+speech - A clean interface to Windows speech recognition and text-to-speech capabilities<br>
+<a href="http://pypi.python.org/pypi/speech/0.5.2">http://pypi.python.org/pypi/speech/0.5.2</a>
+<p>
+Yet Another Braille Translator<br>
+<a href="http://pypi.python.org/pypi/YABT/1.0.1">http://pypi.python.org/pypi/YABT/1.0.1</a>
+<p>
+Interested programmers can leverage such existing solutions to increase the availability of software applications that are accessible.
+<p>
+The main code for this project, InPy.py, should work on Python 2.4, 2.5, or 2.6.  Development and testing are currently done with 2.5, so that is the recommended version.
+<p>
+To manually install the program, download the archive at<br>
+<a href="http://EmpowermentZone.com/InPy.zip">http://EmpowermentZone.com/InPy.zip</a><br>
+and unzip it into a directory that is convenient to access at a Windows command prompt, e.g.,<br>
+C:\InPy
+<p>
+To run the program, execute the batch file InPy.bat.  If you are in its directory, you can just enter<br>
+inpy<br>
+at the command prompt (capitalization does not matter).  The batch file uses Python 2.5 if it has been installed in the default directory<br>
+C:\Python25
+<p>
+Alternatively, you can invoke the program with the latest version of the EdSharp text and code editor, available at<br>
+<a href="http://EmpowermentZone.com/edsetup.exe">http://EmpowermentZone.com/edsetup.exe</a>
+<p>
+EdSharp includes features for managing indentation in Python.  After picking the Python language with Control+Shift+F5, InPy is available with the Go to Environment command, Control+Shift+G (assuming Python is installed).  If you update an EdSharp installation, press Alt+Shift+0 for new default settings that include InPy support.
+<p>
+InPy is developed with the InteractiveConsole class of the Python language, implementing an interpreter that works like the standard one with additional enhancements.  This includes being able to clear the screen with the cls command.  You can also save output from a session with the log command.
+<p>
+InPy does not import all of the Python standard library.  The following 40 standard and third party modules are imported:
+<p>
+code<br>
+comtypes<br>
+comtypes.client<br>
+configobj<br>
+datetime<br>
+deliciousapi<br>
+feedfinder<br>
+feedparser<br>
+glob<br>
+googlemaps<br>
+html2text<br>
+htmllib<br>
+locale<br>
+os<br>
+platform<br>
+pprint<br>
+pywapi<br>
+re<br>
+simplejson<br>
+StringIO<br>
+sunlightapi<br>
+SunlightApiError<br>
+sys<br>
+textwrap<br>
+time<br>
+twill<br>
+uri<br>
+urllib<br>
+urllib2<br>
+urlunshort<br>
+win32api<br>
+win32clipboard<br>
+win32com.client<br>
+win32com.client.dynamic<br>
+win32con<br>
+win32console<br>
+win32gui<br>
+winsound<br>
+xml.etree.ElementTree<br>
+yahoo.search.term
+<p>
+For anyone interested in learning to program in Python, some useful links are as follows.  The direct download address of the Python 2.5 installer is<br>
+<a href="http://python.org/ftp/python/2.5.2/python-2.5.2.msi">http://python.org/ftp/python/2.5.2/python-2.5.2.msi</a>
+<p>
+The main list of Python add-in packages is at<br>
+<a href="http://pypi.python.org/pypi?%3Aaction=index">http://pypi.python.org/pypi?%3Aaction=index</a>
+<p>
+A convenient utility called easy_install for adding or updating packages is at<br>
+<a href="http://pypi.python.org/pypi/setuptools/">http://pypi.python.org/pypi/setuptools/</a>
+<p>
+A collection of text tutorials on Python is at<br>
+<a href="http://EmpowermentZone.com/pyth_doc.zip">http://EmpowermentZone.com/pyth_doc.zip</a>
+<p>
+I invite Python programmers to contribute ideas and code to this open source project.  Below is the online help of this release:
+<p>
+InPy 1.1 by Jamal Mazrui
+<p>
+Type a Python statement or expression, followed by Enter.<br>
+A trailing semicolon (;) may be used to seperate multiple statements<br>
+on the same line, though indentation would still<br>
+need to be embedded for a nested block.<br>
+The prompt changes from a greater than symbbol (&gt;) to a period (.)<br>
+if more input is needed to complete a statement.
+<p>
+If the output of a command is more than 23 lines of text,<br>
+the display is paused so that it does not scroll off the screen.<br>
+The More? prompt then requests a choice,<br>
+to be followed by Enter.<br>
+Enter the letter y or nothing to answer Yes for the next screen.<br>
+Enter n for No, thereby returning to the &gt; input prompt.<br>
+Enter a for All text, which continues without pausing.<br>
+This is useful when logging the output to a file.
+<p>
+Besides regular Python syntax, this interpreter adds some commands.<br>
+A command name is lower case, with a space before any argument,<br>
+which is not quoted.
+<p>
+exit or quit - end this program
+<p>
+cls - clear the screen
+<p>
+exec FileName - execute a Python script file
+<p>
+log FileName - log output to a new file
+<p>
+log off - stop logging
+<p>
+help - display this documentation
+<p>
+Other help features of the standard Python interpreter are available,<br>
+e.g., the help() and dir() functions,<br>
+used either with or without parameters.
+<p>
+<h1><a name="A2">Python Modules</a1></h1>
+<p>
+The following 111 standard and third-party modules are built into Inpy:
+<p>
+pywinauto<br>
+atexit<br>
+base64<br>
+calendar<br>
+caseless<br>
+cgi<br>
+chrono<br>
+cmd<br>
+code<br>
+codecs<br>
+commands<br>
+comtypes<br>
+comtypes.client<br>
+configobj<br>
+ConfigParser<br>
+copy<br>
+csv<br>
+ctypes<br>
+datetime<br>
+dateutil.parser<br>
+dateutil.relativedelta<br>
+dateutils<br>
+deliciousapi<br>
+win32api<br>
+doctest<br>
+feedfinder<br>
+feedparser<br>
+fnmatch<br>
+ftplib<br>
+getopt<br>
+getpass<br>
+glob<br>
+googlemaps<br>
+html2text<br>
+htmlentitydefs<br>
+htmllib<br>
+httplib<br>
+Image<br>
+ImageGrab<br>
+TiffImagePlugin<br>
+locale<br>
+logging<br>
+lxml<br>
+math<br>
+mimepost<br>
+mimetools<br>
+mimetypes<br>
+msvcrt<br>
+odict<br>
+optparse<br>
+os<br>
+os.path<br>
+pathutils<br>
+parsedatetime<br>
+pickle<br>
+pkgutil<br>
+platform<br>
+poster.encode<br>
+poster.streaminghttp<br>
+pprint<br>
+pythoncom<br>
+pywapi<br>
+random<br>
+re<br>
+ConfigParser<br>
+readline<br>
+robotparser<br>
+scrapy<br>
+sets<br>
+sgmllib<br>
+shelve<br>
+shutil<br>
+signal<br>
+simplejson<br>
+Skype4Py<br>
+sqlite3<br>
+standout<br>
+string<br>
+StringIO<br>
+subprocess<br>
+sunlightapi<br>
+sys<br>
+tarfile<br>
+tempfile<br>
+textwrap<br>
+thread<br>
+threading<br>
+time<br>
+tinyurl<br>
+twill<br>
+types<br>
+unicodedata<br>
+uri<br>
+urllib<br>
+urllib2<br>
+urlparse<br>
+urlunshort<br>
+validate<br>
+webbrowser<br>
+win32api<br>
+win32clipboard<br>
+win32com.client<br>
+win32com.client.dynamic<br>
+win32con<br>
+win32console<br>
+win32gui<br>
+winsound<br>
+xml.dom<br>
+xml.etree<br>
+yahoo.search.term<br>
+zipfile
+<p>
+<h1><a name="A3">Web Client Utilities</a1></h1>
+<p>
+Many .py files are included in the distribution as useful examples of what InPY can do with a relatively small script file.  They are used, for example, in the Web Client script package for Window-Eyes<br>
+<a href="https://www.gwmicro.com/Script_Central/Scripts/Script_Details/?scriptid=1278">https://www.gwmicro.com/Script_Central/Scripts/Script_Details/?scriptid=1278</a>
+<p>
+and in the Firefox Max scripts for JAWS<br>
+<a href="http://EmpowermentZone.com/FxMax.exe">http://EmpowermentZone.com/FxMax.exe</a>
+<p>
+to implement a Web Client Utilities command.  The JAWS command, Control+JAWSKey+Space, is similar to the JAWS ResearchIt command, JAWSKey+Space.  The web client utilities are handy ways of getting useful information from free web 2.0 services.  The following 35 utilities are installed (for efficient navigation, each has a unique initial character, which may be a letter, digit, or symbol):
+<p>
+!Odd News - Get recent news items that are strange but true via reuters.com.
+<p>
+@DomainLookup - Get authoritative information about the registrant of an Internet domain name, e.g., AccessibleWorld.org.  Note that some firewalls block this utility because it uses a different port than standard HTTP requests.  This uses the free WhoisThisDomain utility from<br>
+<a href="http://nirsoft.net/utils/">http://nirsoft.net/utils/</a>
+<p>
+#SportScores - Pick a sport from a list and go to the corresponding page on ESPN.com with recent news and scores.
+<p>
+$Product Search - Enter keywords that describe a product and go to its matching web page on amazon.com.
+<p>
+-TimeInternational - Enter a location (e.g., specified as city, country) and get the current time there via google.com.
+<p>
+=UnitConversion - enter a source value, e.g., 10 miles, and a target unit, e.g., kilometer, and get the converted result via google.com.  This works for currency units as well as physical measurements.
+<p>
+1 Mile Stories - Get recent blog or news stories about a location and surrounding area within a one mile radius via the outside.in web service.  Enter a location such as your home address on one line by using a comma and space between segments that you might otherwise type on separate lines.
+<p>
+508 Check - Check a web page for compliance with accessibility standards of the United States Government (Section 508 of the Rehabilitation Act), as well as standards of the World Wide Web Consortium (W3C).  This checks a web page against 508 standards via CynthiaSays.com (the site limits checks to one per minute from the same client).  It also includes the report of Wave, a web evaluation checker from WebAim.org.
+<p>
+0Captcha - Submit a captcha to solona.net ( a free account is required), and have the text solution copied to the clipboard so you can paste it into a web form.  The utility waits up to 90 seconds for a human operator to respond.  This utility is typically executed from within a browser that is displaying a captcha, though any .png file on disk may be submitted.
+<p>
+Address Lookup - Search for addresses of organizations meeting geographic and other criteria via jigsaw.com.  This prompts for an organization name, area code, zip code, web site type, and fortune rank.  Fill in one or more fields for the search.  For example, input gov for the web site type in order to get government organizations, or 500 in the fortune field to get companies in the top fortune 500.
+<p>
+Business Reviews - Search for reviews of a business specified by a phone number via yelp.com.
+<p>
+Common URLs - Show a list of the 100 most commonly referenced URLs on Twitter at present via TweetMeme.com.  These typically point to news stories that people have been retweeting.
+<p>
+Driving Directions - Input a starting and ending location, and get a list of steps to get there by car (a blind person might share this with a friend or cab driver).  The location may be specified as a street address in any country.  The utility prompts for a starting and ending address, uses the Google Maps API, and puts the estimated distance, duration, and steps in the viewing area.  Specify an address as if you were addressing an envelope except for a comma rather than return between each line, e.g.,<br>
+1400 East-West Highway, Silver Spring MD 20910, USA
+<p>
+USA is assumed as the country if not specified.
+<p>
+EnglishDictionary Lookup - Get definitions and other information about a word via wiktionary.com.
+<p>
+Feed Find - Get a list of RSS and ATOM feeds made available by a web site.  This prompts for a web source and returns a list of RSS or ATOM feeds found.  An http:// prefix is assumed if not specified.  For example, entering<br>
+cnn.com
+<p>
+finds two RSS feeds related to top stories and latest stories.  You can open a feed url to read recent content, or subscribe with a feed reader for regular updates.
+<p>
+Google Search and Set Suggestions - Propose a Google search and get a list of popular searches that are similar.  Also Get a list of terms that may be part of the same set.  For example, enter a comma-separated list of U.S. presidents and let Google suggest a more complete list.
+<p>
+Horoscope Reading - Input a zodiac sign (e.g., Sagittarius) and get a horoscope for today via my.horoscope.com.
+<p>
+Interesting Places - Get a list of nearby places to eat, shop, or visit via NextStop.com.  This prompts for a location, which can be in the city, state format, or a complete address with commas seperating postal address lines.  Also input the distance in kilometers to search from that location, and any words that you want to narrow the search, e.g., Chinese for that type of food.  An excerpt from a review of each place is also included, if available.
+<p>
+Journalist World Reports - Get world headlines from multiple web sources:  the BBC, CNN, Christian Science Monitor, New York Times, Reuters, and Yahoo.  A structured text file is generated containing a section of news items from each source.  Each item has a title, summary, and URL for the full article.
+<p>
+KnowledgeWikipedia - Input a topic and get a Wikipedia article as both a web page and a text file.
+<p>
+Language Translation - Translate text you specify, between about 100 different languages.  You can quickly understand what a foreign phrase means or how to write it.  This uses the Google Translate API to translate text among about 100 natural languages.  By default, the choice for the source language is unknown and automatically inferred by Google.  You pick the target language, and either enter or paste text in the multi-line edit box.
+<p>
+Members of Congress - Based on a U.S. zip code, get a list of House and Senate members with various data including committee assignments and contact information via SunlightLabs.com.
+<p>
+Neighborhood Search - Search for places near a location, e.g., restaurants with a particular cuisine near an address you are visiting (anywhere in the world).  This prompts for an address in the same format as Driving Directions and also for one or more keywords specified as if searching on Google, e.g.,<br>
+seafood steak
+<p>
+to find restaurants in the area that serve both seafood and steak.
+<p>
+Original URL - Get the original version of a URL, e.g., one that was shortened for sharing in a tweet.  This does the reverse of the Short URL utility, prompting for a URL, converting it, and copying the result to the clipboard.
+<p>
+Physician Online - Enter a medical topic and go to a matching web page on WebMD.com.
+<p>
+Quotes of the Day - Get daily food for thought from famous quotes and their authors.  This Shows a humorous quote from IHeartQuotes.com, as well as several motivational quotes from QuotationsPage.com.
+<p>
+Recommended URLs - Based on a topic word, get a list of currently popular URLs that people are saving as bookmarks via delicious.com.
+<p>
+Short URL - Get a shortened version of a URL via j.mp.com, e.g., so you can share it in a tweet and have more text to type within the 140 character limit.
+<p>
+Trend Topics - Get a list of currently popular topics on Twitter via LetsBeTrends.com.
+<p>
+Url Downloads - Batch download multiple urls based on an initial page address and the extensions of files linked to it.  This puts a space-separated list of extensions found in an input box.  Edit it so that only the extensions you want remain.  The utility then puts a list of those links in a multiple-selection listbox, showing the link text and URL for each.  The items are all selected by default, but you can use arrow keys and Spacebar to unselect ones as desired.  The next dialog prompts for a folder for saving the files, which will be remembered as the default choice the next time.  The utility says the name of each file as it is being downloaded.
+<p>
+Virtual White Pages - Search the white pages of U.S. phone books for listings of residential phone numbers and postal addresses via WhitePages.com.
+<p>
+Weather Check - Get a summary of current and forecasted conditions for any location via wunderground.com.  This works with city, country locations as well as U.S. zip codes.
+<p>
+Xtra Word Info - Get definitions, usage examples, and origins of a word.  This shows definition and examples via Wordnik.com; synonyms and antonyms via words.BigHugeLabs.com; and etymology via etymonline.com.
+<p>
+Yahoo! Term Extractions - Get noteworthy noun phrases contained in a web page via yahoo.com.
+<p>
+Zoom Info - Search for employment contacts by name or email address via ZoomInfo.com.
+<p>
+Each web client utility is defined in a script file written in the Python language.  The file name begins with the WebClient_ prefix and ends with the .py extension, e.g.,<br>
+WebClient_508Check.py
+<p>
+The Python script file is run with a custom Python interpreter, InPy.exe, which is also available separately at<br>
+<a href="http://EmpowermentZone.com/InPy.zip">http://EmpowermentZone.com/InPy.zip</a>
+<p>
+That package also includes a Console mode version, InPyC.exe, to aid development of Python scripts.  If run without parameters, it opens an interactive shell for testing commands and running scripts, similar to the full python.exe interpreter.  The source code file, InPy.py, imports various web2.0 libraries, and defines many convenience functions.
+<p>
+Web client utilities may be added to the list of available ones by using the same naming convention, e.g.,<br>
+WebClient_MyNewScript.py
+<p>
+The Web Client Utilities command remembers the last utility you chose, making it the default in the list.  The information obtained by the utility is automatically saved in a text file and opened in your text editor (the program associated with .txt files in the Windows registry).  Some utilities also open a web page automatically in your default browser.
+<p>
+Note that, at this point, there is not much error checking in the web client utilities, so if a web service returns no useful information for a particular query, a utility may show an error message rather than indicating that no information was available.  If you consistently get errors regardless of the search parameters, please email the error log file, InPy.exe.log.  Errors get appended to this file, so if you want to isolate the error message for a particular utility, delete the log file before running it.
+<p>
+<h1><a name="A4">Change Log</a1></h1>
+<p>
+Version 1.9 on May 27, 2010<br>
+Fixed WebClient_=UnitConversion.py
+<p>
+Version 1.8 on April 14, 2010<br>
+Fixed or enhanced the following web client utilities:  Neighborhood Search, OriginalUrl, and ZoomInfoContactSearch.  Increased the documentation on all such utilities.
+<p>
+Version 1.7 on March 17, 2010<br>
+added several Python-based, accessibility-related projects to the list in the Introduction section of this documentation.  Added scrapy module for screen scraping from<br>
+<a href="http://scrapy.org">http://scrapy.org</a>
+<p>
+Added a section of documentation that lists all standard and third- party modules built into InPy.
+<p>
+Version 1.6 on March 10, 2010<br>
+Added several Python Modules -- the complete list is the set of import statements at the start of Inpy.py.  Version 1.5 on February 11, 2010<br>
+Fixed the following functions:  StringConvertToUnixLineBreak, StringConvertToWinLineBreak, UrlGetBaseDomain.  Added the following functions:  GoogleAddressToLatLng, GetRssItems.  Added the following utilities:  1MileStories, !OddNewws, PhysicianOnline, ProductSearch, and JournalistWorldReports.
+<p>
+Version 1.4 on February 9, 2010<br>
+Added WebClient_LanguageTranslation.py and WebClient_UrlDownloads.py.  Made corrections to the following functions:  IniFormDialogMemo, IniFormGetSection, PyString, VtCreateList, WebRequestGetToString, and WebUrlToFile.  Fixed initial index selection in IniForm.exe dialogs.
+<p>
+Version 1.3 on February 6, 2010<br>
+Added WebClient_KnowledgeWikipedia.py and WebClient_HoroscopeReading.py.  Fixed HtmlGetText and RegExpExtract functions.  Added web address for Qwitter and McTwit to the list of Python projects in this documentation.  Added setup.py and RunSetup.bat, which are used in building InPy.exe and InPyC.exe.
+<p>
+Version 1.2 on February 4, 2010<br>
+Removed debugging code affecting the utilities WebClient_EnglishDictionaryLookup.py and WebClient_MembersOfCongress.py.
+<p>
+Version 1.1 on February 3, 2010
+<p>
+The InPy.py source code now imports various Python libraries for accessing free web 2.0 services, and defines many convenience functions.  Renamed the console mode executable to InPyC.exe and Included a GUI mode version named InPy.exe.  20 WebClient_*.py files are also included.  The command line syntax is
+<p>
+InPy CodeFile InputFile OutputFile
+<p>
+If not specified, InputFile has the same name as CodeFile except for a .ini (rather than .py) extension.  Similarly, OutputFile would have a .txt extension.  Code inside CodeFile can refer to the variables sCodeFile, sInputFile, and sOutputFile.  See the examples, and consider using one as a starting point for a new script.
+<p>
+Added IniForm.exe, SayLine.exe, and SayFile.exe as support utilities.  Canned dialogs using IniForm include ones for multiple input boxes, single or multiple selection listboxes, opening or saving files, and browsing for a folder.  Look for functions with the IniFormDialog prefix in InPy.py.  IniForm documentation is included in the file IniForm.txt.
+<p>
+SayLine and SayFile support direct speech messages using the API of an active screen reader such as JAWS, System Access, or Window-Eyes.  SayLine takes the string to speak as a command line parameter, whereas SayFile speaks the content of the file name passed on the command line.  More information about these utilities is in the SayTools package, available at<br>
+<a href="http://EmpowermentZone.com/saysetup.exe">http://EmpowermentZone.com/saysetup.exe</a>
+</body>
+</html>

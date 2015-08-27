@@ -1,0 +1,38 @@
+InPy 1.1 by Jamal Mazrui
+
+Type a Python statement or expression, followed by Enter.
+A trailing semicolon (;) may be used to seperate multiple statements 
+on the same line, though indentation would still 
+need to be embedded for a nested block.
+The prompt changes from a greater than symbbol (>) to a period (.) 
+if more input is needed to complete a statement.
+
+If the output of a command is more than 23 lines of text, 
+the display is paused so that it does not scroll off the screen.  
+The More? prompt then requests a choice, 
+to be followed by Enter.  
+Enter the letter y or nothing to answer Yes for the next screen.  
+Enter n for No, thereby returning to the > input prompt.  
+Enter a for All text, which continues without pausing.  
+This is useful when logging the output to a file.
+
+Besides regular Python syntax, this interpreter adds some commands.
+A command name is lower case, with a space before any argument, 
+which is not quoted.
+
+exit or quit - end this program
+
+cls - clear the screen
+
+exec FileName - execute a Python script file
+
+log FileName - log output to a new file
+
+log off - stop logging
+
+help - display this documentation
+
+Other help features of the standard Python interpreter are available, 
+e.g., the help() and dir() functions, 
+used either with or without parameters.
+

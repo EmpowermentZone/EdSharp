@@ -1,0 +1,36 @@
+# Cutomization file for rtf2latex2e
+
+# This file is read once for every input RTF file.
+# Here, you can specify how some attributes are mapped to LaTeX.
+# Comment lines have to be preceded with '#'.
+# Blank lines are allowed.
+
+# Do not add any preferences!! If you wish additional customization,
+# contact me.
+
+# The output sequence is simply a string of characters.  If it contains
+# whitespace, it may be quoted.  If it contains quotes, it may be quoted
+# with a different quote character.
+
+# Here are some examples (uncomment to use):
+
+# IMPORTANT: Provide only opening braces except for documentclass!!
+
+# Parameter		Value					Default
+
+documentclass	{article}				# {article}
+bold			\textbf{				# \textbf{
+nobold			\textmd{				# \textmd{
+italic			\textit{				# \textit{
+noitalic		\textup{				# \textup{
+underline		"{\underline {"			# "{\underline {"
+smallcaps		\textsc{				# \textsc{
+heading1		\section*{				# \section*{
+heading2		\subsection*{			# \subsection*{
+heading3		\subsubsection*{		# \subsubsection*{
+# additional mappings so the rtf2latex2e outputs LateX code that
+# Scientific Workplace can digest.
+table			longtable				# longtable (use tabular as alternative)
+
+
+

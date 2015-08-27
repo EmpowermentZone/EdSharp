@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "InPy.py", line 4437, in <module>
+    if iCount > 1:
+  File "C:\Program Files\FileDir\WebClient\WebClient_ZoomInfoContactSearch.py", line 20, in <module>
+    oRoot = xml.etree.ElementTree.parse(fResponse).getroot()
+AttributeError: 'module' object has no attribute 'ElementTree'
+Traceback (most recent call last):
+  File "InPy.py", line 4437, in <module>
+    if iCount > 1:
+  File "C:\Program Files\FileDir\WebClient\WebClient_ZoomInfoContactSearch.py", line 20, in <module>
+    oRoot = xml.etree.ElementTree.parse(fResponse).getroot()
+AttributeError: 'module' object has no attribute 'ElementTree'

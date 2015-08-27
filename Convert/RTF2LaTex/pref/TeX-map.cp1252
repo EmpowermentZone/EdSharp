@@ -1,0 +1,453 @@
+# Output sequence map for rtf2LaTeX2e
+
+# Rename this file "TeX-map" to use!!
+
+# Encoding used for producing characters between 
+# 127-255: cp1252 (ansi/latin1)
+
+# Use of this file requires the inputenc package with the cp1252 option.
+# You can add a qualifier here to use the cp1252 inputenc package.
+# The '%' is NOT a COMMENT sign, it denotes that rtf2latex2e should treat the 
+# following string as a qualifier.
+
+%\usepackage[cp1252]{inputenc}
+
+
+# Field 1 is the standard character name.  Field 2 is the output sequence
+# to produce for that character.
+
+# The output sequence is simply a string of characters.  If it contains
+# whitespace, it may be quoted.  If it contains quotes, it may be quoted
+# with a different quote character.
+
+# characters in ASCII range (32-127)
+
+space		" "
+exclam		!
+quotedbl	{\textquotedbl}
+numbersign	\#
+dollar		\$
+percent		\%
+ampersand	\&
+quoteright	"'"
+parenleft	(
+parenright	)
+asterisk	*
+plus		+
+comma		,
+hyphen		-
+period		.
+slash		/
+zero		0
+one		1
+two		2
+three		3
+four		4
+five		5
+six		6
+seven		7
+eight		8
+nine		9
+colon		:
+semicolon	;
+less		\texttt{<}
+equal		=
+greater		\texttt{>}
+question	?
+at		@
+A		A
+B		B
+C		C
+D		D
+E		E
+F		F
+G		G
+H		H
+I		I
+J		J
+K		K
+L		L
+M		M
+N		N
+O		O
+P		P
+Q		Q
+R		R
+S		S
+T		T
+U		U
+V		V
+W		W
+X		X
+Y		Y
+Z		Z
+bracketleft	[
+backslash	{\textbackslash}
+bracketright	]
+asciicircum	{\textasciicircum}
+underscore	\_
+quoteleft	"`"
+a		a
+b		b
+c		c
+d		d
+e		e
+f		f
+g		g
+h		h
+i		i
+j		j
+k		k
+l		l
+m		m
+n		n
+o		o
+p		p
+q		q
+r		r
+s		s
+t		t
+u		u
+v		v
+w		w
+x		x
+y		y
+z		z
+braceleft	\{
+bar		{\textbar}
+braceright	\}
+asciitilde	{\textasciitilde}
+
+# non-ASCII
+
+AE					Æ					# \AE
+Aacute				Á					# "\'{A}"
+Abreve	\u{A}
+Acircumflex			Â					# \^{A}
+Adieresis			Ä					# '\"{A}'
+Agrave				À					# "\`{A}"
+Aogonek	\k{A}
+Aring				Å					# \AA
+Atilde				Ã					# \~{A}
+aacute				á					# "\'{a}"
+abreve	\u{a}
+acircumflex			â					# \^{a}
+acute		"'"
+acutedbl	\H{}
+adieresis			ä					# '\"{a}'
+ae					æ					# {\ae}
+agrave				à					# "\`{a}"
+aleph	\ensuremath{\aleph}
+angle		\ensuremath{\angle}
+angleleft	\ensuremath{\langle}
+angleright	\ensuremath{\rangle}
+aogonek		\k{a}
+apple		{\textapplelogo}
+approxequal	\ensuremath{\approx}
+aring				å					# {\aa}
+arrowboth	\ensuremath{\leftrightarrow}
+arrowdown	\ensuremath{\downarrow}
+arrowhorizex	---
+arrowleft	\ensuremath{\leftarrow}
+arrowright	\ensuremath{\rightarrow}
+arrowdblboth	\ensuremath{\Leftrightarrow}
+arrowdbldown	\ensuremath{\Downarrow}
+arrowdblleft	\ensuremath{\Leftarrow}
+arrowdblright	\ensuremath{\Rightarrow}
+arrowdblup	\ensuremath{\Uparrow}
+arrowup		\ensuremath{\uparrow}
+arrowvertex	\ensuremath{\arrowvert}
+atilde				ã					# \~{a}
+breve		\u{}
+bracevert	\ensuremath{\bracevert}
+brokenbar	{\textbrokenbar}
+bullet				•					# {\textbullet}
+carriagereturn	\ensuremath{\hookleftarrow}
+Cacute		"\'{C}"
+Ccaron		\v{C}
+Ccedilla			Ç					# \c{C}
+Cdblhorizbar	\hbox{\rm\rlap=C}
+cacute		"\'{c}"
+caron		\v{}
+ccaron		\v{c}
+ccedilla			ç					# \c{c}
+cedilla		\c{}
+cent		\hbox{\rm\rlap/c}
+circlemultiply	\ensuremath{\otimes}
+circleplus		\ensuremath{\oplus}
+circumflex	\^{}
+congruent	\ensuremath{\cong}
+copyright	{\copyright}
+copyrightsans	{\copyright}
+club		\ensuremath{\clubsuit}
+currency	{\textcurrency}
+Dcaron		\v{D}
+Dslash		{\DJ}
+dagger		{\textdagger}
+daggerdbl	{\textdaggerdbl}
+dcaron		\v{d}
+degree		\ensuremath{^\circ}
+diagup		\ensuremath{\diagup}
+diamond		\ensuremath{\diamondsuit}
+dieresis	'\"{}'
+divide		\ensuremath{\div}
+dotaccent	\.{}
+dotlessi	{\i}
+dslash		{\dj}
+Eacute				É					# "\'{E}"
+Ecaron		\v{E}
+Ecircumflex		\^{E}
+Edieresis			Ë					# '\"{E}'
+Egrave				È					# "\`{E}"
+Eogonek		\k{E}
+Eth			{\DH}
+eacute				é					# "\'{e}"
+ecaron		\v{e}
+ecircumflex			ê					# \^{e}
+edieresis			ë					# '\"{e}'
+egrave				è					# "\`{e}"
+element		\ensuremath{\in}
+ellipsis	"\dots "
+emdash		---
+emptyset	\ensuremath{\emptyset}
+endash		--
+eogonek		\k{e}
+equivalence	\ensuremath{\equiv}
+eth			{\dh}
+exclamdown	!`
+existential	\ensuremath{\exists}
+fi		fi
+fl		fl
+# florin		\ensuremath{f}
+florin		\textit{f}
+forall		\ensuremath{\forall}
+fraction	/
+Gbreve		\u{G}
+gbreve		\u{g}
+germandbls			ß					# {\ss}
+grave		"\`{}"
+gradient	\ensuremath{\nabla}
+greaterequal	\ensuremath{\geq}
+guillemotleft   	«					# {\guillemotleft}
+guillemotright  	»					# {\guillemotright}
+guilsinglleft   	‹					# {\guilsinglleft}
+guilsinglright  	›					# {\guilsinglright}
+heart			\ensuremath{\heartsuit}
+hungarumlaut	\H{}
+Iacute				Í					# "\'{I}"
+Icircumflex			Î					# \^{I}
+Idieresis			Ï					# '\"{I}'
+Idotaccent		\.{I}
+Ifraktur		\ensuremath{\mathfrak{I}}
+Igrave				Ì					# "\`{I}"
+iacute				í					# "\'{\i}"
+icircumflex			î					# \^{\i}
+idieresis			ï					# '\"{\i}'
+igrave				ì					# "\`{\i}"
+infinity	\ensuremath{\infty}
+integral	\ensuremath{\int}
+intersection	\ensuremath{\cap}
+jmath		\ensuremath{\jmath}
+Lacute		"\'{L}"
+Lcaron		\v{L}
+Lslash		{\L}
+lacute		"\'{l}"
+langle		\ensuremath{\langle}
+lcaron		\v{l}
+lceil		\ensuremath{\lceil}
+lessequal	\ensuremath{\leq}
+lfloor		\ensuremath{\lfloor}
+logicaland	\ensuremath{\wedge}
+logicalnot	\ensuremath{\neg}
+logicalor	\ensuremath{\vee}
+lozenge		\ensuremath{\lozenge}
+lslash		{\l}
+macron		\={}
+mathasterisk	\ensuremath{\ast}
+mathequal	\ensuremath{=}
+mathminus	\ensuremath{-}
+mathnumbersign	\ensuremath{\#}
+mathplus	+
+mathtilde	\ensuremath{\sim}
+mho			\ensuremath{\mho}
+midbar		\ensuremath{\mid}
+minus		{\textminus}
+minute		\ensuremath{"'"}
+mu			\ensuremath{u}
+multiply	\ensuremath{\times}
+Nacute		"\'{N}"
+Ncaron		\v{N}
+Ntilde				Ñ					# \~{N}
+nabla		\ensuremath{\nabla}
+nacute		"\'{n}"
+ncaron		\v{n}
+nobrkhyphen	{\-}
+nobrkspace	{\nobreakspace}
+notelement	\ensuremath{\notin}
+notequal	\ensuremath{\neq}
+notsubset	\ensuremath{\not\subset}
+ntilde				ñ					# \~{n}
+OE					Œ					# {\OE}
+Oacute				Ó					# "\'{O}"
+Oacutedbl	\H{O}
+Ocircumflex			Ô					# \^{O}
+Odieresis			Ö					#'\"{O}'
+Ograve				Ò					# "\`{O}"
+Oslash				Ø					# {\O}
+Otilde				Õ					# \~{O}
+oacute				ó					# "\'{o}"
+oacutedbl	\H{o}
+ocircumflex			ô					# \^{o}
+odieresis			ö					# '\"{o}'
+oe					œ					# {\oe}
+ograve				ò					# "\`{o}"
+ogonek		\k{}
+onehalf         \ensuremath{\frac12}
+onequarter      \ensuremath{\frac14}
+ordfeminine		\ensuremath{^a}
+ordmasculine	\ensuremath{^\circ}
+otilde				õ					# \~{o}
+oslash				ø					# {\o}
+paragraph	{\P}
+partialdiff	\ensuremath{\partial}
+periodcentered	{\textperiodcentered}
+perpendicular	\ensuremath{\perp}
+perthousand		{\perthousand}
+plusminus	\ensuremath{\pm}
+powerone	\ensuremath{^1}
+powertwo	\ensuremath{^2}
+powerthree	\ensuremath{^3}
+product		\ensuremath{\prod}
+propersubset	\ensuremath{\subset}
+propersuperset	\ensuremath{\supset}
+proportional	\ensuremath{\propto}
+questiondown	?`
+quotedblbase	,,
+quotedblleft	``
+quotedblright	"''"
+quotesinglbase	,
+Racute		"\'{R}"
+Rcaron		\v{R}
+Rfraktur	\ensuremath{\mathfrak{R}}
+racute		"\'{r}"
+radical			\ensuremath{\sqrt{}}
+rangle		\ensuremath{\rangle}
+rcaron		\v{r}
+rceil		\ensuremath{\rceil}
+reflexsubset	\ensuremath{\notin}
+registered	{\textregistered}
+registersans	{\textregistered}
+rfloor		\ensuremath{\rfloor}
+ring		\r{}
+Sacute		"\'{S"
+Scaron				Š					# \v{S}
+Scedilla	\c{S}
+sacute		"\'{s}"
+scaron				š					# \v{s}
+scedilla	\c{s}
+second		\ensuremath{"''"}
+section		{\S}
+spade		\ensuremath{\spadesuit}
+sterling	{\pounds}
+subset		\ensuremath{\subset}
+subseteq	\ensuremath{\subseteq}
+supset		\ensuremath{\supset}
+supseteq	\ensuremath{\supseteq}
+suchthat	\ensuremath{\ni}
+sum			\ensuremath{\sum}
+Tcaron		\v{T}
+Tcedilla	\c{T}
+Thorn		{\TH}
+tcaron		\v{t}
+tcedilla	\c{t}
+thorn			{\th}
+therefore	\ensuremath{\therefore}
+threequarters	\ensuremath{\frac34}
+tilde		\~{}
+trademark	{\texttrademark}
+trademarksans	{\texttrademark}
+Uacute				Ú					# "\'{U}"
+Uacutedbl	\H{U}
+Ucircumflex			Û					# \^{U}
+Udieresis			Ü					# '\"{U}'
+Ugrave				Ù					# "\`{U}"
+Uring		\r{U}
+uacute				ú					# "\'{u}"
+uacutedbl	\H{u}
+ucircumflex			û					# \^{u}
+udieresis			ü					# '\"{u}'
+ugrave				ù					# "\`{u}"
+union		\ensuremath{\cup}
+uring		\r{u}
+weierstrass	\ensuremath{\wp}
+Yacute				Ý					# "\'{Y}"
+Ydieresis			Ÿ					# '\"{Y}'
+yacute				ý					# "\'{y}"
+ydieresis			ÿ					# '\"{y}'
+yen			\hbox{\rm\rlap=Y}
+# yen			{\textyen} 					# not available in some encodings
+Zacute		"\'{Z}"
+Zcaron		\v{Z}
+Zdotaccent	\.{Z}
+zacute		"\'{z}"
+zcaron		\v{z}
+zdotaccent	\.{z}
+
+
+# greek letters
+Alpha		\ensuremath{A}
+Beta		\ensuremath{B}
+Chi			\ensuremath{X}
+Delta		\ensuremath{\Delta}
+Epsilon		\ensuremath{E}
+Phi			\ensuremath{\Phi}
+Gamma		\ensuremath{\Gamma}
+Eta			\ensuremath{H}
+Iota		\ensuremath{I}
+Kappa		\ensuremath{K}
+Lambda		\ensuremath{\Lambda}
+Mu			\ensuremath{M}
+Nu			\ensuremath{N}
+Omicron		\ensuremath{O}
+Pi			\ensuremath{\Pi}
+Theta		\ensuremath{\Theta}
+Rho			\ensuremath{P}
+Sigma		\ensuremath{\Sigma}
+Tau			\ensuremath{T}
+Upsilon		\ensuremath{\Upsilon}
+Omega		\ensuremath{\Omega}
+Xi			\ensuremath{\Xi}
+Psi			\ensuremath{\Psi}
+Zeta		\ensuremath{Z}
+
+alpha		\ensuremath{\alpha}
+beta		\ensuremath{\beta}
+chi			\ensuremath{\chi}
+delta		\ensuremath{\delta}
+epsilon		\ensuremath{\epsilon}
+phi			\ensuremath{\phi}
+varphi		\ensuremath{\varphi}
+gamma		\ensuremath{\gamma}
+eta			\ensuremath{\eta}
+iota		\ensuremath{\iota}
+kappa		\ensuremath{\kappa}
+lambda		\ensuremath{\lambda}
+mu			\ensuremath{\mu}
+nu			\ensuremath{\nu}
+omicron		\ensuremath{o}
+pi			\ensuremath{\pi}
+varpi		\ensuremath{\varpi}
+theta		\ensuremath{\theta}
+vartheta	\ensuremath{\vartheta}
+rho			\ensuremath{\rho}
+sigma		\ensuremath{\sigma}
+varsigma	\ensuremath{\varsigma}
+tau			\ensuremath{\tau}
+upsilon		\ensuremath{\upsilon}
+omega		\ensuremath{\omega}
+xi			\ensuremath{\xi}
+psi			\ensuremath{\psi}
+# varepsilon	\ensuremath{\varepsilon}
+# varrho		\ensuremath{\varrho}
+zeta		\ensuremath{\zeta}
+

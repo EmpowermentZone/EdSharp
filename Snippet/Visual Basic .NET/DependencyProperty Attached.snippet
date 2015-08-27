@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Add a DependencyProperty Registration (Attached)</Title>
+      <Author>Microsoft Corporation</Author>
+      <Description>Adds code to register an attached DependencyProperty. This snippet must be added to a class that derives from DependencyObject.</Description>
+      <Shortcut>wpfdpa</Shortcut>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <References>
+        <Reference>
+          <Assembly>WindowsBase</Assembly>
+        </Reference>
+        <Reference>
+          <Assembly>PresentationCore</Assembly>
+        </Reference>
+        <Reference>
+          <Assembly>PresentationFramework</Assembly>
+        </Reference>
+      </References>
+      <Imports>
+        <Import>
+          <Namespace>System.Windows</Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal>
+          <ID>propertyType</ID>
+          <ToolTip>Replace with the type of the property.</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>propertyName</ID>
+          <ToolTip>Replace with the name of the property.</ToolTip>
+          <Default>Prop1</Default>
+        </Literal>
+        <Literal>
+          <ID>defaultValue</ID>
+          <ToolTip>Replace with the default value of the property.</ToolTip>
+          <Default>Nothing</Default>
+        </Literal>
+         <Object>
+          <ID>ownertype</ID>
+          <Type>Control</Type>
+          <ToolTip>Replace with the name of the class this snippet is being added to.</ToolTip>
+          <Default>Window1</Default>
+        </Object>
+      </Declarations>
+      <Code Language="VB">
+        <![CDATA[
+          Public Shared Function Get$propertyName$(ByVal element As DependencyObject) As $propertyType$
+              If element Is Nothing Then
+                  Throw New ArgumentNullException("element")
+              End If
+
+              Return element.GetValue($propertyName$Property)
+          End Function
+
+          Public Shared Sub Set$propertyName$(ByVal element As DependencyObject, ByVal value As $propertyType$)
+              If element Is Nothing Then
+                  Throw New ArgumentNullException("element")
+              End If
+
+              element.SetValue($propertyName$Property, value)
+          End Sub
+
+          Public Shared ReadOnly $propertyName$Property As _
+                                 DependencyProperty = DependencyProperty.RegisterAttached("$propertyName$", _
+                                 GetType($propertyType$), GetType($ownertype$), _
+                                 New FrameworkPropertyMetadata($defaultValue$))
+          ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
+

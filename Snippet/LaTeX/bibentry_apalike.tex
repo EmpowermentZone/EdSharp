@@ -1,0 +1,37 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{natbib,bibentry}
+\begin{document}
+\bibliographystyle{apalike}
+\nobibliography{bibentry_apalike}
+\noindent
+Input:
+
+\begin{verbatim}
+\documentclass{article}
+\usepackage{natbib,bibentry}
+
+\begin{document}
+
+\bibliographystyle{apalike}
+\nobibliography{bibentry_apalike}
+
+\begin{itemize}
+   \item \bibentry{zysk-conj}.
+   \item \bibentry{ping-cata}.
+\end{itemize}
+
+\end{document}
+\end{verbatim}
+
+
+
+\noindent
+Output, after running \LaTeX\ and Bib\TeX:
+
+\begin{itemize}
+   \item \bibentry{zysk-conj}.
+   \item \bibentry{ping-cata}.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SnippetCollection>
+    <Language Lang="CSharp" Guid="{694DD9B6-B865-4C5B-AD85-86356E9C88DC}">
+        <SnippetDir>
+            <OnOff>On</OnOff>
+            <Installed>true</Installed>
+            <Locale>1033</Locale>
+            <DirPath>%InstallRoot%\VC#\Snippets\%LCID%\Visual C#\</DirPath>	
+            <LocalizedName>Visual C#</LocalizedName>
+        </SnippetDir>
+        <SnippetDir>
+            <OnOff>On</OnOff>
+            <Installed>true</Installed>
+            <Locale>1033</Locale>
+            <DirPath>%InstallRoot%\VC#\Snippets\%LCID%\officedevelopment</DirPath>	
+            <LocalizedName>Office Development</LocalizedName>
+            <SnippetSubDir>
+                <OnOff>On</OnOff>
+                <Installed>true</Installed>
+                <Locale>1033</Locale>
+                <DirPath>%InstallRoot%\VC#\Snippets\%LCID%\officedevelopment\excel</DirPath>	
+                <LocalizedName>Excel</LocalizedName>
+                <SnippetSubDir>
+                    <OnOff>On</OnOff>
+                    <Installed>true</Installed>
+                    <Locale>1033</Locale>
+                    <DirPath>%InstallRoot%\VC#\Snippets\%LCID%\officedevelopment\excel\analytics</DirPath>	
+                    <LocalizedName>Analytics - Pivot Table</LocalizedName>
+                </SnippetSubDir>
+                <SnippetSubDir>
+                    <OnOff>On</OnOff>
+                    <Installed>true</Installed>
+                    <Locale>1033</Locale>
+                    <DirPath>%InstallRoot%\VC#\Snippets\%LCID%\officedevelopment\excel\controls</DirPath>
+                    <LocalizedName>Controls</LocalizedName>
+                </SnippetSubDir>
+                <SnippetSubDir>
+                    <OnOff>On</OnOff>
+                    <Installed>true</Installed>
+                    <Locale>1033</Locale>
+                    <DirPath>%InstallRoot%\VC#\Snippets\%LCID%\officedevelopment\excel\environment</DirPath>
+                    <LocalizedName>Environment</LocalizedName>
+                </SnippetSubDir>
+                <SnippetSubDir>
+                    <OnOff>On</OnOff>
+                    <Installed>true</Installed>
+                    <Locale>1033</Locale>
+                    <DirPath>%InstallRoot%\VC#\Snippets\%LCID%\officedevelopment\excel\formatting</DirPath>
+                    <LocalizedName>Formatting</LocalizedName>
+                </SnippetSubDir>
+                <SnippetSubDir>
+                    <OnOff>On</OnOff>
+                    <Installed>true</Installed>
+                    <Locale>1033</Locale>
+                    <DirPath>%InstallRoot%\VC#\Snippets\%LCID%\officedevelopment\excel\importing</DirPath>	
+                    <LocalizedName>Importing</LocalizedName>
+                </SnippetSubDir>
+                <SnippetSubDir>
+                    <OnOff>On</OnOff>
+                    <Installed>true</Installed>
+                    <Locale>1033</Locale>
+                    <DirPath>%InstallRoot%\VC#\Snippets\%LCID%\officedevelopment\excel\exporting</DirPath>	
+                    <LocalizedName>Exporting</LocalizedName>
+                </SnippetSubDir>
+            </SnippetSubDir>
+            <SnippetSubDir>
+                <OnOff>On</OnOff>
+                <Installed>true</Installed>
+                <Locale>1033</Locale>
+                <DirPath>%InstallRoot%\VC#\Snippets\%LCID%\officedevelopment\word</DirPath>
+                <LocalizedName>Word</LocalizedName>
+                <SnippetSubDir>
+                    <OnOff>On</OnOff>
+                    <Installed>true</Installed>
+                    <Locale>1033</Locale>
+                    <DirPath>%InstallRoot%\VC#\Snippets\%LCID%\officedevelopment\word\controls</DirPath>
+                    <LocalizedName>Controls</LocalizedName>
+                </SnippetSubDir>
+                <SnippetSubDir>
+                    <OnOff>On</OnOff>
+                    <Installed>true</Installed>
+                    <Locale>1033</Locale>
+                    <DirPath>%InstallRoot%\VC#\Snippets\%LCID%\officedevelopment\word\environment</DirPath>
+                    <LocalizedName>Environment - Document Variables</LocalizedName>
+                </SnippetSubDir>
+                <SnippetSubDir>
+                    <OnOff>On</OnOff>
+                    <Installed>true</Installed>
+                    <Locale>1033</Locale>
+                    <DirPath>%InstallRoot%\VC#\Snippets\%LCID%\officedevelopment\word\formatting</DirPath>
+                    <LocalizedName>Formatting</LocalizedName>
+                </SnippetSubDir>
+                <SnippetSubDir>
+                    <OnOff>On</OnOff>
+                    <Installed>true</Installed>
+                    <Locale>1033</Locale>
+                    <DirPath>%InstallRoot%\VC#\Snippets\%LCID%\officedevelopment\word\importing</DirPath>
+                    <LocalizedName>Importing</LocalizedName>
+                </SnippetSubDir>
+            </SnippetSubDir>
+            <SnippetSubDir>
+                <OnOff>On</OnOff>
+                <Installed>true</Installed>
+                <Locale>1033</Locale>
+                <DirPath>%InstallRoot%\VC#\Snippets\%LCID%\officedevelopment\office</DirPath>
+                <LocalizedName>Office</LocalizedName>
+                <SnippetSubDir>
+                    <OnOff>On</OnOff>
+                    <Installed>true</Installed>
+                    <Locale>1033</Locale>
+                    <DirPath>%InstallRoot%\VC#\Snippets\%LCID%\officedevelopment\office\environment</DirPath>
+                    <LocalizedName>Environment - Menus, Actions Pane</LocalizedName>
+                </SnippetSubDir>
+                <SnippetSubDir>
+                    <OnOff>On</OnOff>
+                    <Installed>true</Installed>
+                    <Locale>1033</Locale>
+                    <DirPath>%InstallRoot%\VC#\Snippets\%LCID%\officedevelopment\office\server</DirPath>
+                    <LocalizedName>Server - Cached Data, Server Document</LocalizedName>
+                </SnippetSubDir>
+            </SnippetSubDir>
+        </SnippetDir>
+    </Language>
+</SnippetCollection>

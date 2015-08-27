@@ -1,0 +1,3216 @@
+\def\LaTeX{L\kern-.36em\raise.3ex\hbox{\sc a}\kern-.15em\TeX}
+\def\LaTeXe{\LaTeX\kern.15em 2$_\varepsilon$}
+\def\BibTeX{B\kern-.05em{\sc i\kern-.025em b}\kern-.08em\TeX}
+
+\input texinfo  
+@c -*-texinfo-*-
+@c %**start of header
+@setfilename latex2rtf.info
+@settitle LaTeX2rtf
+@setchapternewpage odd
+@c %**end of header
+
+@ignore Permission is granted to process this file through TeX and print
+the results, provided the printed document carries a copying permission
+notice identical to this one except for the removal of this paragraph
+(this paragraph not being relevant to the printed manual).
+@end ignore 
+
+@macro latex {}
+@ifnottex
+LaTeX
+@end ifnottex
+@iftex
+@LaTeX{}
+@end iftex
+@end macro
+
+@macro bibtex {}
+@ifnottex
+BibTeX
+@end ifnottex
+@iftex
+@BibTeX{}
+@end iftex
+@end macro
+
+@macro latexe {}
+@ifnottex
+LaTeX2e
+@end ifnottex
+@iftex
+@LaTeXe{}
+@end iftex
+@end macro
+
+@macro ltor {}
+@ifnottex
+LaTeX2RTF
+@end ifnottex
+@iftex
+@LaTeX{}2RTF
+@end iftex
+@end macro
+
+@titlepage 
+@title @ltor{}
+@subtitle 
+A converter from @latex{} to RTF
+
+Edition 0.7.3
+
+for program version 1.9.17
+
+@author Georg Lehner,
+updated by Wilfried Hennings and Scott Prahl,
+with contributions by Mikhail Polianski
+
+@page
+@vskip 0pt plus 1 filll
+Copyright @copyright{} 1998-2007 Georg Lehner, Wilfried Hennings, Scott Prahl
+
+Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided also that the
+sections entitled ``Copying'' and ``GNU General Public License'' are
+included exactly as in the original, and provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation
+approved by the Free Software Foundation.
+@end titlepage
+
+@ifnottex
+@node Top, Introduction, (dir), (dir)
+@top LaTeX2RTF
+
+This file documents @ltor{}, a converter that translates @latex{} to RTF.
+@end ifnottex
+
+@menu
+* Introduction::                
+* Installation::                
+* Using LaTeX2RTF::             
+* Features::                    
+* Configuration::               
+* Error Messages and Logging::  
+* History::                     
+* LaTeX2RTF under Development::  
+* Function Index::              
+* Concept Index::               
+
+@detailmenu
+ --- The Detailed Node Listing ---
+
+Installation
+
+* General::                     
+* Obtaining LaTeX2RTF::         
+* UNIX::                        
+* DOS or Windows::              
+* Win32 systems::               
+* Macintosh::                   
+* Problems Compiling::          
+* Problems with make check::    
+
+Using LaTeX2RTF
+
+* General Assumptions::         
+* LaTeX2RTF Options::           
+* Debugging::                   
+
+Features
+
+* LaTeX2e::                     
+* Unicode Support::             
+* Input Encoding::              
+* Language Support::            
+* Cross References::            
+* Page Formatting::             
+* Equations::                   
+* Math and Special Symbols::    
+* Tables::                      
+* Graphics::                    
+* Pagestyles::                  
+* Hyperlatex::                  
+
+Configuration 
+
+* Input processing::            
+* Output formatting::           
+* Direct Conversion::           
+* Ignore Command::              
+* Font Configuration::          
+* Language Configuration::      
+
+LaTeX2RTF under Development 
+
+* Unimplemented Features::      
+* Missing options::             
+* Known Bugs::                  
+* Reporting Bugs::              
+* Todo List::                   
+* LaTeX Commands::              
+
+Command List
+
+* General Commands::            
+* Preamble Commands::           
+* Letter Commands::             
+* Language Commands::           
+* Citation Commands::           
+* Other Commands::              
+* Environments::                
+
+General Commands
+
+* Basic Commands::              
+* Font Commands::               
+* Logos::                       
+* Special Characters::          
+* Sectioning Commands::         
+* Uncategorized::               
+
+Language Commands
+
+* German Commands::             
+* Czech Commands::              
+* French Commands::             
+* Russian Commands::            
+
+Citation Commands
+
+* Apacite Commands::            
+* AuthorDate Commands::         
+* Harvard Commands::            
+* HyperLatex Commands::         
+* Natbib Commands::             
+
+@end detailmenu
+@end menu
+
+@ifnottex
+
+Copyright 1998-2002 Georg Lehner,@* 
+updates Copyright 1999-2007 by Wilfried Hennings and Scott Prahl,@* 
+with contributions by Mikhail Polianski.
+
+Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided also that the
+sections entitled ``Copying'' and ``GNU General Public License'' are
+included exactly as in the original, and provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation
+approved by the Free Software Foundation.
+
+@c This document applies to version 1.9.17 of @ltor{}.
+@end ifnottex
+
+
+@node Introduction, Installation, Top, Top
+@chapter  Introduction
+
+@ltor{} is a translator program from @latex{} text into ``rich text
+format'' files. These files are commonly referred to as RTF files. RTF
+is a published standard format by Microsoft. This standard can be
+ambiguous in places and Microsoft ignores parts of the standard it finds
+inconvenient, but RTF is widely used by many WYSIWIG text editors and is
+supported by Microsoft Word and most text processors.
+
+@ltor{} translates the text and as much of the formatting information
+from @latex{} to RTF. Be forewarned that the typeset output is not
+nearly as good as what you would get from using @latex{} directly. So,
+why bother translating? Consider,
+
+@enumerate
+@item
+You use @latex{} and hate everything beginning with MS-@enddots{}
+Nevertheless, you have to share your documents with people who don't
+even know that there are alternatives to MS-@enddots{}
+      
+@item
+You know somebody who frequently sends you very fine @latex{} documents.
+Unfortunately, you are ``on the other side'' and need to import her
+files, steal some part, and then desktop publish it in your fine
+MS-@dots{} environment.
+      
+@item
+You like @latex{} and @bibtex{}. You interact with the rest of the
+world. You know someone that wants to include your writing in a Word
+document.
+
+@end enumerate
+
+There are drawbacks to the conversion process. In fact, don't expect any @latex{} file to
+be converted as you would like, don't expect it to be converted without errors or
+warnings, and don't be especially surprised when it doesn't convert at all.  @ltor{} is
+known to have many bugs and many missing features. Paradoxically, this number seems to
+grow more and more with each day.  However, we can categorically state that there are some
+special cases in which a @latex{} file will be translated to RTF satisfactorily by
+@ltor{} --- This was sort of disclaimer, ok? OK!
+
+@latex{} is a system for typesetting text and therefore it focuses on the logical
+structure of a document, whilst RTF is meant to be a transport format for a family of
+Desktop Publishing Software, dealing mostly with the design of a text.
+
+Although the commands and styles in @latex{} are much more flexible and
+standardized than in RTF, only a small subset of commands has been implemented to date 
+(@pxref{Unimplemented Features}).
+
+Some of the capabilities of @ltor{} are restricted in scope or buggy (@pxref{Known Bugs}).
+
+@cindex RTF sucks
+RTF is a moving target, because Microsoft does not stop inventing new extensions and
+features; consequently you cannot view newer RTF files with older word processors.  
+The syntax and semantics of RTF are somewhat artistic, i.e., you can generate a 
+syntactically correct RTF file that cannot be displayed by some/most word processors.
+For more details on RTF the specification consult the links at @uref{http://latex2rtf.sf.net/}
+
+@node Installation, Using LaTeX2RTF, Introduction, Top
+@chapter Installation
+@cindex installation
+
+@menu
+* General::                     
+* Obtaining LaTeX2RTF::         
+* UNIX::                        
+* DOS or Windows::              
+* Win32 systems::               
+* Macintosh::                   
+* Problems Compiling::          
+* Problems with make check::    
+@end menu
+
+@node General, Obtaining LaTeX2RTF, Installation, Installation
+@section General
+
+The documentation of the program is found in the @file{doc/} directory in the
+file @file{latex2rtf.texi} in the GNU TeXInfo format.  For your convenience, you
+can find @acronym{HTML} and @acronym{PDF} versions of the manual there as well.
+
+@node Obtaining LaTeX2RTF, UNIX, General, Installation
+@section Obtaining @ltor{}
+
+@ltor{} is available for many Unix Platforms, for the Macintosh, and for MS-DOS, including
+all versions of MS Windows.
+
+The latest version of @ltor{} is available at 
+@uref{http://sourceforge.net/projects/latex2rtf/,SourceForge} and --- with some delay --- on
+CTAN sites: e.g., @uref{http://www.dante.de} or @uref{http://www.ctan.org}.
+
+The MS-DOS version (1.8aa and up) will also run under all MS Windows versions
+(probably except Windows Vista). It requires an i386 processor or better.  
+
+The Win32 distribution (starting from @ltor{} 1.9.15) is the MS-DOS version 
+plus Win32 GUI program (l2rshell).
+
+There are a few people working on @ltor{}, and some more make 
+contributions, coordinated by
+Wilfried Hennings (W.Hennings ``at'' fz-juelich.de). 
+See the @uref{http://sourceforge.net/projects/latex2rtf/,SourceForge} 
+project pages for the latest news.
+
+@node UNIX, DOS or Windows, Obtaining LaTeX2RTF, Installation
+@section UNIX
+
+To install, 
+@enumerate
+@item
+Edit @file{Makefile} for your local configuration.  In particular, pay attention
+to the @env{PREFIX} variable.  If you do not have root access you might wish 
+to set the makefile variable @env{PREFIX} to be your home directory. 
+
+On some machines the cc compiler will issue errors. Therefore the 
+default compiler command in the Makefile is @code{CC=gcc}.
+
+@item
+As of version 1.9.13, @ltor{} supports conversion of @latex{} equations to
+bitmaps using the shell script @file{latex2png}, found in @file{scripts/}.  
+@file{latex2png} requires that
+both @latex{} and @file{ImageMagick} are installed. 
+@ltor{} will translate documents without a working @file{latex2png}, but some
+features will be missing.  You can verify that the @file{latex2png} script
+is working by typing @code{make} in the @file{scripts/} directory.
+
+@item @code{make}
+
+If this is not your first time installation, you may want to preserve
+your old configuration (@file{*.cfg}) files. Copy them to a safe place
+before installing.
+
+On IBM AIX, the IBM make utility does not support some of the commands
+used in Makefile. In this case use @code{gmake} (from GNU) instead.
+
+Sun has decided to support the XPG4 standard on Solaris by an
+alternative set of binaries.  To allow bitmap conversion of equations, two
+things are needed.  First, change the first line of latex2png to @code{#!/usr/xpg4/bin/sh}
+Second, define the XPG4_GREP environment variable accordingly,
+for bash-like shells @code{XPG4_GREP=/usr/xpg4/bin/grep; export XPG4_GREP} or
+for tsch-like shells @code{setenv XPG4_GREP /usr/xpg4/bin/grep}.
+
+@item @code{make install}
+
+If your @code{mkdir} doesn't support the @option{-p} option, then create
+the necessary directories by hand and remove the option from the
+@code{$MKDIR} variable. If you have other problems, just copy
+@file{latex2rtf} and @file{latex2png} to a binary directory, and move
+the contents of the @file{cfg/} directory to the location specified by
+@code{$CFG_INSTALL}.
+ 
+@item @code{make check}
+
+[OPTIONAL] This tests @ltor{} on a variety of @latex{} files.  Expect
+a whole lot of warnings, but no outright errors. (On IBM AIX, use @code{gmake check}.)
+Note that this will check the basic functionality of the @file{latex2png}
+script, and then that of @file{latex2rtf}.
+
+@item @code{make install-info}
+
+[OPTIONAL] This installs @file{.info} files for use with the @code{info}
+program.
+
+@end enumerate
+
+You no longer need to define the environment variable @env{RTFPATH}. This
+is only necessary if you move the directory containing the @file{.cfg} files.  
+Just define @env{RTFPATH} to be the path for the new location of the @file{cfg}
+directory.
+
+
+@node DOS or Windows, Win32 systems, UNIX, Installation
+@section DOS or Windows
+
+The @acronym{UNIX} and Mac distributions do not contain an executable for DOS 
+or Windows. 
+Instead, get the DOS port as file @file{latex2rtf-x.x.x_dos.zip}
+or the Windows (Win32 = Win95, Win98, WinME, WinNT, Win2000, WinXP) version as 
+file @file{latex2rtf-x.x.x_win.exe} (where x.x.x is the version number) from  
+@uref{http://sourceforge.net/projects/latex2rtf/,SourceForge}@*
+
+The DOS distribution contains a precompiled executable (djgpp compiler) 
+which should run under plain DOS and also in the command prompt 
+(or ``console'') of any MS Windows system up to XP and Server 2003.@*
+However in Windows Vista the DPMI memory is limited to 32 MB, and 
+we yet don't know whether this is sufficient to run @ltor{} or not, 
+so please tell us any experiences regarding Windows Vista.@*
+If the memory limitation under Windows Vista turns out to be a problem, 
+one can use an executable compiled with Cygwin, 
+but for now this isn't provided in the distributions.@*
+Moreover, the command processor ``command.com'' is not provided by Vista,
+so conversion of pictures and of equations to bitmaps will definitely 
+not work under Vista.
+
+The Win32 version starting from 1.9.14a has the same executable but 
+additionally an optional Win32 GUI interface (@ltor{} Shell) 
+and is wrapped in an automatic installer, see @ref{Win32 systems}.@*
+
+To install @ltor{}, extract all files from the zip archive to @file{C:\l2r}
+or to another folder (i.e. directory) of your choice,
+preserving the folder structure (winzip: check ``use folder names'').@*
+If you extracted them to another folder (e.g. @file{C:\Program Files\l2r}),
+edit the files @file{L2R.BAT}, @file{L2RSEM.BAT} and @file{L2RPREP.BAT} 
+and change the folder @file{C:\l2r} to where you put them.
+If there is a blank in any of the folder names
+(as in e.g. ``Program Files''), then you need to enclose both
+the file-ID and the cfg path in double quotes, e.g. @*
+@file{"C:\Program Files\l2r\latex2rt" -P "C:\Program Files\l2r\cfg" %1 %2 ...}@*
+or use the DOS filename equivalent instead, e.g. @*
+@file{C:\Progra~1\l2r\latex2rt -P C:\Progra~1\l2r\cfg %1 %2 ...}
+
+If you install @ltor{} under WinNT, Win2000 or WinXP and 
+you want other users to be able to use @ltor{}, you must assign the
+files and folders appropriate user permissions (at least read & execute).
+If you don't know about user permissions, put @ltor{} into
+@file{C:\Program Files\l2r} or what else the standard folder 
+for installing applications is named (e.g. in the German version it 
+is @file{C:\Programme\l2r}). 
+
+Make sure that the folder containing the file
+@file{L2RPREP.BAT}  
+is in your search path, or put this file into a folder 
+which is in your search path (e.g. @file{C:\Windows}).@*
+To display the current search path, enter @file{path} 
+from the command prompt (with no arguments).
+
+To add a folder -- e.g. C:\l2r -- to the search path:
+@itemize
+@item
+DOS, Win3.1, Win95, Win98, WinME
+@itemize
+@item
+Open the file @file{C:\Autoexec.bat} either with Edit (DOS) or 
+with Notepad (Windows).
+@item
+At the end of that file, add the line @*
+@file{PATH=C:\l2r;%PATH%} 
+@item
+Save the file to its original location. Shutdown and reboot the PC.
+@end itemize
+@item
+WinNT, Win2000, WinXP
+@itemize
+@item
+Right-click ``My Computer'' (German: ``Arbeitsplatz''), then select ``Properties'';
+@item
+NT: Click the ``Environment'' tab;@*
+XP: Click the ``Extended'' tab, then the ``Environment variables'' button;
+@item
+Find the line beginning with @file{PATH=} and insert the string @*
+@file{C:\l2r;}@*
+so that the complete line looks like @*
+@file{PATH=C:\l2r;C:\WINDOWS;...}
+@item
+Click "OK"
+@end itemize
+@end itemize
+
+To start the program under Windows:
+@itemize
+@item
+open a command prompt (or console window)@*
+-- under DOS you are already at the command prompt --,@*
+@item
+use @file{cd <folder>} to make the folder with your TeX files the
+current folder, @*
+@item
+then enter either @file{L2R <filename> <options>} or @file{L2RSEM
+<filename> <options>} where <filename> is the name of your TeX file
+without the .tex extension.@* @file{L2R.BAT} and @file{L2RSEM.BAT} only
+differ in the character being used as parameter separator in the EQ
+fields, see @ref{Equations}.
+@end itemize
+
+If your @latex{} document refers to external graphic files, e.g. eps, 
+or you want to use the option to convert equations to bitmaps (-M# where
+# is greater than 3), you must have TeX, ImageMagick and Ghostscript installed. 
+These programs are freely available for download at @uref{http://www.miktex.org/}, 
+@uref{http://www.imagemagick.org} and @uref{http://www.ghostscript.com}.
+This works only on win32 systems (Win95, Win98, WinME, WinNT4, Win2000, WinXP)
+because ImageMagick is available only for win32, not for pure DOS.
+
+Either the folders where TeX, ImageMagick and Ghostscript are installed
+must be in your search path, or you must edit the file @file{L2RPREP.BAT}, 
+ensure that the pathes in this file point to the folders where 
+TeX, ImageMagick and Ghostscript are installed on your machine,
+and call @file{L2RPREP} once after opening your command prompt window and
+before calling @file{l2r}, @file{l2rsem} or @file{latex2rt}.
+Under Windows you can create another command prompt link in which you 
+can include the call to @file{L2RPREP.BAT}. 
+
+When equations are to be converted to bitmaps, for each equation
+@ltor{} first writes a temporary .tex file to disk which consists of only 
+the equation to be converted. It then sends the call for latex2pn.bat to
+the operating system. There were problems that this didn't work although
+manually calling latex2pn.bat from the command prompt worked.@*
+There are several bugs in interfacing between Windows XP and DJGPP which 
+finally caused this. One fix needed was truncating the filename of 
+@file{latex2png.bat} to the DOS convention of 8.3 characters so that it is 
+now named @file{latex2pn.bat} and the executable program @file{latex2rt.exe}.
+The other fix is now hardcoded in latex2rt.exe, making sure the DOS environment 
+space in which latex2pn.bat is executed is large enough to store the needed 
+variables.
+
+If you get the message ``Out of environment space'' (should occur only under 
+plain DOS, Windows 3.1, Windows 95, Windows 98 or Windows ME) then@*
+add to your config.sys a line like the following@*
+@code{SHELL=C:\COMMAND.COM C:\ /E:4096 /P}@*
+or, if there already is such a line, modify it so that it supplies a 
+sufficiently large environment space @code{/E:}.  
+Shutdown and reboot the PC.
+
+@node Win32 systems, Macintosh, DOS or Windows, Installation
+@section Win32 systems
+
+To install @ltor{} on a Win32 system (Win9x, WinME, WinNT, Win2000, WinXP), 
+download and execute the @file{latex2rtf-x.x.x_win.exe} 
+(where x.x.x is the version number) and follow the instructions.
+
+If there is a newer version of @ltor{} for DOS but not for Windows, 
+you can download the newer DOS package and unzip it to the same folder where 
+the windows version is installed, thus overwriting the files with their newer
+versions. The GUI shell is not updated in this case.
+
+To start the program double-click the @ltor{} icon, 
+or drag and drop a @file{.tex} file onto the icon.
+
+If your @latex{} document refers to external graphic files, e.g. eps, 
+or you want to use the option to convert equations to bitmaps,
+you must have LaTeX, ImageMagick and Ghostscript installed. These programs are 
+freely available for download at @uref{http://www.miktex.org/}, 
+@uref{http://www.imagemagick.org} and @uref{http://www.ghostscript.com}
+
+If MikTeX, ImageMagick and Ghostscript are installed before installing @ltor{},
+the pathes to the executables are automatically found in the windows registry 
+by the installer. Otherwise, these pathes may have to be specified manually 
+in the ``Environment'' tab of the @ltor{} window.
+
+If you get the message ``Out of environment space'' (should occur only under 
+Windows 95, Windows 98 or Windows ME) then@*
+add to your config.sys a line like the following@*
+@code{SHELL=C:\COMMAND.COM C:\ /E:4096 /P}@*
+or, if there already is such a line, modify it so that it supplies a 
+sufficiently large environment space @code{/E:}.  
+Shutdown and reboot the PC.
+
+
+@node Macintosh, Problems Compiling, Win32 systems, Installation
+@section Macintosh
+
+If you want a MacOS X version, make sure that you have installed the developer tools CD
+that is appropriate for your OS version, and then follow the directions above for a
+@acronym{UNIX} installation.  Alternatively you can install using fink
+@uref{http://fink.sourceforge.net/} or as an i-installer package 
+@uref{http://www.rna.nl/ii.html}.
+
+As of 2006-01-30 there also is a GUI shell for Macintosh.@*
+See @uref{http://www.inf.ethz.ch/personal/fischerk/LaTeX2rtf/index.html}
+
+There is a PPC port of an old version 1.9k for Classic MacOS @ltor{}. 
+To convert a @latex{} file using this version,  drag the file onto the @ltor{} icon.  The
+translation is best if there are @file{.aux} and @file{.bbl} files in the same folder as
+the @file{.tex} file to be converted.  These should be generated using @latex{} and
+@file{bibtex}.
+
+@node Problems Compiling, Problems with make check, Macintosh, Installation
+@section Problems Compiling
+
+The code for @ltor{} is standard @acronym{ANSI} C.  Some possible pitfalls
+are
+@itemize @bullet
+@item Not correctly defining your compiler in the Makefile.
+The default is to use @code{gcc}.  
+
+@item Encountering errors because the compiler options.  During development
+all compiler warnings are turned on.  However, different compilers have
+different interpretations of @option{-Wall} and 
+may generate errors that were not found in a different development
+system.  Please report these, but a quick fix is to remove all compiler
+options.  
+
+@end itemize
+
+@node Problems with make check,  , Problems Compiling, Installation
+@section Problems with @code{make check}
+
+All the files in the @file{test} directory are converted (with varying degrees
+of success) using @ltor{} and are tested before most CVS check-ins and with
+all released tarballs.  There will be many warning messages, but there should
+be no actual error messages.  If you do not have a working latex2png script, then
+some of the files will fail to be translated.
+
+@node Using LaTeX2RTF, Features, Installation, Top
+@chapter Using LaTeX2RTF
+
+@menu
+* General Assumptions::         
+* LaTeX2RTF Options::           
+* Debugging::                   
+@end menu
+
+@node General Assumptions, LaTeX2RTF Options, Using LaTeX2RTF, Using LaTeX2RTF
+@section General Assumptions
+
+@ltor{} assumes that the @file{.tex} file you want to convert is a valid 
+@latex{} document.  The chances of a successful @ltor{} conversion are slightly better than the
+proverbial snowball's if the @file{.tex} file doesn't @code{latex} properly.  Use 
+@latex{} to find and correct errors before using @ltor{}.
+
+To correctly convert font names you must edit the @file{fonts.cfg} configuration file.
+This file is used to specify the needed font names and how the @latex{} default font names
+should be converted to RTF (@pxref{Font Configuration}). @latex{} variables and user
+defined commands are not evaluated. They will be simply ignored. To let @ltor{} know the
+names of variables you can add them in the @file{ignore.cfg} file (@pxref{Ignore Command}).
+
+The environment variable RTFPATH may contain a search path for the support files (all
+files ending in @file{.cfg}). If no file is found during the search in the search-path or
+if the environment variable is not set, the compiled-in default for the configuration-file
+directory is used. If the files are not found at all the program aborts.
+
+In the MS-DOS version the search path is separated by `;' in the Unix version by `:'. For
+the paths themselves apply `\' and `/'. A separator may appear at the beginning or ending
+of RTFPATH.
+
+Make sure that the configuration files are in the correct directory. @ltor{} will need at
+least @file{fonts.cfg}, @file{direct.cfg}, @file{ignore.cfg}, @file{english.cfg}. You may
+have to change one ore more of them to suit your needs (@pxref{Configuration}).
+
+@xref{Missing options}, for actual implementations irregularities.
+
+@xref{Reporting Bugs}, for information on how to reach the maintainer.
+
+@node LaTeX2RTF Options, Debugging, General Assumptions, Using LaTeX2RTF
+@section @ltor{} Options
+
+The @ltor{} command converts a @latex{} file into RTF text format. The text and
+much of the formatting information is translated to RTF making the new file
+look similar to the original.  The command line syntax is:
+
+@example
+latex2rtf [-options] inputfile[.tex]
+@end example
+
+The @code{-options} may consist of one or more of the following
+
+@table @code
+@item -a auxfile
+specify an @file{.aux} file (for table and figure references) that
+differs from @file{inputfile.aux}. If this is omitted, the name of the
+inputfile with the suffix replaced @file{.aux'}will be taken.  You must
+provide both files (@file{.tex} and the @file{.aux}) to be able to
+convert cross-references in a @latex{} file.  The @file{.aux} is created
+by running the @file{inputfile.tex} through @code{latex}.
+
+@item -b bblfile
+Unless an @file{bblfile} is specified with the @code{-b} option, @ltor{} uses a
+@file{inputfile.bbl}.  The @file{bblfile} file is used for citations and is typically
+created by running @file{inputfile.aux} through @file{bibtex}.
+
+@item -C codepage
+used to specify the character set (code page) used in the @latex{} document. This is only
+important when non-ansi characters are included in the @latex{} document. Typically this
+is done in a @latexe{} file by using @code{\usepackage[codepage]@{inputenc@}}
+and in this case you need not specify the -C codepage option.
+If NO @code{\usepackage[codepage]@{inputenc@}} is in the @latexe{} file, you must
+inform the converter about the codepage by the -C codepage option. You may select any
+of the following code pages: ansinew, applemac, cp437, cp437de, cp850, cp852, cp865,
+decmulti, cp1250, cp1252, latin1, latin2, latin3, latin4, latin5, latin9, next.  The
+default behavior is to use ansinew (code page 1252).  Cyrillic support includes
+conversion of koi8-r, koi8-u, cp1251, cp855, cp866, maccyr, and macukr encodings.
+
+@item -d debug_level
+The @option{-d} option determines the amount of debugging information to send to
+stderr while translating. debug_level=0 means only Errors, `1' Warning Messages
+(default) also.  The debug_level can go as high as `7' for insane amounts of 
+debugging fun.
+
+@item -D dots_per_inch
+used to specify the number of dots per inch for equations converted to bitmaps.  
+This value is also used when picture environments are converted to bitmaps as well
+as when EPS graphics are converted to png files.  The default value is 300 dots per
+inch.
+
+@item -f#
+where # selects which fields to use during conversion:
+    @table @code
+    @item -f0
+    do not use fields in RTF.  This is handy when primitive RTF 
+    editors are being used to view the RTF output.
+    @item -f1  
+    use fields for equations but not @code{\ref} and @code{\cite}.  
+    @item -f2 
+    use fields for @code{\ref} and @code{\cite} but not equations.  This
+    will be useful for versions of OpenOffice that import cross-references
+    properly (as of Sept 2003 in a soon-to-be released version) but do not properly
+    handle fields in equations.
+    @item -f3
+    use fields when possible.  This is the default and is most useful when
+    the RTF file is being exported to be used in Word.  This retains the most
+    information from the original @latex{} file.
+    @end table
+
+@item -F
+use LaTeX to create bitmaps for all figures.  This may help when figures are
+not translated properly with the default settings.  This typically requires 
+a functional version of ImageMagick on your machine to work properly.
+
+@item -h
+a short usage description
+
+@item -i language
+used to set the idiom or language used by the @latex{} document.  Typically, this is
+specified in a @latexe{} document by including @code{\usepackage[language]@{babel@}} where
+@code{language} is one of the languages supported by the @code{babel} package.   All
+languages listed in the babel system are supported so far as translations for ``Chapter,''
+``References,'' and the like.  Furthermore, some commands found in the style files for
+german, french, russian, and czech style
+are supported (@pxref{Language Configuration}).
+
+@item -l
+same as @option{-i latin1} (Note that the default behavior is to use @option{ansinew}
+which is a superset of @option{latin1}). Included for
+backwards compatibility.
+
+@item -M#
+where # selects the type of equation conversion.  Use
+    @table @code
+    @item -M1   
+    convert displayed equations to RTF
+    @item -M2   
+    convert inline equations to RTF
+    @item -M4   
+    convert displayed equations to bitmap
+    @item -M8   
+    convert inline equations to bitmap
+    @item -M16  
+    insert Word comment field that contains the original equation text
+    @item -M32  
+    insert the raw latex equation delimited by @code{<<:} and @code{:>>}.  This
+    is potential useful when using version 6 of the MathType equation editor.
+    @end table
+    
+These switches can be combined to get different effects.  Handy examples are
+    @table @code
+    @item -M3   
+    convert both inline and displayed equations to RTF (default)
+    @item -M6   
+    convert inline equations to RTF and displayed equations to bitmaps
+    @item -M12  
+    convert both inline and displayed equations to bitmaps
+    @end table
+Bitmap conversion requires that you have installed a working latex2png script.
+Producing bitmaps is slow.
+
+@item -o outputfile
+Unless an @file{outputfile} is specified with the @code{-o} option, the resulting RTF
+filename is formed by removing @file{.tex} from the @file{inputfile} and appending
+@file{.rtf}.
+
+@item -p
+Escape parentheses in mathematical formulas.  This has no effect unless EQ fields
+are being generated.  When this option is used, then in a `(' or `)' that appears
+in an EQ field will be preceeded by a backslash.  Despite documentation to the
+contrary (which says that all parentheses should be escaped), adding escapes usually
+produces a worse result than doing nothing. If Word displays some formulas with 
+parentheses as ``Error!'', you might try this option as a last resort.
+See also the -S option.
+
+This is an option because it will break typesetting equations with non-matching
+parentheses (because an unmatched unquoted parenthesis would terminate the field).
+
+@item -P /path/to/cfg
+used to specify the directory that contains the @code{.cfg} files
+
+@item -S
+used to specify that semicolons should be used to separate arguments in RTF fields
+(instead of commas).  Typically this is needed when the machine that opens the RTF file
+has a version of Windows that uses `,' for decimal points.
+
+@item -V 
+prints version information on standard output and exits.
+
+@item -W
+includes warnings directly in the RTF file
+
+@item -Z#
+add the specified number of extra @code{@}} to the end of the RTF file.  This
+is useful for files that are not cleanly converted by @ltor{}.
+
+@end table
+
+With no arguments other than switches starting with a ``-'', 
+@ltor{} acts as a filter, i.e., it reads from @code{stdin} and writes to @code{stdout}.
+In addition, diagnostic messages are sent to @code{stderr}. If these standard
+channels are not redirected using @code{<} and @code{>}, then the
+input is read from the command line, and both output and error
+messages are printed on the screen.
+
+If a non-switch argument is present, @ltor{} assumes it is the name of
+the input file. The file must have extension ``.tex'' but the extension
+is optional. The output file is constructed from the input file name
+by removing the extension ``.tex'' and adding ``.rtf''.
+
+@node Debugging,  , LaTeX2RTF Options, Using LaTeX2RTF
+@section Debugging
+
+With the @option{-d} option you can specify how much processing information
+@ltor{} reports.
+If there is a logfile specified the output goes to this file. Nonetheless
+Warnings and Errors are logged to stderr always.
+
+Possible values of @option{-d} are
+@enumerate 0
+@item
+only errors.
+@item
+Translation Warnings (default).
+@item
+shows preparsing of sections
+@item
+Reasonably high level debugging messages
+@item
+Show all function calls
+@item
+Show all each character as it is processed
+@item
+Show processing of characters as they are output as well
+@end enumerate
+
+@node Features, Configuration, Using LaTeX2RTF, Top
+@chapter Features
+
+In this chapter you find what styles is @ltor{} supposed to translate
+correctly to RTF.
+
+@menu
+* LaTeX2e::                     
+* Unicode Support::             
+* Input Encoding::              
+* Language Support::            
+* Cross References::            
+* Page Formatting::             
+* Equations::                   
+* Math and Special Symbols::    
+* Tables::                      
+* Graphics::                    
+* Pagestyles::                  
+* Hyperlatex::                  
+@end menu
+
+@node LaTeX2e, Unicode Support, Features, Features
+@section LaTeX2e
+
+@ltor{} understands most of the commands introduced with @latexe{}.  It translates both
+the old 2.09 version of @code{\documentstyle[options]@{format#@}} and the newer
+@code{\documentclass[options]@{format@}}.  
+
+@node Unicode Support, Input Encoding, LaTeX2e, Features
+@section Unicode Support
+
+As of version 1.9.17, @ltor{} has limited unicode support.  @latex{} files
+that use unicode sequences are just emitted directly into the RTF file.
+Symbols and odd characters in math sequences may also be converted to
+a unicode sequence if there is no corresponding symbol in the ``Symbol''
+or ``MT Extra'' fonts.
+
+Support for unicode encoded input 
+is activated by the @latex{} command @*
+@code{\usepackage[utf8]@{inputenc@}} @*
+or @*
+@code{\usepackage[utf8x]@{inputenc@}}.
+
+
+@node Input Encoding, Language Support, Unicode Support, Features
+@section Input Encoding
+
+It is not necesary to specify the @option{-C} option if you use @code{\usepackage@{isolatin1@}}
+or @code{\documentstyle[isolatin1]@{...@}}. @ltor{} automagically detects these
+packages/style options and switches to processing of ISO-Latin1 codes.  The following
+encodings are supported: ansinew, applemac, cp437, cp437de, cp850, cp852, cp865,
+decmulti, cp1250, cp1252, latin1, latin2, latin3, latin4, latin5, latin9, next,
+koi8-r, koi8-u, cp1251, cp855, cp866, maccyr, macukr, utf8, and utf8x.  The encoding used in
+RTF files is cp1252.  If cyrillic fonts are present, then these are represented
+in the RTF file using cp1251 (Windows Cyrillic).
+
+@node Language Support, Cross References, Input Encoding, Features
+@section Language Support
+@cindex language support
+@cindex babel
+
+The following languages from the Babel package are supported: afrikaans,
+german, nynorsk, spanish, bahasa, dutch, icelandic, polish, swedish,
+basque, english, portuges, turkish, brazil, esperanto, irish, romanian,
+usorbian, breton, estonian, italian, samin, welsh, catalan, finnish,
+latin, scottish, croatian, lsorbian, serbian, czech, french, magyar,
+slovak, danish, galician, norsk, slovene.
+
+The only thing that these files do is to translate various words usually
+emitted by @latex{} during processing.  For example, this ensures that the
+@ltor{} will provide the correct translation of the word ``Chapter'' in
+the converted document.
+
+You can select any of the above languages using the @option{-l} option.  This
+is not needed if your @latex{} file contains @code{\usepackage[language]@{babel@}}.
+
+Encountering the @option{german} package or documentstyle option (by H. Partl of the
+Viena University) makes @ltor{} behave like that: German Quotes, German
+Umlauts by @code{"a}, etc@enddots{}  This support is programmed directly 
+into @ltor{} and supporting similar features for other languages will require 
+patching the source code.
+
+There is similar support for @option{french} packages.
+
+There is reasonable support for english, latin1, latin2, and cyrillic languages.
+
+@xref{Language Configuration}, for details on how to write a @file{language.cfg} file
+for your language by yourself.
+
+@node Cross References, Page Formatting, Language Support, Features
+@section Cross References
+
+Cross references include everything that you might expect and then some:
+bibliographic citations, equation references, table references, figure 
+references, and section references.  Section, equation, table and figure references
+are implemented by placing RTF bookmarks around the equation number (or table
+number or figure number).  
+
+Page references work but are implemented as ``warm'' cross-references.  This
+means that Word does not automatically update the page references when the file
+is opened.  To update the page references you must select the entire document
+(in Word) and press @code{F9}.
+
+@cindex bibliography
+Bibliographic references currently require that a valid @file{.aux} file be
+present.  This is where @ltor{} obtains the reference numbers.  It would be
+nice if @ltor{} just automatically numbered the references when there was
+no @file{.aux} file, but @ltor{} does not do this yet.
+ 
+@cindex bibliography, BibTeX
+@cindex BibTeX
+@ltor{} relies on @bibtex{} to convert and format bibliographic entries.
+Usually the style file for a particular @bibtex{} format does not use
+any special @latex{} commands and therefore the bibliography file
+@file{file.bbl} can be processed by @ltor{} without difficulty. As a
+consequence, @ltor{} can handle most bibliography styles without
+problem.
+
+@cindex bibliography, apacite
+@cindex bibliography, apalike
+@cindex bibliography, authordate
+@cindex bibliography, harvard
+@cindex bibliography, natbib
+@cindex bibliography, apanat1b
+@cindex apacite
+@cindex apalike
+@cindex authordate
+@cindex harvard
+@cindex natbib
+@cindex apanat1b
+There are several latex style packages that add additional
+latex commands to enhance bibliographic formatting.
+@ltor{} currently supports the following bibliographic packages:@*
+apacite, apalike, authordate, harvard, natbib (also with apanat1b).
+These packages have many, many options and you may encounter
+problems with formatting in special cases.
+
+As of @ltor{} 1.9.17, the natbib command bibpunct is supported.
+
+Footnotes are implemented and appear at the bottom of each page.  
+@cindex footnotes
+
+@cindex index
+Indexing is reasonably-well supported.  The simple mark-up of @code{makeindex}
+@example
+\index@{topic!subtopic@@\textit@{subtopic@}@}
+@end example
+is supported.  The rest of the fancy indexing stuff is not implemented.
+The index is created at the location of the @code{\printindex} command.
+When a file with an index is first opened in Word, you must select the 
+entire file and update the page references and fields by pressing @code{F9}.
+
+Currently, there is no support for @code{\labels} of @code{\item}s in enumerate environments.
+
+The conversion of cross-references is not perfect because of the different
+mechanisms in the @latex{} and Word worlds.  In particular, if there are 
+multiple @code{\label} in a figure, table, or section environment then only the first
+gets processed.  It is also possible to confuse the @ltor{} in eqnarray environments.
+
+@node Page Formatting, Equations, Cross References, Features
+@section Page Formatting
+@cindex page formatting
+@cindex geometry package
+@cindex margins
+@cindex line spacing
+@cindex double spacing
+@cindex setspace package
+
+@ltor{} will handle some basic page formatting options, including
+\doublespacing (as implemented in the setspace package), and the margin
+setting options provided by the geometry package including commands in the
+ratio, centering and margin families. Not all geometry options are
+implemented yet, in part because there are no corresponding rtf commands
+for many of them.
+
+@node Equations, Math and Special Symbols, Page Formatting, Features
+@section Equations
+@cindex equations
+
+There are five separate levels of equation translation based on the -M switch, 
+see @ref{LaTeX2RTF Options}.
+Each equation is now converted either to an EQ field or to a bitmap 
+or inserted as raw TeX code in the document. 
+
+This is an interim solution (for some definition of ``interim''). 
+Ideally the equations would become OLE equation objects in the
+RTF file, but this needs to be implemented.
+
+Some functions in the EQ fields have two or more parameters with a separator 
+between each two. Unfortunately, the interpretation of these separators depends 
+on the country specific settings in the MS Windows system in which the rtf file 
+is opened. E.g. in English versions of MS Windows, the default parameter separator 
+is the comma, in German versions the default is the semicolon. If the parameter 
+in the RTF file does not match the Windows setting, some EQ fields are not 
+interpreted correctly. You can check and set the separator in [Windows control panel 
+- country settings - numbers - list separator]. By default, @ltor{} uses
+the comma as separator. If @ltor{} is called with the command line parameter -S ,
+the semicolon is inserted as parameter delimiter. 
+
+Theoretically, according to the Word help file, parentheses `(' or `)' in 
+mathematical formulas should be escaped (by a preceding backslash). 
+Despite this, adding escapes usually produces a worse result than doing nothing.
+If Word displays some formulas with parentheses as ``Error!'', you might try 
+the -p option as a last resort.
+
+It is also possible to convert an EQ field generated by @ltor{} to an
+Equation Editor object by opening the rtf file in Word and double-clicking on
+the equation. However there are bugs in the interface between Word and Equation 
+Editor which prevent symbols in font Symbol or MTExtra to be converted correctly. 
+The full commercial version of the Equation Editor, called MathType, handles
+this conversion correctly.
+If you have MathType version 6, an even better way to convert @latex{} equations to
+MathType is letting @ltor{} write the @latex{} code of the equations verbatim in the 
+rtf file (option -M32), then open the rtf file in Word, select the @latex{} code of 
+an equation, cut it to the clipboard, open MathType, and paste the code.
+MathType will convert the code into an equation. Wilfried tried to automate this 
+in a Word macro, but this fails because the macro does not wait until MathType is
+started and ready to receive the pasted code. Maybe the MathType authors will 
+give us a hint or provide such a macro.@*
+MathType can be downloaded from @uref{http://www.dessci.com/en/} (30 day test
+version).
+
+@node Math and Special Symbols, Tables, Equations, Features
+@section Math and Special Symbols
+@cindex math
+@cindex special symbols
+
+The way that symbols are converted in the RTF is based on the following
+observations.  If the symbol is found in the latin 1 character set, then
+the current font is used.  The font ``Symbol'' is widely available, and therefore it is used 
+for as many translations as possible.  The font ``MT Extra'' is less common,
+but is free (as in beer from Design Science, see below) and characters from this font 
+are used when possible.  Note that early versions of ``MT Extra'', including
+the one which is installed if you choose to install the Equation Editor coming
+with MS Word and MS Office, are missing some characters;  
+the most recent version of this font (from Design Science) should be installed
+for best results.  Finally, if the symbol is not found in any of
+the previous fonts, then @ltor{} will use the unicode sequence for 
+that symbol.
+
+The means that on the system where the @file{.rtf} file is opened, a unicode
+font should be available or these glyphs will not be displayed correctly. On
+Windows machines the unicode font is ``Lucida Sans Unicode'', on MacOS X the
+font is ``Lucida Grande''.  Even when these fonts are installed, support for
+these unicode sequences seems to be hit-or-miss in various versions of Word since
+many of these symbols are not (yet) contained in the standard unicode fonts.
+
+Many mathematical and special symbols are directly supported by @ltor{}.
+Less common symbols (not found in the fonts ``Symbol'' or ``MT Extra'')
+are supported by the conversion table in the file @file{direct.cfg}, 
+see @ref{Direct Conversion}. 
+An alternative @file{direct.cfg} is available in which the symbols 
+are explicitly taken from ``Lucida Sans Unicode'', which contains more of the 
+symbols than the standard font Times / Times New Roman but which is only
+available on PCs with MS Windows.
+To use ``Lucida Sans Unicode'', rename @file{direct.cfg} 
+(to e.g., @file{direct_mt.cfg}) and rename @file{direct_ucs.cfg} to @file{direct.cfg}.
+
+Required fonts are:
+
+@itemize
+
+@item ``Times'' / ``Times New Roman'', preferably with Unicode extension (i.e. 
+supporting all European languages including Cyrillic, Greek, and Hebrew). ``Times'' 
+or ``Times New Roman'' is standard on all systems, but not its Unicode extension.
+
+@item ``Symbol'', which is standard on all systems.
+
+@item ``MT Extra''. This font is installed with the Microsoft Equation Editor,
+which comes with Microsoft Word, or its full version MathType. 
+If you don't have Word or MathType, you can get this font from 
+@uref{http://www.mathtype.com/en/dl/fonts/}
+
+@end itemize
+
+
+@node Tables, Graphics, Math and Special Symbols, Features
+@section Tables
+@cindex tables
+
+Conversion of tabular and tabbing environments is somewhat lame.  The 
+main difficulty is that @latex{} (and html) will size the columns of
+a table automatically.  There is no such feature in RTF.  Consequently,
+the conversion defaults to making all the columns have equal size.  This
+is suboptimal and should be revised.  One interesting suggestion is to 
+have an option to handle these environments the same way that equations
+are handles and have latex render them as bitmaps and insert the bitmaps
+into the RTF file.  Such a feature remains to be written.
+
+@node Graphics, Pagestyles, Tables, Features
+@section Graphics
+@cindex graphics
+
+There is now rudimentary support for @code{\includegraphics}.  Three file types
+will be inserted into the RTF file without needing conversion: @file{.pict}, @file{.jpeg}, and
+@file{.png} files.  EPS and PDF files are converted to PNG using @code{convert} from the ImageMagick 
+package.  Some options are even handled properly.
+
+@node Pagestyles, Hyperlatex, Graphics, Features
+@section Pagestyles
+@cindex pagestyles
+
+If there is no @code{\pagestyle} command, the RTF output is generated as with plain
+pagestyle, i.e. each page has its page number centered at the bottom.
+
+You must turn this off with the \pagestyle@{empty@} command in the @latex{} file if
+you don't want pagenumbers.
+The headings and myheadings styles are silently ignored by now.
+The twosided option to the \documentstyle or \documentclass produces the
+corresponding RTF tokens.
+Note that these features require RTF Version 1.4.
+
+@node Hyperlatex,  , Pagestyles, Features
+@section Hyperlatex
+@cindex hyperlatex
+
+Hyperlatex support is largely broken at the moment, but continues to improve.
+
+Otfried Schwarzkopf has created the ``Hyperlatex Markup Language'' which is a
+``little package that allows you to use @latex{} to prepare documents in HTML.''
+It brings an Emacs lisp program with it to convert the Hyperlatex file to HTML.
+Hyperlatex can be obtained from the CTAN-sites, see @ref{Obtaining LaTeX2RTF}.
+There are two convenient commands that avoid typing: \link and \xlink that
+generate an ``internal'' label which then is used in the following \Ref and
+\Pageref commands.
+
+@latex{} makes it possible to write `\link@{anchor@}[ltx]@{label@}', which typesets:
+`anchor ltx'. @ltor{} does NOT support this aproach since the optional
+parameter is thrown away right now, see @ref{LaTeX2RTF under Development}.
+
+Note that you have to update your @file{.cfg} files if you are upgrading, since
+there are a lot of HTML oriented commands in Hyperlatex that we simply can
+`ignore'.
+
+@node Configuration, Error Messages and Logging, Features, Top
+@chapter Configuration 
+
+@menu
+* Input processing::            
+* Output formatting::           
+* Direct Conversion::           
+* Ignore Command::              
+* Font Configuration::          
+* Language Configuration::      
+@end menu
+
+@node Input processing, Output formatting, Configuration, Configuration
+@section Input processing 
+@cindex input processing
+@cindex direct.cfg
+@cindex ignore.cfg
+
+On processing input @ltor{} first converts the @latex{} special
+characters. If it encounters one of the standard commands it is
+converted internally. If a command is not known to @ltor{} it is first
+looked up in @file{direct.cfg} and the RTF code specified there is
+output. If not found there it is looked up in the section
+@file{ignore.cfg}. This file includes a lot of @latex{} commands that do
+not affect the output (cross reference information and the like), or
+that we are not able or willing to convert to RTF.
+
+You can use @file{ignore.cfg} if you get tired of seeing 
+@example
+WARNING: command: `foo' not found - ignored
+@end example
+
+@noindent 
+and you don't need `foo' in your RTF document. It would be nice to send
+your additions to the @ltor{} mailing list for inclusion in later
+distributions.
+
+@ltor{} accepts Unix, MS-DOS, and Macintosh line ending codes (\n, \r\n
+and \r).  The files it creates are the line ending for the platform on
+which @ltor{} was compiled.
+
+The @latex{} file may have been created with a wide variety of character
+sets.  If the @latex{} lacks the @code{\package[codepage]@{inputenc@}}
+definition, then you may need to use the command line switch to manually
+select the proper code page (@pxref{Input Encoding}).
+
+@cindex conditional parsing
+@cindex %latex2rtf
+@cindex iflatextortf
+As of @ltor{} 1.9.17, there are two options for including content that
+will be ignored by @latex{} but parsed by @ltor{}. The first is simply
+to begin a line with @code{%latex2rtf:}, as in the following:
+
+@example
+%latex2rtf: These lines will only appear in the latex2rtf output, 
+%latex2rtf: not in the LaTeX output.
+@end example
+
+More sophisticated processing is available with the @code{\iflatextortf}
+command:
+
+@example
+\newif\iflatextortf  %all \newif constructs ignored by latex2rtf
+\latextortffalse     %ignored by latex2rtf, so file works in latex
+\iflatextortf
+This code is processed only by latex2rtf
+\else
+This code is processed only by latex
+\fi
+@end example
+
+Note that @code{\iflatextortf} will only work within a section; you
+cannot use this command to conditionally parse code that crosses section
+boundaries. Also, it will only work on complete table or figure
+environments. Due to the mechanism used by @ltor{} in processing these
+environments, at this time the only way to conditionally parse tables
+and figures is to include two complete versions of the environment in
+question, nested within an appropriate \iflatex2rtf structure.
+
+@node Output formatting, Direct Conversion, Input processing, Configuration
+@section Output formatting 
+
+On writing output, @ltor{} generates @code{\n} as line ending code.
+Your RTF Reader should accept this on any platform. If you ftp your RTF file
+from or to MS-DOS platforms the line ending code can be converted to @code{\r\n}. As
+this should also be legal to any RTF Reader the resulting RTF rendering should
+not be affected.
+
+@ltor{} does not offer a whole lot of flexibility in how files are translated,
+but it does offer some.  This flexibility resides in four files @file{direct.cfg},
+@file{ignore.cfg}, @file{fonts.cfg}, and @file{language.cfg}.  These filese
+are documented in the next four sections.
+
+@node Direct Conversion, Ignore Command, Output formatting, Configuration
+@section Direct Conversion 
+
+The file @file{direct.cfg} is used for converting @latex{} commands by simple text
+replacement. The format consists of lines with a @latex{} command with backslash
+followed by comma. The rest of the line until a @samp{.} character will be written
+to the RTF file when the command is found in the @latex{} file. Lines
+starting with a @samp{#} character are ignored. After the @samp{.} everything is ignored
+to end of line. To select a specific font use @code{*fontname*}, where 
+@code{fontname} be defined in @file{fonts.cfg}.
+To write the @samp{*} character use @samp{**}. 
+
+@verbatim
+\bigstar,{\u8727**}.
+\copyright,\'a9.
+@end verbatim
+
+In general, specific fonts should not be specified in this file.   There is a 
+mechanism to do this, but it turns out that this is not as useful as originally
+thought.  The main reason that this fails is because the conversion of equations
+from Word fields to Equation Editor objects is buggy.  The consequence is that
+to have symbols show up properly, they must be encoded differently when the Symbol
+and MT Extra fonts are used --- depending on whether Word fields are active or 
+not.  It was all very tedious to figure out a mechanism that was ``least broken.''
+
+@node Ignore Command, Font Configuration, Direct Conversion, Configuration
+@section Ignore Command 
+
+The file @file{ignore.cfg} is used for defining how to ignore specific commands. This
+file is used for recognition of @latex{} variables, user defined variables, and
+some simple commands. All variables are ignored but the converter must know the
+names to correctly ignore assignments to variables. Lines in this file consist
+of a variable name with backslash, followed by comma and the type of the
+variable followed by @samp{.}. Possible types are
+
+@table @samp
+@item  NUMBER
+simple numeric value
+@item  MEASURE
+numeric value with following unit of measure
+@item OTHER
+ignores anything to the first character after @samp{=} and from there to next
+space. e.g., @code{\setbox\bak=\hbox}
+@item COMMAND
+ignores anything to next @samp{\} and from there to the occurence of anything
+but a letter e.g., @code{\newbox\bak}
+@item  SINGLE
+ignore single command e.g., @code{\noindent}
+@item  PARAMETER
+ignores a command with one parameter e.g., @code{\foo@{bar@}}
+@item PACKAGE
+does not produce a Warning message if PACKAGE is encountered, e.g.,
+`PACKAGE,kleenex.'
+@item ENVCMD
+proceses contents of unknown environment as if it were plain @latex{}
+eg. `ENVCMD,environ.' Therefore @code{\begin@{environ@} text
+\end@{environ@}}' as `text'.
+@item ENVIRONMENT
+ignores contents of that environment, e.g., with `ENVIRONMENT,ifhtml.'
+@code{\begin@{ifhtml@} text \end@{ifhtml@}} ignores `text'.
+@end table
+
+The types are in upper case exactly as above. Do not use spaces. Lines starting
+with a @samp{#} character are ignored. After the @samp{.} everything is ignored to end of
+line. Example:
+@example
+\pagelength,MEASURE.
+@end example
+
+@node Font Configuration, Language Configuration, Ignore Command, Configuration
+@section Font Configuration 
+
+The file @file{fonts.cfg} contains the font name mapping.  For example, this
+file determines what font is used to represent @code{\rm} characters in the RTF file.  
+
+A line consists of a font name in @latex{} followed by comma and a font
+name in RTF. The end is marked by a @samp{.}. No spaces are allowed. The
+@latex{} font will be converted to the RTF font when it is found
+in the @latex{} file. If multiple translations for the same @latex{} font are
+specified, only the first is used. All fonts in a @latex{} file that are
+not in this file will be mapped to the default font. All RTF fonts
+listed in this file will be in every RTF file header whether used or
+not.  Lines starting with a @samp{#} character are ignored. After the
+@samp{.} everything is ignored to end of line. 
+
+To add a RTF font not
+used as substitute for a @latex{} font --- for example a Symbol font used
+in @file{direct.cfg} --- use a dummy @latex{} name like in the following
+@example
+Dummy3,MathematicalSymbols.
+@end example
+
+Make sure you use the correct font name. Take care of spaces in font names. The
+default fonts are named Roman @code{\rm}, Slanted @code{\sl}, Sans Serif
+@code{\sf}, Typewriter @code{\tt}, or Calligraphic @code{\cal}.
+
+@node Language Configuration,  , Font Configuration, Configuration
+@section Language Configuration 
+
+The file(s) @file{language.cfg} control the translation of @latex{}'s ``hardcoded''
+sectioning names.
+The standard @latex{} styles have some fixed Title names like `Part', `Reference'
+or `Bibliography' that appeared in English or German in the output with the
+original versions of @ltor{}. 
+
+It is unlikely that you will need to create a new @file{language.cfg} file.
+However, just look at one of the existing files and follow the pattern.
+The format is really simple.  
+
+@node Error Messages and Logging, History, Configuration, Top
+@chapter Error Messages and Logging 
+
+As stated in the Debugging section, @ltor{} provides a means to control 
+the amount of debugging information through the @option{-d#} switch.  
+By using a debugging level of 4, you can get a pretty good idea of what
+@latex{} command caused the problem and what line that command might be
+found on.  
+
+@table @samp
+@item Fatal error messages
+indicate a bug in the source code. PLEASE report them, if they do not
+apear in the documentation (@pxref{Reporting Bugs}).
+
+@item Error messages
+always abort the program and are caused by conditions that prevent
+further conversion of the input file.  Typically this is cause by
+@ltor{} getting hopelessly confused by the number of braces in the
+@latex{} file.
+
+@item Warning messages
+inform you, that there is some conversion loss from @latex{} to RTF, or that
+the output file has some restrictions on some RTF Readers. Most of these 
+warnings can be supressed by add the offending command to the @file{ignore.cfg}
+file.
+@end table
+
+Error and Warning messages should follow the GNU Coding standards, i.e. they
+have the format
+@example
+inputfile':line: Error|Warning: message
+@end example
+
+You can also control the level of debugging output by inserting @code{\verbositylevel@{#@}}
+in the @latex{} file.  This is very handy if you have a large @latex{} file
+that is failing in only a small section.  For example,
+@example
+problem free latex file ....
+\verbositylevel@{5@}
+problematic code
+\verbositylevel@{0@}
+@end example
+@noindent will cause a huge amount of debugging information to be emitted
+for the problematic code.
+
+Error reporting and logging still has many inconsistencies, but it
+gets better with each release.
+Don't try to make any sense in debugging levels above 4, these are for my
+own delight only and can change significantly between versions.
+
+The @file{inputfile} may be incorrectly identified if it is incorporated
+through @code{\input} or @code{\include}.  The line may be also be wrong
+at times.  @xref{Known Bugs}.
+
+@node History, LaTeX2RTF under Development, Error Messages and Logging, Top
+@chapter History & Copyright
+@cindex History of the program
+@cindex Copyright issues
+
+In 1994 the first Version of @ltor{} was written by Fernando Dorner and Andreas Granzer of
+the Viena University supervised by Ralf Schlatterbeck in a one-semester course. They
+created a simple @latex{} parser and added most of the infrastructure for the program.
+This was version 1.0 of @ltor{}.  In 1995, work on @ltor{} was continued in another
+one-semester course by Friedrich Polzer and Gerhard Trisko. The result was @ltor{} version
+1.5.  Ralf Schlatterbeck (ralf ``at'' zoo.priv.at) maintained and extended @ltor{} until
+1998.
+
+In 1998 Georg Lehner (jorge_lehner ``at'' gmx.net) found the reference to @ltor{} on the
+@uref{http://tug.org/utilities/texconv/index.html, TeX Conversion Webpage} of
+Wilfried Hennings and added some functionality and took
+over the maintainence of the program.  The last version release by Georg is 1.8aa.
+The bulk of development post 1.8aa was done by Scott Prahl.  
+Wilfried Hennings now coordinates the development of the program and maintains the project
+on @uref{http://sourceforge.net/projects/latex2rtf/,SourceForge} where there are also
+(low volume) mailing lists for users and developers. Mailing via one of these lists requires 
+subscription to the list (to prevent spam).
+For subscription to these lists visit the page:
+@uref{http://lists.sourceforge.net/lists/listinfo/latex2rtf-users, users list}
+or
+@uref{http://lists.sourceforge.net/lists/listinfo/latex2rtf-developers, developers list}
+
+As of October 2004, version 1.9.16 of @ltor{} is available. 
+One day there shall be a jump to Version 2.0, but this is not history but future ...
+
+The contents of this manual were composed by copying shamelessly what was
+available in the original sources and documentation.
+
+@node LaTeX2RTF under Development, Function Index, History, Top
+@chapter LaTeX2RTF under Development 
+
+@menu
+* Unimplemented Features::      
+* Missing options::             
+* Known Bugs::                  
+* Reporting Bugs::              
+* Todo List::                   
+* LaTeX Commands::              
+@end menu
+
+@node Unimplemented Features, Missing options, LaTeX2RTF under Development, LaTeX2RTF under Development
+@section Unimplemented Features
+
+@itemize @bullet
+@item 
+@ltor{} ignores some optional parameters of @code{\documentstyle} 
+@item 
+Add the code to produce the corresponding chapter, section, and page
+numbering with headings and myheadings pagestyles. Implement
+@code{\markboth} and @code{\markright}.
+@item 
+To support @code{\tableofcontents} there would be two approaches:
+Transfer sectioning information, title text and then produce page
+numbers by the rtf- reader. Scan and label all of the sectioning
+commands while reading and then construct the sectioning information
+using these labels. Needs two passes on @latex{} input.
+@end itemize
+
+@node Missing options, Known Bugs, Unimplemented Features, LaTeX2RTF under Development
+@section Missing options
+
+Missing or buggy command line options.
+
+@table @option
+
+@item -d
+Information logging and Error reporting is not implemented consistently.
+Need to test and track problems with the linenumber and with the file name.
+
+@item --long_names
+It would be useful to implement the GNU long option names, e.g.: `--debug',
+`--output_file', `--quiet', etc.  This could be done by switching to the GNU
+getopt package.
+@end table
+
+@node Known Bugs, Reporting Bugs, Missing options, LaTeX2RTF under Development
+@section Known Bugs 
+
+@enumerate
+@item 
+The first parameter of a \link@{anchor@}[ltx]@{label@} is converted to
+the rtf-output. Label is stored to hyperref for later use, the optional
+parameter is ignored. [ltx] should be processed as Otfried recommends
+it, to use for exclusive @latex{} output.e.g:
+\link@{readhere@}[~\Ref]@{explaining: chapter@}. Since
+@{explaining:chapter@} is yet read by @latex{} and hyperlatex when [...]
+is evaluated it produces the correct reference. @ltor{} is only
+strolling from left to right through the text and can't remember what
+she will see in the future.
+@item 
+The diagnostics routine does not output the correct (actual)
+input filename. (`.aux', `.bbl', @code{\input}).
+@end enumerate
+
+@node Reporting Bugs, Todo List, Known Bugs, LaTeX2RTF under Development
+@section Reporting Bugs 
+
+Report bugs to to the bug tracking system at @uref{http://sourceforge.net/projects/latex2rtf/,SourceForge}. 
+Only report bugs for the latest version of @ltor{} that is available.  
+ Please provide the following information and observe the following
+guidelines when reporting a bug in the program:
+@enumerate
+@item State the version of @ltor{} that you are using.  You can get the version by
+specifying the @option{-V} option to @ltor{}. 
+
+@item Specify the your operating system and version. Be sure to check the file `Makefile'
+for settings that may be specific to your machine, especially for some versions of SunOS
+there may be settings which are needed to compile successfully. Do this before submitting
+a bug report.
+
+@item If the program produces wrong output or does not work for you, include a short
+@latex{} file along with a description of the problem.  Isolating the bug into a small
+@latex{} file does two things.  First, it provides a file that can be used to test future
+versions of @ltor{} and second, it certainly improves the chances that the bug will get
+some attention.  Do not send me large @latex{} or RTF files, I simply do not have the time
+to wade through large files to search for a bug!
+
+@item Be patient. I am maintaining the program in my free time. I did not
+write most of the code. Often I do not have the time to answer to your
+question. I will, however, try to fix reported bugs in upcoming releases.
+@end enumerate
+
+@node Todo List, LaTeX Commands, Reporting Bugs, LaTeX2RTF under Development
+@section Todo List 
+
+Scott's ToDo list
+@itemize @bullet
+@item  Use lex/yacc to implement getSection
+@item  Add support for pagestyle
+@item  Better support for ignoring commands
+@end itemize
+
+@noindent
+Georg's todo list
+@itemize @bullet
+@item  
+Make this Manual more consistent, the ToDo and Known Bug List shorter
+and the Features List longer.
+@item  
+Harmonize all of the error and warning messages.
+@item  
+Put warnings everywhere applicable about producing RTF 1.4 tokens.
+@item  
+Provide an Error and Warning recovery guide to the user.
+@item  
+Add a chapter with lists of all @latex{} commands that convert, and that
+do not convert to RTF, including their status (for future releases,
+never, partially functional, ...).
+@end itemize
+
+@node LaTeX Commands,  , Todo List, LaTeX2RTF under Development
+@section Command List
+
+Listed here are all the @latex{} commands currently parsed by @ltor{}.
+Note: inclusion in this list does not mean that a command is fully and
+correctly handled by @ltor{}. In some cases the commands here are
+place-holders only, and are not implemented at all. The list is provided
+to encourage developers to note any departures from the behaviour that
+@latex{} users will expect. The location of the commands is noted to
+assist anyone interested in hacking on the C source code. This list is a
+work in progress, and may not be immediately useful to general users,
+other than to indicate those commands that we have at least contemplated
+implementing.
+
+@menu
+* General Commands::            
+* Preamble Commands::           
+* Letter Commands::             
+* Language Commands::           
+* Citation Commands::           
+* Other Commands::              
+* Environments::                
+@end menu
+
+@node General Commands, Preamble Commands, LaTeX Commands, LaTeX Commands
+@comment  node-name,  next,  previous,  up
+@subsection General Commands
+
+These commands are found in the @code{commands[]} array in commands.c.
+They are arranged alphabetically within sections according to function.
+
+@menu
+* Basic Commands::              
+* Font Commands::               
+* Logos::                       
+* Special Characters::          
+* Sectioning Commands::         
+* Uncategorized::               
+@end menu
+
+@node Basic Commands, Font Commands, General Commands, General Commands
+@comment  node-name,  next,  previous,  up
+@subsubsection Basic Commands
+
+All listed commands work as expected.
+
+@ftable @asis
+@item begin
+@item centerline
+@item end
+@item endnote
+@item footnote
+@item raggedright
+@item the
+@item today
+@item vcenter
+@end ftable
+
+@node Font Commands, Logos, Basic Commands, General Commands
+@comment  node-name,  next,  previous,  up
+@subsubsection Font Commands
+
+All listed commands work as expected.
+
+@ftable @asis
+@item bf
+@item bfseries
+@item cal
+@item em
+@item emph
+@item enotesize
+@item footnotesize
+@item HUGE
+@item Huge
+@item huge
+@item it
+@item itshape
+@item LARGE
+@item Large
+@item large
+@item mathbf
+@item mathcal
+@item mathit
+@item mathmd
+@item mathnormal
+@item mathrm
+@item mathsc
+@item mathsf
+@item mathsl
+@item mathtt
+@item mathup
+@item mdseries
+@item mit
+@item normalfont
+@item normalsize
+@item rm
+@item rmfamily
+@item sc
+@item scfamily
+@item scriptsize
+@item scshape
+@item sf
+@item sffamily
+@item sl
+@item slshape
+@item small
+@item ssmall
+@item textbf
+@item textfont
+@item textit
+@item textmd
+@item textnormal
+@item textrm
+@item textsc
+@item textsf
+@item textsl
+@item texttt
+@item textup
+@item tiny
+@item tt
+@item ttfamily
+@item underbar
+@item underline
+@item upshape
+@end ftable
+
+@node Logos, Special Characters, Font Commands, General Commands
+@comment  node-name,  next,  previous,  up
+@subsubsection Logos
+
+All listed commands work as expected.
+
+@ftable @asis
+@item AmSLaTeX
+@item AmSTeX
+@item BibTeX
+@item kern
+@item LaTeX
+@item latex
+@item LaTeXe
+@item lower
+@item LyX
+@item SLiTeX
+@item TeX
+@end ftable
+
+@node Special Characters, Sectioning Commands, Logos, General Commands
+@comment  node-name,  next,  previous,  up
+@subsubsection Special Characters
+
+These commands all work as expected.
+
+@ftable @asis
+@item \
+@item acute
+@item b
+@item bar
+@item breve
+@item c
+@item check
+@item d
+@item ddot
+@item dot
+@item grave
+@item H
+@item hat
+@item i
+@item j
+@item l
+@item L
+@item r
+@item tilde
+@item u
+@item v
+@item vec
+@end ftable
+
+@node Sectioning Commands, Uncategorized, Special Characters, General Commands
+@comment  node-name,  next,  previous,  up
+@subsubsection Sectioning Commands
+
+@ftable @asis
+@item chapter
+@item chapter*
+@item paragraph
+@item paragraph*
+@item part
+@item part*
+@item section
+@item section*
+@item subparagraph
+@item subparagraph*
+@item subsection
+@item subsection*
+@item subsubsection
+@item subsubsection*
+@end ftable
+
+@node Uncategorized,  , Sectioning Commands, General Commands
+@comment  node-name,  next,  previous,  up
+@subsubsection Uncategorized
+
+These commands need to be organized into new or existing sections.
+
+@ftable @asis
+
+@item abstract
+
+@item addcontents
+Ignored
+
+@item addcontentsline
+Ignored
+
+@item addvspace
+Ignored
+
+@item aleph
+
+@item Alph
+
+@item alph
+Ignored
+
+@item alpha
+
+@item Alpha
+Ignored
+
+@item amalg
+
+@item and
+
+@item angle
+
+@item appendix
+Ignored
+
+@item approx
+
+@item arabic
+Ignored
+
+@item ast
+
+@item author
+
+@item baselineskip
+
+@item because
+
+@item beta
+
+@item Beta
+
+@item bibentry
+
+@item bibitem
+
+@item bibliography
+
+@item bibliographystyle
+
+@item bibliographystyle
+Ignored
+
+@item bigskip
+
+@item bot
+
+@item BoxedEPSF
+
+@item bullet
+
+@item cap
+
+@item caption
+
+@item cdot
+
+@item cdots
+
+@item centering
+
+@item char
+
+@item chi
+
+@item Chi
+
+@item circ
+
+@item cite
+
+@item citeonline
+
+@item cleardoublepage
+
+@item clearpage
+
+@item clubsuit
+
+@item cong
+
+@item contentsline
+
+@item coprod
+
+@item cup
+
+@item date
+
+@item ddots
+
+@item delta
+
+@item Delta
+
+@item dfrac
+
+@item Diamond
+
+@item diamondsuit
+
+@item div
+
+@item doteq
+
+@item dotfill
+There is no rtf code for dotfill; @ltor{} inserts an ellipsis only.
+
+@item dots
+
+@item dots
+
+@item downarrow
+
+@item Downarrow
+
+@item efloatseparator
+
+@item ell
+
+@item emptyset
+
+@item endinput
+
+@item endnotemark
+Ignored
+
+@item ensuremath
+
+@item epsfbox
+
+@item epsffile
+
+@item epsilon
+
+@item eqref
+
+@item equiv
+
+@item eta
+
+@item exists
+
+@item fbox
+
+@item fbox
+
+@item fnsymbol
+Ignored
+
+@item footnotemark
+Ignored
+
+@item forall
+
+@item frac
+
+@item Frac
+
+@item framebox
+Ignored
+
+@item frenchspacing
+Ignored
+
+@item gamma
+
+@item Gamma
+
+@item ge
+
+@item geq
+
+@item gg
+
+@item glossary
+Ignored
+
+@item glossaryentry
+Ignored
+
+@item hbar
+
+@item hbox
+
+@item heartsuit
+
+@item hsize
+
+@item hslash
+
+@item hspace
+Ignored
+
+@item hspace*
+Ignored
+
+@item htmladdnormallink
+
+@item htmlref
+
+@item iiint
+
+@item iint
+
+@item Im
+
+@item in
+
+@item include
+
+@item includegraphics
+
+@item includegraphics*
+
+@item includeonly
+Ignored
+
+@item indent
+
+@item index
+
+@item indexentry
+Ignored
+
+@item infty
+
+@item input
+
+@item int
+
+@item int
+
+@item iota
+
+@item kappa
+
+@item label
+
+@item lambda
+
+@item Lambda
+
+@item land
+
+@item langle
+
+@item lceil
+
+@item ldots
+
+@item le
+
+@item left
+
+@item leftarrow
+
+@item Leftarrow
+
+@item leftharpoondown
+
+@item leftleftarrows
+
+@item leftrightarrow
+
+@item Leftrightarrow
+
+@item leftrightarrows
+
+@item leq
+
+@item let
+Ignored
+
+@item letterspace
+
+@item lfloor
+
+@item lim
+
+@item liminf
+
+@item limsup
+
+@item linebreak
+Ignored
+
+@item lineskip
+
+@item listoffigures
+
+@item listoftables
+
+@item ll
+
+@item longleftarrow
+
+@item longleftrightarrows
+
+@item longrightarrow
+
+@item lor
+
+@item makebox
+Ignored
+
+@item maketitle
+
+@item mapsto
+
+@item marginpar
+Ignored
+
+@item markboth
+Ignored
+
+@item markright
+Ignored
+
+@item matrix
+
+@item mbox
+
+@item measuredangle
+
+@item medskip
+
+@item mho
+
+@item moveleft
+
+@item moveright
+
+@item mp
+
+@item mu
+
+@item multicolumn
+
+@item nabla
+
+@item ne
+
+@item nearrow
+
+@item neg
+
+@item neq
+
+@item newblock
+
+@item newcount
+Ignored
+
+@item newfont
+Ignored
+
+@item newpage
+
+@item newsavebox
+Ignored
+
+@item nobibliography
+Ignored
+
+@item nobreakspace
+
+@item nocite
+
+@item noindent
+
+@item nolinebreak
+Ignored
+
+@item nonfrenchspacing
+Ignored
+
+@item nonumber
+
+@item nopagebreak
+Ignored
+
+@item notag
+
+@item nu
+
+@item numberline
+
+@item nwarrow
+
+@item omega
+
+@item Omega
+
+@item omicron
+
+@item onecolumn
+
+@item onlinecite
+
+@item oplus
+
+@item oslash
+
+@item otimes
+
+@item output
+Ignored
+
+@item overline
+
+@item pagebreak
+
+@item pagenumbering
+Ignored
+
+@item pageref
+
+@item pagestyle
+Ignored
+
+@item par
+
+@item parbox
+
+@item partial
+
+@item perp
+
+@item phi
+
+@item Phi
+
+@item pi
+
+@item Pi
+
+@item pm
+
+@item prec
+
+@item printindex
+
+@item prod
+
+@item prod
+
+@item propto
+
+@item protect
+Ignored
+
+@item psfig
+
+@item psfrag
+Ignored
+
+@item psi
+
+@item Psi
+
+@item qquad
+
+@item quad
+
+@item raisebox
+Ignored
+
+@item rangle
+
+@item rceil
+
+@item Re
+
+@item ref
+
+@item refstepcounter
+
+@item rfloor
+
+@item rho
+
+@item right
+
+@item Rightarrow
+
+@item rightarrow
+
+@item rightharpoonup
+
+@item rightleftarrows
+
+@item rightleftharpoons
+
+@item rightrightarrows
+
+@item Roman
+Ignored
+
+@item roman
+Ignored
+
+@item rule
+
+@item samepage
+Ignored
+
+@item savebox
+Ignored
+
+@item sbox
+Ignored
+
+@item searrow
+
+@item setbox
+
+@item settowidth
+Ignored
+
+@item sigma
+
+@item Sigma
+
+@item sim
+
+@item simeq
+
+@item smallskip
+
+@item spadesuit
+
+@item sqrt
+
+@item stackrel
+
+@item stepcounter
+Ignored
+
+@item stretch
+Ignored
+
+@item subset
+
+@item subseteq
+
+@item succ
+
+@item sum
+
+@item sum
+
+@item supset
+
+@item supseteq
+
+@item surd
+
+@item swarrow
+
+@item tableofcontents
+
+@item tau
+
+@item textalpha
+
+@item textbeta
+
+@item textbullet
+
+@item textchi
+
+@item textcolor
+
+@item textDelta
+
+@item textdelta
+
+@item textellipsis
+
+@item textepsilon
+
+@item texteta
+
+@item textGamma
+
+@item textgamma
+
+@item textiota
+
+@item textkappa
+
+@item textLambda
+
+@item textlambda
+
+@item textmu
+
+@item textnu
+
+@item textOmega
+
+@item textomega
+
+@item textperiodcentered
+
+@item textPhi
+
+@item textphi
+
+@item textPi
+
+@item textpi
+
+@item textPsi
+
+@item textpsi
+
+@item textSigma
+
+@item textsigma
+
+@item textsubscript
+
+@item textsuperscript
+
+@item textTau
+
+@item texttau
+
+@item textTheta
+
+@item texttheta
+
+@item textXi
+
+@item textxi
+
+@item textzeta
+
+@item thanks
+
+@item therefore
+
+@item Theta
+
+@item theta
+
+@item times
+
+@item title
+
+@item to
+
+@item triangleleft
+
+@item triangleright
+
+@item twocolumn
+
+@item typeaout
+Ignored
+
+@item Typein
+Ignored
+
+@item typein
+Ignored
+
+@item typeout
+Ignored
+
+@item Uparrow
+
+@item uparrow
+
+@item updownarrow
+
+@item Updownarrow
+
+@item upsilon
+
+@item Upsilon
+
+@item url
+
+@item usebox
+Ignored
+
+@item value
+
+@item varepsilon
+
+@item varnothing
+
+@item varphi
+
+@item varpi
+
+@item varpropto
+
+@item varsigma
+
+@item vartheta
+
+@item vbox
+
+@item vdots
+
+@item vee
+
+@item verb
+
+@item verb*
+
+@item vref
+
+@item vsize
+
+@item vskip
+
+@item vspace
+
+@item vspace*
+
+@item wedge
+
+@item wp
+
+@item xi
+
+@item Xi
+
+@item zeta
+
+@end ftable
+
+@node Preamble Commands, Letter Commands, General Commands, LaTeX Commands
+@comment  node-name,  next,  previous,  up
+@subsection Preamble Commands
+
+These commands are found in @code{PreambleCommands[]} in commands.c, and
+are implemented in preamble.c.
+
+@ftable @asis
+@item addtocounter
+
+@item addtolength
+
+@item baselineskip
+
+@item celsius
+
+@item cfoot
+
+@item chead
+
+@item cline
+
+@item DeclareRobustCommand
+
+@item DeclareRobustCommand*
+
+@item def
+
+@item degreecelsius
+
+@item documentclass
+
+@item documentstyle
+
+@item doublespacing
+Currently, the only command from the setspace package that is
+implemented, and the only way to modify line spacing.
+
+@item endnotetext
+
+@item EUR
+
+@item euro
+
+@item evensidemargin
+
+@item fancyfoot
+
+@item fancyhead
+
+@item flushbottom
+
+@item footnotetext
+
+@item geometry
+Currently recognizes *ratio, *centering, *margin, left, right, inner,
+outer, top, bottom, right, left (including vmargin, hratio etc.)
+
+@item headheight
+
+@item headsep
+
+@item hline
+
+@item hoffset
+
+@item htmladdnormallink
+
+@item htmlref
+
+@item hyphenation
+
+@item iflatextortf
+
+@item ifx
+
+@item include
+
+@item input
+
+@item latextortffalse
+Ignored
+
+@item latextortftrue
+Ignored
+
+@item lfoot
+
+@item lhead
+
+@item listoffiles
+Ignored
+
+@item makeglossary
+Ignored
+
+@item makeindex
+Ignored
+
+@item makelabels
+Ignored
+
+@item markboth
+Ignored
+
+@item markright
+Ignored
+
+@item newcommand
+
+@item newcounter
+
+@item newenvironment
+
+@item newif
+
+@item newlength
+
+@item newtheorem
+
+@item nobreakspace
+
+@item nofiles
+Ignored
+
+@item oddsidemargin
+
+@item pagenumbering
+Ignored
+
+@item pagestyle
+
+@item parindent
+
+@item parskip
+
+@item providecommand
+
+@item raggedbottom
+
+@item renewcommand
+
+@item renewenvironment
+
+@item renewtheorem
+Ignored
+
+@item resizebox
+
+@item resizebox*
+
+@item rfoot
+
+@item rhead
+
+@item setcounter
+
+@item setlength
+
+@item signature
+
+@item textheight
+
+@item textwidth
+
+@item theendnotes
+
+@item thepage
+
+@item thispagestyle
+Ignored
+
+@item topmargin
+
+@item usepackage
+
+@item verbositylevel
+
+@item voffset
+
+@end ftable
+
+@node Letter Commands, Language Commands, Preamble Commands, LaTeX Commands
+@comment  node-name,  next,  previous,  up
+@subsection Letter Commands
+
+Found in @code{LetterCommands[]} in commands.c.
+
+@ftable @asis
+@item address
+
+@item cc
+
+@item closing
+
+@item encl
+
+@item opening
+
+@item ps
+
+@item signature
+
+@end ftable
+
+@node Language Commands, Citation Commands, Letter Commands, LaTeX Commands
+@comment  node-name,  next,  previous,  up
+@subsection Language Commands
+
+@menu
+* German Commands::             
+* Czech Commands::              
+* French Commands::             
+* Russian Commands::            
+@end menu
+
+@node German Commands, Czech Commands, Language Commands, Language Commands
+@comment  node-name,  next,  previous,  up
+@subsubsection German Commands
+
+Found in @code{GermanModeCommands[]} in commands.c.
+
+@ftable @asis
+@item ck
+
+@item glqq
+
+@item glq
+
+@item grq
+
+@item grqq
+
+@end ftable
+
+@node Czech Commands, French Commands, German Commands, Language Commands
+@comment  node-name,  next,  previous,  up
+@subsubsection Czech Commands
+
+@ftable @asis
+@item uv
+@end ftable
+
+@node French Commands, Russian Commands, Czech Commands, Language Commands
+@comment  node-name,  next,  previous,  up
+@subsubsection French Commands
+
+@ftable @asis
+@item deuxpoints
+@item dittomark
+@item FCS
+@item fg
+@item fup
+@item ieme
+@item iemes
+@item ier
+@item iere
+@item ieres
+@item iers
+@item inferieura
+@item LCS
+@item lq
+@item lqq
+@item numero
+@item Numero
+@item numeros
+@item Numeros
+@item og
+@item pointexclamation
+@item pointinterrogation
+@item pointvirgule
+@item primo
+@item quarto
+@item rq
+@item rqq
+@item secundo
+@item superieura
+@item tertio
+@item up
+@end ftable
+
+@node Russian Commands,  , French Commands, Language Commands
+@comment  node-name,  next,  previous,  up
+@subsubsection Russian Commands
+
+@ftable @asis
+@item CYRA
+@item cyra
+@item CYRB
+@item cyrb
+@item CYRC
+@item cyrc
+@item CYRCH
+@item cyrch
+@item CYRCHSH
+@item cyrchsh
+@item CYRD
+@item cyrd
+@item CYRE
+@item cyre
+@item CYREREV
+@item cyrerev
+@item CYRERY
+@item cyrery
+@item CYRF
+@item cyrf
+@item CYRG
+@item cyrg
+@item CYRH
+@item cyrh
+@item CYRHRDSN
+@item cyrhrdsn
+@item CYRI
+@item cyri
+@item CYRISHRT
+@item cyrishrt
+@item CYRK
+@item cyrk
+@item CYRL
+@item cyrl
+@item CYRM
+@item cyrm
+@item CYRN
+@item cyrn
+@item CYRO
+@item cyro
+@item CYRP
+@item cyrp
+@item CYRR
+@item cyrr
+@item CYRS
+@item cyrs
+@item CYRSFTSN
+@item cyrsftsn
+@item CYRSH
+@item cyrsh
+@item CYRT
+@item cyrt
+@item CYRU
+@item cyru
+@item CYRV
+@item cyrv
+@item CYRYA
+@item cyrya
+@item CYRYU
+@item cyryu
+@item CYRZ
+@item cyrz
+@item CYRZH
+@item cyrzh
+@end ftable
+
+@node Citation Commands, Other Commands, Language Commands, LaTeX Commands
+@comment  node-name,  next,  previous,  up
+@subsection Citation Commands
+
+@menu
+* Apacite Commands::            
+* AuthorDate Commands::         
+* Harvard Commands::            
+* HyperLatex Commands::         
+* Natbib Commands::             
+@end menu
+
+@node Apacite Commands, AuthorDate Commands, Citation Commands, Citation Commands
+@comment  node-name,  next,  previous,  up
+@subsubsection Apacite Commands
+
+@ftable @asis
+@item AX
+@item BAnd
+@item BBA
+@item BBAA
+@item BBAB
+@item BBAY
+@item BBC
+@item BBCP
+@item BBCQ
+@item BBN
+@item BBOP
+@item BBOQ
+@item BCAY
+@item BCBL
+@item BCBT
+@item BCHAIR
+@item BCHAIRS
+@item BCnt
+@item BCntIP
+@item BED
+@item BEd
+@item BEDS
+@item Bem
+@item BIP
+@item BMTh
+@item BNUM
+@item BNUMS
+@item BOthers
+@item BOWP
+@item BPG
+@item BPGS
+@item BPhD
+@item BREPR
+@item BTR
+@item BTRANS
+@item BTRANSS
+@item BUMTh
+@item BUPhD
+@item BVOL
+@item BVOLS
+@item citeA
+@item citeauthor
+@item citeNP
+@item citeyear
+@item citeyearNP
+@item fullcite
+@item fullciteA
+@item fullciteauthor
+@item fullciteNP
+@item shortcite
+@item shortciteA
+@item shortciteauthor
+@item shortciteNP
+@end ftable
+
+@node AuthorDate Commands, Harvard Commands, Apacite Commands, Citation Commands
+@comment  node-name,  next,  previous,  up
+@subsubsection AuthorDate Commands
+
+@ftable @asis
+@item citename
+@item shortcite
+@end ftable
+
+@node Harvard Commands, HyperLatex Commands, AuthorDate Commands, Citation Commands
+@comment  node-name,  next,  previous,  up
+@subsubsection Harvard Commands
+
+@ftable @asis
+@item cite
+@item citeaffixed
+@item citeasnoun
+@item citename
+@item citeyear
+@item citeyear*
+@item harvardand
+@item harvarditem
+@item harvardyearleft
+@item harvardyearright
+@item possessivecite
+@end ftable
+
+@node HyperLatex Commands, Natbib Commands, Harvard Commands, Citation Commands
+@comment  node-name,  next,  previous,  up
+@subsubsection HyperLatex Commands
+
+@ftable @asis
+@item Cite
+@item link
+@item Pageref
+@item Ref
+@item S
+@item xlink
+@end ftable
+
+@node Natbib Commands,  , HyperLatex Commands, Citation Commands
+@comment  node-name,  next,  previous,  up
+@subsubsection Apacite Commands
+
+@ftable @asis
+@item bibpunct
+@item cite
+@item citealp
+@item Citealp
+@item citealp*
+@item citealt
+@item Citealt
+@item citealt*
+@item citeauthor
+@item Citeauthor
+@item citeauthor*
+@item citep
+@item Citep
+@item citep*
+@item citet
+@item Citet
+@item citet*
+@item citetext
+@item citeyear
+@item citeyearpar
+@end ftable
+
+@node Other Commands, Environments, Citation Commands, LaTeX Commands
+@comment  node-name,  next,  previous,  up
+@subsection Other Commands
+
+Other Commands: @*
+item @*
+caption @*
+center @*
+
+@node Environments,  , Other Commands, LaTeX Commands
+@comment  node-name,  next,  previous,  up
+@subsection Environments
+
+Environments processed - found in @code{params[]} in commands.c.
+
+@ftable @asis
+@item abstract
+
+@item acknowledgments
+
+@item align
+
+@item align*
+
+@item alltt
+
+@item array
+
+@item bf
+
+@item bfseries
+
+@item center
+
+@item comment
+
+@item compactenum
+
+@item compactitem
+
+@item description
+
+@item displaymath
+
+@item document
+
+@item em
+
+@item enumerate
+
+@item eqnarray
+
+@item eqnarray*
+
+@item equation
+
+@item equation*
+
+@item figure
+
+@item figure*
+
+@item flushleft
+
+@item flushright
+
+@item htmlonly
+Ignored
+
+@item it
+
+@item itemize
+
+@item itshape
+
+@item landscape
+
+@item latexonly
+Ignored
+
+@item letter
+
+@item list
+
+@item longtable
+
+@item longtable*
+
+@item math
+
+@item mdseries
+
+@item minipage
+
+@item multicolumn
+
+@item music
+
+@item picture
+
+@item quotation
+
+@item quote
+
+@item rawhtml
+Ignored
+
+@item rm
+
+@item rmfamily
+
+@item sc
+
+@item scshape
+
+@item sf
+
+@item sffamily
+
+@item sl
+
+@item sloppypar
+
+@item slshape
+
+@item small
+
+@item tabbing
+
+@item table
+
+@item table*
+
+@item tabular
+
+@item tabular*
+
+@item thebibliography
+
+@item theindex
+Ignored
+
+@item titlepage
+
+@item tt
+
+@item ttfamily
+
+@item verbatim
+
+@item Verbatim
+
+@item verse
+
+@end ftable
+
+@node Function Index, Concept Index, LaTeX2RTF under Development, Top
+@chapter Function Index 
+
+@printindex fn 
+
+@node Concept Index,  , Function Index, Top
+@chapter Concept Index 
+
+@printindex cp
+
+
+@contents
+@bye

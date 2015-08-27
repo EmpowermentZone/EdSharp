@@ -1,0 +1,348 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Contents: TeX and LaTeX and AMS symbols for Maths
+% $Id: lssym.tex,v 1.4 1998/09/29 08:05:09 oetiker Exp oetiker $
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{List of Mathematical Symbols}  \label{symbols}
+ 
+In the following tables, you find all the symbols normally accessible
+from \emph{math mode}.  
+
+%
+% Conditional Text in case the AMS Fonts are installed
+%
+\ifx\noAMS\relax To use the symbols listed in
+Tables~\ref{AMSD}--\ref{AMSNBR},\footnote{These tables were derived
+  from \texttt{symbols.tex} by David~Carlisle and subsequently changed
+extensively as suggested by Josef~Tkadlec.} the package
+\pai{amssymb} must be loaded in the preamble of the document and the
+AMS math fonts must be installed, on the system. If the AMS package and
+fonts are not installed, on your system, have a look at\\ 
+\texttt{CTAN:/tex-archive/macros/latex/packages/amslatex}\fi
+ 
+\begin{table}[!h]
+\caption{Math Mode Accents.}  \label{mathacc}
+\begin{symbols}{*4{cl}}
+\W{\hat}{a}     & \W{\check}{a} & \W{\tilde}{a} & \W{\acute}{a} \\
+\W{\grave}{a} & \W{\dot}{a} & \W{\ddot}{a}    & \W{\breve}{a} \\
+\W{\bar}{a} &\W{\vec}{a} &\W{\widehat}{A}&\W{\widetilde}{A}\\  
+\end{symbols}
+\end{table}
+ 
+\begin{table}[!h]
+\caption{Lowercase Greek Letters.}
+\begin{symbols}{*4{cl}}
+ \X{\alpha}     & \X{\theta}     & \X{o}          & \X{\upsilon}  \\
+ \X{\beta}      & \X{\vartheta}  & \X{\pi}        & \X{\phi}      \\
+ \X{\gamma}     & \X{\iota}      & \X{\varpi}     & \X{\varphi}   \\
+ \X{\delta}     & \X{\kappa}     & \X{\rho}       & \X{\chi}      \\
+ \X{\epsilon}   & \X{\lambda}    & \X{\varrho}    & \X{\psi}      \\
+ \X{\varepsilon}& \X{\mu}        & \X{\sigma}     & \X{\omega}    \\
+ \X{\zeta}      & \X{\nu}        & \X{\varsigma}  & &             \\
+ \X{\eta}       & \X{\xi}        & \X{\tau} 
+\end{symbols}
+\end{table}
+
+\begin{table}[!h]
+\caption{Uppercase Greek Letters.}
+\begin{symbols}{*4{cl}}
+ \X{\Gamma}     & \X{\Lambda}    & \X{\Sigma}     & \X{\Psi}      \\
+ \X{\Delta}     & \X{\Xi}        & \X{\Upsilon}   & \X{\Omega}    \\
+ \X{\Theta}     & \X{\Pi}        & \X{\Phi} 
+\end{symbols}
+\end{table}
+\clearpage 
+
+\begin{table}[!tbp]
+\caption{Binary Relations.}
+\bigskip
+You can produce corresponding negations by adding a \verb|\not| command
+as prefix to the following symbols.
+\begin{symbols}{*3{cl}}
+ \X{<}           & \X{>}           & \X{=}          \\
+ \X{\leq}or \verb|\le|   & \X{\geq}or \verb|\ge|   & \X{\equiv}     \\
+ \X{\ll}         & \X{\gg}         & \X{\doteq}     \\
+ \X{\prec}       & \X{\succ}       & \X{\sim}       \\
+ \X{\preceq}     & \X{\succeq}     & \X{\simeq}     \\
+ \X{\subset}     & \X{\supset}     & \X{\approx}    \\
+ \X{\subseteq}   & \X{\supseteq}   & \X{\cong}      \\
+ \X{\sqsubset}$^a$ & \X{\sqsupset}$^a$ & \X{\Join}$^a$    \\
+ \X{\sqsubseteq} & \X{\sqsupseteq} & \X{\bowtie}    \\
+ \X{\in}         & \X{\ni}, \verb|\owns|  & \X{\propto}    \\
+ \X{\vdash}      & \X{\dashv}      & \X{\models}    \\
+ \X{\mid}        & \X{\parallel}   & \X{\perp}      \\
+ \X{\smile}      & \X{\frown}      & \X{\asymp}     \\
+ \X{:}           & \X{\notin}      & \X{\neq}or \verb|\ne|
+\end{symbols}
+\centerline{\footnotesize $^a$Use the \textsf{latexsym} package to access this symbol}
+\end{table}
+
+\begin{table}[!tbp]
+\caption{Binary Operators.}
+\begin{symbols}{*3{cl}}
+ \X{+}              & \X{-}              & &                 \\
+ \X{\pm}            & \X{\mp}            & \X{\triangleleft} \\
+ \X{\cdot}          & \X{\div}           & \X{\triangleright}\\
+ \X{\times}         & \X{\setminus}      & \X{\star}         \\
+ \X{\cup}           & \X{\cap}           & \X{\ast}          \\
+ \X{\sqcup}         & \X{\sqcap}         & \X{\circ}         \\
+ \X{\vee}, \verb|\lor|     & \X{\wedge}, \verb|\land|  & \X{\bullet}       \\
+ \X{\oplus}         & \X{\ominus}        & \X{\diamond}      \\
+ \X{\odot}          & \X{\oslash}        & \X{\uplus}        \\
+ \X{\otimes}        & \X{\bigcirc}       & \X{\amalg}        \\
+ \X{\bigtriangleup} &\X{\bigtriangledown}& \X{\dagger}       \\
+ \X{\lhd}$^a$         & \X{\rhd}$^a$         & \X{\ddagger}      \\
+ \X{\unlhd}$^a$       & \X{\unrhd}$^a$       & \X{\wr}
+\end{symbols}
+ 
+\end{table}
+
+\begin{table}[!tbp]
+\caption{BIG Operators.}
+\begin{symbols}{*4{cl}}
+ \X{\sum}      & \X{\bigcup}   & \X{\bigvee}   & \X{\bigoplus}\\
+ \X{\prod}     & \X{\bigcap}   & \X{\bigwedge} &\X{\bigotimes}\\
+ \X{\coprod}   & \X{\bigsqcup} & &             & \X{\bigodot} \\
+ \X{\int}      & \X{\oint}     & &             & \X{\biguplus}
+\end{symbols}
+ 
+\end{table}
+
+
+\begin{table}[!tbp]
+\caption{Arrows.}
+\begin{symbols}{*3{cl}}
+ \X{\leftarrow}or \verb|\gets|& \X{\longleftarrow}     & \X{\uparrow}          \\
+ \X{\rightarrow}or \verb|\to|& \X{\longrightarrow}    & \X{\downarrow}        \\
+ \X{\leftrightarrow}    & \X{\longleftrightarrow}& \X{\updownarrow}      \\
+ \X{\Leftarrow}         & \X{\Longleftarrow}     & \X{\Uparrow}          \\
+ \X{\Rightarrow}        & \X{\Longrightarrow}    & \X{\Downarrow}        \\
+ \X{\Leftrightarrow}    & \X{\Longleftrightarrow}& \X{\Updownarrow}      \\
+ \X{\mapsto}            & \X{\longmapsto}        & \X{\nearrow}          \\
+ \X{\hookleftarrow}     & \X{\hookrightarrow}    & \X{\searrow}          \\
+ \X{\leftharpoonup}     & \X{\rightharpoonup}    & \X{\swarrow}          \\
+ \X{\leftharpoondown}   & \X{\rightharpoondown}  & \X{\nwarrow}          \\
+ \X{\rightleftharpoons} & \X{\iff}(bigger spaces)& \X{\leadsto}$^a$
+
+\end{symbols}
+\centerline{\footnotesize $^a$Use the \textsf{latexsym} package to access this symbol}
+\end{table}
+
+\begin{table}[!tbp]
+\caption{Delimiters.}\label{tab:delimiters}
+\begin{symbols}{*4{cl}}
+ \X{(}            & \X{)}            & \X{\uparrow} & \X{\Uparrow}    \\
+ \X{[}or \verb|\lbrack|   & \X{]}or \verb|\rbrack|  & \X{\downarrow}   & \X{\Downarrow}  \\
+ \X{\{}or \verb|\lbrace|  & \X{\}}or \verb|\rbrace|  & \X{\updownarrow} & \X{\Updownarrow}\\
+ \X{\langle}      & \X{\rangle}  & \X{|}or \verb|\vert| &\X{\|}or \verb|\Vert|\\
+ \X{\lfloor}      & \X{\rfloor}      & \X{\lceil}       & \X{\rceil}      \\
+ \X{/}            & \X{\backslash}   & &. (dual. empty)
+\end{symbols}
+\end{table}
+
+\begin{table}[!tbp]
+\caption{Large Delimiters.}
+\begin{symbols}{*4{cl}}
+ \Y{\lgroup}      & \Y{\rgroup}      & \Y{\lmoustache}  & \Y{\rmoustache} \\
+ \Y{\arrowvert}   & \Y{\Arrowvert}   & \Y{\bracevert} 
+\end{symbols}
+\end{table}
+
+
+\begin{table}[!tbp]
+\caption{Miscellaneous Symbols.}
+\begin{symbols}{*4{cl}}
+ \X{\dots}       & \X{\cdots}      & \X{\vdots}      & \X{\ddots}     \\
+ \X{\hbar}       & \X{\imath}      & \X{\jmath}      & \X{\ell}       \\
+ \X{\Re}         & \X{\Im}         & \X{\aleph}      & \X{\wp}        \\
+ \X{\forall}     & \X{\exists}     & \X{\mho}$^a$      & \X{\partial}   \\
+ \X{'}           & \X{\prime}      & \X{\emptyset}   & \X{\infty}     \\
+ \X{\nabla}      & \X{\triangle}   & \X{\Box}$^a$     & \X{\Diamond}$^a$ \\
+ \X{\bot}        & \X{\top}        & \X{\angle}      & \X{\surd}      \\
+\X{\diamondsuit} & \X{\heartsuit}  & \X{\clubsuit}   & \X{\spadesuit} \\
+ \X{\neg}or \verb|\lnot| & \X{\flat}       & \X{\natural}    & \X{\sharp}
+
+\end{symbols}
+\centerline{\footnotesize $^a$Use the \textsf{latexsym} package to access this symbol}
+\end{table}
+
+\begin{table}[!tbp]
+\caption{Non-Mathematical Symbols.}
+\bigskip
+These symbols can also be used in text mode.
+\begin{symbols}{*3{cl}}
+\SC{\dag} & \SC{\S} & \SC{\copyright}  \\
+\SC{\ddag} & \SC{\P} & \SC{\pounds}  \\
+\end{symbols}
+\end{table}
+
+%
+%
+% If the AMS Stuff is not available, we drop out right here :-)
+%
+\noAMS
+
+\begin{table}[!tbp]
+\caption{AMS Delimiters.}\label{AMSD}
+\bigskip
+\begin{symbols}{*4{cl}}
+\X{\ulcorner}&\X{\urcorner}&\X{\llcorner}&\X{\lrcorner}
+\end{symbols}
+\end{table}
+
+\begin{table}[!tbp]
+\caption{AMS Greek and Hebrew.}
+\begin{symbols}{*5{cl}}
+\X{\digamma}     &\X{\varkappa} & \X{\beth}& \X{\daleth}     &\X{\gimel}
+\end{symbols}
+\end{table}
+
+\begin{table}[!tbp]
+\caption{AMS Binary Relations.}
+\begin{symbols}{*3{cl}}
+ \X{\lessdot}           & \X{\gtrdot}            & \X{\doteqdot}or \verb|\Doteq| \\
+ \X{\leqslant}          & \X{\geqslant}          & \X{\risingdotseq}     \\
+ \X{\eqslantless}       & \X{\eqslantgtr}        & \X{\fallingdotseq}    \\
+ \X{\leqq}              & \X{\geqq}              & \X{\eqcirc}           \\
+ \X{\lll}or \verb|\llless|      & \X{\ggg}or \verb|\gggtr| & \X{\circeq}  \\
+ \X{\lesssim}           & \X{\gtrsim}            & \X{\triangleq}        \\
+ \X{\lessapprox}        & \X{\gtrapprox}         & \X{\bumpeq}           \\
+ \X{\lessgtr}           & \X{\gtrless}           & \X{\Bumpeq}           \\
+ \X{\lesseqgtr}         & \X{\gtreqless}         & \X{\thicksim}         \\
+ \X{\lesseqqgtr}        & \X{\gtreqqless}        & \X{\thickapprox}      \\
+ \X{\preccurlyeq}       & \X{\succcurlyeq}       & \X{\approxeq}         \\
+ \X{\curlyeqprec}       & \X{\curlyeqsucc}       & \X{\backsim}          \\
+ \X{\precsim}           & \X{\succsim}           & \X{\backsimeq}        \\
+ \X{\precapprox}        & \X{\succapprox}        & \X{\vDash}            \\
+ \X{\subseteqq}         & \X{\supseteqq}         & \X{\Vdash}            \\
+ \X{\Subset}            & \X{\Supset}            & \X{\Vvdash}           \\
+ \X{\sqsubset}          & \X{\sqsupset}          & \X{\backepsilon}      \\
+ \X{\therefore}         & \X{\because}           & \X{\varpropto}        \\
+ \X{\shortmid}          & \X{\shortparallel}     & \X{\between}          \\
+ \X{\smallsmile}        & \X{\smallfrown}        & \X{\pitchfork}        \\
+ \X{\vartriangleleft}   & \X{\vartriangleright}  & \X{\blacktriangleleft}\\
+ \X{\trianglelefteq}    & \X{\trianglerighteq}   &\X{\blacktriangleright}
+\end{symbols}
+\end{table}
+
+\begin{table}[!tbp]
+\caption{AMS Arrows.}
+\begin{symbols}{*3{cl}}
+ \X{\dashleftarrow}      & \X{\dashrightarrow}     & \X{\multimap}          \\
+ \X{\leftleftarrows}     & \X{\rightrightarrows}   & \X{\upuparrows}        \\
+ \X{\leftrightarrows}    & \X{\rightleftarrows}    & \X{\downdownarrows}    \\
+ \X{\Lleftarrow}         & \X{\Rrightarrow}        & \X{\upharpoonleft}     \\
+ \X{\twoheadleftarrow}   & \X{\twoheadrightarrow}  & \X{\upharpoonright}    \\
+ \X{\leftarrowtail}      & \X{\rightarrowtail}     & \X{\downharpoonleft}   \\
+ \X{\leftrightharpoons}  & \X{\rightleftharpoons}  & \X{\downharpoonright}  \\
+ \X{\Lsh}                & \X{\Rsh}                & \X{\rightsquigarrow}   \\
+ \X{\looparrowleft}      & \X{\looparrowright}     &\X{\leftrightsquigarrow}\\
+ \X{\curvearrowleft}     & \X{\curvearrowright}    & &                      \\
+ \X{\circlearrowleft}    & \X{\circlearrowright}   & &
+\end{symbols}
+\end{table}
+
+\begin{table}[!tbp]
+\caption{AMS Negated Binary Relations and Arrows.}\label{AMSNBR}
+\begin{symbols}{*3{cl}}
+ \X{\nless}           & \X{\ngtr}            & \X{\varsubsetneqq}  \\
+ \X{\lneq}            & \X{\gneq}            & \X{\varsupsetneqq}  \\
+ \X{\nleq}            & \X{\ngeq}            & \X{\nsubseteqq}     \\
+ \X{\nleqslant}       & \X{\ngeqslant}       & \X{\nsupseteqq}     \\
+ \X{\lneqq}           & \X{\gneqq}           & \X{\nmid}           \\
+ \X{\lvertneqq}       & \X{\gvertneqq}       & \X{\nparallel}      \\
+ \X{\nleqq}           & \X{\ngeqq}           & \X{\nshortmid}      \\
+ \X{\lnsim}           & \X{\gnsim}           & \X{\nshortparallel} \\
+ \X{\lnapprox}        & \X{\gnapprox}        & \X{\nsim}           \\
+ \X{\nprec}           & \X{\nsucc}           & \X{\ncong}          \\
+ \X{\npreceq}         & \X{\nsucceq}         & \X{\nvdash}         \\
+ \X{\precneqq}        & \X{\succneqq}        & \X{\nvDash}         \\
+ \X{\precnsim}        & \X{\succnsim}        & \X{\nVdash}         \\
+ \X{\precnapprox}     & \X{\succnapprox}     & \X{\nVDash}         \\
+ \X{\subsetneq}       & \X{\supsetneq}       & \X{\ntriangleleft}  \\
+ \X{\varsubsetneq}    & \X{\varsupsetneq}    & \X{\ntriangleright} \\
+ \X{\nsubseteq}       & \X{\nsupseteq}       & \X{\ntrianglelefteq}\\
+ \X{\subsetneqq}      & \X{\supsetneqq}      &\X{\ntrianglerighteq}\\[0.5ex]
+ \X{\nleftarrow}      & \X{\nrightarrow}     & \X{\nleftrightarrow}\\
+ \X{\nLeftarrow}      & \X{\nRightarrow}     & \X{\nLeftrightarrow}
+
+\end{symbols}
+\end{table}
+
+\begin{table}[!tbp]
+\caption{AMS Binary Operators.}
+\begin{symbols}{*3{cl}}
+ \X{\dotplus}        & \X{\centerdot}      & \X{\intercal}      \\
+ \X{\ltimes}         & \X{\rtimes}         & \X{\divideontimes} \\
+ \X{\Cup}or \verb|\doublecup|& \X{\Cap}or \verb|\doublecap|& \X{\smallsetminus} \\
+ \X{\veebar}         & \X{\barwedge}       & \X{\doublebarwedge}\\
+ \X{\boxplus}        & \X{\boxminus}       & \X{\circleddash}   \\
+ \X{\boxtimes}       & \X{\boxdot}         & \X{\circledcirc}   \\
+ \X{\leftthreetimes} & \X{\rightthreetimes}& \X{\circledast}    \\
+ \X{\curlyvee}       & \X{\curlywedge}  
+\end{symbols}
+\end{table}
+
+\begin{table}[!tbp]
+\caption{AMS Miscellaneous.}
+\begin{symbols}{*3{cl}}
+ \X{\hbar}             & \X{\hslash}           & \X{\Bbbk}            \\
+ \X{\square}           & \X{\blacksquare}      & \X{\circledS}        \\
+ \X{\vartriangle}      & \X{\blacktriangle}    & \X{\complement}      \\
+ \X{\triangledown}     &\X{\blacktriangledown} & \X{\Game}            \\
+ \X{\lozenge}          & \X{\blacklozenge}     & \X{\bigstar}         \\
+ \X{\angle}            & \X{\measuredangle}    & \X{\sphericalangle}  \\
+ \X{\diagup}           & \X{\diagdown}         & \X{\backprime}       \\
+ \X{\nexists}          & \X{\Finv}             & \X{\varnothing}      \\
+ \X{\eth}              & \X{\mho}       
+\end{symbols}
+\end{table}
+
+
+
+\begin{table}[!tbp]
+\caption{Math Alphabets.}
+\begin{symbols}{@{}*3l@{}}
+Example& Command &Required package\\
+\hline
+\rule{0pt}{1.05em}$\mathrm{ABCdef}$
+        & \verb|\mathrm{ABCdef}|
+        &       \\
+$\mathit{ABCdef}$
+        & \verb|\mathit{ABCdef}|
+        &       \\
+$\mathnormal{ABCdef}$
+        & \verb|\mathnormal{ABCdef}|
+        &       \\
+$\mathcal{ABC}$
+        & \verb|\mathcal{ABC}|
+        &       \\
+\ifx\MathRSFS\undefined\else
+$\MathRSFS{ABC}$
+        &\verb|\mathcal{ABC}|
+        &\pai{mathrsfs}\\
+\fi
+\ifx\EuScript\undefined\else
+$\EuScript{ABC}$
+        & \verb|\mathcal{ABC}|
+        &\pai{eucal} with option: \textsf{mathcal}  \quad or\\
+        & \verb|\mathscr{ABC}|  
+        &\pai{eucal}  with option: \textsf{mathscr}\\
+$\mathfrak{ABCdef}$
+        & \verb|\mathfrak{ABCdef}|
+        &\pai{eufrak}                \\
+\fi
+$\mathbb{ABC}$
+        & \verb|\mathbb{ABC}|
+        &\pai{amsfonts} or \textsf{amssymb}        \\
+\end{symbols}
+\end{table}
+
+
+\endinput
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "lshort2e"
+%%% End: 

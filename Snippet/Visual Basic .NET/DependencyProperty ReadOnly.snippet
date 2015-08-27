@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Add a DependencyProperty Registration (Read-Only)</Title>
+      <Author>Microsoft Corporation</Author>
+      <Description>Adds code to register a read-only DependencyProperty. This snippet must be added to a class that derives from DependencyObject.</Description>
+      <Shortcut>wpfdpro</Shortcut>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+ <References>
+        <Reference>
+          <Assembly>WindowsBase</Assembly>
+        </Reference>
+        <Reference>
+          <Assembly>PresentationCore</Assembly>
+        </Reference>
+        <Reference>
+          <Assembly>PresentationFramework</Assembly>
+        </Reference>
+      </References>
+    <Imports>
+      <Import>
+        <Namespace>System.Windows</Namespace>
+      </Import>
+    </Imports>
+      <Declarations>
+        <Literal>
+          <ID>propertyType</ID>
+          <ToolTip>Replace with the type of the property.</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>propertyName</ID>
+          <ToolTip>Replace with the name of the property.</ToolTip>
+          <Default>Prop1</Default>
+        </Literal>
+         <Object>
+          <ID>ownertype</ID>
+          <Type>Control</Type>
+          <ToolTip>Replace with the name of the class this snippet is being added to.</ToolTip>
+          <Default>Window1</Default>
+        </Object>
+        <Literal>
+          <ID>defaultValue</ID>
+          <ToolTip>Replace with the default value of the property.</ToolTip>
+          <Default>Nothing</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="VB">
+        <![CDATA[
+          Public ReadOnly Property $propertyName$ As $propertyType$
+              Get
+                  Return GetValue($ownerType$.$propertyName$Property)
+              End Get
+          End Property
+
+          Private Shared ReadOnly $propertyName$PropertyKey As DependencyPropertyKey = _
+                                  DependencyProperty.RegisterReadOnly ("$propertyName$", _
+                                  GetType($propertyType$), GetType($ownerType$), _
+                                  New FrameworkPropertyMetadata($defaultValue$))
+
+          Public Shared ReadOnly $propertyName$Property As DependencyProperty = _
+                                 $propertyName$PropertyKey.DependencyProperty
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
+

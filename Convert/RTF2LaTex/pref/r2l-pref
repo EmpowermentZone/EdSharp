@@ -1,0 +1,91 @@
+# Preference file for rtf2latex2e
+
+# Comments should be preceded by '#' in each line.
+
+# Here are some basic preferences you might want to set. Do not change
+# the names of the preferences, or add any. The preferences can be in 
+# any order. 'true' and 'false' values are allowed for appropriate
+# preferences.
+
+# specify the output map file to map between RTF and LaTeX characters.
+# Examples are TeX-map (default), Tex-map.applemac (uses applemac input
+# encoding), Tex-map.cp1252 (uses cp1252 input encoding), etc.
+
+outputMapFile	TeX-map
+
+# ignore ruler settings: this will cause rtf2latex2e to skip all visual
+# page and paragraph formatting. Set to true to enable, false to disable.
+
+ignoreRulerSettings		true
+
+# set paper width in inches.
+# Currently set for US Letter.
+
+paperWidth		8.5
+
+# set left margin from left border of paper in inches. 
+# Currently set for US Letter. Ignored if ignoreRulerSettings is true.
+
+leftMargin		1.0
+
+# set right margin from right border of paper in inches. 
+# Currently set for US Letter. Ignored if ignoreRulerSettings is true.
+
+rightMargin		1.0
+
+# set flag to ignore color information.
+
+ignoreColor		true
+
+# set flag to ignore paragraph alignment.
+
+ignoreParagraphAlignment		false
+
+ignoreTextStyle		false
+
+# set flag to ignore spacing.
+
+ignoreSpacing		false
+
+# set flag to ignore hypertext.
+
+ignoreHypertext		false
+
+# set flag convert equations.
+
+# If true, rtf2latex2e will try to convert embedded Equation Editor objects.
+# If false or if the conversion fails, the equation will be read as an image.
+
+convertEquations		true
+
+# Macintosh only
+# Convert embedded macintosh PICT files to EPS files
+# This requires Apple's Laserwriter driver to be the current
+# printer driver
+
+pict2eps_translate	false
+
+# The fonts to include in the EPS file
+#	1	(no fonts)
+# 	2  	(all fonts)
+#	3	(all but standard 13)
+# 	4  	(all but those in the selected printer)
+
+pict2eps_fonts	3
+
+# The preview to include in the EPS file
+#	2	(bitmap preview)
+#	3	(pict preview)
+# 	4  	(no preview)
+
+pict2eps_preview	3
+
+# Creator for output TeX file
+# Examples are , eg. OTEX for OzTeX, *TEX for Textures, R*ch for BBEdit, and ALFA for Alpha.
+
+fileCreator	OTEX
+
+# Generate LateX for Scientific Workplace compatibility.
+
+swpMode	false
+

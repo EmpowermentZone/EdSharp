@@ -1,0 +1,742 @@
+Contents
+
+Beta 0.3
+Beta 0.4
+Beta 0.5
+Beta 0.6
+Beta 0.7
+Beta 0.8
+Beta 0.9
+Version 1.0
+Version 1.1
+Version 1.2
+Version 2.0
+Version 2.1
+Version 2.2
+Version 2.3
+Version 2.4
+Version 2.5
+Version 2.6
+Version 2.7
+Version 2.8
+Version 2.9
+Version 3.0
+Version 3.1
+Version 3.2
+Version 3.3
+----------
+
+Beta 0.3
+Released July 17, 2007
+
+http://www.EmpowermentZone.com/edsetup.exe
+First public beta.
+
+The following commands are documented but not yet implemented:  SpellCheck, Thesaurus, Mail, Print, Insert Date, Calculate Expression.
+----------
+
+Beta 0.4
+Released July 18, 2007
+
+Fixed a file not being opened when passed as a command-line parameter.  Adjusted JAWS scripts to fix problem of the first item in a drop-down menu not being spoken.
+
+Added SpellCheck (F7), Thesaurus (Shift+F7), Print (Control+P), and Calculate Expression (Control+Equals) commands.
+----------
+
+Beta 0.5
+Released July 20, 2007
+
+Fixed SpellCheck and Thesaurus commands.
+
+Added FileFind (Alt+Shift+F), HomeCharacter (Alt+Home), and EndCharacter (Alt+End) commands.
+----------
+
+Beta 0.6
+Released July 23, 2007
+
+Fixed Open Other Format command (Control+Shift+O).
+
+Added the Configuration Options dialog (Alt+Shift+C).  Current options let you adjust the default word wrap setting (default is on), and determine whether EdSharp is maximized at startup (default is off).
+
+Added commands for comparing or sorting lines of text:  Keep Unique Lines (Alt+Shift+K), Number Lines (Alt+Shift+N), Order Lines (Alt+Shift+O), Reverse Lines (Alt+Shift+Z), List Different Lines (Alt+Shift+L), and Query Common Lines (Alt+Shift+Q).
+----------
+
+Beta 0.7
+Released July 25, 2007
+
+Fixd the installer not saving the default configuration file (EdSharp.ini) in the propr folder.  Stopped the Elevate Command (F11) from prompting for confirmation before starting the downloaded installer (it already prompts before downloading).  Fixed the table of contents in the HTML documentation not being hyperlinks to headings.
+
+Fixed the Reverse Find command (Control+Shift+F).  Made .txt the default extension if none is specified when saving a file.
+
+Added the Quote or Unquote commands (Control+Q or Control+Shift+Q) to insert or remove email quoting characters from either the current line or selected text.  Added case-conversion commands that operate either on the current character or selected text:  Upper Case (Control+U), Lower Case (Control+Shift+U), Proper Case (Alt+U), and Swap Case (Alt+Shift+U).
+
+As requested by low vision users, added the ability to set the font and color of text in an editing window.  This configuration dialog is invoked with Alt+Shift+Dash (think of making a dashing display).  The values chosen are saved to and restored from the EdSharp.ini file, which may also be edited directly with the Manual Options command, Alt+Shift+M.
+----------
+
+Beta 0.8
+Released July 27, 2007
+
+Fixed the Word Wrap and Unwrap commands (Control+W and Control+Shift+W) causing EdSharp to think a document has been modified.  Fixed the Recent Files and List Favorites commands (Alt+R and Alt+L) including a file to pick that no longer exists on disk.
+
+Added the following commands:  Mail (Control+M), Mail Attach (Control+Shift+M), Join Lines (Control+Shift+J), Hard Line Break (Control+Shift+H), and Calculate Date (Control+Shift+Semicolon).
+----------
+
+Beta 0.9
+Released July 28, 2007
+
+Fixed Open Again command (Alt+O) not restoring the cursor position.
+
+Improved interaction with Microsoft Word as a COM server.  If Microsoft Word is already open, EdSharp uses the existing copy for certain commands.  Otherwise, a new, hidden copy is launched.  In this case, when EdSharp exits, it closes all running copies of Word -- for technical reasons, this is necessary to ensure that a hidden copy is not left in memory.
+
+For each file previously opened, EdSharp now restores its word wrap setting, and if a bookmark exists, goes to it and says the percent position.
+----------
+
+Beta 9.X
+
+Miscellaneous fixes.
+
+Added the following commands:  Path List (Control+Shift+P), Text Convert (Control+T), Text Combine (Control+Shift+T), HTML Format (Control+H), Guard Document (Control+F7), and No Guard (Control+Shift+F7).
+----------
+
+Version 1.0
+Released August 3, 2007
+
+EdSharp is a free, open source, and highly productive text editor that works on almost any version of Windows.  It is rich in features, quick in performance, and accessible by design.  User benefits include the following:
+
+*  Open multiple text files of any size.  Other formats may be imported as text.  A file may also be opened from a list of those recently used, a list that you designate as favorites, or a list containing text you specify.
+
+*  Search forward or backward and automatically hear the matching line if operating with a screen reader.  Use a flexible "regular expression" to replace, extract, or count patterns.
+
+*  Identify the current line, column, and percent position  of the cursor.  Query the number of characters, words, and lines in a document.  
+
+*  Select any amount of text without having to hold down the Shift key.  Instead, mark the starting point of a selection,  navigate to the ending point by whatever means, and then complete the selection.  Copy the entire document to the clipboard with a single command, or copy its full path with another one.
+
+*  Conveniently copy or cut the current line to the clipboard if no text is selected.  Append to the clipboard rather than replacing it.  Check what the clipboard currently contains.
+
+*  Navigate by paragraph, sentence, or chunk of non-blank characters.  Delete various segments, including the current line, to the end of the line, to the start of the line, to the bottom of the document, or to the top of the document.  
+
+*  Trim extra blank spaces.  Repeat the current line with a quick copy immediately below.  Insert the time.  Calculate and insert the day of week that a date occurs, or the date of, say, the third Thursday of November (Thanksgiving).
+
+*  Prepare a "structured text document" with a table of contents, headings, and sections.  Navigate by section, search by topic, or toggle between the table of contents and the body.  Convert a list of files in other formats to text versions, or combine them into a single, ordered text document.  Produce HTML format from regular text.
+
+*  Jump to a line number, or go to a percent point in the document.  Set or go to a bookmark.  Adjust whether long lines are wrapped, or whether a document is protected against accidental modification.  These settings are restored the next time a file is opened.
+
+*  Run a spell check or thesaurus lookup.  Change the case of selected text.  Clean up quoted email.  Start a new message with the current document as its body or as an attachment.
+
+*  Configure the font and color of text to enhance its visual readability.  Sort lines, eliminate duplicates, or compare blocks, extracting lines that are either different or the same.
+
+Every EdSharp command is available by menu selection or hot key.  All are discussed in the documentation.  Tips to get started include the following:
+
+By default, the installer sets Alt+Control+E as a hot key to load EdSharp (though this option may be unchecked).  The HTML documentation is presented at the end of installation, and is also available from the EdSharp program group of the Start Menu or by pressing F1 when the program is loaded.  Alt+Shift+H presents a hot key summary.  Alt+F10 presents an alternate menu of every command in a single, alphabetized list.  F11 elevates to the latest version on the web.  The status line gives ongoing messages, which EdSharp speaks selectively through the JAWS or Window-Eyes screen readers if detected in memory.
+
+Be text smart with EdSharp!
+----------
+
+Version 1.1
+Released August 10, 2007
+
+Fixed EdSharp thinking a document was modified when it was opened via Windows Explorer and caused EdSharp to initially load.  Fixed key assignment for the Prior Window command (now Control+Shift+Tab).  Fixed the Start Selection command (F8) causing an error if the cursor was not positioned on text.  Fixed shifted letters not being spoken by the optional JAWS scripts.
+
+Select All (Control+A) now says the number of characters selected, and UnselectAll (Control+Shift+A) says the current character.
+
+Made most EdSharp key assignments configurable by editing the EdSharp.ini file through the Manual Options command (Alt+Shift+M).  Edit the Keys section, e.g., the line
+Replace=Control+R
+could be changed to
+Replace=Control+H
+Since Control+H is assigned to the the HTML Format command by default, however, EdSharp will alert you to a conflict when loading unless that command is also reassigned or detached from a key as follows:
+HTML Format=None
+
+A command without a hot key may still be invoked via the regular menu system or Alternate Menu (Alt+F10).  The terms used to identify available keys are listed on the following web page:
+http://msdn2.microsoft.com/en-us/library/system.windows.forms.keys(vs.80).aspx
+
+Enhanced options in the EdSharp program group of the Windows Start Menu so that you may conveniently set or clear an association between EdSharp and multiple file extensions such as .txt and .ini.  Binary formats such as .pdf or .ppt may also be associated, thus permitting automatic conversion to text when opened via Windows Explorer.
+
+Enhanced conversion capabilities.  As before, press Control+O to open a file.  Press Control+Shift+O to open a file in a format other than plain text.  A converter is invoked based on the file extension.  If Microsoft Excel and PowerPoint are installed on the computer, then .xls and .ppt files are converted using their programming interfaces (in the case of PowerPoint, it is temporarily visible during this process).  
+
+Additional formats are converted via Microsoft Word, including .doc, .rtf, .htm, and others (for example, a commercial PDF converter is available as a Word add-in).  If Microsoft Word is already open, the existing copy is used for this and other commands.  Otherwise, EdSharp launches a new, hidden copy.  In this case, when EdSharp exits, it closes all running copies of Word -- for technical reasons, this is necessary to ensure that a hidden copy is not left in memory.
+
+More converters may be configured through the Manual Options command, Alt+Shift+M.  For example, an open source PDF converter is distributed with EdSharp and configured, by default, with the following line in the Import section:
+pdf=%ProgDir%\pdftotext.exe %Source% %Target%
+To configure a converter, specify the command line for converting an extension from a source, non-text format to a target, text format.  The following variables may be used:
+%ProgDir% = Full path of the directory containing the EdSharp.exe program
+%Source% = Full path of the source file
+%SourceDir% = Full path of the directory containing the source file
+%SourceName% = Name of the source file
+%SourceRoot% = Root name without extension of the source file
+%SourceExt% = Exension of the source file
+The short path of a file or directory is used unless a variable includes a Long suffix, e.g., %ProgDirLong% or %SourceLong%.  Most utilities require long file names to be surrounded by quote marks, e.g., "%SourceLong%" syntax.  For technical reasons, if quotes are used within the command line, then a pair of quotes should also be added around it.  Variables for the Target file are like that of the source.
+
+Added the Export Format command (Alt+Shift+E) to save a file in another format.  Via Microsoft Word converters, target formats include .doc, .htm, .rtf, and .xml.  Other converters may be configured by editing the Export section through the Manual Options command (Alt+Shift+M).  The syntax is like that in the Import section.
+----------
+
+Version 1.2
+Released August 18, 2007
+
+Fixed the default EdSharp.ini overwriting the Import and Export sections of the user's EdSharp.ini configuration file.  Fixed commands such as Quote (Control+Q) producing an error if no text was at the cursor position (because the document was empty or the cursor was at the end).
+
+Added support for enhanced speech messages when using the System Access screen reader from
+http://serotek.com
+
+Enhanced Find and Replace commands (Control+F, Control+Shift+F, and Control+R).  The Text you enter in Find or Replace dialogs may now include tokens that represent nonprinting characters.  This syntax is available for strings in the C programming language and its variations.  Common tokens are a pair of characters consisting of a backslash and letter, such as the following:  \r for carriage return (ASCII 13), \n for line feed (ASCII 10), \t for tab (ASCII 9), and \f for form feed (ASCII 12).  Such tokens allow you to search for text, say, at the beginning or end of a line (use \n for a line break in EdSharp).  
+
+The trade off for this flexibility is that backslash and quote characters must be preceded by a backslash when intended literally (not part of a token), i.e., \\ for backslash and \" for quote.  Since this doubling of characters may be cumbersome with search terms such as a file path, however, EdSharp supports use of an initial @ character to indicate that the following characters should be interpreted literally rather than as possible tokens.  For example, if searching for a file in the document, you could enter the term
+@c:\temp\temp.txt
+rather than
+c:\\temp\\temp.txt
+If you need to search for an interpreted string that begins with the @ character, precede it with a backslash, e.g.,
+\@\c:\\temp\\temp.txt
+
+The Open Other Format command (Control+Shift+O) now shows the command line attempted by a custom converter if it failed to produce text.  Added several converters distributed with EdSharp.  External converters are stored in the Convert subfolder of the EdSharp program folder, e.g., in (default installation)
+C:\Program Files\EdSharp\Convert
+
+Besides the pdf converter mentioned previously, the default EdSharp.ini configuration file (in the EdSharp program folder) now includes the following conversions.  GetText.exe is configured for importing from Windows Help (.hlp) and Microsoft Word (.doc) -- thereby eliminating the need to load Word for this purpose.  chm2txt imports Compiled HTML Help (.chm).
+
+htm2md.exe imports from HTML and variations (.htm, .html, and .xhtml) to a text format called Markdown -- explained at
+http://en.wikipedia.org/wiki/Markdown
+md2htm.exe does the reverse, exporting from Markdown to HTML.  EdSharp supports Markdown as an aid to developing web pages.
+----------
+
+Version 2.0
+Released August 25, 2007
+
+Major programming and word processing enhancements raise this version from 1.2 to 2.0.  EdSharp is now a text editor, coding environment, and mini word processor!
+
+Fixed the Jump command not recognizing a column as well as line number.  Fixed regular expression dialogs requiring a double rather than single backslash to begin a special token.  Fixed the Yield with Regular Expression command (Control+Shift+Y) not remembering the previous expression used.  Fixed Exporting from HTML to Markdown.
+
+Extra speech messages may now be toggled off -- or reactivated -- with Control+Shift+X.  When off, such messages are redirected to a text file called Speech.log, which may be examined in an editing window with Alt+Shift+X.  This file is initialized when EdSharp starts, and the Extra Speech setting is remembered from the previous session.
+
+Made Delete Right (Control+Shift+Delete) and Delete Line (Alt+Backspace) delete to the end of the visible line -- wrapping is respected.  The new Delete Hard Line command (Control+D) deletes through any wrapping until just past the next hard line break  (what is created by pressing Enter).  The Delete Paragraph command (Control+Shift+D) deletes from the current line through the next one or more blank lines.
+
+Press Alt+F7 to look up definitions of a word from the dictionary.com web site.  EdSharp prompts for a word or phrase, defaulting to the current chunk or selected text.  The definitions retrieved are placed in a new editing window.
+
+When a file is saved without giving it an extension, .rtf is added as a configurable default.  If a file would be overwritten, the original may be optionally saved with .bak added (default is No).  Each option in the Configuration dialog (Alt+Shift+C) has a unique access key in its label, so you can jump directly to it with an Alt plus letter combination.  Some options are reserved but not yet implemented.
+
+Sections added to the EdSharp documentation discuss the new word processing and programming features as follows:
+
+Word Processing
+EdSharp supports several aspects of Rich Text Format (.rtf) as well as plain text (with optional structure).  In certain situations, EdSharp behaves differently if a file has a .rtf extension rather than any other one.  Specifically, the Open Other Format command, Control+Shift+O, imports a .rtf file with its formatting rather than converting it to plain text.  The Save, Save As, and Save Copy commands, Control+S, Control+Shift+S, and Alt+S, save a .rtf file with formatting preserved.  Use the Copy Rich Text command, Control+Shift+C, to copy selected text with formatting to the clipboard.
+
+Formatting commands include the following.  Use the Justify command, Alt+Shift+J, to set the horizontal alignment of text as left, center, or right.  This formatting applies to either selected text or the current hard line -- a line of text terminated by a hard line break (created by pressing Enter rather than wrapping).
+
+Use the Style command, Alt+Slash, to set or clear bold, italic, or underline formatting.  This applies to either selected text or text ahead of the current cursor position.  Similarly, the Set Selection Font command, Alt+Shift+Dash, adjusts the font or color of selected text or text ahead of the cursor (think of a "dashing" display).  The key to its right, Alt+Shift+Equals, is for setting the default font of a new document.  The Justify, Style, and Font dialogs indicate current format settings.
+
+Navigation commands let you move forward or backward to a change in formatting.  Control+RightBracket goes to the next justification change, and Control+LeftBracket goes to the previous one.  Control+Slash goes to the next style change, and Control+Shift+Slash goes to the previous one.  Control+Dash goes to the next font change and Control+Shift+Dash goes to the previous one.  The cursor stops at the character with different formatting.  The new formatting is announced and current line is read.
+
+To query the current font and color, press Alt+Dash.  For justification and styles, press Alt+Slash.
+
+Programming
+Press Tab to indent the current line of text, or Shift+Tab to outdent it.  If multiple lines of text are selected, these commands are applied to all of them.  Press Alt+I to hear the number of indentation levels of the current line.  The Trim Blanks command, Control+Shift+Enter, removes all indentation and trailing spaces at once, as well as removing more than two consecutive blank lines (when multiple lines are selected).
+
+Press Alt+Shift+I to toggle a mode in which you are alerted to changes in indentation level, such as when using the up and down arrow keys.  EdSharp will say how many levels in or out the indentation has changed.  This mode also reverses the rols of the Enter and Shift+Enter keys.
+
+When Indent Mode is off, you can start a new line of text with the same indentation as the current one by pressing Shift+Enter.  By default, an indentation unit is two spaces.  This may be changed with the Configuration Options command, Alt+Shift+C (or use Alt+Shift+M to manually edit settings in the EdSharp.ini file).  To go to the first character of the current line after any indentation, press Alt+Home.  To go to the last non-white space character, press Alt+End.
+
+Press Control+I to go to the next code block, or Control+Shift+I to go to the previous one.  EdSharp considers a line of text with less indentation to be part of a different code block.  For example, if the cursor is inside a loop block, then Control+I will go to the line at the closing of the loop where a lower level of indentation resumes.  In Ruby, this would be the line with the word "end" or a right brace (}) character.  In Python, it would be the first line of code following the loop, since the change in indentation, itself, indicates the end of the loop.
+
+The Quote and Unquote commands, Control+Q and Control+Shift+Q, may be used to add or remove comment symbols at the start of lines.  The default quote prefix may be changed from > to a comment sequence appropriate for the language in use, e.g., ' for Visual Basic, * for Xbase, ; for AutoIt, or # for Ruby.  
+
+Curly brace characters delimit code structures in a number of languages.  Press Control+B to find the matching right brace (}) character from the current location.  Press Control+Shift+B for the matching left brace ({) instead.  Press Alt+B to hear the number of unmatched left braces before the cursor and right braces after.  Different brace characters may be configured, e.g., angle brackets (<>) for editing HTML or XML.  If the cursor is on a brace-type character when issuing one of these commands, i.e., one of {}<>[]() , then EdSharp uses that character and its opposite when searching, regardless of the current setting.
+
+A scripting language allows a program to be run as a text file associated by extension with its interpreter, e.g., .pl for Perl, .au3 for AutoIt, and .rbw for Ruby files.  Press F5 to run the current file with its associated interpreter.  If the current file name has a complete path, EdSharp saves to disk before running the file to ensure the latest version is being used.  Otherwise, EdSharp saves to a file in a temporary folder and runs that file.
+
+The Alt+F5 command prompts for a command to run and speaks its standard output.  The path of the current file may be passed via the syntax described for EdSharp's Import and Export capability.  The command remembers its previous value, and may be adjusted each time it is run.  Use the Review Output command, Alt+Shift+F5, to open a new editing window containing the output produced by the last command.
+
+Use the Compile command, Control+F5, for a programming language that involves compiling source code to binary form.  For example, a C# program in a .cs file may be compiled to a .exe file.  This command may also be used for interpreters that report syntax errors via the standard output or standard error streams.
+
+These tool commands typically begin with the file name of the compiler or interpreter.  Any parameters may be specified thereafter.  If the token %SourceDir% is included, EdSharp temporarily changes to the directory containing the source file before running the tool.
+
+The first line and column position mentioned in the output, if any, is assumed to be the position of a compilation error in the source code.  EdSharp uses the JumpPosition setting to find the position in the output based on a regular expression.  The regular expression should be defined so that the first number of a matching string is the line number and the second number, if any, is the column number.  EdSharp automatically jumps to that position.  It is also saved so that the Jump Again command, Alt+J, returns there.
+
+Another regular expression may be configured for navigating among routines in source code.  The NavigatePart setting is used by Alt+PageDown and Alt+PageUp to go to the next or previous function, method, or class definition.
+
+Thus, the Compile command, Control+F5, combines debugging steps efficiently by compiling, saying output without a model message box, and automatically jumping to the first error position, if found in the output.  The output spoken may be abbreviated by means of a regular expression setting that specifies the pattern of text to remove.  The Pick Compiler command, Control+Shift+F5, lets you conveniently configure the CompileCommand , AbbreviateOutput, JumpPosition, NavigatePart, and QuotePrefix ssettings for a particular compiler or interpreter.  EdSharp offers settings for the following languages:  C#, HTML, Java, JAWS Script, Perl, PHP, PowerBASIC, PowerShell, Python, Ruby, and Visual Basic .NET.
+
+The name of a tool to be run should either include its directory location or be available on the Windows search path.  This may be adjusted by editing the Path environment variable in the Advanced tab page of the System applet in Control Panel.  If the tool is a long file name enclosed in quotes then either prefix the command line with the @ symbol or enclose the whole thing in quotes.  This is necessary to prevent .ini file manipulation functions of Windows from losing the opening quote before the tool.
+
+For HTML, the HTML Tidy utility is configured by default and distributed with EdSharp.  After eliminating coding errors found with Control+F5, use Alt+Shift+E to export to a target file containing clean HTML.  More information is available at
+http://tidy.sourceforge.net
+
+For PowerBASIC, a batch file is needed (in the EdSharp program folder), which refers to the default location of PowerBasic for Windows version 8.0.  The path to the JAWS script compiler is also hard coded for the latest version.  JAWS scripting is additionally supported by EdSharp's own scripts:  Control+I is a hot key for inserting the path to the user script folder, and Control+Shift+I is for the All Users script folder, when focus is in the Open or Save Dialog of EdSharp.
+
+Compiler settings are stored in the [Compilers] section of the EdSharp.ini file.  Only current compiler settings appear in the configuration options dialog, Alt+Shift+C.  Other settings may be edited, however, using the Manual Options command, Alt+Shift+M.  You can adjust command line parameters of configured compilers, or add others.  Installing a new version of EdSharp does not change existing compiler settings.
+----------
+
+Version 2.1
+Released September 1, 2007
+
+Fixed Section Break (Control+Enter) and Replace (Control+R) commands not handling tokens correctly.
+
+Improved compatibility with Dragon voice dictation software.  Made EdSharp change the current directory to that of a file opened by the user.
+
+The Open Previous setting determines whether files open at the end of the previous EdSharp session are automatically opened at the start of the next one.  The default is No in this version, but it was Yes in version 2.0 when this setting was reserved but not actually implemented.  Since upgrading EdSharp generally does not replace installed settings, your setting may be Yes inadvertently.  If you would prefer that EdSharp not open files automatically in this way, you can press Alt+Shift+C for Configuration Options, then Alt+O for the OpenPrevious edit box and N for its value.  Alternatively, create a fresh configuration file by pressing Alt+Shift+M for Manual Options, Alt+Shift+D to delete the EdSharp.ini file, Y to confirm, and Alt+F4 to close EdSharp.  The next time you load EdSharp a custom configuration file will be created with default values.
+
+This version increases word processing functionality by adding bullet justification in addition to left, center, or right (Alt+Shift+J).  Superscript and subscript support is also added.  Press Alt+Shift+6 (think of a caret symbol) to change the virtical alignment of text.  Press Control+6 to go to the next change in baseline, or Control+Shift+6 for the previous one.  The Query Styles command (Alt+Slash) says current styles (bold, italic and/or underline), as well as justification and baseline alignment.
+
+The Web Download command, Alt+Shift+W, lets you pick one or more files to download from a page whose address you specify.  If Internet Explorer is open, EdSharp uses the value in its address bar as the default.  Each item of the resulting checked listbox shows both the clickable text of the url and its target file name.  Press Spacebar to toggle the checked state of an item.  After picking files, you are prompted for the target folder on disk.  If a file with the same name already exists, a unique name is created by adding a numeric suffix, e.g., page_01.htm, page_02.htm, etc.
+
+A listbox control of the .NET Framework does not support multiple letter navigation, so each letter typed jumps to the next item starting with that letter.  To make navigation more flexible and efficient, particularly in a listbox with many items, EdSharp adds the following features to a list based dialog.  Control+J prompts for text within an item, going to the first match if a new search, or the next match if the previous value is accepted.  Alt+J goes to the next match without prompting for a value.  In a checked listbox, such as the Web Download dialog, Control+A checks all items, Control+Shift+A unchecks them, and Shift+Space reads which are checked.  The item with focus when the dialog is closed (but not canceled) becomes the current item the next time that the same list dialog is invoked.  The Jump value of that dialog is also remembered.
+
+New commands support development of web pages.  Press Control+Shift+Period (think of the > symbol) to go to the closing tag of an HTML element, or Control+Shift+Comma for the opening one.  A documentation section describes the snippet capability as follows.
+
+Pasting Snippets
+Press Alt+S to save all or selected text to a file that may be conveniently pasted into other documents.  You may give the file any name, except that it should have a .txt extension.  It is saved in a subfolder of the EdSharp data folder.  Each programming compiler or interpreter may have its own set of snippets.  The subfolder name is the same as the current value of the Pick Compiler command, Control+Shift+F5.  If no compiler has been chosen, the name "Default" is used.  Press Alt+V to pick one of the available snippets and paste it into the current document.  You can manage snippet files with the View Snippet Folder command, Alt+Shift+V, which opens Windows Explorer in the subfolder containing snippet files.
+
+A snippet may be either literal or an interpreted type.  A literal snippet is pasted completely.  An interpreted type is separated into an initial header line and remaining lines as its body.  The header line contains keywords, in lower case, that control how EdSharp processes the snippet.  At present, two interpreted types are defined:  html and text.  The type keyword must be the first word on the header line, and thus the first word of the snippet file.
+
+The first body line of an HTML snippet is the name of an HTML tag.  Subsequent body lines are attributes of the tag.  An optional default value can follow the attribute name, separated by an equals sign (=).  Here is an example for the anchor tag:
+
+html phrase
+a
+ href=
+ name=
+ target=
+ class=
+ title=
+ src=
+
+The "phrase" keyword tells EdSharp that the tag may be embedded in a paragraph, rather than creating a block with line breaks before and after.  Another keyword, "empty," would tell EdSharp not to add a closing tag like </a> when pasting (e.g., for the <br> tag).  
+
+EdSharp pastes only those attributes that have values greater then zero in length as part of the opening tag.  To include an attribute with essentially no value, enter a space character for it in the dialog.  If text is selected when pressing Alt+V, it is surrounded by the opening and closing tags, and the cursor is placed afterward.  If there is no selection, the cursor is placed between the opening and closing tags.
+
+Over 100 HTML snippets are distributed with EdSharp, including common attributes used by the tags.  Snippet files may be modified or added.  Upgrading EdSharp does not overwrite snippet files with the same names.
+
+With the text type of snippet, EdSharp pastes the whole body after making possible substitutions controlled by a keyword called "form."  This lets you embed variables or constants in the body.  A variable has surrounding percent signs and an equals sign between the name and default value.  For example, the variable %City=%Silver Spring% means a variable named City with a default value of Silver Spring.  EdSharp creates a dialog that prompts for the value of each variable it finds in the snippet body.  It then replaces the variable references with the values entered.
+
+Certain constants are also defined:  %Date% for the current date, %Time% for the time, %UserName% for the Windows user name, %UserFirstName% for the first part of that name, and %UserLastName% for the second part, if any.  Date and Time formats may be customized as EdSharp configuration options, using the DateTime formatting syntax of the .NET Framework, explained at
+http://msdn2.microsoft.com/en-us/library/system.globalization.datetimeformatinfo(VS.80).aspx
+
+If a snippet header contains the "caret" keyword, EdSharp looks for a double caret sequence (^^) in the body, and positions the cursor (think of blinking caret) in that location after pasting.  An example text type snippet is called Letter.txt, located in the Default snippet folder.  Its content is as follows:
+
+text form caret
+%Date%
+
+Dear %Customer=%:
+
+Thank you for your purchase of %Product=Super Widget%.  ^^
+
+Sincerely,
+%UserName%
+
+EdSharp notices that this is a text type snippet because of the first word of the file.  It finds two other keywords on the header line:  form and caret.  It creates a dialog with two edit boxes, prompting for the Customer and Product -- defaulting to Super Widget.  It substitutes the values entered, as well as date and user name constants.  After pasting, the cursor is positioned after the first sentence.
+----------
+
+Version 2.2
+Released September 8, 2007
+
+Fixed the Replace with Regular Expression command (Control+Shift+R) not interpreting standard tokens like \n in the substitution string.  Fixed a space not being inserted before an attribute name in an HTML snippet.  Such an attribute may now contain \n or other nonprinting tokens.  It may be commented out with a semicolon (;) as the first character of the line.  
+
+Added a check for whether the file in the current editing window has been modified by another program since being loaded from disk.  If so, you are prompted whether to open it again (like what Alt+O does manually).  If you answer No, version checking on the current file stops until you save or reload it.
+
+The Print command (Control+P) now prints a file with a .rtf extension using the associated program for this operation in the Windows registry (typically Microsoft Word or WordPad).  The Export command (Alt+Shift+E) now includes options for ASCII format (characters with ANSI codes above 127 are removed), Mac format (line break is \r), and Unix format (line break is \n).
+
+Added more search commands.  As before, Control+F or Control+Shift+F search forward or backward for standard text.  Alt+F3 or Alt+Shift+F3 search forward or backward for either the chunk at the cursor or selected text.  Control+F3 or Control+Shift+F3 prompt for a regular expression for searching forward or backward.  F3 or Shift+F3 search forward or backward for the last target, which may be either standard text or a regular expression.
+
+Fixed problems with the Web Download command, and added more commands for checking and navigation in this and other list-based dialogs (similar to the FileDir application).  Press Shift+DownArrow for check and Next, or Shift+UpArrow for check and Previous.  Press Shift+End for check to Bottom, or Shift+Home for check to Top.  Shift+NumPad5 checks the current item.  F8 marks the start of a checking operation, completed with Shift+F8.
+
+Adding the Alt modifier key performs the same action except for uncheckging rather than checkging.  Thus, Alt+Shift+NumPad5 unchecks the current item, Alt+Shift+Home unchecks to the top of the list, Alt+Shift+End unchecks to the bottom, Alt+Shift+DownArrow unchecks en route to the next item, and Alt+Shift+UpArrow unchecks en route to the previous.  F8 then Alt+Shift+F8 unchecks items in that range.
+
+Other arrow keypad actions navigate among checkged items.  Control+Home goes to the top checkged item, and Control+End goes to the bottom one.  Control+DownArrow goes to the Next , and Control+UpArrow goes to the previous.
+
+Shift+Space tells you what items are currently checked.  Alt+A says the address of the current item in the list, e.g., 11 of 42.
+
+A new section of EdSharp.ini is called Tokens.  Each of these user-defined tokens is an expression in Microsoft JScript .NET.  Three examples are currently provided in the configuration file.  The CurrentDirectory token illustrates a call to a static method in the .NET Framework Class Library (FCL) -- in this case, returning the current directory of the EdSharp process.  The Signature token shows syntax for a literal string -- in this case, a signature block with multiple lines.  The Unordered List token refers to a JScript file called ul.js that is provided in the HTML snippet folder.  
+
+When EdSharp finds that a token refers to a file in the current snippet folder, it interprets the content of that file as JScript.  The ul.js example creates an unordered list element in HTML after prompting for the number of items to generate in the list.  Its content is as follows:
+
+[Begin Content of ul.js]
+var iCount = Interaction.InputBox("Number of Items:", "Input", "0")
+var sTag = "<ul>\n"
+var i = 1
+while (i <= iCount) {
+sTag += "<li>Item" + i + "</li>\n"
+i++
+}
+sTag += "</ul>\n"
+[End Content of ul.js]
+
+User-defined tokens may be included in a snippet that has the "form" keyword in its header.  They may also be typed in a document being edited.  As before, the Evaluate Expression command, Control+Equals, evaluates the current line or selected text as JScript code and places the result on the line below.  The new Replace Tokens command, Control+Shift+Equals, swaps tokens with their computed results in all or selected text.  Thus, you might press Alt+Shift+M for Manual Options and define a signature token as follows:
+
+[Tokens]
+Signature=("Sincerely,\nJohn Doe\nJohn.Doe@NiftyHomePage.com\n")
+
+Then type %Signature% in your document where you want that to appear, and use the Replace Tokens command to do it.
+
+Added the Transform Files command (Alt+Equals) to apply a saved set of search and replace tasks to one or more files -- typically to massage data or formatting in predictable ways (like the Massage Operation command of TextPal).  EdSharp prompts for the job file containing the regular expressions to apply.  Each task is defined by three lines:  (1) a comment explaining the operation, (2) the search expression, and (3) the replacement expression.  A blank line separates each task.  The current editing window should contain the list of files to process, one per line.  Such a list could be typed manually or generated via the Path List command (Control+Shift+P).  If a file does not include a leading path, the prior one is assumed.  
+
+Here is the content of a sample transform job  that defines two tasks:
+
+[Begin Content of TrimLine.txt]
+Remove leading space or tab characters from each line
+(\A|\n)( |\t)+
+$1
+
+Remove trailing space or tab characters from each line
+( |\t)+(\r|\Z)
+$2
+[End Content of TrimLine.txt]
+
+----------
+
+Version 2.3
+Released October 8, 2007
+
+This version introduces a powerful scripting capability, strengthens HTML snippets, and adds support for mathematical work with the LaTeX language.  Fixes and enhancements are documented below.
+
+Fixed Indent, Outdent, Quote, Unquote, and Trim Blanks commands (Tab, Shift+Tab, Control+Q, Control+Shift+Q, and Control+Shift+Enter) applying to the next line, not just current line, when there is no selection.  Fixed the Reselect command (Control+Shift+F8) not remembering the last result of the Complete Selection command (Shift+F8).  Fixed hot keys causing errors in checked listboxes that should only apply in single selection listboxes (e.g., Spacebar and Control+A).  Fixed the cursor not being positioned according to the double caret (^^) when snippets are processed.
+
+Enhanced Alt+F7 to look up information about a word or phrase from three web sites:  dictionary.com, thesaurus.com, and wikipedia.org.  EdSharp prompts for a term, defaulting to the current chunk or selected text.  The information retrieved is presented as structured text in a new editing window.
+
+Enhanced the Explorer Folder (Alt+Backslash) and Command Prompt (Control+Backslash) commands to prompt for four possible folders to open:  the EdSharp program folder, data folder, snippet folder, or folder containing the current file.  Alt+Shift+V now opens a snippet file rather than the snippet folder.
+
+Added a configuration option that sets a maximum limit on the number of files shown in the list of recent files (Alt+R).  The default is 30.  As before, a file opened from this list is automatically converted to text if an import conversion exists for its extension.  The List Favorites command (Alt+L), however, now opens a file verbatim, assuming that you had set it as a favorite to edit it literally, e.g., a .htm file.
+
+Enhanced the bookmark capability to support multiple bookmarks (like TextPal).  As before, press Control+K to set a bookmark.  If there is a single bookmark, Alt+K goes to it.  If more than one, a list of bookmarked lines is presented, with focus on the next one ahead of the cursor position.  Thus you can sequentially visit bookmarks by pressing Alt+K and Enter.  Control+Shift+K clears a bookmark at the cursor position.  To clear all bookmarks at once, press Control+Shift+L to remove the file from the list of favorites -- since a bookmarked file is automatically considered a favorite.  If you want to keep the favorite status without any bookmarks, then press Control+L to set the file as a favorite again.
+
+Extended the import and export capability to support multiple target formats.  If EdSharp finds more than one converter available for a file extension, you are prompted which one to use.  This is illustrated by explaining the pdf2ocr entry added to the Import section of EdSharp.ini.  It supports optical character recognition on image-based PDFs if the free pdf2ocr.zip package is installed from 
+http://www.EmpowermentZone.com/pdf2ocr.zip
+
+The configuration file assumes that it has been unzipped into a directory called
+C:\PDF2OCR
+Since this large archive is not distributed with EdSharp, the configuration entry is inactive by default due to a semicolon (;) comment character at the start of the line.  Use the Manual Options command (Alt+Shift+M) to delete the character and then save the revised EdSharp.ini file (Control+S).  After doing so, EdSharp would offer two choices when you specified a PDF with the Open Other Format command (Control+Shift+O):  pdf and pdf2ocr.  If a converter entry does not contain the digit 2 and another extension, it is assumed to be .txt.  Thus, you would then choose between the distributed converter for text-based PDFs, and the manually installed one for image-based PDFs via OCR.
+
+Added support for the LaTeX language (pronounced La Tech).  This is a common language used for typesetting, especially for scientific publications.  Sample LaTeX snippets, ending in a .tex extension, are distributed with EdSharp.  You can convert from LaTeX to RTF and vice versa.  To fully work with LaTeX, install the open source package for Windows from
+http://www.miktex.org
+
+With that installation, EdSharp's LaTeX compiler option lets you check and correct syntax.  You can then export to PDF or XML -- in this case, XHTML containing embedded MathML (math markup language for the web).  If the resulting .xml file is opened in Internet Explorer with a screen reader, sophisticated mathematical statements will be intelligible when the free MathPlayer add-in has been installed from
+http://www.dessci.com/en/products/mathplayer/download.htm
+
+Certain configuration options are now associated with the current compiler rather than being global .  Specifically, favorites, bookmarks, and user-defined tokens apply to the current compiler (picked via Control+Shift+F5), so you can work with items more relevant to each coding project.  The new Reset Configuration command (Alt+Shift+0) lets you easily remove custom settings and restore defaults of EdSharp.  This command lets you choose whether to reset the main configuration, current compiler configuration, or create a new compiler configuration.  The New choice prompts for the compiler name, command line, AbbreviateOutput, NavigatePart, and QuotePrefix settings.  A compiler configuration file is stored in the EdSharp data folder in a file having the compiler name and a .ini extension.  For example, if you created settings for the "Delphi" compiler, EdSharp would create a Delphi entry in the Compilers section of EdSharp.ini, and then store related favorites, bookmarks, and user-defined tokens in Delphi.ini.   The EdSharp data folder is typically named something like
+C:\Documents and Settings\UserName\Application Data\EdSharp
+If upgrading to EdSharp 2.3 from a previous version, pressing Alt+Shift+0 is recommended after installation, in order to start with a fresh set of configuration values.
+
+Enhanced snippet capabilities in several ways.  The Paste Snippet command (Alt+V) now lists snippets in the Default snippet folder, as well as those in the folder associated with a Compiler being used.  This lets you have a set of snippets that are available regardless of the programming language in use.  
+
+Changed the Paste Snippet command to show files with any extension, not just .txt, thus letting an extension indicate the type of content to be inserted.  EdSharp processes a snippet with a .js extension as JScript .NET code to be evaluated.  Such a file can do almost anything in EdSharp, as explained in the documentation below about EdSharp's new scripting capability.  For example, the "ul from selected.js" file generates an HTML unordered list from selected lines of text.  Made it possible to repeat the same variable reference in a snippet, whereby the user is prompted once for a value that is then used for multiple text insertions.
+
+The HTML snippet collection has been substantially improved by Jim Homme, optimizing the available tags, attributes, and their ordering to serve common needs in developing web sites.  HTML and PHP page templates are also included.  New .txt and .js snippet files will be installed when upgrading EdSharp.  Since the installer does not replace snippets with the same names, however, you need to manually clear the appropriate folder to get a fresh set of these snippets.  You can do this by pressing Control+Shift+F5, picking the HTML Tidy compiler, then pressing Alt+Backslash and choosing the snippet folder to open in Windows Explorer (or FileDir).  From that window, press Control+A and Delete to remove all files in the folder.
+
+An overview of the scripting capability follows:
+
+Almost the complete object model of the EdSharp application has been exposed to add-in code in the JScript .NET language, explained at
+http://msdn2.microsoft.com/en-us/library/t895bwkh(VS.80).aspx
+
+JScript is a version of JavaScript with access to the huge library of the .NET Framework.  In EdSharp, JScript code may be used in the Evaluate Expression command (Control+Equals), Replace Tokens command (Control+Shift+Equals), and Paste Snippet command (Alt+V).  Stand-alone JScript executables may also be created with the JScript .NET compiler option if the .NET Framework 2.0 Software Development Kit has been installed from
+http://www.microsoft.com/downloads/details.aspx?FamilyID=FE6F2099-B7B4-4F47-A244-C96D69C35DEC&displaylang=ko
+
+Using the Compile command (Control+F5) is the best way to debug JScript code even if you want to use it as an add-in rather than stand-alone executable.  This is because the JScript compiler provides error information that is not available when add-in code fails to execute due to syntax errors.
+
+The EdSharp object model includes a hierarchy of classes corresponding to the overall application, multiple document interface (MDI) frame, MDI child windows, and RichTextBox (RTB) within each window.  Typically, a script will manipulate text in the current RTB control.  The Frame property of the App class refers to the single MDI frame.  The Child property of that frame object refers to the active MDI child.  The RTB property of that child object refers to the current editing control.
+
+  Thus, a JScript routine might start by creating one or more object variables as follows:
+
+var frame = App.Frame
+var child = frame.Child
+var rtb = child.RTB
+
+By convention, .NET properties are initially capitalized, whereas field and local variables are not.  Methods of the frame object can invoke menu items, e.g., a new editing window could be created with the following statement:
+frame.menuFileNew.PerformClick()
+Methods and properties of an RTB object are explained at
+http://msdn2.microsoft.com/en-us/library/system.windows.forms.richtextbox_members(vs.80).aspx
+
+EdSharp also adds some methods and properties in its inherited version of the RichTextBox class, e.g., the ReplaceRange method for replacing text between two points in the current document.  Other EdSharp classes provide convenient scripting methods, e.g., Dialog.Pick gets a user choice from a listbox and Util.String2File saves a string of text to a file on disk.
+
+I will document these classes further based on questions I receive.  At present, the best way to learn them is to examine code in sample .js snippet files and the main EdSharp.cs program file, which implement behavior you experience when running the application.  Although the .cs code is in the C# language, its syntax is similar to JScript, and the names of classes, methods, and properties are the same.
+----------
+
+Version 2.4
+Released December 24, 2007
+
+This version strengthens support for programming in Python, and for doing math with LaTeX.  Fixes and enhancements are documented below.
+
+Fixed the computer's SAPI voice not being used for enhanced speech messages when the JAWS, Window-Eyes, or System Access screen reader is not found in memory.  Replaced the default SayAll script of JAWS (Insert+DownArrow) with custom code that provides more reliable continuous reading.  Also with the JAWS scripts for EdSharp, fixed the Read All command (Alt+F8) not verbalizing files over 20K in size, and the semicolon character (;) not being spoken when typed.
+
+Fixed the New From Clipboard command (Control+Shift+N).  Fixed the Text Convert or Text Combine command (Control+T or Control+Shift+T) prompting when multiple target formats are available, rather than assuming text.  Also fixed these commands not using the previous directory specified when a file is listed without a path.
+
+Enhanced the Elevate Version command (F11) to compare the currently running version with the host server, indicating whether a newer version is available there.  Enhanced the Web Download command (Alt+Shift+W) so that it prompts for file extensions to be included in the list.  Thus, you can easily limit choices to, say, .pdf and .doc files linked to a page of interest.
+
+Made EdSharp restore the directory used at the end of the last session, and the one last used by a compiler setting.  EdShaarp now says the current directory at the start of a new session, and when picking a different compiler (Control+Shift+F5) changes the current directory.  
+
+Added the Query Compiler command (Alt+0) to check the current compiler and directory.  Extended compiler information to include a default extension, e.g., .py when programming in Python.
+
+Added commands to ease programming in Python with speech.  This language requires indentation for subordinate code blocks, and the indentation, itself, rather than words or punctuation, is how such structure is specified.  The indentation is helpful to sighted programmers, and often to users of large print or braille, but generally inefficient for speech users, since such access tends to be serial rather than two dimensional in nature.  The new PyBrace command (Alt+Shift+LeftBracket) converts indented structure to a form explicitly indicated by opening and closing braces, similar to C-like languages.  The PyDent command (Alt+LeftBracket) does the reverse, converting from PyBrace to an indented format that is understood by the Python interpreter (using the IndentUnit setting of EdSharp).  The PyBrace and PyDent formats include comments that indicate when a block has closed , e.g., "# end for" on the line after a "for" block.  If text is selected, these commands replace it with the alternate format;  otherwise, they create a new editing window so the original file is still available.  The Boo language for the .NET platform is similarly supported, since it is modeled after Python.  
+
+Added a Boo compiler setting.  Added the Go to Environment command (Control+Shift+G) to activate an interpreter environment that may be specified in the Configuration dialog (Alt+Shift+C).  The default environment is the Boo interpreter, which assumes you have installed a Related assembly called IronCOM in its default location.  Providing access to the .NET Framework Class Library, this COM server is available at
+http://www.EmpowermentZone.com/comsetup.exe
+
+Alternatively, the GoToEnvironment setting could be configured for a computer algebra system such as Maxima,
+http://Maxima.SourceForge.net
+or Axiom,
+http://Axiom.SourceForge.net
+
+Added a ViewLevels configuration option.  this is a list of file extensions and associated numbers that specify how EdSharp should handle conversions when files are opened through Windows Explorer or by the Recent Files command (Alt+R).  For example, this setting includes "pdf:1 tex:0" by default.  If you associate the .pdf extension with EdSharp (e.g., via the shortcut in the EdSharp program group of the Start Menu), then EdSharp will automatically convert a PDF to text when opening it.  On the other hand, the 0 value associated with the .tex extension means that no conversion will automatically be attempted on such a file type (LaTeX format).
+
+Enhanced support for LaTeX, thanks to work by Alastair Irving and Robin Williams.  The EdSharp distribution incorporates Python and JAWS script code from their "latex-access" project at
+http://latex-access.SourceForge.net
+
+The F12 key is used for reading LaTeX (a reminder is that "L" is the 12th letter of the alphabet), and Alt+Control+Arrow keys are used for navigating a matrix.  Specifically, the key assignments are as follows:
+
+F12 = Turn on a mode where mathematical expressions in LaTeX are read in a more English-friendly manner.
+
+Shift+F12 = Turn off this mode, so LaTeX is read literally by JAWS.
+
+Alt+F12 = Add a LeTeX expression and its English translation to the dictionary.
+
+Alt+Shift+F12 = Load another speech dictionary.
+
+Control+F12 = Store a matrix specified as an expression in selected text.
+
+Alt+Control+ArrowKeys = Navigate rows and columns of the matrix.  Alt+Control+Home goes to the top left, and Alt+Control+End goes to the bottom right.
+
+Alt+Control+NumPad5 = Read the value in the current cell.  Alt+Control+PageUp reads the current row, and Alt+Control+PageDown reads the current column.  When pressed twice quickly, these commands say the row/column position and spell the value.
+
+The LaTeX snippets provided with EdSharp include the file test.tec, which demonstrates latex-access features.  Note that when a new version of the Python COM server becomes available on the latex-access site, you can install it (according to instructions there) and the JAWS scripts for EdSharp will automatically use the updated capability.
+
+A Collection of text tutorials on LaTeX is available at
+http://www.EmpowermentZone.com/latexdoc.zip
+
+----------
+
+Version 2.5
+Released January 14, 2008
+
+Fixed the paste command (Control+V) stripping hard returns at the end of clipboard text.  Fixed EdSharp not always being activated when an associated file is opened via Windows Explorer (or FileDir).  Also made EdSharp activate more quickly when a new file is opened in this way.
+
+Fine tuned the JAWS configuration so that "not selected" messages do not erroneously occur when navigating a listbox.  Also improved the speaking of special Unicode characters when reading continuously with SayAll (JAWSKey+DownArrow).  The JAWS script to toggle speech between all and no punctuation (JAWSKey+GraveAccent) now works with any speech synthesizer, not just Eloquence.
+
+Fixed the import option for .tex files (LaTeX format).  Stopped the import options dialog from appearing if only one target format is available.  Made EdSharp notify you of the item number when it activates a list-based dialog and restores focus to an item other than the initial one.
+
+As before, Alt+Backslash opens Windows Explorer in the directory containing the current file, or Control+Backslash opens a command prompt there.  Besides the current folder, the intervening dialog lets you open the EdSharp program folder, data folder, or snippet folder.  An additional button now lets you create a new folder on disk.
+
+As before, the Transform Files command (Alt+Equals) applies a saved set of search and replace tasks to one or more files.  A new intervening dialog lets you test what changes would occur without actually performing them.  In either case, you can subsequently use the Review Output command (Alt+Shift+F5) to examine the change log.  A log may similarly be reviewed after the Text Convert or Text Combine command (Control+T or Control+Shift+T).
+
+Added the Special Character command (F2), which prompts for a character to insert based on its numeric value in the Unicode character set.  The number should have four hex digits (base 16).  This command is useful for inputting a character that does not have a corresponding keystroke.  You can specify a decimal (base 10) number instead by preceding it with the letter d.  For example, the ellipses symbol ( a single character for ...) may be specified either in hex as 2026 or in decimal as d8230.
+----------
+
+Version 2.6
+Released February 18, 2008
+
+Fixed various visual aspects of menus, dialogs, and the status bar.  Fixed the Context Menu, Shift+F10, producing an error if no "verbs" were found in the Windows registry for the extension of the current document.  
+
+When LaTexProcessing is off (Shift+F12), fixed Alt+Control+PageUp and Alt+Control+PageDown being used for matrix commands rather than changing speech rate with the JAWS screen reader.  Used a more reliable method of detecting whether the Window-Eyes screen reader is running.
+
+Enhanced list-based dialogs with filter and order commands.  Control+F sets a filter to restrict what items are shown via wildcards (* to match any sequence of characters or ? to match a single one).  For example, you could browse replace-related commands in the Alternate Menu, Alt+F10, by pressing Control+F after invoking that list and then entering *replace* as the filter expression.  Control+Shift+F clears the filter so all items are shown again.  The order of items may also be changed:  Alt+A for alpha order, Alt+Shift+A for reverse alpha order, Alt+D for default order, or Alt+Shift+D for reverse default order.
+
+As before, Control+Shift+G goes to another, more interactive environment.  The default setting has been changed from the Boo interpreter to Interactive JScript, which is also separately available at
+http://www.EmpowermentZone.com/ijs.zip
+This environment is particularly useful for learning the library of the .NET Framework and testing expressions that may be incorporated in programming code, including EdSharp snippets.  It may also be used as a simple, speech-friendly calculator, since most algebraic, trigonometric, or date calculations may be done in JScript.
+If you upgrade from a previous version of EdSharp, you can press Alt+Shift+0 to reset configuration options to the latest default values.
+
+EdSharp windows may now be visually organized according to common MDI (multiple document interface) patterns.  The Window menu includes the following commands:  Arrange Icons (Alt+F11), Cascade (Control+F11), Tile Horizontal (Alt+Shift+F11), and Tile Vertical (Control+Shift+F11).
+
+Use the new Environment Variables command, Control+E, to review or change such settings of Windows.  Choose those of the current process, user, or system as a whole.  Jump quickly to a particular variable based on its initial letter, e.g., Alt+P for the PATH setting that determines where Windows searches for an executable file that is not found in the current directory.  Changes to process settings affect the current session of EdSharp, but not the next time it is run.  User settings take effect when you log in again.  System settings take affect when you restart the computer.
+----------
+
+Version 2.7
+Released June 27, 2008
+
+EdSharp increases support for Window-Eyes 7.0, which is now available as a public beta at
+http://GWMicro.com
+
+The installer option for JAWS scripts is now unchecked by default.  To check it, down arrow and press Spacebar.  There is a new option to install a Window-Eyes script package, which is also unchecked by default.  The optional scripts and set files to fine tune Window-Eyes speech are in an early stage, so I invite feedback and suggestions to improve them.
+
+When EdSharp is already open, and you open a file with it from another program, EdSharp should now reliably become the active application window.
+
+Added Support for developing Window-Eyes scripts.  VBScript, the most common language used for this, is now included on the list of the Pick Compiler command (Control+Shift+F5).  The Compile command (Control+F5) passes the .vbs file to the Windows Script Host interpreter, CScript.exe.  The script can also be hosted internally by Window-Eyes.
+
+Two optional parameters have been added to the EdSharp command line.  After the file name is a line number and then a column number.  These indicate the position where EdSharp should go after opening the file.  This may be used to cause EdSharp to automatically go to the source code position of an error if a Window-Eyes script produces one at runtime.
+
+The ExtensionDefault and GoToEnvironment configuration options of EdSharp are now part of each compiler/interpreter setting, so if you pick a compiler with Control+Shift+F5, these options are automatically adjusted.  For the new settings to take effect, however, create a new default configuration file with Alt+Shift+0.
+
+Fixed EdSharp not opening some Unicode text files.  Fixed a couple bugs in the HTML format command (Control+H).  Fixed a problem with the PyBrace command (Alt+Shift+LeftBracket).  Fixed not being able to open a log file that was continually being updated on disk.
+----------
+
+Version 2.8
+Released October 20, 2008
+
+Improved the optional script package to fine tune speech when using Window-Eyes.  Fixed the installer for the JAWS scripts so that it works with version 10.
+
+Strengthened the error reporting system so that an unexpected event now results in a dialog with options to email the report, copy it to the clipboard, or exit EdSharp.  To continue work without further action, press Escape to cancel the dialog.
+
+Fixed snippets you save with the Default, no compiler not showing in the list of snippets available with other compilers.  Picking a compiler or interpreter with Control+Shift+F5 now sets its default file extension as the first file type in an open or save file dialog.
+
+The new Append From Clipboard command, Alt+F7 (associate append with the ampersand character), is like the paste board feature of the NoteTab editor.  When this mode is toggled on for a document, each snippet of text copied to the Windows clipboard from any application will also be pasted into the document, which will then automatically be saved to disk.  Snippets are separated by a page break and line break sequence, which makes it possible to navigate among them with the Control+PageDown and Control+PageUp commands.  Thus the feature may be used to conveniently collect and save information from applications that do not have a built-in appending mechanism.  Toggle off the mode when done.
+
+Some enhancements help to manage indentation of programming code.  As before, press Alt+I to hear the number of indentation levels for the current line.  In indent mode, EdSharp instead says the line that begins the current block (e.g., an If statement).
+
+As before, when Indent Mode is off, you can insert a new line of text with the same indentation as the current one by pressing Shift+Enter.
+Alt+Shift+Enter is a new command that inserts such a line before the
+current one rather than after.  The new Align command, Alt+Shift+A, adjusts indentation of the current or selected lines so as to begin at the same level as the line above.
+
+The default indentation unit is now a single tab character rather then two spaces.  Cursor navigation on a line is more efficient with a tab character as the indent unit rather than multiple spaces.  If spaces are preferred, however (e.g., 2 for Ruby or 4 for Python and Perl conventions), this may be changed with the Configuration Options command,
+Alt+Shift+C (or use Alt+Shift+M to manually edit settings in the
+EdSharp.ini file).  Since the .ini format does not recognize a value consisting only of spaces, use octal notation, e.g., for two spaces, IndentUnit=\40\40
+
+New commands provide convenient options for changing the current directory/default folder of EdSharp.  The Go to Folder command, Control+0, lets you change the default folder used in the next open file dialog you invoke.  You pick from a list of folders found as locations of files in either the recent or favorite set (Alt+R or Alt+L).  The Go to Special folder command, Control+Shift+0, lets you pick a special folder, e.g., My Documents, as the default.  Remember that opening or saving a file in almost any way also has the effect of changing the default folder to the one containing that file (the Save Copy command, Alt+Shift+S, is an exception that does not affect the default folder afterward).
+
+I thank Jaffer,
+jaffar@ecstatico.net
+for contributing C++ and PHP snippets, and helping to configure EdSharp support for programming in C++ with the MinGW compiler, available at
+http://MinGW.org
+
+To fine tune its build options, edit the batch file MinGW.bat in the Convert subfolder of the EdSharp program folder -- by default located at
+C:\Program Files\EdSharp\Convert\MinGW.bat
+
+The configuration for the PowerBASIC for Windows compiler has been updated to assume the 9.0 version.  It calls the batch file located by default at
+C:\Program Files\EdSharp\Convert\pbw.bat
+----------
+
+Version 2.9
+December 24, 2008
+
+Fixed the Alternate Menu command (Alt+F10).  Fixed the Append from Clipboard command (Alt+7) saving duplicate copies of text.
+
+Modified how indentation levels are spoken, e.g., with the Query Indent command (Alt+I).  Instead of saying "0 levels," "1 level," "2 levels," etc., EdSharp now says "Level 0," "Level 1," "Level 2," etc.  It then reads the line above with different indentation, which is typically a statement that introduced the current code block.  
+
+Added a configuration option that determines the state of indent mode when a new document window is opened.  This mode may be toggled on a per-window basis (Alt+Shift+I).  This setting determines whether it is initially on or off when a file is opened.  The default is off, and may be changed via the Configuration Options dialog (Alt+Shift+C).
+
+Another approach to hearing indentation levels is a JAWS sound scheme contributed by Jim Homme.  You can install it by pressing JAWSKey+F2 and choosing Settings Packager.  In that program, press Control+O and enter Sounds4Stuff.zip.  Then press Alt+I to import the settings.  
+
+The JAWS scripts for EdSharp now include several hotkeys for refining speech.  Press either JAWSKey+I or Windows+` (depending on which is easier) to toggle announcement of indentation changes.  Other combinations also use the grave accent key, found at the top left of the main part of a U.S. keyboard.  JAWSKey+` toggles between all and no punctuation.  Control+` increases the speech rate by five percent, and Control+Shift+` decreases it.  Alt+` increases the volume by five percent, and Alt+Shift+` decreases it.
+
+Considerably improved Unicode support, including display of international characters.  Added the Yield Encoding command (Alt+Shift+Y) to convert all or selected text according to a particular character encoding.  If text from a file or the clipboard appears to be rendered improperly in EdSharp, you can tell it to base its interpretation on a different encoding:  ASCII, Latin 1, UTF-7, UTF-8, UTF-16, UTF-32, or another encoding that you specify by its HTML name or code page number.  You can also choose a conversion where the Unicode number of each character is put on a separate line.  This may be used to identify non-printing characters in the document.  The command replaces all or selected text, so put a copy in a new document window if you want to retain the original.
+----------
+
+Version 3.0
+March 3, 2009
+
+When saving text to a file, EdSharp now checks whether any character has a Unicode number greater than 255, which means that more than one byte is needed to represent it.  If so, the file is saved with a UTF-8 encoding, the most common form of Unicode for storing files on disk.  Otherwise, the default encoding of the computer is used, e.g., Latin 1.
+
+Several enhancements are designed to increase the efficiency of managing indentation with a screen reader.  The need is motivated by coding in the Python language.  Although a friendly language in other ways, its "significant white space requirement" is inherently challenging to nonvisual users.  Indentation is a recommended style in most programming languages, but in Python, it is required for the code to run.  Other languages, moreover, often have utilities for automatically reformatting code according to common conventions.  In Python, a change in indentation denotes the end of a code block rather than a keyword like EndIf, or a } symbol.  Thus, when reading normally by line with a screen reader, the structure of code is not indicated.  Instead, one often has to check the indentation to clarify logical understanding.
+
+The EdSharp commands to find a matching right brace, left brace, or to check brace balance have been reassigned from key combinations with the B key to ones with bracket keys:  Control+Shift+RightBracket, Control+Shift+LeftBracket, and Alt+Shift+RightBracket, respectively.  To eliminate key conflicts, the EdSharp installer includes a checkbox to remove previous settings, which is checked by default.
+
+You can now press Control+B to go to the next code block, or Control+Shift+B to go to the previous one.  A block is defined as lines with the same or greater indentation/nesting.  Control+I and Control+Shift+I have a similar purpose, but they move to the next or previous change in indentation, so they stop at nested blocks.  EdSharp skips blank or commented lines with these commands.  
+
+Thus, Control+I will stop at a nested block, whereas Control+B will not, since it continues past lines with greater indentation.  For example, if the cursor is inside a loop block, then Control+I will go to the line at the closing of the loop where a lower level of indentation resumes.  In Ruby, this would be the line with the word "end".  In Python, it would be the first line of code following the loop, since the change in indentation, itself, indicates the end of the loop.  
+
+The related query commands, Alt+B and Alt+I, help you understand code groupings without moving the cursor.  They are examples of a new EdSharp feature where a key can have an alternate action if pressed twice in a row without moving the cursor.  Alt+B says the rest of the current block, beginning at the current line.  When toggled with a second press, it says the whole block, including lines prior to the current one, if any.  Alt+I says the indentation level of the current line.  When toggled, it reads the text of the preceding line with less indentation, which is typically the statement that introduced the current block, e.g., an if, for, or while statement.  These commands are best learned by experimenting with familiar code.
+
+Use the Infer Indent command, Alt+RightBracket, to hear what indent unit the current document seems to be using.  EdSharp looks at the first line that starts with a space or tab character.  If this key is pressed again without moving the cursor, that sequence of space or tab characters is configured as EdSharp's IndentUnit setting.  This makes it easy to use the same indentation style as a file you have opened.
+
+Other keys with alternate actions spell a message when pressed a second time.  These include Say Open Windows (Shift+F4), Selected Text (Shift+Space), Chunk (Shift+Backspace), Path (Alt+P), and Clipboard (Alt+Apostrophe).
+----------
+
+Version 3.1
+March 29, 2009
+
+I am pleased to associate my open source projects with the "Raising the Floor" initiative, located on the web at
+http://RaisingTheFloor.net
+
+This is the broadest community initiative I know on technology access regardless of disability or economic position.  participation is a way of enabling human potential at an international level.
+
+The spirit is hopefully expressed in the latest improvements to EdSharp and FileDir, which make significant improvements in international support among other areas.
+
+Recent changes were made for compatibility with 64-bit Windows.  An exception, however, is that the JAWS scripts to refine speech should be manually installed on 64-bit Windows at present, rather than by marking the checkbox at the end of installation.  To do this, choose the Explore Settings option from the JAWS program group of the Windows Start Menu to find the user script folder, and then unarchive the file called ed_scr.zip or dir_scr.zip from the appropriate program folder, e.g.,  
+C:\Program Files\EdSharp\ed_scr.zip
+
+Additional help options increase the ways of learning EdSharp and FileDir features through both study and discovery.  Control+F1 is a new command that toggles a Key Describer mode in which pressing a key describes its action.  If you switch to another application window, the mode is also turned off automatically.  The Alternate Menu command, Alt+F10, now includes a description of each command, as well as its name and hotkey.  As before, you can filter what items are shown in the listbox, e.g., press Control+F, type the *copy* string, and press Enter to show only commands related to a copy operation.  Press Control+Shift+F to clear the filter, showing all commands again.
+In general, the wording of command names in these applications has been made more consistent, thereby aiding memorization.  As before, complete documentation is available in your default web browser with F1, and a summary of hot keys is available with Alt+Shift+H.
+
+Jamal
+----------
+
+EdSharp Version 3.1
+March 29, 2009
+
+I am pleased to associate my open source projects with the "Raising the Floor" initiative, located on the web at
+http://RaisingTheFloor.net
+
+This is the broadest community initiative I know on technology access regardless of disability or economic position.  participation is a way of enabling human potential at an international level.
+
+The spirit is hopefully expressed in the latest improvements to EdSharp and FileDir, which make significant improvements in international support, help options, and 64-bit compatibility, among other areas.
+
+Additional help options increase ways of learning these applications through both study and discovery.  Control+F1 is a new command that toggles a key describer mode in which pressing a key describes its action.  Switching to another application window also turns off the mode automatically.  
+
+In general, the wording of command names in EdSharp and FileDir has been made more consistent, thereby aiding memorization.  As before, complete documentation is available in your default web browser with F1, and a summary of hot keys is available with Alt+Shift+H.  The Alternate Menu command, Alt+F10, now shows descriptions of commands as well as their names and hotkeys.  As before, you can filter what commands are shownin the listbox, e.g., press Control+F for filter, type the *copy* string, and press Enter to show only commands related to a copy operation.  Press Control+Shift+F to clear the filter, showing all commands again.
+
+Recent changes were made for compatibility with 64-bit Windows.  The JAWS scripts to refine speech, however, should be manually installed at present, rather than by marking the checkbox at the end of installation.  Choose the Explore Settings option from the JAWS program group of the Windows Start Menu to find the user script folder, and then unarchive the file called ed_scr.zip or dir_scr.zip from the appropriate program folder, e.g., 
+C:\Program Files\EdSharp\ed_scr.zip
+
+Bugs have been fixed in the following EdSharp commands:  Right Brace (Control+Shift+]), Next Part (Alt+PageDown), Prior Part (Alt+PageUp), and Yield Encoding (Alt+Shift+Y).
+
+Press Alt+Shift+F7 for a new EdSharp command that translates all or selected text from one natural language to another via the Google API.  You pick the source and target languages.  Google limits the text to about 500 characters per translation.
+
+EdSharp can now convert English braille files with .brl or .brf extensions to plain text, e.g., files from BookShare or NLS.  This is done by calling the NFBTrans utility in the background, a free braille translater and back translater published by the National Federation of the Blind and available on its web site
+http://nfb.org
+
+The conversion of compiled HTML format, .chm files, is also significantly improved by incorporating a new version of the CHM2TXT utility, which is also available separately at
+http://EmpowermentZone.com/chm2txt.zip
+
+CHM format is widely used for software documentation, and may often be found by exploring the folder and subfolders where an application is installed, generally
+C:\Program Files\ApplicationName
+
+Press Control+Shift+O, specify the path to a .chm file, and obtain a result in structured text format, placed in a new document window.
+
+Several commands that perform comparisons now can be configured to examine text items other than lines.  Accordingly, the commands have been renamed to include the word Items instead of lines:  List Different Items (Alt+Shift+L), Keep Unique Items (Alt+Shift+K), Order Items (Alt+Shift+O), Number Items (Alt+Shift+N), Query Common Items (Alt+Shift+Q), and Reverse Items (Alt+Shift+Z).  The default delimiter between items is the \n character, indicating a line break (ASCII 10).  This may be changed to any string.  For example, to compare sections of a structured text file instead, press Control+Shift+C for Configuration Options, and Alt+S for the SectionBreak setting.  Since the text is initially selected, press Control+C to copy it to the clipboard.  Then press Alt+L for LimitItem, Control+V to paste, and Enter to save settings.  To try the new setting, choose History of Changes from the Help menu (Shift+F1), which opens a structured text file describing changes in EdSharp over time.  By default, the sections are in chronological order, so the most recent changes appear last.  You can reverse the order by pressing Alt+Shift+Z.
+
+As before, output from the Say Time (Alt+Semicolon) and Insert Time (Alt+Shift+Semicolon) commands can be adjusted  with the DateFormat and TimeFormat configuration settings, which follow template conventions of the .NET Framework.  The value of 0 is now also defined as a way of telling EdSharp not to use that component in its output.  This lets you use just the date or time if you want.
+
+As before, the NavigatePart setting is a regular expression for moving among routines in source code.  It is used by Alt+PageDown and Alt+PageUp to go to the next or previous function, method, or class definition, based on the current compiler in use.  A new command, Go to Part (Alt+Shift+G), presents these locations in a list, giving you an overview of the code structure and a way to pick a location.
+----------
+
+EdSharp Version 3.2
+April 8, 2009
+
+The free, open source screen reader called Nonvisual Desktop Access, NVDA, is now supported with direct speech messages, just like JAWS, System Access, and Window-Eyes.  NVDA is available either as an installer or portable version from
+http://nvda-project.org
+
+The Export command, Alt+E, now includes PDF as a target format.  The Web Download command, Alt+Shift+W, now prompts whether to get URLs from a web page or the current document.
+
+A new configuration option, HardPageAddress, determines whether the Address command, Alt+A, gives a page number instead of document percentage (default is No).  A form feed character specifies a hard page break.  It is part of the sequence inserted by the Section Break command, Control+Enter, which is configurable via the SectionBreak option of the configuration dialog.  Use the Control+PageDown and Control+PageUp commands to navigate by page.  Pressing Alt+A a second time in a row gives the alternate type of address information, so you can still get a page number without changing the HardPageAddress setting.
+
+Web Client Utilities, Alt+Shift+Space, is a new command for tasks that conveniently retrieve information from web sources.  The collection of 35 utilities is described in a dedicated section of documentation.
+
+When navigating the menu system, a tooltip about the current menu item is now displayed on the status line.  This is the same summary information that appears in each list item of the Alternate Menu command, Alt+F10.
+
+The new Burn to CD command, Alt+Shift+B, operates on a path list in the current document.  Each file or folder path should be placed on a separate line.  If a parent folder is not specified, the last one in the list is used.  The default parent folder is the current directory.  For example, the following list specifies the EdSharp program folder and two test files from the temp folder:
+
+C:\Program Files\EdSharp
+C:\temp\test.txt
+test.doc
+
+You can create a path list manually, or use the Path List command, Control+Shift+P, to generate one for you.  The paths found are burned to the default CD drive.  The CD may be blank or include content already.  The new content is added to it.  The CD must be writable.  At this time, DVDs do not work,  only CDs.
+
+The installer for optional JAWS scripts is now compatible with 64-bit versions of Windows.
+----------
+
+EdSharp Version 3.3
+January 25, 2011
+
+Added the Format Code command, Control+4, to format source code of C-like languages based on file  extension.  This incorporates the free Artistic Style utility, which is also available separately at
+http://astyle.sourceforge.net
+
+Added an unofficial encoding, UTF-8N, meaning UTF-8 encoding without a Byte Order Mark (BOM).  If this code is used  in the YieldEncoding configuration setting (Alt+Shift+C for Configuration Options), that default encoding will be  assumed.  This maximizes compatibility of files uploaded to Linux-based web servers  -- Windows programs typically  add a BOM, but it is often not recognized by cross-platform programs with Linux origin.
+
+Additional encoding support is made possible by incorporating the Encoding.exe utility, distributed in the  WebClient subdirectory of the EdSharp program directory.  This utility is also available separately at
+http://EmpowermentZone.com/Encoding.zip
+
+A file saved on the Recent Files list (Alt+R) now includes the last cursor position when the file window was closed  (Control+F4 or Alt+F4).  This position is automatically restored the next time the file is opened -- unless an  explicit bookmark was set (Control+K), which takes precedence as the initial location in the file.
+
+Added many more import (Control+Shift+O) and output (Alt+Shift+E) format options, supporting conversions among HTML  (.htm), LaTeX (.tex), Markdown (.md), rich text format (.rtf), and txt2tags (.tt) formats.  These conversions are  made possible by incorporating free utilities called Pandoc
+http://johnmacfarlane.net/pandoc/
+
+and txt2tags
+http://txt2tags.org
+
+In addition, Microsoft Office 2007 formats such as .docx, .pptx, and .xlsx may be imported.  This support requires the installation of a Microsoft "filter pack," described on the web page
+http://www.microsoft.com/downloads/en/details.aspx?familyid=60c92a37-719c-4077-b5c6-cac34f4227cc&displaylang=en&tm
+
+The direct download link for 32-bit Windows is
+http://download.microsoft.com/download/b/e/6/be61cfa4-b59e-4f26-a641-5dbf906dee24/filterpackx86.exe
+
+and the one for 64-bit Windows is
+http://download.microsoft.com/download/b/e/6/be61cfa4-b59e-4f26-a641-5dbf906dee24/filterpackx64.exe
+
+An option at the end of the EdSharp installer lets you install this by simply marking a checkbox.
+
+Sped up time for subsequent invocations of EdSharp after the  initial one.  Improved the optional JAWS scripts for EdSharp so that titles of top-level windows are more reliably  read.
+
+----------
+End of Document
+
+

@@ -1,0 +1,96 @@
+\documentclass[11pt]{report}
+
+\newif\iflatextortf  %all \newif constructs ignored; defaults to False
+% manually set flag -- not required
+\latextortffalse  %ignored by latex2rtf
+%\latextortftrue  %also ignored by latex2rtf
+
+\usepackage[pdftex]{graphicx}
+
+\iflatextortf
+\else
+  \usepackage{dcolumn}
+  \newcolumntype{d}[1]{D{.}{.}{#1}}
+  \usepackage{sidecap}
+\fi
+
+\begin{document}
+
+\section{If-else}
+
+\iflatextortf
+  This is the true clause!  There should be no false clause.
+\else
+  This is the false clause!  Something is wrong if this appears in the RTF translation.
+  This should appear in the \LaTeX{} version.
+\fi
+
+\section{If only}
+
+\iflatextortf
+  This is the true clause, with no else clause. It should not appear in the \LaTeX{} version.
+\fi
+
+\section{Blank if, non-blank else}
+
+\iflatextortf
+	%blank
+\else
+  This is the false clause!
+  This should appear in the \LaTeX{} version.
+\fi
+
+%
+% The remainder of these tests do not work with latex2trf r614
+%
+
+%\section{Nesting in the table environment}
+
+%Table~\ref{tab:one} should have aligned numbers in \LaTeX{} and normal columns in RTF (not possible in RTF).
+
+%\begin{table}[h]
+%\begin{center}
+%\caption{Random population densities of some countries}
+%\iflatextortf
+%  \begin{tabular}{lccc} % standard column definitions
+%\else
+%  \begin{tabular}{ld{2}d{2}d{2}} % dcolumn column definitions
+%\fi
+%\hline
+%Name & \multicolumn{1}{c}{Population} & \multicolumn{1}{c}{Area} & \multicolumn{1}{c}{Density} \\
+%\hline
+%Canada           &  32,268,240 & 9,970,610    &      3.2   \\
+%Denmark          &   5,430,590 &    43,094    &    126     \\
+%Germany          &  82,689,210 &   357,022    &    232     \\
+%Greenland        &      56,916 & 2,175,600    &      0.026 \\
+%Pitcairn Islands &          67 &         5    &     13.4   \\
+%Monaco           &      35,253 &         1.49 & 23,660     \\
+%United States    & 298,212,900 & 9,629,091    &     31     \\
+%Vatican City     &         821 &         0.44 &  1,866     \\
+%\hline
+%\multicolumn{4}{r}{\footnotesize{Source: \textit{Wikipedia: List of countries by population density}}}
+%\end{tabular}
+%\label{tab:one}
+%\end{center}
+%\end{table}
+
+%\section{Using the SCfigure environment}
+
+%Figure~\ref{fig:one} should have a caption on the right in \LaTeX{} normal caption in RTF.
+
+%\iflatextortf
+%  \begin{figure}
+%\else
+%  \begin{SCfigure}
+%\fi
+%\includegraphics[height=18cm,width=5cm]{fig_tex}
+%\caption{A stretched figure which goes from the bottom of the page, to top.}
+%\label{fig:one}
+%\iflatextortf
+%  \end{figure}
+%\else
+%  \end{SCfigure}
+%\fi
+
+\end{document}
+

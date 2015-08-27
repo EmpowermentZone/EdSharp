@@ -1,0 +1,203 @@
+# RTF ANSI character set (\ansi) Symbol font map
+
+# Field 1 is the standard character name which the character value in
+# field 2 maps onto.  (It doesn't mean "to produce the character in field 1,
+# use the value in field 2.)
+
+# The character value may be given either as a single character (which will be
+# converted to the ASCII value of the character), or in numeric format, either
+# in decimal or 0xyy as hex yy.  Single or double quotes may be used to quote
+# characters.
+
+# characters in ASCII range (00-127)
+
+formula		0x06
+nobrkhyphen	0x1e
+opthyphen	0x1f
+
+space		" "
+exclam		!
+forall	'"'
+mathnumbersign	#
+existential	$
+percent		%
+ampersand	&
+suchthat	"'"
+parenleft	(
+parenright	)
+mathasterisk	*
+mathplus	+
+comma		,
+mathminus	-
+period		.
+slash		/
+zero		0
+one		1
+two		2
+three		3
+four		4
+five		5
+six		6
+seven		7
+eight		8
+nine		9
+colon		:
+semicolon	;
+less		<
+mathequal	=
+greater		>
+question	?
+congruent	@
+Alpha		A
+Beta		B
+Chi		C
+Delta		D
+Epsilon		E
+Phi		F
+Gamma		G
+Eta		H
+Iota		I
+vartheta	J
+Kappa		K
+Lambda		L
+Mu		M
+Nu		N
+Omicron		O
+Pi		P
+Theta		Q
+Rho		R
+Sigma		S
+Tau		T
+Y		U
+varsigma	V
+Omega		W
+Xi		X
+Psi		Y
+Zeta		Z
+bracketleft	[
+therefore	\
+bracketright	]
+perpendicular	^
+underscore	_
+macron	"`"
+alpha		a
+beta		b
+chi		c
+delta		d
+epsilon		e
+phi		f
+gamma		g
+eta		h
+iota		i
+varphi		j
+kappa		k
+lambda		l
+mu		m
+nu		n
+omicron		o
+pi		p
+theta		q
+rho		r
+sigma		s
+tau		t
+upsilon		u
+varpi		v
+omega		w
+xi		x
+psi		y
+zeta		z
+braceleft	{
+bar		|
+braceright	}
+mathtilde	~
+
+# non-ASCII characters (128-255)
+
+bullet		0xb7
+ellipsis	0xbc
+
+#stuff added by Ujwal Sathyam for rtf2latex2e
+forall			0x22
+circlemultiply	0x80
+arrowdblleft	0x86
+langle			0x87
+lfloor			0x91
+midbar			0x9c
+rceil			0x9d
+Upsilon			0xa1
+minute			0xa2
+lessequal		0xa3
+diagup			0xa4
+infinity		0xa5
+florin			0xa6
+club			0xa7
+diamond			0xa8
+heart			0xa9
+spade			0xaa
+arrowboth		0xab
+arrowleft		0xac
+arrowup			0xad
+arrowright		0xae
+arrowdown		0xaf
+degree			0xb0
+plusminus		0xb1
+second			0xb2
+greaterequal	0xb3
+multiply		0xb4
+proportional	0xb5
+partialdiff		0xb6
+bullet			0xb7
+divide			0xb8
+notequal		0xb9
+equivalence		0xba
+approxequal		0xbb
+ellipsis		0xbc
+arrowhorizex	0xbe
+carriagereturn	0xbf
+aleph			0xc0
+Ifraktur		0xc1
+Rfraktur		0xc2
+weierstrass		0xc3
+circlemultiply	0xc4
+circleplus		0xc5
+emptyset		0xc6
+intersection	0xc7
+union			0xc8
+propersuperset	0xc9
+supseteq		0xca
+notsubset		0xcb
+propersubset	0xcc
+subseteq		0xcd
+element			0xce
+notelement		0xcf
+angle			0xd0
+gradient		0xd1
+registered		0xd2
+copyright		0xd3
+trademark		0xd4
+product			0xd5
+radical			0xd6
+periodcentered	0xd7
+logicalnot		0xd8
+logicaland		0xd9
+logicalor		0xda
+arrowdblboth	0xdb
+arrowdblleft	0xdc
+arrowdblup		0xdd
+arrowdblright	0xde
+arrowdbldown	0xdf
+lozenge			0xe0
+langle			0xe1
+registered		0xe2
+copyright		0xe3
+trademark		0xe4
+sum				0xe5
+ccedilla		0xe7		# really??? I saw this in a Word document!!
+lceil			0xe9
+lfloor			0xeb
+rangle			0xf1
+integral		0xf2
+ocircumflex		0xf4		# really??? I saw this in a Word document!!
+rceil			0xf9
+rfloor			0xfb
+yacute			0xfd		# really??? I saw this in a Word document!!

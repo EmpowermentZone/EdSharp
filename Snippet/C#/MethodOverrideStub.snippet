@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Method Override Stub</Title>
+            <Description>Snippet for overriding a method</Description>
+            <Author>Microsoft Corporation</Author>
+            <SnippetTypes>
+                <SnippetType>Refactoring</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal Editable="true">
+                    <ID>signature</ID>
+                    <Default>signature</Default>
+                </Literal>
+                <Literal>
+                    <ID>CallBase</ID>
+                    <Function>CallBase(method)</Function>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[$signature$
+{
+ 	$end$ $CallBase$
+}]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

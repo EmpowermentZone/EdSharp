@@ -1,0 +1,42 @@
+\documentclass[11pt]{article}  % required first line, though can vary;
+                               % this says we will use 11-point font,
+                               % in the "article" format
+
+% material beginning with the percent sign is commentary, for human
+% information purposes, not processed by the LaTeX system
+
+% these \setlength lines concern page layout, amount of paragraph
+% indentation etc.; beginners should ignore them (but include them)
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\topmargin}{-0.25in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.25in}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{2mm}
+
+\begin{document}  % required; doc starts here
+
+The famous Pythagoren Theorm concerns right triangles.  If the legs of
+the triangle have lengths x and y, and the length of the hypotenus is z,
+% the $ delimiter marks the start and end of a mathematical expression
+then $z = \sqrt{x^2+y^2}$.
+
+% a blank line means a new paragraph
+
+There are many proofs of this result.
+
+\end{document}  % required; doc ends here
+
+These lines are "comments" too, since they are past the end of the
+document and thus will be ignored by LaTeX:
+
+Suppose the name of this file is u.tex.  Then process it by typing
+
+pdflatex u.tex
+
+into a command window.  This produces the file u.pdf.  View it using
+Acroread, xpdf or any other PDF viewer.
+

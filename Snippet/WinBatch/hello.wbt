@@ -1,0 +1,6 @@
+; WinBatch
+
+oST = ObjectCreate("Say.Tools")
+sText = "Hello world"
+oST.Say(sText)
+ObjectClose(oST)

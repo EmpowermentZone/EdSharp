@@ -1,0 +1,15 @@
+# Preamble file for rtf2latex2e
+
+# This file is read once for every input RTF file.
+# Here, you can specify any optional packages to loaded into
+# the output LaTeX file.
+# Only the first string on each line is read.
+# Comment lines have to be preceded with '#'.
+# Blank lines are allowed.
+
+# Here are some examples (uncomment to use):
+
+# \usepackage[italian]{babel} (loading italian package)
+# \usepackage{fullpage} (some people like to make full use of the page)
+# \usepackage{times}
+#\usepackage[T1]{fontenc}

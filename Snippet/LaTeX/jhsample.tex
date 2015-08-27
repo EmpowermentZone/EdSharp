@@ -1,0 +1,118 @@
+\documentclass{article}
+
+  \usepackage{url}
+  \Configure{ProTex}{java,<<<>>>,title,`,list,[[]]}
+
+  \usepackage{makeidx}
+  \makeindex
+
+\begin{document}
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Compilation Instructions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+\item
+Compile this \LaTeX{} file with the
+\index{jhlatex}%
+`{\tt jhlatex
+jobname "html,3"}'
+command.
+\item
+\index{JavaHelp URL}%
+The URL into the javahelp file, as provided by tex4ht, is
+`{\tt jobname-doc/jobname-jh.xml}'.
+\item
+The java programs should be compiled with commands  similar to
+\index{javac}%
+`{\tt javac -classpath
+  \$\string{HOME\string}/jh2.0/javahelp/lib/jh.jar program.java}'.
+\item
+The programs should run with commands similar to
+\index{java}%
+`{\tt java -classpath
+  \$\string{HOME\string}/jh2.0/javahelp/lib/jh.jar:. program}'.
+\end{itemize}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Sample Program}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\<jhprog\><<<
+import java.net.URL;
+import javax.help.*;
+import javax.swing.*;
+public class jhprog {
+   public static void main(String args[]) {
+      JHelp helpViewer=null;
+      try {
+         ClassLoader cl = jhprog.class.getClassLoader();
+         URL url = HelpSet.findHelpSet(cl,
+                              "`jobname-doc/`jobname.hs");
+         helpViewer = new JHelp(new HelpSet(cl, url));
+      } catch (Exception e) { System.out.println("error");
+      }
+      JFrame frame = new JFrame();
+      frame.setSize(500,500);
+      frame.getContentPane().add(helpViewer);
+      frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+      frame.setVisible(true);
+   }
+}
+>>>
+
+\OutputCode\<jhprog\>
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Sample Script}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+A source file \edef\temp{\noexpand\url{jhsample.tex}}\temp{} of this
+document  may be compiled for JavHelp 2.0 with the following script.
+
+\Verbatim
+jhlatex jhsample
+tex "\def\filename{{$1}{idx}{4dx}{ind}} \input  idxmake.4ht"
+makeindex -o jhsample.ind jhsample.4dx
+jhlatex jhsample
+\EndVerbatim
+
+The compilation produces the following files.
+
+\begin{verbatim}
+jhprog.class
+jhsample-doc/
+jhsample-doc/jhsample.html
+jhsample-doc/jhsample.jhm
+jhsample-doc/jhsample-jhi.xml
+jhsample-doc/jhsample.hs
+jhsample-doc/jhsample-jht.xml
+jhsample-doc/jhprog.java
+\end{verbatim}
+
+
+The following instruction can be used for compiling the program.
+
+\Verbatim
+javac -classpath ${HOME}/jh2.0/javahelp/lib/jh.jar jhprog.java
+\EndVerbatim
+
+
+The outcome could be viewed through the following command.
+
+\Verbatim
+java -cp ${\home}/jh2.0/javahelp/lib/jh.jar:. jhprog
+\EndVerbatim
+
+
+\printindex
+
+\end{document}
+

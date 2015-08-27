@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>
+      <!-- _locID_text="schema" _locComment="" -->Schema</Title>
+    <Author>Microsoft Corporation</Author>
+    <Shortcut>schema</Shortcut>
+    <Description>
+      <!-- _locID_text="description" _locComment="" -->Expansion snippet for XSD Schema</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+      <SnippetType>SurroundsWith</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>namespace</ID>
+        <ToolTip>
+          <!-- _locID_text="tooltips" _locComment="" -->Schema target namespace.</ToolTip>
+        <Default>http://schemas.mycompany.com/myproduct/version/area</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="XML"><![CDATA[<xs:schema targetNamespace="$namespace$"
+           xmlns="$namespace$"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">$selected$$end$</xs:schema>]]></Code>
+  </Snippet>
+</CodeSnippet>

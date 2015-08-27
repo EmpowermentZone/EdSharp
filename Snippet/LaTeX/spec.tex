@@ -1,0 +1,342 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Contents: Specialities of the LaTeX system
+% $Id: spec.tex,v 1.4 1998/09/29 08:05:09 oetiker Exp oetiker $
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\chapter{Specialities}
+\begin{intro}
+  When putting together a large document, \LaTeX{} will help you
+  with some special features like index generation,
+  bibliography management, and other things.
+  A much more complete description of specialities and
+  enhancements possible with \LaTeX{} can be found in the
+  {\normalfont\manual{}} and {\normalfont \companion}.
+\end{intro}
+
+\section{Including EPS Graphics}
+\LaTeX{} provides the basic facilities to work with floating bodies
+such as images or graphics, with the \texttt{figure} and the
+\texttt{table} environment.
+
+There are also several possibilities to generate the actual
+\wi{graphics} with basic \LaTeX{} or a \LaTeX{} extension package.
+Unfortunately, most users find them quite difficult to understand.
+Therefore this will not be explained any further in this manual.
+Please refer to \companion{} and the \manual{} for more information on
+that subject.
+
+A much easier way to get graphics into a document, is to generate them
+with a specialised software package\footnote{Such as XFig, CorelDraw!,
+  Freehand, Gnuplot, \ldots.} and then include the finished graphics
+into the document. Here again, \LaTeX{} packages offer many ways to do
+that. In this introduction, only the use of \wi{Encapsulated
+  PostScript} (EPS) graphics will be discussed, because it is quite
+easy to do and widely used.  In order to use pictures in the EPS
+format, you must have a \wi{PostScript} printer\footnote{Another
+  possibility to output PostScript is the \textsc{\wi{GhostScript}}
+  program available from
+  \texttt{CTAN:/tex-archive/support/ghostscript}. Windows users might
+  want to look for \textsc{GSview}} available for output.
+
+A good set of commands for inclusion of graphics is provided in the
+\pai{graphicx} package by D.~P.~Carlisle. It is part of a whole family
+of packages called the ``graphics''
+bundle\footnote{\texttt{CTAN:/tex-archive/macros/latex/packages/graphics}}.
+
+Assuming you are working on a system with a
+PostScript printer available for output and with the \textsf{graphicx}
+package installed, you can use the following step by step guide to
+include a picture into your document:
+
+\begin{enumerate}
+\item Export the picture from your graphics program in EPS
+  format.\footnote{If your software can not export into EPS format, you
+    can try to install a PostScript printer driver (some Apple
+    LaserWriter for example) and then print to a file with this
+    driver. With some luck this file will be in EPS format. Note that
+    an EPS must not contain more than one page. Some printer drivers
+    can be explicitly configured to produce EPS format.}
+\item Load the \textsf{graphicx} package in the preamble of the input
+  file with
+\begin{command}
+\verb|\usepackage[|\emph{driver}\verb|]{graphicx}|
+\end{command}
+where \emph{driver} is the name of your ``dvi to postscript'' The most
+widely used program is called \texttt{dvips}. The name of the driver is
+required, because there is no standard on how graphics are included in
+\TeX{}. Knowing the name of the \emph{driver}, the
+\textsf{graphicx} package can choose the correct method to insert
+information about the graphics into the \texttt{.dvi}~file, so that the
+printer understands it and can correctly include the \texttt{.eps} file.
+\item Use the command 
+\begin{command}
+\ci{includegraphics}\verb|[|\emph{key}=\emph{value}, \ldots\verb|]{|\emph{file}\verb|}|
+\end{command}
+to include \emph{file} into your document. The optional parameter
+accepts a comma separated list of \emph{keys} and associated
+\emph{values}. The \emph{keys} can be used to alter the width, height
+and rotation of the included graphic. Table~\ref{keyvals} lists the
+most important keys.
+\end{enumerate}
+
+\begin{table}[htb]
+\caption{Key Names for \textsf{graphicx} Package.}
+\label{keyvals}
+\begin{lined}{9cm}
+\begin{tabular}{@{}ll}
+\texttt{width}& scale graphic to the specified width\\
+\texttt{height}& scale graphic to the specified height\\
+\texttt{angle}& rotate graphic counterclockwise\\
+\texttt{scale}& scale graphic \\
+\end{tabular}
+
+\bigskip
+\end{lined}
+\end{table}
+
+The following example code will hopefully make things clear:
+\begin{code}
+\begin{verbatim}
+\begin{figure}
+\begin{center}
+\includegraphics[angle=90, width=0.5\textwidth]{test}
+\end{center}
+\end{figure}
+\end{verbatim}
+\end{code}
+This includes the graphic stored in the file \texttt{test.eps}. The graphic
+is \emph{first} rotated by an angle of 90 degrees and \emph{then} scaled to the
+final width of 0.5 times the width of a standard paragraph.
+The aspect ratio is $1.0$, because no special height is specified.
+The width and height parameters can also be specified in absolute
+dimensions. Refer to Table~\ref{units} on page~\pageref{units} for more
+information. If you want to know more about this topic, make sure to read
+\cite{graphics} and \cite{eps}. 
+
+\section{Bibliography}
+ 
+You can produce a \wi{bibliography} with the \ei{thebibliography}
+environment.  Each entry starts with
+\begin{command}
+\ci{bibitem}\verb|{|\emph{marker}\verb|}|
+\end{command}
+The \emph{marker} is then used to cite the book, article or paper
+within the document.
+\begin{command}
+\ci{cite}\verb|{|\emph{marker}\verb|}|
+\end{command}
+The numbering of the entries is generated automatically.  The
+parameter after the \verb|\begin{thebibliography}| command sets the maximum
+width of these numbers. In the example below, \verb|{99}| tells
+\LaTeX{} to expect that none of the bibliography item numbers will be
+wider than the number 99.
+
+\begin{example}
+Partl~\cite{pa} has 
+proposed that \ldots
+ 
+\begin{thebibliography}{99}
+\bibitem{pa} H.~Partl: 
+\emph{German \TeX},
+TUGboat Vol.~9, No.~1 ('88)
+\end{thebibliography}
+\end{example}
+\chaptermark{Specialities} % w need to fix the damage done by the
+                           %bibliography example.
+\thispagestyle{fancyplain}
+
+For larger projects, you might want to check out the Bib\TeX{}
+program. Bib\TeX{} is included with most \TeX distributions. It
+allows you to maintain a bibliographic database and then extract the
+references relevant to things you cited in your paper. The visual
+presentation of Bib\TeX{} generated bibliographies is based on a style
+sheets concept which allows you to create bibliographies following
+a wide rage of established designs.
+
+\section{Indexing} \label{sec:indexing}
+A very useful feature of many books is their \wi{index}. With \LaTeX{}
+and the support program \texttt{makeindex}\footnote{On systems not
+  necessarily supporting
+  filenames longer than 8~characters, the program may be called
+  \texttt{makeidx}.}, an index can be generated quite easily.  In this
+introduction, only the basic index generation commands will be explained.
+For a more in-depth view, please refer to \companion.  \index{makeindex
+  program} \index{makeidx package}
+
+To enable the indexing feature of \LaTeX{}, the \pai{makeidx} package
+must be loaded in the preamble with:
+\begin{command}
+\verb|\usepackage{makeidx}|
+\end{command}
+\noindent and the special indexing commands must be enabled by putting 
+the
+\begin{command}
+  \ci{makeindex}
+\end{command}
+\noindent command into the input file preamble.
+
+The content of the index is specified with
+\begin{command}
+  \ci{index}\verb|{|\emph{key}\verb|}|
+\end{command}
+\noindent commands, where \emph{key} is the index entry. You enter the
+index commands at the points in the text where you want the final index
+entries to point to.  Table~\ref{index} explains the syntax of the
+\emph{key} argument with several examples.
+
+\begin{table}[!tp]
+\caption{Index Key Syntax Examples.}
+\label{index}
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+  \textbf{Example} &\textbf{Index Entry} &\textbf{Comment}\\\hline
+  \rule{0pt}{1.05em}\verb|\index{hello}| &hello, 1 &Plain entry\\ 
+\verb|\index{hello!Peter}|   &\hspace*{2ex}Peter, 3 &Subentry under `hello'\\ 
+\verb|\index{Sam@\textsl{Sam}}|     &\textsl{Sam}, 2& Formatted entry\\ 
+\verb|\index{Lin@\textbf{Lin}}|     &\textbf{Lin}, 7& Same as above\\ 
+\verb.\index{Jenny|textbf}.     &Jenny, \textbf{3}& Formatted page number\\
+\verb.\index{Joe|textit}.     &Joe, \textit{5}& Same as above
+\end{tabular}
+\end{center}
+\end{table}
+
+When the input file is processed with \LaTeX{}, each \verb|\index|
+command writes an appropriate index entry together with the current
+page number to a special file. The file has the same name as the
+\LaTeX{} input file, but a different extension (\verb|.idx|). This
+\texttt{.idx} file can then be processed with the \texttt{makeindex}
+program.
+
+\begin{command}
+  \texttt{makeindex} \emph{filename}
+\end{command}
+The \texttt{makeindex} program generates a sorted index with the same base
+file name, but this time with the extension \texttt{.ind}. If now the
+\LaTeX{} input file is processed again, this sorted index gets
+included into the document at the point where \LaTeX{} finds
+\begin{command}
+  \ci{printindex}
+\end{command}
+
+The \pai{showidx} package which comes with \LaTeXe{} prints out all
+index entries in the left margin of the text. This is quite useful for
+proofreading a document and verifying the index.
+   
+% Add some infos on PROTECT ...  
+
+
+\section{Fancy Headers}
+\label{sec:fancy}
+
+The \pai{fancyhdr} package,\footnote{Available from
+  \texttt{CTAN:/macros/latex/contrib/supported/fancyhdr}.} written by
+Piet van Oostrum, provides a few simple commands which allow you to
+customise the header and footer lines of your document.  If you look
+at the top of this page, you can see a possible application of this
+package.
+
+\begin{figure}[!htbp]
+\begin{lined}{\textwidth}
+\begin{verbatim}
+\documentclass{book}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+% with this we ensure that the chapter and section
+% headings are in lowercase.
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}  % delete current setting for header and footer
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{0.5pt} % make space for the rule
+\fancypagestyle{plain}{%
+   \fancyhead{} % get rid of headers on plain pages
+   \renewcommand{\headrulewidth}{0pt} % and the line
+}
+\end{verbatim}
+\end{lined}
+\caption{Example \pai{fancyhdr} Setup.} \label{fancyhdr}
+\end{figure}
+
+The tricky problem when customising headers and footers is to get
+things like running section and chapter names in there. \LaTeX{}
+accomplishes this with a two-stage approach. In the header and footer
+definition, you use the commands \ci{rightmark} and \ci{leftmark} to
+represent the current chapter and section heading, respectively.
+The values of these two commands are overwritten whenever a chapter or
+section command is processed. 
+
+For ultimate flexibility, the \verb|\chapter| command and its friends
+do not redefine \ci{rightmark} and \ci{leftmark} themselves, they call
+yet another command called \ci{chaptermark}, \ci{sectionmark} or
+\ci{subsectionmark} which is responsible for redefining \ci{rightmark}
+and \ci{leftmark}.
+
+So, if you wanted to change the look of the chapter
+name in the header line, you simply have to ``renew'' the \ci{chaptermark}
+command. \cih{sectionmark}\cih{subsectionmark}
+
+ 
+Figure~\ref{fancyhdr} shows a possible setup for the \pai{fancyhdr}
+package which makes the headers look about the same as they look in
+this booklet. In any case I suggest you fetch the documentation for
+the package at the address mentioned in the footnote. 
+
+\section{The Verbatim Package}
+
+Earlier in this book, you got to know the \ei{verbatim}
+\emph{environment}.  In this section, you are going to learn about the
+\pai{verbatim} \emph{package}. The \pai{verbatim} package is basically
+a re-implementation of the \ei{verbatim} environment, which works around
+some of the limitations of the original \ei{verbatim} environment.
+This by itself is not spectacular, but with the implementation of the
+\pai{verbatim} package, there was also new functionality added, and
+this is the reason I am mentioning the package here. The \pai{verbatim}
+package provides the
+
+\begin{command}
+\ci{verbatiminput}\verb|{|\emph{filename}\verb|}|
+\end{command}
+
+\noindent command which allows you to include raw ASCII text into your
+document as if it was inside a \ei{verbatim} environment.
+
+As the \pai{verbatim} package is part of the `tools' bundle, you
+should find it preinstalled on most systems. If you want to know more
+about this package, make sure to read \cite{verbatim} 
+
+
+\section{Protecting fragile commands}
+
+Text given as arguments of commands like \ci{caption} or \ci{section} may
+show up more than once in the document (e.g. in the table of contents as
+well as in the body of the document). Some commands fail when used in the
+argument \ci{section}-like commands. These are called \wi{fragile commands}.
+Fragile commands are for example \ci{footnote} or \ci{phantom}. What these
+fragile commands need to work, is protection (don't we all?). You can
+protect them by putting the \ci{protect} command in front of them.
+
+\ci{protect} only refers to the command which follows right behind, not even
+to its arguments. In most cases a superfluous \ci{protect} won't hurt.
+
+\begin{code}
+\verb|\section{I am considerate\protect\footnote{and protect my footnotes}}|
+\end{code}
+
+
+%%% Local Variables: 
+%%% mode: latex 
+%%% TeX-master: "lshort2e" 
+%%% End:  
+
+
+
+
+
+
+
+
+

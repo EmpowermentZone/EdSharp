@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Add a RoutedCommand CanExecute and Executed Handler</Title>
+			<Author>Microsoft Corporation</Author>
+			<Description>Adds CanExecute and Executed handlers. To function, these handlers must be hooked to a CommandBinding.</Description>
+			<Shortcut>wpfrch</Shortcut>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+      <References>
+        <Reference>
+          <Assembly>WindowsBase</Assembly>
+        </Reference>
+        <Reference>
+          <Assembly>PresentationCore</Assembly>
+        </Reference>
+        <Reference>
+          <Assembly>PresentationFramework</Assembly>
+        </Reference>
+      </References>
+      <Imports>
+        <Import>
+          <Namespace>System.Windows</Namespace>
+        </Import>
+      </Imports>
+			<Declarations>
+				<Literal>
+					<ID>commandName</ID>
+					<ToolTip>Replace with the name of the RoutedCommand.</ToolTip>
+					<Default>Command1</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="VB">
+				<![CDATA[
+          Private Sub OnCanExecute$commandName$(ByVal sender As Object, ByVal e As CanExecuteRoutedEventArgs)
+              ' Add actions to ensure that the command can execute.
+              ' Remove this exception after the appropriate code is added.
+              Throw New NotImplementedException()
+
+              '' Example action:
+              ' If condition Then
+              '   ' The condition for the command was met.
+                  ' e.CanExecute = True
+                  ' e.Handled = True
+              ' End If
+          End Sub
+
+          Private Sub OnExecute$commandName$(ByVal sender As Object, ByVal e As ExecutedRoutedEventArgs)
+              ' Perform the actions associated with the command.
+              ' Remove this exception after the appropriate code is added.
+              Throw New NotImplementedException()
+
+              ' Work was done for this command. Mark the event as handled.
+              e.Handled = True
+          End Sub]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
+

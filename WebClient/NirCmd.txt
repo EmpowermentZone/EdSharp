@@ -1,0 +1,994 @@
+Contents
+
+NirCmd v2.40
+----------
+
+NirCmd v2.40
+Copyright (c) 2003 - 2010 Nir Sofer
+
+Description
+NirCmd is a small command-line utility that allows you to do some useful tasks without displaying any user interface. By running NirCmd with simple command-line option, you can write and delete values and keys in the Registry, write values into INI file, dial to your internet account or connect to a VPN network, restart windows or shut down the computer, create shortcut to a file, change the created/modified date of a file, change your display settings, turn off your monitor, open the door of your CD-ROM drive, and more...
+Examples of what you can do with NirCmd
+Open the door of J: CD-ROM drive nircmd.exe cdrom open j:
+Close the door of Y: CD-ROM drive nircmd.exe cdrom close y:
+Speaks the text currently in the clipboard (For Windows XP and Vista). speak text ~$clipboard$
+Increase the system volume by 2000 units (out of 65535) nircmd.exe changesysvolume 2000
+Decrease the system volume by 5000 units (out of 65535) nircmd.exe changesysvolume -5000
+Set the volume to the highest value nircmd.exe setsysvolume 65535
+Mute the system volume nircmd.exe mutesysvolume 1
+Unmute the system volume nircmd.exe mutesysvolume 0
+Switch the system volume between the mute and normal state. nircmd.exe mutesysvolume 2
+Create a shortcut on your desktop that switch the system volume between the mute and normal state. nircmd.exe cmdshortcut "~$folder.desktop$" "Switch Volume" mutesysvolume 2
+Turn off the monitor nircmd.exe monitor off
+Start the default screen saver nircmd.exe screensaver
+Put your computer in 'standby' mode nircmd.exe standby
+log off the current user nircmd.exe exitwin logoff
+Ask if you want to reboot, and if you answer 'Yes', reboot the computer. nircmd.exe qboxcom "Do you want to reboot ?" "question" exitwin reboot
+Turn off your computer nircmd.exe exitwin poweroff
+Turn off all computers specified in computers.txt ! multiremote copy "c:\temp\computers.txt" exitwin poweroff force
+Dial to "My Internet" connection nircmd.exe rasdial "My Internet"
+Disconnect the "My Internet" connection nircmd.exe rashangup "My Internet"
+Make your Internet Explorer windows 75% transparent ! (192 / 256) nircmd.exe win trans ititle "internet explorer" 192
+Minimize all your Internet Explorer windows nircmd.exe win min class "IEFrame"
+Close all your Internet Explorer windows nircmd.exe win close class "IEFrame"
+Close all your Explorer windows (My Computer, folders, and so on) nircmd.exe win close class "CabinetWClass"
+Hide all your Internet Explorer windows nircmd.exe win hide class "IEFrame"
+Show all your Internet Explorer windows (after you made them hidden with previous example) nircmd.exe win show class "IEFrame"
+Center all top-level windows nircmd.exe win center alltop
+Remove the title bar of My Computer window. nircmd.exe win -style title "my computer" 0x00C00000
+Return the title bar of My Computer window that we removed in the previous example. nircmd.exe win +style title "my computer" 0x00C00000
+Set the My Computer window to right-to-left order (For hebrew and arabic languages) nircmd win +exstyle title "my computer" 0x00400000
+Set all child windows of My Computer window to right-to-left order (For hebrew and arabic languages) nircmd win child title "my computer" +exstyle all 0x00400000
+Create a shortcut on your desktop that closes all your Internet Explorer windows nircmd.exe cmdshortcut " "~$folder.desktop$ "Close All IE" win close class "IEFrame"
+Create a shortcut on your desktop that hides all your Internet Explorer windows nircmd.exe cmdshortcut " "~$folder.desktop$ "Hide All IE" win hide class "IEFrame"
+Create a shortcut on your desktop that shows back all your Internet Explorer windows nircmd.exe cmdshortcut " "~$folder.desktop$ "Show All IE" win show class "IEFrame"
+Set the Windows Calculator as top-most window (above all other windows) nircmd.exe win settopmost title "Calculator" 1
+Set the Windows Calculator back to regular window (non top-most window) nircmd.exe win settopmost title "Calculator" 0
+Create a shortcut to Windows calculator under Start Menu->Programs->Calculators nircmd.exe shortcut "f:\winnt\system32\calc.exe" "~$folder.programs$\Calculators" "Windows Calculator"
+Hide the desktop window nircmd.exe win hide class progman
+Show the desktop window (After hiding it in previous example) nircmd.exe win show class progman
+Hide the start button on the system tray nircmd.exe win child class "Shell_TrayWnd" hide class "button"
+Show the start button on the system tray nircmd.exe win child class "Shell_TrayWnd" show class "button"
+Hide the clock on the system tray nircmd.exe win child class "Shell_TrayWnd" hide class "TrayClockWClass"
+Show the clock on the system tray nircmd.exe win child class "Shell_TrayWnd" show class "TrayClockWClass"
+Kill (terminate) all instance of Internet Explorer processes nircmd.exe killprocess iexplore.exe
+Create a shortcut on your desktop that opens the door of K: CDROM drive when you run it. nircmd.exe cmdshortcut "~$folder.desktop$" "Open CDROM" cdrom open k:
+Create a shortcut to NirSoft Web site on your desktop nircmd.exe urlshortcut "http://www.nirsoft.net" "~$folder.desktop$" "NirSoft"
+Add NirSoft Web site to your Favorities under Links folder. nircmd.exe urlshortcut "http://www.nirsoft.net" "~$folder.favorites$\Links" "NirSoft"
+Create a shortcut to NirSoft Web site on the desktop of all computers listed in computers.txt nircmd.exe multiremote copy "c:\temp\computers.txt" urlshortcut "http://www.nirsoft.net" "~$folder.common_desktop$" "NirSoft"
+Set the display mode to 800x600x24bit colors nircmd.exe setdisplay 800 600 24
+Create a shortcut on the desktop that set the display mode to 800x600x24bit colors nircmd.exe cmdshortcut "~$folder.desktop$" "800x600x24" setdisplay 800 600 24
+Copy all shortcuts on your desktop to another folder (f:\temp\desktop). nircmd.exe execmd copy "~$folder.desktop$\*.lnk" f:\temp\desktop
+Restart your Apache server (under Windows NT/2000/XP/2003) nircmd.exe service restart apache
+Create a shortcut on your desktop that restarts the Apache server nircmd.exe cmdshortcut "~$folder.desktop$" "Restart Apache" service restart apache
+Restart your IIS nircmd.exe service restart w3svc
+Restart MySql nircmd.exe service restart MySql
+Open the desired Registry key/value in RegEdit nircmd.exe regedit "HKLM\Software\Microsoft\Windows\CurrentVersion" "CommonFilesDir"
+Open the Registry key that you copied to the clipboard in RegEdit. nircmd regedit "~$clipboard$"
+Disable the screen saver nircmd.exe regsetval sz "HKCU\control panel\desktop" "ScreenSaveActive" 0
+Enable the screen saver nircmd.exe regsetval sz "HKCU\control panel\desktop" "ScreenSaveActive" 1
+Change the date/time of the specified filename (creation time and modified time) nircmd.exe setfiletime "c:\temp\myfile.txt" "24-06-2003 17:57:11" "22-11-2005 10:21:56"
+Copy your desktop folder path to the clipboard nircmd.exe clipboard set ~$folder.desktop$
+Copy your start menu folder path to the clipboard nircmd.exe clipboard set ~$folder.start_menu$
+Copy the content of info1.txt (simple text file) to the clipboard nircmd.exe clipboard readfile "c:\My Files\info1.txt"
+Add the text content of clipboard to info1.txt nircmd.exe clipboard addfile "c:\My Files\info1.txt"
+Clear the clipboard nircmd.exe clipboard clear
+Create all folders specified in "c:\temp\folders.txt". The folder path names are separated by CRLF characters. nircmd.exe paramsfile "c:\temp\folders.txt" "" "" execmd md ~$fparam.1$
+Install the specified .NET assembly in the global assembly cache (like gacutil) nircmd.exe gac install "C:\temp\MyAssembly\bin\MyAssembly.dll"
+Empty the recycle bin in all drives. nircmd.exe emptybin
+Answer 'Yes' to a standard Windows message-box. nircmd.exe dlg "" "" click yes
+Wait 2 seconds, and then save the current screen to shot.png nircmd.exe cmdwait 2000 savescreenshot "f:\temp\shot.png"
+Save 10 screenshots in a loop, and wait 60 seconds between the screenshot save calls. The filenames of the screenshot will contain the time and date of the saved screenshot. nircmd.exe loop 10 60000 savescreenshot c:\temp\scr~$currdate.MM_dd_yyyy$-~$currtime.HH_mm_ss$.png
+Wait until Fixfox is closed, and then say "Firefox was closed" waitprocess firefox.exe speak text "Firefox was closed"
+
+System Requirements
+This utility can work in all 32-bit Windows operating systems: Windows 9x/ME, Windows NT, Windows 2000, Windows XP, Windows Server 2003, and Windows Vista. However, some of NirCmd commands works only on Windows NT/2000/XP/2003/Vista.
+Versions History
+Date Version Description
+26/02/20102.40Added elevate and elevatecmd commands to run and execute commands with administrator rights under Windows 7/Vista/2008.
+Added monitor parameter to setdisplay command, for using it with multiple monitors.
+Added setprimarydisplay command.
+Added folder.programfiles and folder.common_programfiles variables.
+Added async_off, async_on, async_low for monitor command. You can try them if NirCmd.exe remains in memory when you use monitor on/off command.
+
+26/05/20092.37Improved the help .chm file - Now it contains a link to every command.
+Added help command - Automatically opens the reference of the desired command in http://nircmd.nirsoft.net. For example, if you type 'nircmd.exe help speak', the reference page of speak command - http://nircmd.nirsoft.net/speak.html will be opened in your default browser.
+
+19/05/20092.36Fixed bug in script: Sometimes the last line in the script was not executed properly.
+
+20/04/20092.35Added loop command - execute a command multiple times.
+Added currtime and currdate variables.
+waitprocess - Added option to execute a NirCmd command after the process was closed.
+Added rem (or ;) command, just for adding remarks in a script.
+
+01/04/20092.30Added speak command - Speaks the contents of the text or file that you specify, by using the Speech library (SAPI) that comes with Windows XP and Windows Vista.
+Added savescreenshotfull command.
+
+02/02/20092.25New actions for clipboard command - loadclp and saveclp (load/save in Windows .clp format)
+New command: setprocessaffinity
+
+01/01/20092.20New commands: waitprocess, setprocesspriority, qboxtop, qboxcomtop.
+New action in clipboard command: copyimage (Copy image file to the clipboard)
+
+25/06/20082.15New commands: setcursorwin, savescreenshotwin, filldelete
+
+12/04/20082.10New commands: shellcopy, savescreenshot
+
+09/02/20082.05New commands: shellrefresh, convertimage, convertimages
+New option in clipboard command - saveimage
+
+16/06/20072.00All sound volume commands and monitor command now works under Vista.
+New commands: dlg, dlgany, sendkey, sendmouse, returnval
+New actions in win command - dlgclick, dlgsettext, dlgsetfocus
+
+24/07/20061.85New command: cmdshortcutkey
+
+15/07/20061.84Starting from this version, if you don't specify a sound device index in setsysvolume, changesysvolume, setsysvolume2, changesysvolume2 and mutesysvolume commands, the default sound device in control panel ("preferred device") is used.
+New find options in win command: active, foreground, desktop
+
+20/05/20061.83Fixed bug with parameter variables: parameter dialog-box appear more than once.
+New find option in Win command: alltopnodesktop
+
+18/02/20061.82New win actions: postmsg and sendmsg.
+New command: closeprocess
+NirCmd now returns a non-zero value on error.
+
+19/11/20051.81New command: emptybin - Empty the Recycle Bin.
+New optional parameter in setdisplay command: refresh rate.
+rashangup command without parameter - disconnect all active connections.
+
+24/09/20051.80New commands: exec2, cmdwait.
+New options in clipboard command.
+Volume commands (setsysvolume, changesysvolume, setsysvolume2, changesysvolume2, mutesysvolume) now allows you to change the volume of non-default sound card.
+
+07/07/20051.70New win actions: activate, hideshow, +style, -style, +exstyle, -exstyle
+New commands: movecursor, setcursor.
+New command: setfilefoldertime - allows you to change the date/time of folders, under Windows 2000/XP only.
+
+10/06/20051.62New actions in win command: focus, enable, disable
+
+26/05/20051.61new command: sysrefresh - make a general system refresh after modifying your system settings in the Registry.
+
+07/05/20051.60New paramsfile command: Allows you to execute a command multiple times by loading the parameters from a text file.
+New actions in win command: move, center, settext.
+New 'child' action in win command: Allows you to move/hide child windows (For example: the start button in the system tray)
+New clipboard command: Allows you to put a string in the clipboard, and clear the clipboard.
+New gac command: Allows you to install assemblies in Global Assembly Cache.
+
+28/12/20041.56New variable: ~$clipboard$ - paste the text that you copied to the clipboard into the command-line.
+Parameter variables: ~$param.ParamName$ - Display an input window for typing the text that you want insert into the command-line.
+
+07/12/20041.55Added RegEdit command.
+18/11/20041.54On reg commands (regsetval, regdelval, regdelkey), you can now also use the following abbreviated key name: HKCU for HKEY_CURRENT_USER, HKLM for HKEY_LOCAL_MACHINE, HKCR for HKEY_CLASSES_ROOT, HKU for HKEY_USERS, HKCC for HKEY_CURRENT_CONFIG.
+redraw action for win command.
+
+03/11/20041.53Fixed 'monitor off' problem in XP SP2.
+09/10/20041.52rasapi32.dll is now loaded only when using the dial commands (rasdial, rasdialdlg, rashangup). In previous versions, NirCmd was statically linked to rasapi32.dll, and that caused problems in old NT systems.
+29/09/20041.51Variable names are now enclosed with '$' char instead of '%' char.
+I made this change because the '%' char causes problems when running NirCmd from cmd/bat file. using the '%' char for variable names is still supported for backward compatibility.
+22/09/20041.50New commands: cmdshortcut, regsvr, mutesysvolume, changesysvolume, changesysvolume2, setsysvolume2.
+New actions in win command: trans, setsize, settopmost, ititle.
+New variables: folder.nircmd, nir.exefile
+nircmdc.exe - console version of NirCmd.
+Changed name - from NirComLime to NirCmd.
+
+05/05/20041.40New commands: wait, setvolume, setsysvolume, execmd, exec.
+New commands for executing NirCmd on remote machines: remote and multiremote.
+Folder and system variables.
+New option in setfiletime command - set the file time to the current time (now parameter)
+New parameter in shortcut command - hot key.
+
+01/03/20041.30New commands: qboxcom, beep, stdbeep, cdrom, urlshortcut, monitor, screensaver, standby, and hibernate.
+Fixed the bug with ~x string sequences.
+
+08/01/20041.20New commands: setdialuplogon, script
+Special string sequences (~q, ~t, ~n and so on) to allow you to embed quotes and new line characters into the parameters of any command.
+
+19/11/20031.11New options in shortcut command
+10/10/20031.10New commands: killprocess, service, memdump, win, lockws.
+09/09/20031.00First release.
+
+License
+This utility is released as freeware. You are allowed to freely distribute this utility via floppy disk, CD-ROM, Internet, or in any other way, as long as you don't charge anything for this. If you distribute this utility, you must include all files in the distribution package, without any modification !
+Using NirCmd utility
+This utility is a standalone executable, and it doesn't require any installation process or additional DLLs. just copy the executable to any folder you want, and run it with the desired command-line option, according to your needs.
+It's recommended to copy the executable of NirCmd (nircmd.exe) to your windows directory, or to any other folder listed in your PATH environment variable, so you won't need to type the full path of nircmd in each time that you want to use it.
+Starting from version 1.50, console version of NirCmd (nircmdc.exe) is also available. In the console version, all error messages goes to the console window, instead of using a message box.
+General Syntax Of NirCmd
+nircmd.exe {showerror} [command] [command parameters]
+The showerror parameter is optional. If you specify this parameter, an error message will be displayed on the screen if an error is occurred during the execution of the command. Otherwise, any error will be ignored. For example:
+nircmd.exe showerror rasdial "dial1"
+nircmd.exe rasdial "dial1"
+In above 2 examples, NirCmd will try to dial with the "dial1" entry. If the dialing process is failed on the first example, an error message describing the problem will be displayed. If the dialing process is failed on the second example, error message won't be displayed.
+Special String Sequences
+Starting from version 1.20, NirCmd allows you to insert special characters into any parameter in NirCmd commands.
+The following table describes the special string Sequences that you can use: Sequence Description
+~n New line characters (CR-LF)
+~q Double-quote character: "
+~t Tab character
+~xnn Allows you to represent any character by providing its ascii code in 2-digit Hexadecimal number.
+For Example: ~x41 ('A' character), ~x27 (single-quote character)
+~$variable$ Represents a system variable. For more information about this option, read below
+~~ Represents a single '~' character.
+
+Example:
+infobox "This is the first line~n~qThis is a second line, in quotes~q" "Example"
+The above example displays a message-box containing 2 lines.
+System Variables
+Starting from version 1.40, NirCmd provides special variables that represents folders and other variables on your system. Each variable starts with '~' character, followed by the variable name enclosed with '$' characters. For example: ~$folder.desktop$ represents your desktop folder.
+The following table specifies the variables that you can use: Variable Name Description
+clipboard Represents the text that you copied into the clipboard.
+param.paramname When you specify a param variable, an input window will appear on the screen, and will ask you to type the text for this variable. The text that you type will be inserted into the command line.
+For example: in the following command, you will be asked to type 2 parameters (1 and 2), and the text that you type will appear in the message box.
+nircmd infobox ~$param.1$ ~$param.2$
+fparam.number Sepcifies a parameter loaded from a text file. For more information, see paramsfile command
+sys.varname You can use this option to represent any environment variable on your system.
+For example:
+~$sys.username$, ~$sys.windir$, ~$sys.computername$, ~$sys.logonserver$, ~$sys.temp$, and so on...
+nir.exefile Represents the full-path exe file of the current running NirCmd (For example: c:\winnt\nircmd.exe)
+loopcount Sepcifies the loop count number when using the loop command.
+currtime.TimeFormat Specifies the current time, according to the format specified in 'TimeFormat' section.
+For example: ~$currtime.HH_mm_ss$
+For more infromation about the format string, see currtime format section.
+currdate.DateFormat Specifies the current date, according to the format specified in 'DateFormat' section.
+For example: ~$currdate.MM_dd_yyyy$
+For more infromation about the format string, see currdate format section.
+folder.nircmd Represents the folder the NirCmd is running from.
+folder.desktop Represents the user's desktop folder.
+folder.start_menu Represents the user's start-menu folder.
+folder.programs Represents the user's programs folder (under the start-menu folder).
+folder.startup Represents the user's startup folder.
+folder.recent Represents the user's recent folder.
+folder.favorites Represents the user's favorites folder.
+folder.cookies Represents the user's cookies folder.
+folder.appdata Represents the user's Application Data folder. (For example: C:\Documents and Settings\Administrator\Application Data)
+folder.common_desktop Represents the common desktop folder.
+folder.common_start_menu Represents the common start menu folder.
+folder.common_programs Represents the common programs folder.
+folder.common_startup Represents the common startup folder.
+folder.common_favorites Represents the common favorites folder.
+folder.windows Represents the windows folder. (e.g.: C:\Windows)
+folder.system Represents the system folder. (e.g.: C:\Windows\System32)
+folder.programfiles Represents the Program Files folder. (e.g.: C:\Program Files)
+folder.common_programfiles Represents the common Program Files folder. (e.g.: C:\Program Files\Common)
+
+Examples:
+Create a shortcut under the start menu-programs folder:
+shortcut "c:\winnt\system32\calc.exe" "~$folder.programs$\My Programs" "Calculator"
+Delete a shortcut in the user's desktop:
+execmd del "~$folder.desktop$\calc.lnk"
+Display the current logged-on user:
+infobox "The current logged-on user is ~$sys.username$" "logged-on user"
+Save a screenshot in filename containing the current time and date
+savescreenshot c:\temp\scr~$currdate.MMddyyyy$-~$currtime.HHmmss$.png
+currtime Format String
+The time format string may contain the following elements: (The format string is case sensitive !) hHours with no leading zero for single-digit hours; 12-hour clock.
+hhHours with leading zero for single-digit hours; 12-hour clock.
+HHours with no leading zero for single-digit hours; 24-hour clock.
+HHHours with leading zero for single-digit hours; 24-hour clock.
+mMinutes with no leading zero for single-digit minutes.
+mmMinutes with leading zero for single-digit minutes.
+sSeconds with no leading zero for single-digit seconds.
+ssSeconds with leading zero for single-digit seconds.
+tOne character time-marker string, such as A or P.
+ttMulticharacter time-marker string, such as AM or PM.
+
+currdate Format String
+The date format string may contain the following elements: (The format string is case sensitive !) dDay of month as digits with no leading zero for single-digit days.
+ddDay of month as digits with leading zero for single-digit days.
+dddDay of week as a three-letter abbreviation.
+ddddDay of week as its full name.
+MMonth as digits with no leading zero for single-digit months.
+MMMonth as digits with leading zero for single-digit months.
+MMMMonth as a three-letter abbreviation.
+MMMMMonth as its full name.
+yYear as last two digits, but with no leading zero for years less than 10.
+yyYear as last two digits, but with leading zero for years less than 10.
+yyyyYear represented by full four digits.
+
+Executing NirCmd commands on remote computers
+Starting from version 1.40, you can execute all NirCmd commands in remote computers. However, you should be aware of the following restrictions and problems:
+This option is only available for Windows NT, Windows 2000 and Windows XP. You cannot use it on Windows 9x machines.
+You must log on to the remote machine as administrator.
+The Schedule service in the remote machine must be started. (By default, the Schedule service is automatically started in all NT/2000/XP machines, so you don't have to worry too much about this)
+Due to some limitations of the Schedule service, you have to wait up to 60 seconds until the command is actually executed in the remote machine.
+The command in the remote machine is executed under 'SYSTEM' account, and thus some commands may not work in the same way as you execute them locally.
+There are 2 commands for executing NirCmd in remote machines:
+remote - for executing command on a single remote computer.
+multiremote - for executing command on multiple remote computers.
+Help Command
+If you don't remember the exact syntax of a command, you can always look in the help file of NirCmd (NirCmd.chm) or you can use the help command to get the command reference in http://nircmd.nirsoft.net, For example:
+nircmd.exe help multiremote
+NirCmd Commands
+remote {copy} [\\computer] [NirCmd command]
+Executes NirCmd command in a remote computer. if {copy} parameter is specified, NirCmd will copy itself to the Windows directory of the remote machine. You must specify this parameter if NirCmd doesn't exist in the Windows directory of the remote machine.
+Examples:
+
+remote copy \\comp1 exitwin poweroff
+remote \\comp2 infobox "This is a message from NirCmd" "Hello !"
+remote \\comp3 lockws
+multiremote {copy} [computers file] [NirCmd command]
+Executes NirCmd command in multiple remote machines. if {copy} parameter is specified, NirCmd will copy itself to the Windows directory of the remote machines. You must specify this parameter if NirCmd doesn't exist in the Windows directory of the remote machines.
+The [computers file] parameter is a file that contains the computers list separated by Enter characters (CRLF).
+Example for computers list file:
+\\comp1
+\\comp2
+\\winxp1
+\\winxp2
+\\nirsoft
+
+
+The command specified in [NirCmd command] will be executed in all computers specified in the computers file.
+Examples:
+Turn off all computers specified in computers.txt
+multiremote "c:\temp\computers.txt" exitwin poweroff force
+Lock all computers specified in computers.txt
+multiremote "c:\temp\computers.txt" lockws
+Copy NirCmd to all computers specified in computers.txt, and then turn off their monitors.
+multiremote copy "c:\temp\computers.txt" monitor off
+Copy NirCmd to all computers specified in computers.txt, and run WinUpdatesList utility in order to save Windsows Updates info in all computers.
+multiremote copy "c:\temp\computers.txt" exec hide c:\temp\wul.exe /shtml "c:\temp\wul_~$sys.computername$.html"
+
+cmdwait [Number of Milliseconds] [NirCmd Command]
+Wait the specified number of Milliseconds, and then execute the specified NirCmd command.
+Example:
+cmdwait 1000 monitor off
+loop [Number of Times] [Number of Milliseconds] [NirCmd Command]
+Execute a NirCmd mutiple times, in a loop. Between the command executions, NirCmd will wait the number of Milliseconds specified in the second parameter. You can use the ~$loopcount$ variable to specify the call number in the loop (from 1 to n).
+Examples:
+loop 3 2000 speak text "Call Number ~$loopcount$"
+loop 10 60000 savescreenshot c:\temp\scr~$loopcount$.png
+paramsfile [Parameters File] [Delimiters] [Quote Character] [NirCmd Command]
+This powerfull command allows you to execute NirCmd Command multiple times, by loading one or more parameters from a text file. The text file can be comma-delimited, tab-delimited, semicolon-delimited, or delimited by any char that you specify in [Delimiters] parameter.
+Here's an example... Let's say that you have the following text file, containing user names and passwords, delimited by comma:
+user01, 123456
+user02, abcfg
+user03, 5fr23
+user04, 33333
+
+The following NirCmd commands sequence will create 4 users with the specified user-names and passwords (by using 'net user' command provided by Windows 2000/XP operating system)
+nircmd.exe paramsfile "c:\temp\users.txt" "," "" execmd net user ~$fparam.1$ ~$fparam.2$ /add
+The ~$fparam.1$ specifies the first entry in each line - the user name. The ~$fparam.2$ specifies the second entry in each line - the password.
+Examples:
+
+paramsfile "c:\temp\folders.txt" "" "" execmd md ~$fparam.1$
+paramsfile "c:\temp\shortcuts.txt" "," "~q" shortcut ~$fparam.1$ "~$folder.desktop$" ~$fparam.2$
+infobox [message text] [title]
+Displays a simple message box on the screen.
+Example:
+infobox "This is a message box !" "message"
+qbox [message text] [title] [program to run]
+Displays a question dialog-box on the screen. If the user answers "Yes", run a program
+Example:
+qbox "Do you want to run the calculator ?" "question" "calc.exe"
+qboxtop [message text] [title] [program to run]
+Similar to qbox, but displays the message-box as top-most window.
+qboxcom [message text] [title] [NirCmd Command]
+Displays a question dialog-box on the screen. If the user answers "Yes", execute the NirCmd command in the third parameter.
+Examples:
+qboxcom "Do you want to lock your workstation ?" "question" lockws
+qboxcom "Do you want to turn off the monitor ?" "monitor" monitor off
+qboxcomtop [message text] [title] [NirCmd Command]
+Similar to qboxcom, but displays the message-box as top-most window.
+script [Script File]
+This command allows you to execute a sequence of commands stored inside the file specified in [Script File] parameter.
+Example:
+script "c:\temp\msg.ncl"
+Example for a script:
+infobox "Hello !" "This is the first message"
+infobox "Hello !" "This is the second message"
+infobox "Hello !" "This is the third message"
+
+
+regedit [key] [value name]
+Opens RegEdit with the specified key/value.
+Examples:
+regedit "HKLM\Software\Microsoft\Windows\CurrentVersion" "CommonFilesDir"
+regedit "HKEY_CURRENT_USER\Control Panel\Desktop" "Wallpaper"
+regsetval [type] [key] [value name] [value]
+Writes a value to the Registry. the [type] parameter can be "sz" or "expand_sz" for strings, "dword" for 32-bit number, or "binary" for binary data. If the key you specify in [key] parameter doesn't exist, it'll automatically be created.
+Examples:
+regsetval dword "HKEY_CURRENT_USER\Software\Test" "Value1" "0xaabbccdd"
+regsetval dword "HKCU\Software\Test" "Value2" "10561"
+regsetval sz "HKCU\Software\Test" "Value3" "string value"
+regsetval binary "HKLM\Software\Test" "Value4" "6a cb ab dd 80 86 95"
+regdelval [key] [value]
+Deletes a value from the Registry.
+Example:
+regdelval "HKEY_CURRENT_USER\Software\Test" "Value1"
+regdelkey [key]
+Deletes entire key from the Registry. This command will failed if the specified key has one or more subkeys.
+Example:
+regdelkey "HKEY_CURRENT_USER\Software\Test"
+inisetval [INI filename] [section] [key] [value]
+Writes a value into INI file. If the file doesn't exist, it'll automatically be created.
+Example:
+inisetval "c:\windows\test.ini" "section1" "TestValue" "1"
+inidelval [INI filename] [section] [key]
+Deletes a key-value pair inside INI file.
+Example:
+inidelval "c:\windows\test.ini" "section1" "TestValue"
+inidelval [INI filename] [section]
+Deletes entire section in INI file, including all values in it.
+Example:
+inidelsec "c:\windows\test.ini" "section1"
+regsvr [reg or unreg] [filename or wildcard] {log file}
+Register or unregister DLL/OCX files.
+In the first parameter, specify "reg" for registering files, or "unreg" for unregistering files.
+In the second parameter, you can specify a single file that you want to register or unregister, or multiple files, by using wildcard.
+The third parameter is optional, and specifies a log filename for saving the results of the registering operation.
+Examples:
+regsvr reg "f:\winnt\system32\fv*.ocx" "c:\temp\log1.txt"
+regsvr unreg "f:\winnt\system32\ab*.dll"
+rasdial [Entry Name] {Phonebook File} {User Name} {Password} {Domain}
+Dials to RAS entry (VPN or phone line), without displaying any user interface. Except the [Entry Name] parameter, all other parameters are optional. If you don't specify the optional parameters or you specify empty string (""), the default values are used.
+Examples:
+rasdial "My Internet"
+rasdial "VPN1" "" "user1" "abc1234" "domain1"
+inetdial [Entry Name]
+Dials to RAS entry (VPN or phone line), and display informational dialog-box during the dialing process.
+This command is only supported If Internet Explorer version 4.0 or greater is installed. Be aware that this command might not work on old versions of Windows 98.
+Examples:
+inetdial "VPN1"
+rasdialdlg [Entry Name] {Phonebook File} {Phone Number or IP Address}
+Displays a RAS entry for dialing. The {Phonebook File} and {Phone Number} parameters are optional. If you don't specify the {Phonebook File} parameter or you specify an empty string ,the default phonebook is used.
+This command is only supported on Windows NT, Windows 2000, and Windows XP. It's not supported on Windows 98/ME.
+Examples:
+rasdialdlg "Internet1" "" "9876543"
+rasdialdlg "VPN1"
+rashangup {Entry Name}
+Hangs up a RAS connection. You can use this command to disconnect a connection that you previously created with inetdial or rasdial commands. If you don't specify the {Entry Name} parameter, all active connections will be disconnected.
+Examples:
+rashangup "VPN1"
+rashangup
+setdialuplogon [Entry Name] [User Name] {Password} {Domain} {Phonebook File}
+Modifies the user name, password and domain of a dial-up item.
+The parameters:
+[Entry Name]: The name of the dial-up entry
+[User Name]: The user-name to set into the specified dial-up entry.
+{Password}: The password to set into the specified dial-up entry.
+{Domain}: The domain name to set into the specified dial-up entry.
+{Phonebook File}: The phonebook file containing the entry you want to change. If you don't specify this parameter, the default phonebook is used.
+Examples:
+setdialuplogon "VPN1" "user1" "asder443" "domain1"
+setdialuplogon "Internet1" "nirs3" "q5r4df7yh5"
+exitwin [shutdown type] {additional option}
+This command terminates the current session of Windows. The [shutdown type] parameter can be one of the following values:
+logoff: Shut down all running processes, log off the current user, and display the log on dialog to allow another user to log into the system.
+reboot: Shut down the entire system, and then reboot.
+poweroff: Shut down the entire system, and then turn off the power. (Only for systems that support this feature !)
+shutdown: Simply shut down the entire system, without reboot and without turning the power off.
+You can also use one of the following additional options:
+force: Forces all applications to terminate immediately. Using this option can caused the current running application to lose data. Use it only in extreme cases !
+forceifhung: Forces applications to terminate if they are not responding. This option is only available in Windows 2000/XP.
+
+Examples:
+exitwin reboot
+exitwin poweroff force
+exitwin logoff forceifhung
+initshutdown {message} {timeout value in seconds} {force} {reboot}
+Initiate a system shutdown. This command is somewhat similar to exitwin command, but it has some other features that exitwin doesn't support. This command is not supported on Windows 95/98/ME. All parameters of this command are optional. If you don't specify any parameter, the system shutdown is initiated without displaying message and without waiting.
+The parameters:
+{message}: The message to display before starting the system shut down.
+{timeout value in seconds}: The number of seconds to wait before starting the system shut down.
+{force}: Forces all applications to terminate, even without saving your work.
+{reboot}: Reboot after the system shutdown.
+
+Examples:
+initshutdown "shutting down the system within 60 seconds" 60 reboot
+initshutdown "" 0 force
+abortshutdown
+Abort the system shutdown that initiated with initshutdown command. This command doesn't accept any additional parameters.
+Example:
+abortshutdown
+lockws
+Lock the workstation. After locking your workstation, you must type your password in order to continue your work. This command is only available on Windows 2000 and Windows XP.
+monitor [action]
+Changes the state of the display monitor. The [action] parameter may contain the following values:
+off: Turn off the monitor
+on: Turn on the monitor
+low: Set the monitor to low power state.
+
+This command only works in systems that support this feature. If you have a problem that NirCmd remains in memory when using this command, you may try to use async_off, async_on and async_low actions instead of on/off/low actions.
+Examples:
+monitor off
+monitor on
+monitor async_off
+
+screensaver
+Starts the default screen saver.
+standby {force}
+Shuts down the computer and puts it in 'standby' mode. If the {force} parameter is specified, the system is forced to go into standby mode without asking for permission from all applications. Generally, it's not recommended to use this parameter.
+This command works only in systems that supports standby mode.
+Example:
+
+standby force
+standby
+hibernate {force}
+Shuts down the computer and puts it in 'hibernate' mode. If the {force} parameter is specified, the system is forced to go into hibernate mode without asking for permission from all applications. Generally, it's not recommended to use this parameter.
+This command works only in systems that supports hibernate mode.
+Example:
+
+hibernate force
+hibernate
+shortcut [filename] [folder] [shortcut title] {arguments} {icon file} {icon resource number} {ShowCmd} {Start In Folder} {Hot Key}
+Creates a shortcut to a file.
+The parameters:
+[filename]: Create a shortcut to this filename.
+[folder]: Specify the destination folder that inside it the shortcut will be created. You can specify any valid folder, including the special variables that represent system folders, like ~$folder.desktop$ (Desktop folder), ~$folder.programs$ (Start-Menu-Programs folder), and so on...
+[shortcut title]: The text displayed in the shortcut.
+{arguments}: Optional parameter - Additional arguments to execute the filename.
+{icon file}: Optional parameter - Use this parameter if your want that the shortcut will be displayed with icon other than the default one.
+{icon resource number}: Optional parameter - The resource number inside the icon file.
+{ShowCmd}: Optional parameter - Use this parameter if you want to maximize or minimize the window of the program. Specify "max" to maximize the window or "min" to minimize it.
+{Start In Folder}: Optional parameter - Specifies the "Start In" folder. If you don't specify this parameter, the "Start In" folder is automatically filled with the folder of the program you specify in [filename] parameter.
+{Hot Key}: Optional parameter - Specifies an hot-key that will activate the shortcut. For example: Alt+Ctrl+A, Alt+Shift+F8, Alt+Ctrl+Shift+Y
+
+Examples:
+shortcut "f:\winnt\system32\calc.exe" "~$folder.desktop$" "Windows Calculator"
+shortcut "f:\winnt\system32\calc.exe" "~$folder.programs$\Calculators" "Windows Calculator"
+shortcut "f:\Program Files\KaZaA\Kazaa.exe" "c:\temp\MyShortcuts" "Kazaa"
+shortcut "f:\Program Files" "c:\temp\MyShortcuts" "Program Files Folder" "" "f:\winnt\system32\shell32.dll" 45
+shortcut "f:\Program Files" "c:\temp\MyShortcuts" "Program Files Folder" "" "" "" "max"
+cmdshortcut [folder] [shortcut title] [command]
+Creates a shortcut to NirCmd command. When you activate the shortcut (by doubleclicking it), The command that you specify in [command] parameter will be executed.
+Examples:
+cmdshortcut "~$folder.desktop$" "Open CDROM" cdrom open k:
+cmdshortcut "c:\temp" "Turn Monitor Off" monitor off
+cmdshortcutkey [folder] [shortcut title] [hot key] [command]
+Similar to cmdshortcut command, but also allows you to specify an hot key to activate the command.
+Examples:
+cmdshortcutkey "~$folder.desktop$" "Open CDROM" "Ctrl+Shift+K" cdrom open k:
+cmdshortcutkey "c:\temp" "Turn Monitor Off" "Ctrl+Shift+M" monitor off
+urlshortcut [URL] [Folder] [Shortcut Title]
+Creates a shortcut to URL address. (Like the shortcuts in Favorities of Internet Explorer) The [Folder] parameter specifies the destination folder that inside it the shortcut will be created. If you want to create the shortcut inside your default Favorities folder, use ~$folder.favorites$ variable.
+Examples:
+urlshortcut "http://www.nirsoft.net" "~$folder.favorites$" "NirSoft Web Site"
+urlshortcut "http://www.google.com" "~$folder.favorites$\Search Engines" "Google"
+urlshortcut "http://www.yahoo.com" "c:\temp" "Yahoo"
+exec [show/hide] [application + command-line]
+Runs an application, and optionally specify one or more command-line parameters for the executed application. The [show/hide] parameter specifies whether the running application will be visible or not. If 'hide' is specified, the running application won't be visible to the user.
+Example:
+exec show "f:\winnt\system32\calc.exe"
+exec hide "c:\temp\wul.exe" /savelangfile
+exec2 [show/hide] [working folder] [application + command-line]
+Similar to exec command, but also provide another parameter, [working folder], that specifies the default working folder for the application that you run.
+Example:
+exec2 show "f:\winnt\system32" "f:\winnt\system32\calc.exe"
+exec2 hide c:\temp "c:\temp\wul.exe" /savelangfile
+execmd [command]
+Executes a command of Command-Prompt (Console Window) without displaying anything on the screen.
+Examples:
+execmd del "~$folder.desktop$\calc.lnk"
+execmd mkdir f:\temp\desktop1
+execmd copy "~$folder.desktop$\*.lnk" f:\temp\desktop
+shexec [operation] [filename]
+Opens or Prints a filename according to the definition of the file extension in the Registry. For example: a filename with .doc extension will be opened with MS-Word, a filename with .html extension will be opened with your default browser. If you specify a valid web site address, the Web site will be opened in your default browser. the [operation] parameter can be "open" or "print".
+Examples:
+shexec "open" "c:\my documents\abc.doc"
+shexec "print" "d:\files\1.pdf"
+shexec "open" "http://www.nirsoft.net"
+setfiletime [filename or wildcard] [Created Date] {Modified Date} {Accessed Date}
+Changes the Created/Modified/Accessed date of one or more files. The first parameter can be a single filename or wildcard string. The dates parameters must be specified in the following format: "dd-mm-yyyy hh:nn:ss" if a date parameter is not specified or you specify an empty string (""), the date won't be changed. If you specify "now" as date parameter, the current date and time will be used
+Examples:
+setfiletime "c:\temp\*.exe" "15-05-2004 11:22:12" "22-01-2005 21:22:55"
+setfiletime "c:\temp\myfile.txt" "24-06-2003 17:57:11" "" "22-11-2005 10:21:56"
+setfiletime "c:\temp\myfile.txt" now now
+setfilefoldertime [filename, folder or wildcard] [Created Date] {Modified Date} {Accessed Date}
+Changes the Created/Modified/Accessed date of one or more files/folders. This command is very similar to setfiletime command. The only difference is that setfilefoldertime command can also change the date of a folder - only under Windows 2000/XP.
+Examples:
+setfilefoldertime "c:\temp\myfolder" "10-01-2003 11:22:12" "12-11-2002 02:34:11"
+setfilefoldertime "c:\temp\myfolder" now now
+emptybin {drive}
+Empty the Recycle Bin. the {drive} parameter specifies the drive of the Recycle Bin that you want to empty. If the {drive} parameter is not specified, all Recycle Bin on all drives will be emptied.
+Example:
+emptybin f:
+emptybin
+setdisplay {monitor:index/name} [width] [height] [color bits] {refresh rate} {-updatereg} {-allusers}
+Changes your display settings. The [width] and [height] parameters represents the number of pixels on your screen. The [color bits] parameter represents the number of colors shown on your screen (8 - 256 color, 16 - 16bit color, 24 - 24bit color, and so on). {refresh rate} is an optional parameter that specifies the monitor refresh rate. If you specify the {-updatereg} parameter, the new settings will be saved in the Registry. If you specify both {-updatereg} and {-allusers} parameters, the new settings will be saved in the Registry for all users.
+If you have multiple monitors, you can use the optional monitor parameter, which specifies for which monitor you want to change the display settings. You can specify the monitor by index (0 for the first monitor, 1 for the second one, and so on) or by specifying a string in the system monitor name. The monitor name can be found in the Device manager of Windows: Right click on the monitor item, and then choose 'Properties'. The string displayed in the 'location' field is the monitor name.
+Example:
+setdisplay 800 600 24 -updatereg
+setdisplay 1024 768 24 90
+setdisplay 1024 768 8
+setdisplay monitor:1 1024 768 24 90
+setdisplay monitor:name1 1024 768 24 90
+setprimarydisplay [Monitor index/name]
+Set the primary monitor, for systems with multiple monitors only.
+Example:
+setprimarydisplay 0
+setprimarydisplay 1
+killprocess [process]
+Terminates the specified process. In the [process] parameter, you can specify the full path of the process filename (e.g: 'C:\Program Files\Internet Explorer\iexplore.exe') or the name of the process only, without the path (e.g.: iexplore.exe). You can also specify the Process ID, by adding the '/' character as a prefix (e.g. /1120).
+Examples:
+killprocess iexplore.exe
+killprocess "c:\winnt\system32\calc.exe"
+killprocess /1830
+closeprocess [process]
+Terminates the specified process, by closing its top level windows. As opposed to killprocess command, closeprocess doesn't force the process to be closed immediately. Instead, it send WM_CLOSE message to all top level windows of the specified process. However, be aware that this command will not work on process with no user interface.
+In the [process] parameter, you can specify the full path of the process filename (e.g: 'C:\Program Files\Internet Explorer\iexplore.exe') or the name of the process only, without the path (e.g.: iexplore.exe). You can also specify the Process ID, by adding the '/' character as a prefix (e.g. /1120).
+Examples:
+closeprocess iexplore.exe
+closeprocess "c:\winnt\system32\calc.exe"
+closeprocess /1830
+waitprocess [process] {Command}
+Wait until the specified process is closed.
+In the [process] parameter, you can specify the full path of the process filename (e.g: 'C:\Program Files\Internet Explorer\iexplore.exe') or the name of the process only, without the path (e.g.: iexplore.exe). You can also specify the Process ID, by adding the '/' character as a prefix (e.g. /1120).
+Optionally, you can also specify a command to execute after the process was closed.
+Examples:
+waitprocess iexplore.exe
+waitprocess firefox.exe speak text "Firefox was closed"
+waitprocess "c:\winnt\system32\calc.exe"
+waitprocess /1830
+setprocesspriority [process] [priority]
+Set a new priority for the specified process.
+In the [priority] parameter, you can specify one of the following values: normal, low, belownormal, abovenormal, high, realtime.
+In the [process] parameter, you can specify the full path of the process filename (e.g: 'C:\Program Files\Internet Explorer\iexplore.exe') or the name of the process only, without the path (e.g.: iexplore.exe). You can also specify the Process ID, by adding the '/' character as a prefix (e.g. /1120).
+Examples:
+setprocesspriority iexplore.exe high
+setprocesspriority "c:\winnt\system32\calc.exe" low
+setprocesspriority /1830 abovenormal
+setprocessaffinity [process] [list of processor numbers]
+Set the process affinity, which means - specifying the processors that the process is allowed to use (Only relevant for computers with more than one processor)
+In the [process] parameter, you can specify the full path of the process filename (e.g: 'C:\Program Files\Internet Explorer\iexplore.exe') or the name of the process only, without the path (e.g.: iexplore.exe). You can also specify the Process ID, by adding the '/' character as a prefix (e.g. /1120).
+In the [list of processor numbers] parameter, you can specify the processor numbers that you want to use. 0 is the first processor, 1 is the second one, and so on.
+Examples:
+setprocessaffinity iexplore.exe 0 1
+setprocessaffinity "c:\winnt\system32\calc.exe" 0 1 2 3
+setprocessaffinity /1830 0
+memdump [process] [dump file] [bytes per line] {bytes to read} {start address} {nohex} {noascii}
+Reads the memory of process according to the parameters you specify, and writes it into a text file.
+The parameters:
+[process]: The process that you want to dump its memory. You can specify the full path of the process filename, the process name only, or the Process ID - by adding the '/' chararcter as prefix (e.g.: /520)
+[dump file]: The filename to save the memory content of the specified process.
+[bytes per line]: Number of memory bytes per line in the saved dump file.
+{bytes to read}: Number of bytes to read.
+{start address}: Start the dumping process from this memory address.
+{nohex}: Optional. If you specify this parameter, the memory data won't be saved in Hexadecimal format.
+{noascii}: Optional. If you specify this parameter, the memory data won't be saved in Ascii format.
+
+Examples:
+memdump iexplore.exe "c:\temp\dump.txt" "16" "0x10000" "0x400000"
+memdump calc.exe "c:\temp\calc.txt" "32" "0x30000" "0x400000" nohex
+memdump /525 "c:\temp\dump.txt" "16" "0x100000" "0x120000" noascii
+service {\\Computer} [action] [service name]
+Changes the status and the startup type of services and drivers.
+The parameters:
+{\\Computer}: Optional. Specifies the name of the remote computer. If you omit this parameter, the local computer is used.
+[action]: The action you want to do. This parameter may contain one of the following values:
+start: Starts the specified service or driver.
+stop: Stops the specified service or driver.
+pause: Pauses the specified service or driver.
+continue: Continues the specified service or driver.
+restart: Stops and then starts again the specified service or driver.
+auto: Changes the startup type of the specified service or driver to Automatic.
+manual: Changes the startup type of the specified service or driver to Manual.
+disabled: Changes the startup type of the specified service or driver to Disabled.
+boot: (Only for drivers) Changes the startup type of the specified driver to 'Boot'.
+system: (Only for drivers) Changes the startup type of the specified driver to 'System'.
+[service name]: The name of the service or driver.
+
+Examples:
+service start schedule
+service \\remote stop schedule
+service restart w3svc
+win [action] [find] [window to find] [Additional Parameters]
+For child windows:
+win child [find] [top window to find] [action] [find] [child window to find] [Additional Parameters]
+This command allows you to close, hide, show, maximize, and minimize the specified window.
+The parameters:
+[action]: The action you want to do on the specified window:
+child: Allows you to make an action on child window of the specified top-level window.
+close: Closes the specified windows.
+hide: Hides the specified windows.
+show: Shows again the specified windows. (after hiding it with 'hide' command)
+hideshow: Hides the specified windows and then shows it again. You can use this action to repaint the content of a window.
+activate: Bring the specified window to the front.
+max: Maximizes the specified windows.
+min: Minimizes the specified windows.
+normal: Restores the specified windows to normal state, after minimizing or maximizing them.
+trans: Make the specified windows transparent. the value in [Additional Parameters] is a number between 0 and 255 that specifies the transparency level. 0 = completely transparent. 255 = completely opaque.
+setsize: Set the size of the specified windows. the values in [Additional Parameters] specifies the desired window size - x, y, width, height.
+move: move/resize the window. the values in [Additional Parameters] specifies the number of pixels to move/change: x, y, width, height.
+center: Center the specified windows.
+settopmost:Set the top-most state of the specified windows. If the value in [Additional Parameters] is 1, the specified windows will become top-most windows, if the value is 0, the top-most state will be canceled.
+redraw: Redraw the specified windows.
+settext: Modify the caption/title of the specified windows.
+focus: Set the focus to the specified window.
+disable: Disable the specified window.
+enable: Enable the specified window.
++style: Add style bits to the specified window. The value of [Additional Parameters] specifies the style bits to add.
+-style: Remove style bits from the specified window. The value of [Additional Parameters] specifies the style bits to remove.
++exstyle: Add extended style bits to the specified window. The value of [Additional Parameters] specifies the extended style bits to add.
+-exstyle: Remove extended style bits from the specified window. The value of [Additional Parameters] specifies the extended style bits to remove.
+postmsg: Post a message to the specified window. The 3 values in [Additional Parameters] specifies the message parameters: Msg, wParam, lParam.
+sendmsg: Send a message to the specified window. The 3 values in [Additional Parameters] specifies the message parameters: Msg, wParam, lParam.
+dlgclick: Send a click command to the button inside a dialog-box. The value in [Additional Parameters] should specify the control ID of the button, or one of the following predefined buttons: yes, no, ok, cancel, retry, ignore, close, help.
+dlgsettext: Set the text to the specified control inside a dialog-box. The value in [Additional Parameters] should specify the control ID.
+dlgsetfocus: Set the focus to the specified control inside a dialog-box. The value in [Additional Parameters] should specify the control ID
+[find]: The method to find the window
+handle: Finds the desired window by specifying the handle of the window in [window to find] parameter.
+id: Finds the desired child window by specifying the id of the child window. Useful only for child windows.
+class: Finds the desired window by specifying the class name of the window in [window to find] parameter.
+title: Finds the desired window by specifying the exact title of the window in [window to find] parameter.
+stitle: Finds the desired window by specifying the first few characters of the window in [window to find] parameter.
+ititle: Finds the desired window by specifying a sequence of characters that exists in the window title.
+alltop: All top windows.
+alltopnodesktop: All top windows, except of desktop and tray windows.
+active: The current active window.
+foreground: The window in foreground.
+desktop: The desktop window
+[window to find]: Specifies the window by handle, class name, or title, according to the value of the previous parameter.
+
+Examples:
+win close title "calculator"
+win hide stitle "calculat"
+win hide ititle "culat"
+win show class "SciCalc"
+win activate title "my computer"
+win max handle 0x00009c01
+win redraw alltop
+win trans ititle "internet explorer" 192
+win setsize class "IEFrame" 50 50 400 300
+win settopmost class "SciCalc" 1
+win child class "Shell_TrayWnd" hide class "button"
+win child class "Shell_TrayWnd" show class "button"
+win child title "calculator" hide id 128
+win -style title "my computer" 0x00C00000
+win child title "my computer" +exstyle all 0x00400000
+win sendmsg title "calculator" 0x10 0 0
+win dlgclick class "#32770" cancel
+cdrom [action] {drive:}
+This command allows you to open and close the door of your CD-ROM drive. The [action] parameter can be 'open' or 'close'. If you don't specify the {drive:} parameter, the default CD-ROM will be used.
+Examples:
+cdrom open
+cdrom close
+cdrom open J:
+cdrom close R:
+clipboard [Action] [Parameter]
+Allows you to set a value into the clipboard and clear the clipboard.
+[Action] may contain one of the following values:
+set - set the specified text into the clipboard.
+readfile - set the content of the specified text file into the clipboard.
+clear - clear the clipboard.
+writefile - write the content of the clipboard to a file. (text only)
+addfile - add the content of the clipboard to a file. (text only)
+saveimage - Save the current image in the clipboard into a file.
+copyimage - Copy the content of the specified image file to the clipboard.
+saveclp - Save the current clipboard data into Windows .clp file.
+loadclp - Load Windows .clp file into the clipboard.
+For copyimage and saveimage actions, the following file formats are supported: .bmp, .gif, .jpg, .png, .tiff - Only works on computers with GDI+ installed (On XP/2003/Vista, GDI+ is installed as a part of the operating system).
+Examples:
+clipboard set "123456"
+clipboard set ~$folder.desktop$
+clipboard set ~$folder.start_menu$
+clipboard readfile "c:\temp\info1.txt"
+clipboard addfile "c:\temp\clip1.txt"
+clipboard clear
+clipboard saveimage "c:\temp\clip01.png"
+clipboard saveimage "c:\temp\clip01.gif"
+clipboard copyimage "c:\temp\img01.gif"
+clipboard saveclp "c:\temp\1.clp"
+clipboard loadclp "c:\temp\1.clp"
+gac [Action] [Parameter]
+Allows you to install an assembly in the Global Assembly Cache.
+Examples:
+gac install "C:\temp\MyAssembly\bin\Release\6\MyAssembly.dll"
+beep [Frequency] [Duration]
+Plays a beep. The [Frequency] parameter specifies the frequency, in hertz. The [Duration] parameter specifies the duration of the sound in milliseconds. Under Windows 95/98/ME, the above parameters are ignored, and only a standard Windows beep is played.
+Example:
+beep 500 2000
+stdbeep
+Plays the standard beep of Windows.
+Example:
+stdbeep
+setvolume [device] [left-volume] [right-volume]
+Set the volume level of your sound device. The [device] parameter represents the device identifier. In most cases, you should use '0' value for this parameter. Under Windows Vista, you should specify 0 for default playback device or 1 for default recording device.
+The [left-volume] and [right-volume] parameters should contain a value between 0 (silence) and 65535 (full volume) that represents the volume level for left and right channels.
+Examples:
+setvolume 0 0 0
+setvolume 0 32768 32768
+setvolume 0 0xffff 0
+setsysvolume [volume] {Component} {Device Index}
+Set the sound volume for your system. Changing this value also affects the sound volume settings under 'Control Panel'. The [volume] parameter should contain a value between 0 (silence) and 65535 (full volume).
+{Component} is an optional parameter that specifies one of the following sound components: master, waveout, synth, cd, microphone, phone, aux, line, headphones, wavein. The default value is 'master' (for master volume). Under Windows Vista, the component name must be identical to the one of the device names appear in the sound window of Vista (Control Panel -> Sound). If the device name contains spaces, it must be in quotes.
+{Device Index} is an optional parameter that specifies the sound device index. This parameter is useful if you have more than one sound card. If you don't specify this parameter, the default sound card in Control Panel is used.
+Examples:
+setsysvolume 0x8000
+setsysvolume 0
+setsysvolume 25000 waveout
+setsysvolume 25000 master 1
+Vista Examples:
+setsysvolume 0x8000
+setsysvolume 0 "front mic"
+setsysvolume 25000 speakers
+setsysvolume 25000 "line in"
+setsysvolume2 [left volume] [right volume] {Component} {Device Index}
+Similar to setsysvolume, but instead of setting the whole sound volume, setsysvolume2 set the right channel and left channel separately.
+Examples:
+setsysvolume2 10000 20000
+setsysvolume2 30000 0
+setsysvolume2 25000 15000 waveout
+setsysvolume2 30000 0 master 1
+changesysvolume [volume change] {Component} {Device Index}
+Increases or decreases the system volume. the [volume change] parameter specifies the number of volume units to increase or decrease (negative value to decrease, positive value to increase).
+{Component} is an optional parameter that specifies one of the following sound components: master, waveout, synth, cd, microphone, phone, aux, line, headphones, wavein. The default value is 'master' (for master volume). Under Windows Vista, the component name must be identical to the one of the device names appear in the sound window of Vista (Control Panel -> Sound). If the device name contains spaces, it must be in quotes.
+{Device Index} is an optional parameter that specifies the sound device index. This parameter is useful if you have more than one sound card. If you don't specify this parameter, the default sound card in Control Panel is used.
+Examples:
+changesysvolume 5000
+changesysvolume -3000
+changesysvolume 0x1000 waveout
+changesysvolume 0x1000 master 1
+Vista Examples:
+changesysvolume 5000
+changesysvolume -3000
+changesysvolume 0x1000 "line in"
+changesysvolume 0x1000 "speakers" 1
+changesysvolume2 [left volume change] [right volume change] {Component} {Device Index}
+Similar to changesysvolume, but instead of changing the whole sound volume, changesysvolume2 changes the left channel and the right channel separately.
+Examples:
+changesysvolume2 1000 -1000
+changesysvolume2 -3000 0
+changesysvolume2 0 -5000 waveout
+changesysvolume2 -3000 0 master 1
+mutesysvolume [action] {Component} {Device Index}
+Mute/unmute the system volume.
+In the [action] parameter, specify 1 for mute, 0 for unmute, or 2 for switching between mute and normal state.
+The second parameter is optional, and you can specify one of the following sound components: master, waveout, synth, cd, microphone, phone, aux, line, headphones, wavein. The default value is 'master' (for master volume). Under Windows Vista, the component name must be identical to the one of the device names appear in the sound window of Vista (Control Panel -> Sound). If the device name contains spaces, it must be in quotes.
+{Device Index} is an optional parameter that specifies the sound device index. This parameter is useful if you have more than one sound card. If you don't specify this parameter, the default sound card in Control Panel is used.
+Examples:
+mutesysvolume 1
+mutesysvolume 0
+mutesysvolume 2 waveout
+mutesysvolume 1 master 1
+Vista Examples:
+mutesysvolume 1
+mutesysvolume 0
+mutesysvolume 2 "rear mic"
+mutesysvolume 1 speakers 1
+wait [milliseconds]
+Simply wait the specified number of milliseconds.
+Examples:
+wait 1000
+wait 500
+shellrefresh
+Initiate a general refersh for Windows Explorer. This refresh command can be useful if you make a change in the Registry related to the shell file types (For example, if you change the icon of .gif extension), and you want that your changes will take affect immediately.
+sysrefresh {Refresh Type}
+Initiate a general system refresh. You can use this command to refresh your system after changing your system settings in the Registry (e.g: changing desktop icons size, environment variables, and so on..) {Refresh Type} is optional. You can specify one of the following values: "environment" - for refreshing the environment variables, "policy" - for policy settings, "intl" for locale settings.
+Examples:
+sysrefresh
+sysrefresh environment
+sysrefresh policy
+setcursor [X] [Y]
+Set the position of mouse cursor. The [X] and [Y] parameters specifies the desired cursor position.
+Example:
+setcursor 100 50
+setcursorwin [X] [Y]
+Set the position of mouse cursor, relative to the top-left corner of the active window. The [X] and [Y] parameters specifies the desired cursor position.
+Example:
+setcursor 100 50
+movecursor [X] [Y]
+move the mouse cursor. The [X] and [Y] parameters specifies the number of pixels to move. Example:
+movecursor 10 10
+dlg [Process Name] [Window Title] [Action] [Parameters]
+Allows you to interact with standard dialog-boxes and message-boxes of Windows. When a dialog-box is opened, you can use this command to "click" the ok/cancel/yes/no buttons, or fill the text-boxes in the dialog-box.
+For example, the following commands fill the standard 'Run' dialog-box of Windows with 'calc.exe' process, and then click the 'OK' button. The '12298' is the control ID of the text-box in the Run dialog-box. You can find the control ID by using Spy++ of Microsoft, or by using my WinExplorer utility.
+dlg "explorer.exe" "run" settext 12298 "calc.exe"
+dlg "explorer.exe" "run" click ok
+The following command will choose the 'Yes' answer for any question dialog-box of Explorer process:
+dlg "explorer.exe" "" click yes
+The following command will choose the 'Cancel' answer for any question dialog-box of any process:
+dlg "" "" click cancel
+Parameters description:
+[Process Name]: Specifies the process that created the desired window. You can specify only the process name or the full path of the process. If this parameter is empty string("" ), the command will be executed on any process.
+[Window Title]: Specifies the title of the window that you want the execute the action. If this parameter is empty string("" ), the command will be executed on any window, regardless the window title.
+[Action]: You can specify one of the following options:
+click: Click the specified button. You can specify one of the following predefined values (For standard Windows dialog-boxes only !): yes, no, ok, cancel, retry, ignore, close, help. You can also specify any control ID as numeric value.
+settext: Set the text of the specified control. The first parameter of this action specifies the ID of the control, and the second parameter specifies the text.
+
+dlgany [Process Name] [Window Title] [Action] [Parameters]
+similar to dlg command, but also works on any window, even if it's not identified as a standard Windows dialog-box.
+
+returnval [Return Value]
+This command allows you to specify the return value for NirCmd. The return value can be used by external program that run NirCmd.
+For example, in the following command, NirCmd returns 0x30 value if the user choose the 'Yes' answer:
+qboxcom "Do you want to continue ?" "question" returnval 0x30
+sendkey [Key] [press | down | up]
+Sends a keystroke to the system. The operating system will behave exactly as the user really pressed the specified keys.
+The [Key] parameter specifies the key as virtual key code (For example: 0x2e for Delete key), or as one of the following predefined values: a - z and 0 - 9 (for alphanumeric keys), F1 - F24 (for Fxx keys), shift, ctrl, alt, enter, esc.
+The second parameter specifies the key action: 'press', 'down', or 'up'. For each key down action, you should also add the appropriate key up action.
+In the following script example, the system behaves like the user presses Shift+Ctrl+Esc (the task manager should appear):
+sendkey shift down
+sendkey ctrl down
+sendkey esc down
+sendkey shift up
+sendkey ctrl up
+sendkey esc up
+More examples:
+sendkey a press
+sendkey f10 press
+sendkey enter press
+sendkey 0x2e press
+sendmouse [right | left | middle] [down | up | click | dblclick]
+sendmouse [move] [x] [y]
+sendmouse [wheel] [Wheel Value]
+Sends the specified mouse event to the system. The operating system will behave exactly as the user really made the specified mouse action.
+Heres some example of sendmouse command:
+Sent a right click (For most applications, a context menu is opened):
+sendmouse right click
+Sent a double-click with the left mouse button:
+sendmouse left dblclick
+Press the left mouse button, move the mouse cursor 20 pixels left and 30 pixels down, and then release the button:
+sendmouse left down
+sendmouse move -30 20
+sendmouse left up
+Scroll the mouse wheel 10 units in standard wheel mouse. (On standard wheel mouse, the wheel value should be a multiple of 120).
+sendmouse wheel 1200
+
+convertimage [source filename] [destionation filename]
+Convert image file from one format from another. The following file formats are supported: .bmp, .gif, .png, .jpg, .tiff
+This command only works on Windows XP/2003/Vista (GDI+ is required)
+Examples:
+convertimage "c:\temp\test1.gif" "c:\temp\test1.png"
+convertimage "c:\temp\test1.jpg" "c:\temp\test1.gif"
+convertimages [source wildcard] [extension]
+Convert multiple image files from one format from another. The following file formats are supported: .bmp, .gif, .png, .jpg, .tiff
+This command only works on Windows XP/2003/Vista (GDI+ is required)
+Examples:
+convertimages "c:\temp\a*.gif" .png
+convertimages "c:\temp\*.jpg" .gif
+savescreenshot [filename]
+save the screenshot of current screen into the specified image filename. The following file formats are supported: .bmp, .gif, .png, .jpg, .tiff
+This command only works on Windows XP/2003/Vista (GDI+ is required)
+Examples:
+savescreenshot "c:\temp\shot.png"
+savescreenshotfull [filename]
+similar to savescreenshot command, but on computer with multiple monitors, this command will take the screenshot of all monitors, as opposed to savescreenshot command, which takes the screenshot of the primary monitor.
+savescreenshotwin [filename]
+save the screenshot of current active window into the specified image filename. The following file formats are supported: .bmp, .gif, .png, .jpg, .tiff
+This command only works on Windows XP/2003/Vista (GDI+ is required)
+Examples:
+savescreenshotwin "c:\temp\win.png"
+shellcopy [source file or wildcard] [destination] {Flags}
+Copy one or more files from one folder to another, and display a progress dialog, exactly like copying files in Explorer.
+In the Flags section, you can specify one or more of the following values:
+yestoall: Automatically answer 'Yes' to all questions.
+noerrorui: Don't display errors in user interface.
+silent: Silent mode - don't display progress information.
+nosecattr: Don't copy the security attributes of the file.
+Examples:
+shellcopy "c:\temp\*.*" "d:\temp"
+shellcopy "c:\temp\*.*" "d:\temp" yestoall noerrorui
+filldelete [source file or wildcard]
+fill the specified file or wildcard with zero-bytes, and then delete the files. This means that the content of the files deleted with this command cannot be recovered.
+Examples:
+filldelete "c:\temp\*.*"
+filldelete "c:\temp\myfile.dat"
+speak [type] [text/Filename] {rate} {volume}
+speaks the contents of the text or file that you specify, by using the Speech library (SAPI) that comes with Windows XP and Windows Vista.
+In the [type] parameter, you can specify one of the following values:
+text: The second parameter contains a simple text.
+xml: The second parameter contains a text with Speech xml data.
+file: The second parameter contains a text filename.
+The {rate} parameter is optional parameter that you can specify the Speech rate, a value between -10 (very slow) and 10 (very fast). The {volume} parameter is optional parameter that you can specify the volume of the Speech, a value between 0 and 100.
+Examples:
+speak text ~$clipboard$
+speak text "Please visit the Web site of NirSoft at http://www.nirsoft.net" 2 80
+speak file "c:\temp\speak1.txt"
+elevate [Program] {Command-Line Parameters}
+For Windows Vista/7/2008 only: Run a program with administrator rights. When the [Program] contains one or more space characters, you must put it in quotes.
+
+Examples:
+elevate notepad.exe
+elevate notepad.exe C:\Windows\System32\Drivers\etc\HOSTS
+elevate "c:\program files\my software\abc.exe"
+elevatecmd [NirCmd command]
+For Windows Vista/7/2008 only: Run a NirCmd command with administrator rights.
+
+Examples:
+elevatecmd regsetval binary "HKLM\Software\Test" "Value1" "6a cb ab dd 80 86 95"
+
+Feedback
+If you have any problem, suggestion, comment, or you found a bug in my utility, you can send a message to nirsofer@yahoo.com
+----------
+End of Document

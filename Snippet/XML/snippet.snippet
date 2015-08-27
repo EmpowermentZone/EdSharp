@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>
+      <!-- _locID_text="title" _locComment="" -->Snippet</Title>
+    <Author>Microsoft Corporation</Author>
+    <Shortcut>snippet</Shortcut>
+    <Description>
+      <!-- _locID_text="description" _locComment="" -->XML snippet for creating new XML snippets!</Description>
+    <SnippetTypes>
+      <SnippetType>SurroundsWith</SnippetType>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>title</ID>
+        <Default><!-- _locID_text="snippettitle" _locComment="" -->title</Default>
+      </Literal>
+      <Literal>
+        <ID>author</ID>
+        <Default><!-- _locID_text="snippetauthor" _locComment="" -->author</Default>
+      </Literal>
+      <Literal>
+        <ID>shortcut</ID>
+        <Default><!-- _locID_text="shortcut" _locComment="" -->shortcut</Default>
+      </Literal>
+      <Literal>
+        <ID>description</ID>
+        <Default><!-- _locID_text="snippetdescription" _locComment="" -->description</Default>
+      </Literal>
+      <Literal>
+        <ID>name</ID>
+        <Default><!-- _locID_text="name" _locComment="" -->name</Default>
+      </Literal>
+      <Literal>
+        <ID>value</ID>
+        <Default><!-- _locID_text="value" _locComment="" -->value</Default>
+      </Literal>
+      <Literal Editable="false">
+        <ID>endcdata</ID>
+        <Default>]]&gt;</Default>
+      </Literal>
+
+    </Declarations>
+    <Code Language="XML"><![CDATA[<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>$title$</Title>
+    <Author>$author$</Author>
+    <Shortcut>$shortcut$</Shortcut>
+    <Description>$description$</Description>
+    <SnippetTypes>
+      <SnippetType>SurroundsWith</SnippetType>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+    <Literal>
+        <ID>$name$</ID>
+        <Default>$value$</Default>
+    </Literal>
+    </Declarations>
+    <Code Language="XML"><![CDATA[$end$<test>
+      <name>$$$name$$$</name>
+      $$selected$$ $$end$$</test>$endcdata$        
+    </Code>
+    </Snippet>
+</CodeSnippet>
+      ]]></Code>
+  </Snippet>
+</CodeSnippet>

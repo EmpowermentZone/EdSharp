@@ -1,0 +1,59 @@
+;sample configuration file
+;lines beginning with ; or # are comments.
+;blank lines are ignored.
+;entries are of the form xx=string optional comments.
+;xx is case insensitive but string is not.
+; Some lines have been disabled by preceeding them
+; with a semicolon (;).  The optional
+; comments that appear after the commands on such lines
+; describe the effect of the command if the semicolon is removed.
+cl=32 maximum length of centered lines
+; co=1 number of copies
+cs=35 characters your printer can emboss per second set for Juliet
+db=0 don't display braille
+ds=0 don't display source
+ef=1 process external format file if it exists.
+et=1 expand tabs
+fp=1 number pages beginning with first page
+;hd=english.dic
+HK=0  1 causes ENTER not to be required on some menus
+;hm=15 hyphen mode
+ip=0 interpoint mode off
+lm=1 left margin
+ls=f use formfeeds between pages
+nc=0 set to 1 to suppress copyright message
+ow=0 prompt before overwriting output file if it exists
+pd=0 don't print the current date at top of first page
+; pe=9999 ending page
+pf=0 don't print file name at top of first page
+pl=25 lines per page
+pw=40 line length
+qm=0 quiet mode off, output progress messages
+rw=1 rejoin hyphenated words
+;s0=~[DL instructs juliet printer to ignore formfeed in spool mode
+;sm=24575 for new statistics file for each session
+so=15 sound enabled
+sp=0 spool mode off don't use dos print for backround printing
+;st=c:\stat.txt statistics file
+;tv=2000 timming value for microsoft C not used otherwise
+
+;Assign extension types
+ex==0arc=-arj=-asm=1bas=1bat=1blt=bbrf=abrl=2c=1com=-cpp=1dll=-exe=-f=1fmt=8
+ex=for=1gr3=6h=1ltr=9mac=1makefile=5man=3obj=-ovl=-pas=1rar=-
+ex=qwk=-prt=4stdin=7tpu=-wav=-zip=-zoo=-
+
+;Set up initialization strings for each extension type
+i0=~2~6||~ grade 2 braille auto paragraph format commands enabled
+;i1=~t~[KA~[QV~-pl=22|~[K@~[Q[~-pl=27| 8 dot braille with juliet
+i1=~t~-ef=0~-rw=0~01|| nonstandard computer braille text format no .efl
+i2=~2~5||~ block paragraphs grade 2 formatting enabled.
+i3=~5~-ef=0~-rw=7~01|| modified grade 0 for unix manuals.
+i4=~6~o5~u~-pw=80~0||
+i5=~t~01~-kc=1|| nonstandard computer braille for makefile
+i6=~t~33||  grade 3
+i7=~2~5|| grade 2 braille block paragraph format commands disabled
+i8=~2~t~p2~-pf=0~-pd=0||~
+i9=~2~-dv=8,16|~-dv=0,0|~ folding lines for a letter
+ia=~-tm=13|~-tm=11| brf to text
+ib=~t~u~-hm=0~-pw=80~-gm=0~-lt=1|~-pw=43|
+

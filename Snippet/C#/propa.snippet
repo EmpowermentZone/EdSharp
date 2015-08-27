@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Define an attached DependencyProperty</Title>
+            <Shortcut>propa</Shortcut>
+            <Description>Code snippet for an attached property using DependencyProperty as the backing store</Description>
+            <Author>Microsoft Corporation</Author>
+            <SnippetTypes>
+                <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>type</ID>
+                    <ToolTip>Property Type</ToolTip>
+                    <Default>int</Default>
+                </Literal>
+                <Literal>
+                    <ID>property</ID>
+                    <ToolTip>Property Name</ToolTip>
+                    <Default>MyProperty</Default>
+                </Literal>
+                <Literal>
+                    <ID>ownerclass</ID>
+                    <ToolTip>The owning class of this Property.  Typically the class that it is declared in.</ToolTip>
+                    <Default>ownerclass</Default>
+                </Literal>
+                <Literal>
+                    <ID>defaultvalue</ID>
+                    <ToolTip>The default value for this property.</ToolTip>
+                    <Default>0</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="csharp">
+                <![CDATA[
+                
+public static $type$ Get$property$(DependencyObject obj)
+{
+    return ($type$)obj.GetValue($property$Property);
+}
+
+public static void Set$property$(DependencyObject obj, $type$ value)
+{
+    obj.SetValue($property$Property, value);
+}
+
+// Using a DependencyProperty as the backing store for $property$.  This enables animation, styling, binding, etc...
+public static readonly DependencyProperty $property$Property =
+    DependencyProperty.RegisterAttached("$property$", typeof($type$), typeof($ownerclass$), new UIPropertyMetadata($defaultvalue$));
+
+$end$]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,48 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}    % needed for including graphics e.g. EPS, PS
+\topmargin -1.5cm        % read Lamport p.163
+\oddsidemargin -0.04cm   % read Lamport p.163
+\evensidemargin -0.04cm  % same as oddsidemargin but for left-hand pages
+\textwidth 16.59cm
+\textheight 21.94cm 
+%\pagestyle{empty}       % Uncomment if don't want page numbers
+\parskip 7.2pt           % sets spacing between paragraphs
+%\renewcommand{\baselinestretch}{1.5} % Uncomment for 1.5 spacing between lines
+\parindent 0pt		 % sets leading space for paragraphs
+
+\begin{document}         
+% Start your text
+\section{Introduction}
+\label{Introduction}
+
+Latex provides several standard class styles.  In the
+documentclass statement in top line of this file shows this
+will be an article with a 11 point font.  The {\bf article} 
+style is most suited for {\it conferences}.
+
+\subsection{The Label Statement}
+\label{labelStatement}
+
+Section~\ref{Introduction} described the article style.  Notice
+how Latex lets you use the label name to refer to a whatever
+section or sub-section you desire?  Latex automatically generates
+the numbers.
+
+\subsection{Text Formatting}
+\label{textFormatting}
+
+Latex provides several standard text formatting modifiers.
+For example, to bold a text, you surround the text in french
+braces like {\bf this}.  Italics are also {\it possible}.
+Lamport's book \cite{lamport} describes additional text formatting
+commands.
+
+\begin{thebibliography}{99}
+\bibitem{lamport} Lamport, L., {\it LaTeX : A Documentation
+ Preparation System User's Guide and Reference Manual}, Addison-Wesley 
+ Pub Co., 2nd edition, August 1994.
+\end{thebibliography}
+ 
+% Stop your text
+\end{document}
+

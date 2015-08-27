@@ -1,0 +1,260 @@
+﻿OfficeConvert
+Version 1.0
+November 9, 2011
+Copyright 2011 by Jamal Mazrui
+GNU Lesser General Public License (LGPL)
+
+
+----------
+
+Contents
+
+Description
+Operation of WdVert
+Operation of XlVert
+Operation of PpVert
+Installation
+Change Log
+Development Notes
+----------
+
+Description
+
+OfficeConvert is a set of free, open source utilities for converting file formats using the COM-based APIs of Microsoft Office applications, including Word, Excel, and Powerpoint.  These are command-line utilities that operate in console mode, without a graphical user interface (GUI).  Many file formats are supported.  Common file extensions may be used to specify the formats desired.  Conversions include going to and from formats used by other office suites, such as the Open Document formats supported by the cross-platform, Open Office suite.
+
+----------
+
+Operation of WdVert
+
+The utilities are stand-alone executables with names that include standard Microsoft two-letter abbreviations:  WdVert.exe for Word-based conversions, XlVert.exe for Excel-based conversions, and PpVert.exe for PowerPoint-based conversions.  If an executable is run without parameters, it displays a help message with command-line syntax.  For example, WdVert.exe, displays the following:
+
+Help for WdVert.exe -- Convert files using the API of Microsoft Word
+
+Syntax:
+WdVert Source Target TargetType
+
+where Source is the path to a file, directory, or wildcard specification
+
+optional Target is the path to either a file or directory, defaulting to the source directory
+
+optional TargetType is the target file type, as indicated by a common extension, integer constant, or string constant, defaulting to the txt extension
+
+The above syntax supports a variety of conversion options, depending on whether optional parameters are passed, on whether path arguments represent files or directories, and on how the target format is specified.  The source parameter is required, whereas the target and file type parameters are optional.  When a path includes a space character, its value should be enclosed in quotation marks (a standard Windows convention).  
+
+WdVert prints the name of each source file before processing it, so a log file may be created by redirecting standard output to a file, e.g., by ending the command line with
+>log.txt
+
+The Source path can indicate (1) the location of a single file, (2) the location of files in a directory, or (3) the location of files that match a whildcard specification.  Microsoft Word will automatically recognize the format of each source file based on its extension and other characteristics.
+
+The Target parameter may be either a file or directory path.  If the Target is a file, then WdVert will try to determine the desired format from the extension, e.e., a .rtf extension means Rich Text Format, etc.
+
+If the Target is a directory, it must already exist.  WdVert will assume that plain text (.txt) is the desired format for target files, unless another format is specified in a third parameter.  That parameter may specify a format with an extension, where the same association would be made as previously described (note that a . prefix is not used when specifying an extension).  Alternatively, the format may be specified with either the numeric value or the string name of an API constant defined by Microsoft Word.  The following is a list of SaveAs format constants:
+
+wdFormatDocument = 0 (*.doc)
+wdFormatDocument97 = 0 (*.doc)
+wdFormatTemplate = 1
+wdFormatTemplate97 = 1
+wdFormatText = 2 (*.txt)
+wdFormatTextLineBreaks = 3
+wdFormatDOSText = 4
+wdFormatDOSTextLineBreaks = 5
+wdFormatRTF = 6 (Rich Text Format, *.rtf)
+wdFormatEncodedText = 7
+wdFormatUnicodeText = 7
+wdFormatHTML = 8
+wdFormatWebArchive = 9 (*.mht, *.mhtm)
+wdFormatFilteredHTML = 10 (HyperText Markup Language, *.htm, *.html)
+wdFormatXML = 11
+wdFormatXMLDocument = 12 (*.docx)
+wdFormatXMLDocumentMacroEnabled = 13
+wdFormatXMLTemplate = 14
+wdFormatXMLTemplateMacroEnabled = 15
+wdFormatOriginalFormatting = 16
+wdFormatDocumentDefault = 16
+wdFormatPDF = 17 (Portable Document Format, *.pdf)
+wdFormatXPS = 18 (XML Paper Specification, *.xps)
+wdFormatFlatXML = 19 (*.xml)
+wdFormatFlatXMLMacroEnabled = 20
+wdFormatFlatXMLTemplate = 21
+wdFormatFlatXMLTemplateMacroEnabled = 22
+wdFormatPlainText = 22
+wdFormatOpenDocumentText = 23 (*.odf)
+
+Thus, text format may be specified in three ways:  the txt suffix, the integer 2, or the string wdFormatText.  Also, since the constant names all begin with the wdFormat prefix, it may be dropped for convenience, e.g., text will work as well as wdFormatText.  Capitalization does not affect the meaning of extension or constant names.
+
+Target file formats are denoted by the following extensions:  doc, docx, htm, html, odt, pdf, txt, xml, and xps.  For .txt, UTF-8 encoding is used with a BOM (byte order mark).  For .htm and .html, the "filtered HTML" format is chosen.  A different format may be chosen for an extension, rather than its default one, by setting the third parameter to either an integer value or a constant name from the list above.  Later versions of Microsoft Word support more conversions from that list, e.g., to .pdf with Word 2007 or above.
+
+WdVert can import some file formats that it does not export, and vice versa.  Besides file formats mentioned above, WdVert will generally recognize Microsoft Works (*.wps), Microsoft Write (*.wri), WordPerfect 5.x (*.wp5), and WordPerfect 6.x (*.wpd).
+
+WdVert may not be able to convert some files.  The number converted out of the total is indicated at the end of the process.
+
+Examples:
+
+WdVert C:\temp\report.doc
+converts a single Word document to a file with the same path except for a .txt extension
+
+WdVert *.docx . htm
+converts files from .docx to .htm format in the current directory
+
+WdVert c:\reports c:\temp 17
+
+converts all files in the reports directory to .pdf files in the temp directory
+
+WdVert c:\temp\test.docx test.htm
+converts test.docx in the temp directory into test.htm in the current directory
+
+
+----------
+
+Operation of XlVert
+
+The command-line syntax is the same for the XlVert and PpVert executables.  Possible target types for XlVert are listed below.  The default, .txt conversion is a custom one that combines text versions of all sheets in an Excel workbook (a .xls file is a workbook with one or more sheets).  For example, the command
+XlVert *.xls*
+would convert source .xls and .xlsx files to .txt target files in the same directory.
+
+xlSYLK = 2
+xlWKS = 4
+xlWK1 = 5
+xlCSV = 6
+xlDBF2 = 7
+xlDBF3 = 8
+xlDIF = 9
+xlDBF4 = 11
+xlWJ2WD1 = 14
+xlWK3 = 15
+xlExcel2 = 16
+xlTemplate = 17
+xlAddIn = 18
+xlTextMac = 19
+xlTextWindows = 20
+xlTextMSDOS = 21
+xlCSVMac = 22
+xlCSVWindows = 23
+xlCSVMSDOS = 24
+xlIntlMacro = 25
+xlIntlAddIn = 26
+xlExcel2FarEast = 27
+xlWorks2FarEast = 28
+xlExcel3 = 29
+xlWK1FMT = 30
+xlWK1ALL = 31
+xlWK3FM3 = 32
+xlExcel4 = 33
+xlWQ1 = 34
+xlExcel4Workbook = 35
+xlTextPrinter = 36
+xlWK4 = 38
+xlExcel7 = 39
+xlWJ3 = 40
+xlWJ3FJ3 = 41
+xlUnicodeText = 42
+xlExcel9795 = 43
+xlHtml = 44
+xlWebArchive = 45
+xlXMLSpreadsheet = 46
+xlExcel12 = 50
+xlWorkbookDefault = 51
+xlOpenXMLWorkbook = 51
+xlOpenXMLWorkbookMacroEnabled = 52
+xlOpenXMLTemplateMacroEnabled = 53
+xlOpenXMLTemplate = 54
+xlOpenXMLAddIn = 55
+xlExcel8 = 56
+xlOpenDocumentSpreadsheet = 60
+xlWorkbookNormal = -4143
+xlCurrentPlatformText = -4158
+
+
+
+----------
+
+Operation of PpVert
+
+Possible target types for PpVert are listed below.  The default, .txt conversion is a custom one that extracts all types of text from each slide of a PowerPoint presentation, including the outline, notes, comments, and hyperlinks (a .ppt file is a presentation with one or more slides).  For example, the command
+PpVert *.ppt*
+would convert source .ppt and .pptx files to .txt target files in the same directory.
+
+ppSaveAsPresentation = 1
+ppSaveAsText = 2
+ppSaveAsTemplate = 5
+ppSaveAsRTF = 6
+ppSaveAsShow = 7
+ppSaveAsAddIn = 8
+ppSaveAsDefault = 11
+ppSaveAsHTML = 12
+ppSaveAsHTMLv3 = 13
+ppSaveAsHTMLDual = 14
+ppSaveAsMetaFile = 15
+ppSaveAsGIF = 16
+ppSaveAsJPG = 17
+ppSaveAsPNG = 18
+ppSaveAsBMP = 19
+ppSaveAsWebArchive = 20
+ppSaveAsTIF = 21
+ppSaveAsEMF = 23
+ppSaveAsOpenXMLPresentation = 24
+ppSaveAsOpenXMLPresentationMacroEnabled = 25
+ppSaveAsOpenXMLTemplate = 26
+ppSaveAsOpenXMLTemplateMacroEnabled = 27
+ppSaveAsOpenXMLShow = 28
+ppSaveAsOpenXMLShowMacroEnabled = 29
+ppSaveAsOpenXMLAddin = 30
+ppSaveAsOpenXMLTheme = 31
+ppSaveAsPDF = 32
+ppSaveAsXPS = 33
+ppSaveAsXMLPresentation = 34
+ppSaveAsOpenDocumentPresentation = 35
+ppSaveAsExternalConverter = 36
+
+Since the PowerPoint constant names all begin with the ppSaveAs prefix, it may be dropped for convenience when specifying a target type parameter, e.g., OpenDocumentPresentation will work as well as ppSaveAsOpenDocumentPresentation.
+----------
+
+Installation
+
+Unzip the archive at the web address
+http://EmpowermentZone.com/OfficeConvert.zip
+
+e.g., to the directory
+C:\OfficeConvert
+
+Then run one of the executables:  WdVert.exe, XlVert.exe, or PpVert.exe.  They may be run from another directory.  To do so without specifying the full path of the executable, add its program directory to the Windows search path.
+
+The number of file formats supported by OfficeConvert may be increased by installing free components from the Microsoft web site.  If using Microsoft Office 2003, the Compatibility Pack for Word, Excel, and PowerPoint File Formats is recommended:
+http://www.microsoft.com/download/en/details.aspx?displaylang=3Den&id=3D3=
+
+If using Microsoft Office 2007, the Save as PDF or XPS Add-in is recommended:
+http://www.microsoft.com/download/en/details.aspx?id=3D7
+
+----------
+
+Change Log
+
+Version 1.0 on November 9, 2011
+Renamed WordVert to WdVert and added XlVert and Ppvert.  Updated documentation for the combined OfficeConvert package.
+
+Beta 0.6 on October 18, 2011
+Changed the order and meaning of command-line parameters for better power and friendliness.  Added much documentation about file formats supported, including links to free Word components that increase such support.
+
+Beta 0.5 on October 15, 2011
+Initial public beta.
+----------
+
+Development Notes
+
+OfficeConvert is written in the AutoIT scripting language, available from
+http://AutoITScript.com
+
+The commented source code is in the files WdVert.au3, XlVert.au3, and PpVert.au3.  Batch files are included for recompiling the utilities, assuming the default installation of the AutoIT development package.
+
+I welcome feedback, which will help OfficeConvert improve over time.  When reporting a problem, please be as specific as possible about Windows version, Microsoft Office version, and steps to reproduce the problem.
+
+Jamal Mazrui
+jamal@empowermentzone.com
+
+
+
+
+
+
+
+

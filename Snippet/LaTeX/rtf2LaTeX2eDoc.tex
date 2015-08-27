@@ -1,0 +1,364 @@
+\documentclass[11pt]{article}
+
+\usepackage{color}
+%\usepackage{times}
+%\usepackage[pdfmark,colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{hyperref}
+
+\definecolor{color1}{rgb}{0.000,0.000,0.000}
+\definecolor{color2}{rgb}{0.000,0.000,1.000}
+\definecolor{color3}{rgb}{0.000,1.000,1.000}
+\definecolor{color4}{rgb}{0.000,1.000,0.000}
+\definecolor{color5}{rgb}{1.000,0.000,1.000}
+\definecolor{color6}{rgb}{1.000,0.000,0.000}
+\definecolor{color7}{rgb}{1.000,1.000,0.000}
+\definecolor{color8}{rgb}{1.000,1.000,1.000}
+\definecolor{color9}{rgb}{0.000,0.000,0.502}
+\definecolor{color10}{rgb}{0.000,0.502,0.502}
+\definecolor{color11}{rgb}{0.000,0.502,0.000}
+\definecolor{color12}{rgb}{0.502,0.000,0.502}
+\definecolor{color13}{rgb}{0.502,0.000,0.000}
+\definecolor{color14}{rgb}{0.502,0.502,0.000}
+\definecolor{color15}{rgb}{0.502,0.502,0.502}
+\definecolor{color16}{rgb}{0.753,0.753,0.753}
+
+
+
+\def\rtf2latex2e{{\bf rtf2\LaTeXe}}
+% for links to URLs
+\def\urlone#1{\mbox{\href{#1}{\tt #1}}}
+\def\urltwo#1#2{\mbox{\href{#1}{\tt #2}}}
+
+
+\title{\rtf2latex2e Documentation\\
+version 1.0 beta} 
+\author{Ujwal S. Sathyam\\ 
+\urltwo{mailto:setlur@bigfoot.com}{setlur@bigfoot.com}} 
+%\date{18. March 2000}
+
+
+\begin{document} \maketitle
+
+
+\section{Introduction 
+\label{intro}} \rtf2latex2e is an RTF$\rightarrow${\LaTeX}
+converter that takes as its input RTF files produced by Microsoft Word
+and comparable word processors such as Star Office and generates a
+\TeX-able ``{\bf .tex}'' file.  It has the capability to handle fairly
+complex RTF files containing figures, tables, and starting from
+version 1.0 equations (courtesy Steve Swanson, Mackichan Software).  \rtf2latex2e is written using standard $C$ and
+should compile on any platform supporting a $C$ compiler.  I have
+tested it on the Macintosh, Linux (Intel), Linux (PowerPC), Windows
+95/NT, and Solaris.
+
+\rtf2latex2e uses the generic
+\urltwo{http://www.primate.wisc.edu/software/RTF/}{RTF reader}
+framework by Paul DuBois.  The framework is a general purpose tool for
+processing RTF files and may be configured in a well-defined manner to
+allow it to be used with a variety of writers generating different
+output formats.  This provides a method for generating RTF-to-XXX
+translators.  Essentially, \rtf2latex2e provides the {\LaTeXe} writer
+code to the RTF reader.  Paul seems to have stopped developing the
+reader code, therefore I had to adapt it quite a bit to handle the
+latest version of RTF.
+
+\section*{What you will get}
+If you expect a WYSIWYG reproduction of your RTF file, you may be
+disappointed.  My main concerns have been translating the essential
+features of the RTF file such as characters, figures, tables, and
+equations.  I have largely ignored visual formatting
+such as ruler positions, tabs (until I figure out a good way of doing
+this), paragraph indentations, and other fluff.  I have always
+expected the output {\LaTeXe} file to require manual editing to put the
+finishing touches.  I just want to make that task a little easier.  In
+my opinion, expecting a WYSIWYG reproduction is not practical and
+misses the point entirely.
+
+
+\section{Installation}
+Compiled binaries are available for Macintosh and Windows systems. 
+Users of Unix/Linux systems will have to compile the source code,
+which is a fairly straightforward process.
+
+\subsection{Macintosh}
+The Macintosh distribution includes a FAT drag-and-drop application on
+which you can drop multiple RTF files.  The output {\LaTeX} files will
+be created in the same directory as the input RTF files.  If Mac users
+want to build their own binaries, I have included the CodeWarrior 5.3
+project file.  The project uses the DropUnix application framework
+(\urlone{http:/www.zenspider.com}) that is included in the distribution.
+ If you have CodeWarrior 5.3, you should be able to open the project
+file and issue a ``Make'' command. For drag and drop operation, the
+input RTF files need to be of type `TEXT' or `RTF ' (note the space).
+
+\subsection{Unix/Linux \label{Unix_install}}
+There is a \textit{Unix} directory that contains scripts for
+configuring, building, and installing \rtf2latex2e. Change to the
+\textit{Unix} directory and type:\\
+\begin{tabular}{ll}
+&\textbf{./configure}\\
+&\textbf{make}
+\end{tabular}
+
+\noindent
+This will compile the sources and create a binary called
+\textbf{rtf2latex2e.bin} in the parent distribution directory. You can
+optionally issue a ``make clean'' command to remove the object files.
+
+You can choose to install the binary in a convenient location.
+If you want to install into the default directory
+/usr/local/rtf2latex2e, you will need to become super-user at this point.
+Installation is done by:\\
+\begin{tabular}{ll}
+&\textbf{make install (as root)}
+\end{tabular}
+
+\noindent
+The default installation directory is /usr/local/rtf2latex2e.  A
+symbolic link /usr/bin/rtf2latex2e is created pointing to
+\$(INSTALL\_DIR)/rtf2latex2e.bin. If there is already an existing
+\rtf2latex2e installation, it will rename that directory to
+``rtf2latex2e.old''. If you do not have super-user privileges, you can
+edit the Makefile and change the INSTALL\_DIR to somewhere in your home
+directory, say \$(HOME)/rtf2latex2e. \textbf{Make sure that the INSTALL\_DIR path ends with ``rtf2latex2e''.}
+
+Finally, the environment variable RTF2LATEX2E\_DIR will need to be set
+from within your shell.  The variable has to point to the directory into
+which rtf2latex2e was installed.  You can set the variable using\\
+export RTF2LATEX2E\_DIR=directory (bash) or\\ 
+setenv RTF2LATEX2E\_DIR
+directory (csh)\\ 
+in your .bashrc or .login file, whichever is read by
+your shell.
+
+You can also optionally install the ImageMagick image manipulation package available at \urlone{http://www.wizards.dupont.com/cristy}. If this is installed, \rtf2latex2e will use the ImageMagick utility ``convert'' to attempt to convert embedded PNG, JPEG, and PICT images to EPS. This support is statically built into the Mac and Windows binaries.
+
+
+\subsection{Windows}
+Windows users get a pre-compiled binary of \rtf2latex2e to be run from
+the MS-DOS prompt. Just run it with the RTF file to be converted as the argument.
+
+\section{Use}
+On the Macintosh, drop your RTF file onto the application. The output {\LaTeXe} file will be generated in the same folder as the input RTF file.
+On Linux/Unix and DOS, you have to run the program in a shell:\\
+\textbf{rtf2latex2e} $<rtfFileName>$\\
+If the file name contains spaces, enclose the path in double quotes. 
+
+\subsection{Command-line options}
+No very useful command line options are supported yet.  There are the
+obvious ``-h'' for help and ``-v'' for version number.  The only other
+supported option is ``-t $<$output-map-file$>$'' where you can specify
+an output map file other than the default ``TeX-map''.
+
+\subsection{The r2l-pref preference file}
+\rtf2latex2e reads a preference file ``\textit{r2l-pref}'' where you can
+specify various options such \textbf{ignoreRulerSettings},
+\textbf{ignoreColor}, etc.  The options are self-explanatory.  There are
+also some Macintosh-specific options at the end for converting embedded
+PICT images to EPS.  The PICT$\rightarrow$EPS conversion routine
+requires the Apple Laserwriter driver to be installed. All the options
+in the ``\textit{r2l-pref}'' file are available as a
+``Preferences'' menu item in the Macintosh application.  In the
+Unix/Linux and Windows versions, the default ``\textit{r2l-pref}'' file
+in the installation directory can be overridden by a file with the same
+name in the current working directory.
+
+\subsection{The output map file}
+The default output map file is ``TeX-map''. The output map file determines the {\LaTeXe} representation of characters. You could use a different output map file, e.g. ``TeX-map.applemac'' that generates characters in accordance to the Macintosh character set. Obviously, such a LaTeX file might need to use an appropriate ``input'' encoding package. Packages required by an output map file can be specified in the file itself, so that the packages are always loaded when the output map file is used. For example, the ``TeX-map.applemac'' file specifies ``\%{\textbackslash}usepackage[applemac]\{inputenc\}''. The percent sign is not a comment, but tells \rtf2latex2e to treat the following string as a output map qualifier. You can add other qualifiers such as ``\%{\textbackslash}usepackage[T1]\{fontenc\}''.
+
+\subsection{The r2l-head file}
+\rtf2latex2e also reads a file (if present) called
+``\textit{r2l-head}''.  In this file, you can specify any additional
+packages that you want to use in your {\LaTeXe} file, e.g. a babel
+hyphenation package or a font encoding.  The contents of this file are just copied into the preamble of the {\LaTeXe} file.  In the Unix/Linux and Windows
+versions, the default ``\textit{r2l-head}'' file in the installation
+directory can be overridden by a file with the same name in the
+current working directory.
+
+\subsection{The r2l-map file}
+\rtf2latex2e also reads a file (if present) called
+``\textit{r2l-map}''.  In this file, you can customize options for the
+document class in the {\LaTeXe} file and mappings for section headings. 
+You can also specify how text style is to be handled in the {\LaTeXe}
+file, e.g.\thinspace``\textbackslash {textbf}'' vs.\thinspace
+\{\textbackslash bf \ldots\}.  In the Unix/Linux and Windows versions,
+the default ``\textit{r2l-map}'' file in the installation directory
+can be overridden by a file with the same name in the current working
+directory.
+
+
+
+\section{Features} 
+\rtf2latex2e is designed to convert journal articles, reports, and
+letters written in Microsoft Word.  That means I would like it to
+handle the following:
+
+\begin{itemize}
+
+\item 
+{\bf {\underline {Text Style:}}} Some amount of stylized text like
+{\color{color6} c}{\color{color2} o}{\color{color4} l}{\color{color10}
+o}r, {\bf bold}, {\em italic}, {\underline {underlined}}, and relative
+size like {\small small}, normal, {\LARGE big}, {\huge very big},
+{\Huge and large}.  This is a little weak in older RTF files as the
+older RTF spec is a little crappier than the newer one.  All other
+font information is disregarded, as TeX can do better anyway.
+
+
+
+\item 
+{\bf {\underline {Figures:}}} \rtf2latex2e can read figures
+of format PICT, WMF, PNG, and JPEG embedded into RTF files.  These are
+the most common formats encountered in RTF files.  When \rtf2latex2e
+encounters an embedded figure, it reads out the figure into a separate
+file.  The output format of the figure is the same as the format it is
+embedded in. \rtf2latex2e will then attempt to convert the image to EPS using both internal and external conversion routines. For PNG and JPEG images, the ImageMagick (\urlone{http://www.wizards.dupont.com/cristy}) package is used to generate EPS files. PICT images on non-Mac systems are also converted to EPS using ImageMagick, but the performance can be quite poor. On Macs, you have the option of using either the Laserwriter driver for EPS generation or ImageMagick. Generally, using the Laserwriter yields better results.
+
+The ImageMagick support is statically built into the binaries for the Mac and Windows platforms. \rtf2latex2e for Unix and Linux will attempt to externally call the ImageMagick routine ``convert'' if available. You will need to install ImageMagick separately for EPS conversion on these platforms.
+
+\rtf2latex2e for the Macintosh also converts embedded
+WMF files to PICT format.  All major implementations of {\TeX} on the
+Macintosh can handle PICT images.   Most of the image
+conversion code was written by \urltwo{mailto:prahl@ece.ogi.edu}{Scott
+Prahl}.
+
+
+\item 
+{\bf {\underline {Equations:}}} The most common source of the RTF file
+is Microsoft Word.  Equations in Word are created in Equation Editor (MathType), and when saved into an RTF file, the equation is embedded as an OLE
+object.   \rtf2latex2e uses the free
+\urltwo{http://arturo.directmail.org/filtersweb}{cole} library to
+extract the embedded equations from the OLE structured format. The equation is then converted into {\LaTeX} format. Only equations created by Equation Editor 3.0 (supplied along with MS Word) have been tested. MS Word also embeds the equation as a picture for older RTF readers.  If the native equation conversion fails, or if the option to convert equations is disabled, \rtf2latex2e reads that picture and outputs the equation as a picture file. The equation converter capability was provided by Steve Swanson from Mackichan Software (\urlone{http://www.mackichan.com}), makers of Scientific Word and Workplace.
+
+
+\item 
+{\bf {\underline {Tables:}}} Yeah, it does tables!!  However, this is
+the weakest link in the chain and the messiest part of the code.  This
+is largely due to the fact that RTF does not have a separate `Table'
+group.  It is also due to the fact that TeX likes to know in advance
+the number of columns in the table, and RTF does not tell us that.  I
+spent a lot of time to support tables to this extent.  A lot of the
+test files have tables in them.  To get an idea of the type of tables
+that \rtf2latex2e can handle, take a look at {\bf table1.rtf}, {\bf
+Script.rtf}, and {\bf RTF-Spec.rtf}.  I use longtable.sty package for
+generic table handling to take care of tables that span several pages.
+
+
+
+\item
+{\bf {\underline {Paragraph Style:}}} I care for alignment issues like
+centering, left, and right justification.  Useful in letters.  All
+other visual formatting like indentation is currently ignored until I
+figure out how to translate RTF's paragraph syntax into appropriate
+LateX commands/environments.
+
+
+\item 
+{\bf {\underline {Character mapping:}}} Character mapping is largely
+complete for the most common latin scripts.  Characters are translated
+by referencing character set maps and the output map file
+``\TeX-map''.  The platform and locale dependent character set, eg. 
+latin-2 (Eastern European), is converted to an internal
+platform-independent representation by reading the appropriate
+character map file, in this case cp1250.map.  For example, character
+192 (hex $0xc1$) represents ``\textit{\'{A}}'' in the latin-2
+character set.  \rtf2latex2e maps this character to
+``\textit{Aacute}''.  This mapping is then finally translated into the
+{\LaTeX} representation ``\textbackslash$'$\{A\}'' using the output
+map file \textit{Tex-map}.  This two-step character mapping allows for
+easy addition of support for additional character sets such as latin-5
+(Turkish).  Also, some users prefer to use the \textit{inputenc}
+package to represent characters above ASCII value 127, ie.  type
+``\textit{\'{A}}'' instead of ``\textbackslash$'$\{A\}''. 
+\rtf2latex2e can do this automatically by using the appropriate
+mapping in the Tex-map file.  Sample Tex-map files for cp1252 (ANSI),
+cp1250 (latin-2), and applemac (Macintosh) are provided to illustrate
+this approach.  To use any of these files, rename the file to
+``Tex-map''.  The appropriate ``\textbackslash
+usepackage[\ldots]\{inputenc\}'' entry in the r2l-head file will cause
+the inputenc package to be loaded.
+
+\item
+{\bf {\underline {Footnotes:}}} It was quite simple to add footnote
+support.  I initially had trouble converting footnotes within tables,
+but it works now.
+
+\item
+{\bf {\underline {Hyperlinks:}}} I have added support for translating
+hyperlinks using the hyperref package.  This is still somewhat
+experimental.  There is an option in the r2l-pref file to turning off
+this option.
+
+
+\end{itemize}
+
+\noindent
+Features I would like to support in future versions are:
+\begin{itemize}
+\item
+Unicode: This should really get rid of the need for different
+character set maps.  Word 98 on the Mac already puts out Unicode.
+\item
+Lists
+\end{itemize}
+
+\section{Test files \label{test}}
+There are four test files in the \textit{examples} directory of the rtf2latex2e distribution that demonstrate the capabilities of the converter. You can also download a larger set of test files to see how the program behaves.  These test files are in a tarred gzipped archive in the same place where you downloaded the rtf2latex2e distribution.  ``{\em RTF-test-files}'' contains several
+RTF files that have been successfully tested on \rtf2latex2e.  By
+success, I mean that \rtf2latex2e processes the RTF file without any
+problems (except maybe giving a few warnings) and produces a ``.tex''
+file that is \LaTeXe-able!!  It does not mean that the {\LaTeXe} output
+file will look exactly the same as the RTF input file.  In fact, most
+of the time, it will not.  Some features like I do not care to
+convert, others like Unicode support will be implemented in future
+versions.
+
+
+\section{Acknowledgements}
+I would not even have attempted this thing had it not been for Paul
+DuBois' very nicely designed RTF tool.  I did not have to bother with
+parsing the RTF tokens and understanding it.  All I had to do was
+write code to act upon the token.  Thanks, Paul, for simplifying it. 
+Another great help has been the DropUnix application framework by Ryan
+Davis that makes porting between command-line Unix and drag-and-drop
+Macintosh a matter of changing one line of code.  DropUnix itself is
+based on the drag-and-drop DropShell framework by Leonard Rosenthol,
+Marshall Clow, and Stephan Somogyi.
+
+Steve Swanson of Mackichan Software, makers of Scientific Word and Workplace (\urlone{http://www.mackichan.com}), contributed the equation converter code. With this ability, \rtf2latex2e has advanced to version 1.0. Hopefully, this essential feature addition along with \rtf2latex2e's other capabilities will make this program the \textit{de facto} tool for converting word processor documents to \LaTeXe.
+
+Finally, I have to thank Scott Prahl for providing constant feedback
+and encouragement to keep this going.  Scott also joined me in the
+development effort and contributed the image conversion code.
+
+\section{Legalese}
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation.
+
+The ImageMagick library and its assciated libraries carry their respective copyrights.
+
+The JPEG{$\rightarrow$}EPS conversion routine was adapted from Thomas
+Merz's jpeg2ps program with his permission. Any copyright notices
+regarding jpeg2ps still apply to the adapted code within \rtf2latex2e.
+Thomas Merz's homepage is \urlone{http://www.pdflib.com/}
+
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.  If you format your hard
+disk, or do anything else inconvenient, it’s not my fault.
+
+The reader part of this code is copyright Paul DuBois.  The Macintosh
+DropUnix framework is by Ryan Davis, and the DropShell part of the
+code by its authors.
+
+If you make any modifications that you think makes this program
+better, please send me the modifications so that I can incorporate
+them in later versions.  Please do not distribute modified versions. 
+I plan to keep working on this project, and anybody is welcome to
+help.
+
+    
+\end{document}

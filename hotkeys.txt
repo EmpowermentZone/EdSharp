@@ -1,0 +1,262 @@
+Hotkey Summary
+List of EdSharp commands in related groups
+
+Launch EdSharp=Alt+Control+E, Launch or activate the EdSharpapplication via a Windows desktop shortcut
+Hotkey Summary=Alt+Shift+H, Display this list of command names, hot keys, and descriptions in a new window
+
+Documentation=F1, Open Documentation in web browser
+About=Alt+F1, Display version and release date
+History of Changes=Shift+F1, Display list of fixes and improvements
+Key Describer=Control+F1, Toggle a mode in which pressing a key describes its action
+Alternate Menu=Alt+F10, Present all commands in a single, alphabetized list
+Context Menu=Shift+F10, Pick a command from those available to Windows Explorer for the current file extension
+SendTo Menu=Control+F10, Pick a command from those available as Windows "Send To" options
+
+Select All=Control+A, Select all text
+Unselect All=Control+Shift+A, Clear text selection
+
+Select Chunk=Control+Space, Select contiguous sequence of non-blank characters at cursor, or select the next chunk if a selection already exists
+Say Selected=Shift+Space, or JAWSKey+Shift+DownArrow, Say selected text, or spell if repeated
+Say Chunk=Shift+BackSpace, Say chunk at cursor
+
+Start Selection=F8, Mark starting point of text to be selected
+Complete Selection=Shift+F8, Select text from starting point to cursor
+Reselect=Control+Shift+F8, Reselect between previous start and end positions
+Go to Start of Selection=Alt+Shift+F8, Return to start position of selection
+Copy All=Control+F8, Copy all text to clipboard
+Read All=Alt+F8, Say all text (without moving cursor)
+
+Say Address=Alt+A, Say line, column, and percent position of cursor
+Say Block=Alt+B, Say the rest of the current code block, or the whole block if repeated
+Say Braces=Alt+Shift+], Say number of braces on either side of cursor
+Say Indentation=Alt+I, Say the indentation level of the current line, or the preceding line with less indentation if repeated
+Say Yield=Alt+Y, Say number of characters, words, and lines in all or selected text
+Say Status=Alt+Z, Say whether current file has been modified since last save to disk, or say its character encoding if repeated
+Say Clipboard=Alt+Apostrophe, Say clipboard text, or spell if repeated
+Say Time=Alt+Semi-colon, Say current time and date
+Insert Time=Alt+Shift+Semi-colon, Insert current time and date
+Calculate Date=Control+Shift+Semi-colon, Calculate and insert date
+
+Configuration Options=Alt+Shift+C, Adjust configuration options through a dialog
+Set Default Font and Color=Alt+Shift+Equals, Set default font and color for editing window
+Manual Options=Alt+Shift+M, Adjust options by directly editing the main configuration file
+Reset Configuration=Alt+Shift+0, Revert to default options, or define a new compiler configuration
+
+Copy=Control+C, Copy selected text to clipboard, or copy current line if no selection
+Copy Append=Alt+C, Append selected text to clipboard, or append current line if no selection
+Copy Rich Text=Control+Shift+C, Copy selected text with formatting to clipboard
+Cut=Control+X, Cut selected text to clipboard, or cut current line if no selection
+Cut Append=Alt+X, Cut and append selected text to clipboard, or cut and append current line if no selection
+
+Paste=Control+V, Paste text from clipboard
+Paste File=Control+Shift+V, Insert another file at cursor position
+Append from Clipboard=Alt+7, Toggle a mode in which text copied to the clipboard is also saved to a file
+Undo=Control+Z, Undo the last editing action
+Redo=Control+Shift+Z, Redo the last action that was undone
+
+Save Snippet=Alt+S, Save all or selected text to a snippet file
+Invoke Snippet=Alt+V, Pick snippet file to paste or execute
+View Snippet=Alt+Shift+V, Pick snippet file to view or edit
+
+Yield with Regular Expression=Control+Shift+Y, Count parts of text matching a regular expression
+Extract with Regular Expression=Control+Shift+E, Extract text matching a regular expression, putting matches in a new window
+Replace with Regular Expression=Control+Shift+R, Search and replace regular expression in all or selected text
+Replace=Control+R, Search and replace string in all or selected text
+
+File Find=Alt+Shift+F, Open file from list of files containing a search string
+Forward Find=Control+F, Search forward for string in all or selected text
+Reverse Find=Control+Shift+F, Search backward for string
+Forward Find with Regular Expression=Control+F3, Search forward for regular expression in all or selected text
+Reverse Find with Regular Expression=Control+Shift+F3, Search forward for regular expression in all or selected text
+Forward Find at Cursor=Alt+F3, Search forward for chunk or selected text
+Reverse Find at Cursor=Alt+Shift+F3, Search backward for chunk or selected text
+Forward Find Again=F3, Search forward for next match
+Reverse Find Again=Shift+F3, Search backward for previous match
+
+Word Wrap=Control+W, Word wrap lines
+Unwrap=Control+Shift+W, Unwrap lines
+Guard Document=Control+F7, Make document read-only
+No Guard=Control+Shift+F7, Clear read-only status
+Toggle Punctuation=JAWSKey+Grave, Accent, Toggle JAWS voice between all and no punctuation
+Voice Louder=Alt+Grave, Increase JAWS voice volume by 5%
+Voice Softer=Alt+Shift+Grave, Decrease JAWS voice volume by 5%
+Voice Faster=Control+Grave, Increase JAWS voice rate by 5%
+Voice Slower=Control+Shift+Grave, Decrease JAWS voice rate by 5%
+Extra Speech Toggle=Control+Shift+X, Toggle extra speech messages on or off, redirecting to Speech.log file
+Extra Speech Log=Alt+Shift+X, Open speech.log file in a new window
+
+Go to Percent=Control+G, Go to percentage point in document
+Go to Percent Again=Alt+G, Repeat Go command
+Jump to Line=Control+J, Jump to line number or to line, column position
+Jump to Line Again=Alt+J, Repeat Jump command
+
+Set Bookmark=Control+K, Set bookmark at cursor position
+Clear Bookmark=Control+Shift+K, Clear bookmark at cursor position
+Go to Bookmark=Alt+K, Go to bookmark in current file
+
+Set Favorite=Control+L, Add current file to the list of favorites
+Clear Favorite=Control+Shift+L, Clear current file from the list of favorites
+List Favorites=Alt+L, Open a file from the list of favorites
+Recent Files=Alt+R, Open a file from the list of those recently used
+
+New=Control+N, Open a new editing window
+New from Clipboard=Control+Shift+N, Open a new editing window containing clipboard text
+
+Open=Control+O, Open file
+Open Other Format=Control+Shift+O, Open file in another format and convert it to text
+Open Again=Alt+O, Reload the current file from disk
+
+Properties=Alt+Enter, display Windows properties dialog for current file
+Save=Control+S, Save
+Save As=Control+Shift+S, Save As
+Save Copy=Alt+Shift+S, Save copy of document using a different name
+Export Format=Alt+Shift+E, Export document to another format
+
+Print=Control+P, Print current file
+Mail Body=Control+M, Mail current file as body of an email message
+Mail Attachment=Control+Shift+M, Mail current file as an email attachment
+Burn to CD=Alt+Shift+B, Burn a list of files or folders to a CD
+Web Download=Alt+Shift+W, Pick files to download from a web page or the current document
+Web Client Utilities=Alt+Shift+Space, Pick a web client utility to run
+
+Run=F5, Execute current file, based on its extension
+Run at Cursor=Shift+F5, Execute a web URL or email address at cursor position or in selected text
+Prompt Command=Alt+F5, Prompt for a command line to execute and say its standard output
+Review Output=Alt+Shift+F5, Open standard output of last prompt or compile command in a new editing window
+Compile=Control+F5, Compile source code, say output, and jump to error position
+Pick Compiler=Control+Shift+F5, Pick a compiler or interpreter from the list of those configured
+Say Compiler=Alt+0, Say current compiler and folder
+Go to Folder=Control+0, Go to folder containing recent or favorite files
+Go to Special Folder=Control+Shift+0, Go to special folder of Windows
+Go to Environment=Control+Shift+G, Go to interactive environment of current compiler
+
+Spell Check=F7, Spell check all or selected text
+Thesaurus=Shift+F7, Look up synonyms for word at cursor
+Lookup Term=Alt+F7, Look up information from dictionary.com, thesaurus.com, and wikipedia.org
+Translate Language=Alt+Shift+F7, Translate all or selected text from one natural language to another
+
+Say Path=Alt+P, Say full path of current file
+Path to Clipboard=Alt+Shift+P, Copy full path of current file to clipboard
+Path List=Control+Shift+P, Generate a list of files in a new editing window
+
+Special Character=F2, Insert character indirectly by specifying its Unicode value
+Quote=Control+Q, Add prefix sequence to current or selected lines
+Unquote=Control+Shift+Q, Remove prefix sequence from current or selected lines
+Join Lines=Control+Shift+J, Word wrap lines in all or selected paragraphs
+Hard Line Break=Control+Shift+H, Set the maximum width of lines in all or selected text
+
+Upper Case=Control+U, Convert current or selected characters to upper case
+Lower Case=Control+Shift+U, Convert current or selected characters to lower case
+Proper Case=Alt+U, Convert current or selected characters to proper case
+Swap Case=Alt+Shift+U, Convert lower case characters to upper case, and vice versa
+Yield Encoding=Alt+Shift+Y, Render all or selected text based on a character encoding
+
+Format Code =Control+4, Arrange indentation and other stylistic conventions in a C-like language
+Repeat Line=Control+Y, Copy current line below it
+Evaluate Expression=Control+Equals, Evaluate current line or selected text as a JScript.NET expression and copy the result below
+Replace Tokens=Control+Shift+Equals, Swap user-defined tokens with their computed results in all or selected text
+Transform Files=Alt+Equals, Apply a set of search and replace tasks to a list of files in the current window
+Trim Blanks=Control+Shift+Enter, Trim leading and trailing blanks from the current or selected lines, and remove more than two consecutive blank lines
+
+End Character=Alt+End, Go to last non-blank character of line and read it
+Home Character=Alt+Home, Go to first non-blank character of line and read it
+Next Word=Control+RightArrow, Go to next word and read it
+Prior Word=Control+LeftArrow, Go to previous word and read it
+Next Chunk=Alt+RightArrow, Go to next chunk and read it
+Prior Chunk=Alt+LeftArrow, Go to previous chunk and read it
+Next Sentence=Alt+DownArrow, Go to next sentence and read it
+Prior Sentence=Alt+UpArrow, Go to previous sentence and read it
+Next Paragraph=Control+DownArrow, Go to next paragraph and read it
+Prior Paragraph=Control+UpArrow, Go to previous paragraph and read it
+
+Delete Right=Control+Shift+Delete, Delete from cursor to end of line
+Delete Left=Control+Shift+Backspace, Delete from cursor to start of line
+Delete Down=Alt+Shift+Delete, Delete from cursor to bottom of file
+Delete Up=Alt+Shift+Backspace, Delete from cursor to top of file
+Delete Line=Alt+Backspace, Delete current line
+Delete Hard Line=Control+D, Delete line ending in hard line break
+Delete Paragraph=Control+Shift+D, Delete past one or more blank lines
+Delete File=Alt+Shift+D, Delete current file on disk
+Rename=Alt+Shift+R, Rename current file on disk
+
+Next Section=Control+PageDown, Go to next section
+Prior Section=Control+PageUp, Go to Prior Section
+Go to Section=F6, Go to section in body from topic in table of contents
+Go to Contents=Shift+F6, Go to topic in table of contents from section in body
+Search for Topic=Control+F6, Search for a topic based on text in its heading
+Search for Topic Again=Alt+F6, Search again for the next matching topic
+
+Topic=Alt+T, Say topic of current section
+Text Contents=Alt+Shift+T, Generate and prepend a table of contents to the current document
+Section Break=Control+Enter, Insert a section break at the cursor position
+
+HTML Format=Control+H, Convert current document to HTML in a new window
+Text Convert=Control+T, Convert other formats to text files with the same name except for a .txt extension
+Text Combine=Control+Shift+T, Convert other formats to text and combine them in a new editing window
+
+Justify=Alt+Shift+J, Set justification of cursor or selected text
+Style=Alt+Shift+Slash, Set style of cursor or selected text
+Baseline=Alt+Shift+6, Set vertical alignment of cursor or selected text
+Set Selection Font=Alt+Shift+Dash, Set font of cursor or selected text
+Next Alignment=Control+RightBracket, Go to next change in justification
+Prior Alignment=Control+LeftBracket, Go to previous change in justification
+Next Style=Control+Slash, Go to next change in style
+Prior Style=Control+Shift+Slash, Go to previous change in style
+Next Baseline=Control+6, Go to next change in baseline
+Prior Baseline=Control+Shift+6, Go to previous change in baseline
+Next Font=Control+Dash, Go to next change in font
+Prior Font=Control+Shift+Dash, Go to previous change in font
+Say Font=Alt+Dash, Say current font and color
+Say Styles=Alt+Slash, Say current justification and styles
+
+Infer Indent=Alt+RightBracket, Infer the indent unit of the current document, or configure EdSharp accordingly if repeated
+Toggle Indentation=Windows+Grave, Toggle announcement of indentation by JAWS
+Indent Mode=Alt+Shift+I, Toggle auto indent with Enter, and announcement of indentation changes
+Enter New Line=Enter, Start new line at left margin
+Indent New Line=Shift+Enter, Start new line with same indentation as current one
+Indent New Line Prior=Alt+Shift+Enter, insert prior line with same indentation as current one
+Indent=Tab, Indent current line or selected text by one unit
+Outdent=Shift+Tab, Reduce indentation of current or selected lines by one unit
+Align=Alt+Shift+A, Adjust indentation of current or selected lines according to prior line
+Next Block=Control+B, Go to the next block of code, having the same or less indentation
+Prior Block=Control+Shift+B, Go to the previous block of code, having the same or less indentation
+Next Indent=Control+I, Go to the next change in indentation
+Prior Indent=Control+Shift+I, Go to the previous change in indentation
+Right Brace=Control+Shift+RightBracket, Search forward for matching right brace character
+Left Brace=Control+Shift+LeftBracket, Search backward for matching left brace character
+End Tag=Control+Shift+Period, go to closing tag of HTML element
+Start Tag=Control+Shift+Comma, Go to opening tag of HTML element
+Next Part=Alt+PageDown, Go to next match of NavigatePart setting
+Prior Part=Alt+PageUp, Go to previous match of NavigatePart setting
+Go to Part=Alt+Shift+G, Pick a part to go to
+
+Order Items=Alt+Shift+O, Sort items alphabetically in all or selected text
+Reverse Items=Alt+Shift+Z, Reverse order of all or selected items of text
+Keep Unique Items=Alt+Shift+K, Discard repetitive items in all or selected text
+Number Items=Alt+Shift+N, Insert numbers at the start of items in all or selected text
+List Different Items=Alt+Shift+L, Compare two lists and put non-overlapping items in a new window
+Query Common Items=Alt+Shift+Q, Compare two lists and put overlapping items in a new window
+
+PyDent=Alt+LeftBracket, Convert from PyBrace format, or reformat typical Python code, using the IndentUnit setting and adding comments at ends of blocks
+PyBrace=Alt+Shift+LeftBracket, Convert from PyDent format, or reformat typical Python code, using braces instead of indentation and adding comments at ends of blocks
+Insert Script Path=Control+I, Insert JAWS script path in Open or Save Dialog
+Insert All Users Path=Control+Shift+I, Insert JAWS All Users path in Open or Save Dialog
+
+Explorer Folder=Alt+Backslash, Open Windows Explorer in the EdSharp program folder, data folder, or current folder
+Command Prompt=Control+Backslash, Open a command prompt in the EdSharp program folder, data folder, or current folder
+Environment Variables=Control+E, Change Windows environment variables for the current process, user, or system
+
+Next Window=Control+Tab, Cycle to next editing window
+Prior Window=Control+Shift+Tab, Cycle to previous editing window
+Windows Open=Shift+F4, Say titles of current editing windows
+Current Windows=F4, Activate an editing window from a list of those currently open
+Close Window=Control+F4, Close current editing window
+Close All but Current Window=Control+Shift+F4, Close all editing windows except the current one
+Exit EdSharp=Alt+F4, Exit the EdSharp application
+
+Arrange Icons=Alt+F11, Arrange open windows
+Cascade=Control+F11, Cascade open windows
+Tile Horizontal=Alt+Shift+F11, Tile open windows horizontally
+Tile Vertical=Control+Shift+F11, Tile open windows vertically
+
+Elevate Version=F11, Download latest EdSharp version and run installer (after confirming)

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Add a RoutedCommand Registration</Title>
+			<Author>Microsoft Corporation</Author>
+			<Description>Adds code to register a RoutedCommand.</Description>
+			<Shortcut>wpfrc</Shortcut>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+      <References>
+        <Reference>
+          <Assembly>WindowsBase</Assembly>
+        </Reference>
+        <Reference>
+          <Assembly>PresentationCore</Assembly>
+        </Reference>
+        <Reference>
+          <Assembly>PresentationFramework</Assembly>
+        </Reference>
+      </References>
+      <Imports>
+        <Import>
+          <Namespace>System.Windows</Namespace>
+        </Import>
+      </Imports>
+			<Declarations>
+				<Literal>
+					<ID>commandName</ID>
+					<ToolTip>Replace with the name of the RoutedCommand.</ToolTip>
+					<Default>Routed1</Default>
+				</Literal>
+         <Object>
+          <ID>ownertype</ID>
+          <Type>Control</Type>
+          <ToolTip>Replace with the name of the class this snippet is being added to.</ToolTip>
+          <Default>Window1</Default>
+        </Object>
+			</Declarations>
+			<Code Language="VB">
+				<![CDATA[
+          Public Shared ReadOnly $commandName$Command As RoutedCommand = _
+                                 New RoutedCommand("$commandName$", _
+                                 GetType($ownerType$))
+                                 ]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
+

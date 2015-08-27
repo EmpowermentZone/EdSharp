@@ -1,0 +1,120 @@
+%% LyX 1.4.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[twoside,french]{report}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+
+
+\usepackage{babel}
+\addto\extrasfrench{\providecommand{\og}{\leavevmode\flqq~}\providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}}
+\makeatother
+\AtEndDocument{\cleardoublepage}
+\begin{document}
+
+
+\chapter{Analyse de cohérence}
+
+\section{Identification dans le domaine temporel}
+
+Nous supposons le système à identifier caractérisé par un modèle de la
+forme:
+\begin{displaymath}
+\left\{
+\begin{array}{ccl}
+\dot{x}(t)&=&f[x(t),u(t),\theta]\hspace{2cm}x(t_{0})=x_{0}\\
+y(t,\theta)&=&g[x(t),u(t),\theta]
+\end{array}
+\right.
+\end{displaymath}
+$x$ est l'état, $u$ l'entrée et $y$ la réponse du système. Les
+observations $z$ sont réalisées à des instants discrets $t_{n}$ et
+décrites par:
+\begin{displaymath}
+z(t_{n})=y(t_{n},\theta) + w_{n}
+\end{displaymath}
+où $w_{n}$ désigne le bruit de mesure supposé blanc, gaussien, de
+moyenne nulle et de matrice de covariance $M_{1}$. Nous supposons
+d'autre part qu'il n'existe pas de bruit
+d'état (mesures des entrees non bruitées et absence de
+perturbations) et que les fonctions $f$ et $g$ sont
+connues. L'objectif
+est l'estimation des paramètres inconnus $\theta$.
+
+L'estimé de $\theta$ au sens de la minimisation des erreurs de sortie
+est la valeur qui minimise le critère:
+\begin{displaymath}
+J(\theta)=\frac{1}{2}\sum_{n=1}^{N}\left[z(t_{n})-y(t_{n},\theta)\right]^{T}M_{1}^{-1}\left[z(t_{n})-y(t_{n},\theta)\right]
+\end{displaymath}
+où $y(t_{n},\theta)$ est la réponse prédite du système à l'instant $t_{n}$ pour
+une valeur donnée des paramètres inconnus $\theta$. Cet estimateur
+peut s'interpréter comme un estimateur du maximum de vraisemblance
+dans le cas particulier où le bruit d'état est nul.
+
+Si la matrice de covariance des bruits de mesure $M_{1}$ est inconnue, elle
+peut être estimée au sens du maximum de vraisemblance à partir des
+résidus:
+\begin{displaymath}
+  \hat{M_{1}} = \sum_{n=1}^{N}\left[z(t_{n})-y(t_{n},\theta)\right]\left[z(t_{n})-y(t_{n},\theta)\right]^{T}
+\end{displaymath}
+
+\section{Fonction de cohérence}
+
+Considérons un système mono-entrée mono-sortie d'entrée $u(t)$ et de
+sortie $y(t)$. Soient respectivement $S_{uu}$ et $S_{yy}$ les spectres
+des signaux d'entrée et de sortie et $S_{uy}$ le spectre croisé. La
+fonction de cohérence de ce système est définie comme
+\begin{displaymath}
+  \gamma^2_{uy}(f) =
+  \frac{\left|S_{uy}(f)\right|^2}{S_{uu}(f) S_{yy}(f)} 
+\end{displaymath}
+et satisfait pour chaque fréquence $f$
+\begin{displaymath}
+  0 \; \le \; \gamma^2_{uy}(f) \; \le \; 1
+\end{displaymath}
+
+Si nous nous plaçons dans le cas d'un système linéaire et
+supposons que l'entrée et la sortie sont parfaitement mesurées, nous
+pouvons montrer que la fonction de cohérence est
+identiquement égale à 1 pour toutes les fréquences. Soit $H(p)$ la
+fonction de transfert du système; le spectre du signal de sortie et le
+spectre croisé entrée/sortie sont donnés par:
+\begin{displaymath}
+  S_{yy}(f) = \left|H(f)\right|^2 S_{uu}(f)\\
+\end{displaymath}
+\begin{displaymath}
+  S_{uy}(f) = H(f) S_{uu}(f)
+\end{displaymath}
+de sorte que
+\begin{displaymath}
+  \gamma^2_{uy}(f) = \frac{\left|H(f) S_{uu}(f)\right|^2
+    }{S_{uu}(f) \left|H(f)\right|^2 S_{uu}(f)} = 1
+\end{displaymath}
+
+A l'inverse, si $u(t)$ et $y(t)$ sont totalement décorrélés, la
+fonction de cohérence est identiquement nulle.
+
+Une situation intermédiaire, c'est à dire une fonction de cohérence
+positive mais inférieure à l'unité, peut avoir diverses explications:
+\begin{itemize}
+\item du bruit est présent dans les mesures de l'entrée et de la
+  sortie;
+\item la relation entrée/sortie n'est pas linéaire;
+\item la sortie $y(t)$ ne résulte pas de la seule entrée $u(t)$.
+\end{itemize}
+
+La fonction de cohérence peut ainsi être employée pour analyser un
+ensemble de données de vol et sélectionner la gamme de fréquences
+contenant de l'information utile pour l'identification. Etant 
+indicative de la qualité de l'information, elle peut également être
+utilisée pour pondérer les données dans le critère d'optimisation. 
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 
+
+
+\end{document}
+
