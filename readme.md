@@ -17,15 +17,15 @@ in Control Panel.
 
 Written in the C\# (pronounced C Sharp) language, EdSharp
 implements the Homer editor interface, which originally evolved
-with the TextPal editor, available at  
-[http://www.EmpowermentZone.com/palsetup.exe](http://www.empowermentzone.com/palsetup.exe)  
+with the [TextPal editor](http://www.EmpowermentZone.com/palsetup.exe)  
 The same interface was also implemented in the package of JAWS
-scripts and tools called HomerKit, available at  
-[http://www.EmpowermentZone.com/kitsetup.exe](http://www.empowermentzone.com/kitsetup.exe)
+scripts and tools called [HomerKit.](http://www.empowermentzone.com/kitsetup.exe)
 
-EdSharp requires the .NET Framework 2.0 to run -- a free Microsoft
-download from  
-[http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=19](http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=19)
+EdSharp requires the  
+[.NET Framework 2.0(http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=19)  
+to run -- a free Microsoft download.
+
+
 
 Almost every EdSharp command may be done through a mnemonic
 keystroke, as well as a menu or mouse operation. These commands
@@ -96,6 +96,3 @@ EdSharp features may be explained in the following categories:
 editing, navigating, querying, managing files, pasting snippets,
 working with structured text, word processing, programming, and
 miscellaneous.
-
-
-
