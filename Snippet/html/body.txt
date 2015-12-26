@@ -1,0 +1,12 @@
+html
+body
+bgcolor=
+background=
+text=
+link=
+vlink=
+alink=
+leftmargin=
+rightmargin=
+topmargin=
+bottommargin=

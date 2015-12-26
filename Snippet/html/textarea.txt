@@ -1,0 +1,10 @@
+html
+textarea
+title=
+class=
+id=
+name=
+cols=
+rows=
+readonly=
+disabled=

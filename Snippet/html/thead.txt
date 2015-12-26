@@ -1,0 +1,13 @@
+html
+thead
+title=
+class=
+id=
+width=
+align=
+char=
+charoff=
+valign=
+colspan=
+rowspan=
+bgcolor=

@@ -1,0 +1,5 @@
+html empty
+isindex
+title=
+class=
+id=

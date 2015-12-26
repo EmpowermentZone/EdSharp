@@ -1,0 +1,14 @@
+html
+applet
+name=
+title=
+class=
+id=
+alt=
+archive=
+code=
+codebase=
+height=
+width=
+hspace=
+vspace=
