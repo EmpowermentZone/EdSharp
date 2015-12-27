@@ -1,5 +1,0 @@
-html phrase
-small
-title=
-class=
-id=

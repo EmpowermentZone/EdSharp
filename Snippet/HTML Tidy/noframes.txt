@@ -1,5 +1,0 @@
-html
-noframes
-title=
-class=
-id=

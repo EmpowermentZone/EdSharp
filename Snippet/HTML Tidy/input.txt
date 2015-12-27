@@ -1,8 +1,0 @@
-html empty
-input
-title=
-class=
-id=
-name=
-type=
-value=

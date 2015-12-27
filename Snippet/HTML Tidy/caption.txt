@@ -1,5 +1,0 @@
-html
-caption
-title=
-class=
-id=

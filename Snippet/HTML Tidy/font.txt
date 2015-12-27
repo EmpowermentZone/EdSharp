@@ -1,8 +1,0 @@
-html phrase
-font
-title=
-class=
-id=
-size=
-color=
-face=

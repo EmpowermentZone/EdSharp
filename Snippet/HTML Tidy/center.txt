@@ -1,5 +1,0 @@
-html
-center
-title=
-class=
-id=

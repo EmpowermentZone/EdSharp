@@ -1,8 +1,0 @@
-html empty
-meta
-title=
-class=
-id=
-name=
-content=
-http-equiv=
