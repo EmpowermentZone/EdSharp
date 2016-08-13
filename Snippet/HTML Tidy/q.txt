@@ -1,6 +1,0 @@
-html phrase
-q
-title=
-class=
-id=
-cite=

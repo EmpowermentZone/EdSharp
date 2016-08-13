@@ -1,6 +1,0 @@
-html empty
-area
-alt=
-title=
-class=
-id=

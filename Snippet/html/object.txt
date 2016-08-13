@@ -1,0 +1,16 @@
+html
+object
+title=
+class=
+id=
+archive=
+classid=
+codebase=
+codetype=
+data=
+declare=
+height=
+width=
+hspace=
+vspace=
+standby=

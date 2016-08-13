@@ -1,7 +1,0 @@
-html
-del
-title=
-class=
-id=
-datetime=
-cite=

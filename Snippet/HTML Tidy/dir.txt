@@ -1,5 +1,0 @@
-html
-dir
-title=
-class=
-id=

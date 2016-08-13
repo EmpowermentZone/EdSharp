@@ -1,0 +1,10 @@
+html
+table
+title=
+class=
+idsummary=
+width=
+cellpadding=
+cellspacing=
+border=
+bgcolor=
