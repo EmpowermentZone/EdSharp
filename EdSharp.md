@@ -8,21 +8,21 @@ GNU Lesser General Public License (LGPL)\
 
 ## Contents
 
-- [Description](##Description)
-- [Installation](Installation)
-- [Editing](#Editing)
-- [Navigating](#Navigating)
-- [Querying](#Querying)
-- [Managing Files](#Managing Files)
-- [Invoking Snippets](#Invoking Snippets)
-- [Working with Structured Text](#Working with Structured Text)
-- [Word Processing](#Word Processing)
-- [Doing Math](#Doing Math)
-- [Programming](#Programming)
-- [Scripting Add-Ins](#Scripting Add-Ins)
-- [Miscellaneous](#Miscellaneous)
-- [Hotkey Summary](#Hotkey Summary)
-- [Development Notes](#Development Notes)
+- [Description](#description)
+- [Installation](#installation)
+- [Editing](#editing)
+- [Navigating](#navigating)
+- [Querying](#querying)
+- [Managing Files](#managing-files)
+- [Invoking Snippets](#invoking-snippets)
+- [Working with Structured Text](#working-with-structured-text)
+- [Word Processing](#word-processing)
+- [Doing Math](#doing-math)
+- [Programming](#programming)
+- [Scripting Add-Ins](#scripting-add-ins)
+- [Miscellaneous](#miscellaneous)
+- [Hotkey Summary](#hotkey-summary)
+- [Development Notes](#development-notes)
 
 ## Description
 EdSharp is a full featured text editor that is friendly, powerful, and open source.  It uses a standard Windows interface for an application that supports multiple document windows.  Though intended for sighted users as well, it seeks to enhance productivity for users of the JAWS, NVDA, Window-Eyes, or System Access screen readers by automatically verbalizing relevant information.  These speech messages supplement default speech heuristics, providing confirmation or results of commands without the need for manually interrogating the screen.  If a screen reader is not detected in memory, EdSharp uses the default SAPI voice, if available, which may be configured via the Speech applet in Control Panel.
