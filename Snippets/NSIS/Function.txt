@@ -1,0 +1,4 @@
+text form
+Function %FunctionName=%
+
+FunctionEnd

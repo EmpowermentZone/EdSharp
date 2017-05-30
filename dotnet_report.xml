@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<report>
+<info>
+<title>ASoft .NET Version Detector 15 R2 Report</title>
+<website>www.asoft.be</website>
+<created>2017/05/30 - 06:57:19</created>
+<computer>DESKTOP-TLGF7GM</computer>
+</info>
+<frameworks>
+<framework version="2.0" sp="2" extra="" clr="2.0"/>
+<framework version="3.0" sp="2" extra="" clr="2.0"/>
+<framework version="3.5" sp="1" extra="" clr="2.0"/>
+<framework version="4.6" sp="0" extra="Unknown build:394802" clr="4.0"/>
+<framework version="UNKNOWN_BUILD" sp="0" extra="Unknown build:394802" clr="X"/>
+</frameworks>
+<clrversions>
+<x86>
+<clrversion major="2.0" version="2.0.50727" full="2.0.50727.8745" path="C:\Windows\Microsoft.NET\Framework\v2.0.50727" />
+<clrversion major="4.6" version="4.6.1648" full="4.6.1648.0" path="C:\Windows\Microsoft.NET\Framework\v4.0.30319" />
+</x86>
+<x64>
+<clrversion major="2.0" version="2.0.50727" full="2.0.50727.8745" path="C:\Windows\Microsoft.NET\Framework64\v2.0.50727" />
+<clrversion major="4.6" version="4.6.1648" full="4.6.1648.0" path="C:\Windows\Microsoft.NET\Framework64\v4.0.30319" />
+</x64>
+</clrversions>
+</report>

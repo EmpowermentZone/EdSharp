@@ -1,5 +1,5 @@
 Pandoc
-Copyright (C) 2006-2010 John MacFarlane <jgm at berkeley dot edu>
+Copyright (C) 2006-2017 John MacFarlane <jgm at berkeley dot edu>
 
 This code is released under the [GPL], version 2 or later:
 
@@ -17,7 +17,7 @@ This code is released under the [GPL], version 2 or later:
    along with this program; if not, write to the Free Software
    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-The GNU General Public License is available in the file COPYING in
+The GNU General Public License is available in the file COPYING.md in
 the source distribution.  On Debian systems, the complete text of the
 GPL can be found in `/usr/share/common-licenses/GPL`.
 
@@ -25,7 +25,7 @@ GPL can be found in `/usr/share/common-licenses/GPL`.
 
 Pandoc's complete source code is available from the [Pandoc home page].
 
-[Pandoc home page]: http://johnmacfarlane.net/pandoc/
+[Pandoc home page]: http://pandoc.org
 
 Pandoc includes some code from other authors.  The copyright and license
 statements for these sources are included below.  All are GPL-compatible
@@ -33,21 +33,34 @@ licenses.
 
 ----------------------------------------------------------------------
 src/Text/Pandoc/Writers/Texinfo.hs
-Copyright (C) 2008-2010 John MacFarlane and Peter Wang
+Copyright (C) 2008-2015 John MacFarlane and Peter Wang
 
-Released under the GPL.
+Released under the GNU General Public License version 2 or later.
 
 ----------------------------------------------------------------------
 src/Text/Pandoc/Writers/OpenDocument.hs
-Copyright (C) 2008-2010 Andrea Rossato and John MacFarlane
+Copyright (C) 2008-2015 Andrea Rossato and John MacFarlane
 
-Released under the GPL.
+Released under the GNU General Public License version 2 or later.
 
 ----------------------------------------------------------------------
-src/Text/Pandoc/Biblio.hs
-Copyright (C) 2008 Andrea Rossato
+src/Text/Pandoc/Writers/Org.hs
+Copyright (C) 2010-2015 Puneeth Chaganti and John MacFarlane
 
-Released under the GPL.
+Released under the GNU General Public License version 2 or later.
+
+----------------------------------------------------------------------
+src/Text/Pandoc/Readers/Textile.hs
+Copyright (C) 2010-2015 Paul Rivier and John MacFarlane
+
+Released under the GNU General Public License version 2 or later.
+
+----------------------------------------------------------------------
+src/Text/Pandoc/Readers/Org.hs
+tests/Tests/Readers/Org.hs
+Copyright (C) 2014-2015 Albert Krewinkel
+
+Released under the GNU General Public License version 2 or later.
 
 ----------------------------------------------------------------------
 data/LaTeXMathML.js
@@ -55,28 +68,41 @@ Adapted by Jeff Knisely and Douglas Woodall from
 ASCIIMathML.js v. 1.4.7
 Copyright (C) 2005 Peter Jipsen
 
-Released under the GPL.
+Released under the GNU General Public License version 2 or later.
 
 ----------------------------------------------------------------------
-data/MathMLInHTML.js
+data/MathMLinHTML.js
 Copyright (C) 2004 Peter Jipsen http://www.chapman.edu/~jipsen
 
 Released under the GNU General Public License version 2 or later.
-See the GNU General Public License
-(at http://www.gnu.org/copyleft/gpl.html) for more details.
-
-----------------------------------------------------------------------
-s5/default
-S5 slides.js and css files
-by Eric A. Meyer
-<http://meyerweb.com/eric/tools/s5
-
-Released under an explicit Public Domain License
 
 ------------------------------------------------------------------------
-windows/modpath.iss
-Copyright (c) 2007 Jared Breland
-http://legroom.net/software
+The dzslides template contains javascript and CSS from Paul Rouget's
+dzslides template.
+http://github.com/paulrouget/dzslides
 
-Released under the GPL.
+Released under the Do What the Fuck You Want To Public License.
 
+------------------------------------------------------------------------
+Pandoc embeds a lua interpreter (via hslua).
+
+Copyright © 1994–2015 Lua.org, PUC-Rio.
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

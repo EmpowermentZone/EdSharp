@@ -1,0 +1,2 @@
+Text form
+InputBox(%PromptingText=%, %dialogsTitle=%, %Parameter=%)

@@ -1,0 +1,5 @@
+text form
+;snippet for jaws script
+;Dang Manh Cuong <dangmanhcuong@gmail.com>
+;Speak a little string
+SayString ("%StringToSpeak=%")

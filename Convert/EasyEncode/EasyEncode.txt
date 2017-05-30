@@ -1,7 +1,7 @@
-﻿EasyEncode
-Version 1.0
-November 10, 2011
-Copyright 2011 by Jamal Mazrui
+EasyEncode
+Version 1.1
+September 13, 2015
+Copyright 2011 - 2015 by Jamal Mazrui
 GNU Lesser General Public License (LGPL)
 
 
@@ -30,7 +30,7 @@ utf16 = a multibyte encoding for the Unicode character set, which is a standard 
 
 utf8b = a different encoding for the same Unicode character set.  The first 128 characters of utf8 are the same single-byte representations as ASCII.  Characters with higher ordinal values require two or three bytes to be encoded.  There are two versions of utf8:  utf8b and utf8n.  A byte order mark (BOM) is a sequence of a few bytes at the beginning of a file which serves as a signature indicating the encoding of characters in the rest of the file.  utf8b uses a BOM, whereas utf8n does not.  Besides an initial BOM, a utf8b and utf8n represent file content identically.
 
-utf8n = UTF8 encoding without a BOM, as explained above.  This has become the default encoding on the Linux and Mac operating systems.  In Windows, there is no single, default encoding.  The console mode environment uses ansi by default;  API and COM calls typically use utf16;  XML and other files often use utf8b.  Since there is no single default, Microsoft recommends the explicit use of a BOM with either utf16 or utf8.  For utf16, a BOM is required, whereas for utf8, it is optional.  Thus utf8 encoding on Windows generally includes a BOM whereas on other platforms, it does not.  Increasingly, software on other platforms ignores a BOM, but some common applications till are confused by a BOM, since it does not represent legitimate Unicode characters.
+utf8n = UTF8 encoding without a BOM, as explained above.  This has become the default encoding on the Linux and Mac operating systems.  In Windows, there is no single, default encoding.  The console mode environment uses ansi by default;  API and COM calls typically use utf16;  XML and other files often use utf8b.  Since there is no single default, Microsoft recommends the explicit use of a BOM with either utf16 or utf8.  For utf16, a BOM is required, whereas for utf8, it is optional.  Thus utf8 encoding on Windows generally includes a BOM whereas on other platforms, it does not.  Increasingly, software on other platforms ignores a BOM, but some common applications till are confused by a BOM, since these initial bytes of a file do not represent valid Unicode characters, themselves.
 
 ----------
 
@@ -52,7 +52,9 @@ utf8n.exe = convert file to utf8n encoding.  This might be used, for example, to
 
 ansi.exe = convert file to ansi encoding.  Note that this may lose characters that are not represented in the 256-character set of ansi.  
 
-In the four conversion utilities above, the original file is replaced if the desired encoding is different from the current one, which must be detectable.  The automatic detection is extremely accurate, but not perfect.  In rare cases, the actual encoding of a file may not be properly detected.
+In addition to the 32-bit executables mentioned above, EasyEncode now includes 64-bit versions with the same file names except for a "64" suffix after the root name of each file, i.e., ansi64.exe, enc64.exe, utf1664.exe, utf8b64.exe, and utf8n64.exe.
+
+In the conversion utilities, the original file is replaced if the desired encoding is different from the current one, which must be detectable.  The automatic detection is extremely accurate, but not perfect.  In rare cases, the actual encoding of a file may not be properly detected.
 
 When a path contains a space character, the path should be enclosed in quotation marks (a standard Windows convention).  
 
@@ -64,7 +66,7 @@ http://EmpowermentZone.com/EasyEncode.zip
 e.g., to the directory
 C:\EasyEncode
 
-Then run one of the five utilities, passing a file path as a command-line parameter.  If no parameter is passed, a simple help message is displayed.
+Then run one of the utilities, passing a file path as a command-line parameter.  If no parameter is passed, a simple help message is displayed.
 
 The utilities may be run from any directory.  To do so without specifying the full path of a utility, add the EasyEncode directory to the Windows search path.
 
@@ -76,6 +78,9 @@ http://EmpowermentZone.com/EasyEncode.htm
 ----------
 
 Change Log
+
+Version 1.1 on September 13, 2015
+Recompiled the utilities with the latest version of AutoIt and added 64-bit versions.
 
 Version 1.0 on November 10,2011
 Official release.

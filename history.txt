@@ -24,6 +24,7 @@ Version 3.0
 Version 3.1
 Version 3.2
 Version 3.3
+Version 4.0
 ----------
 
 Beta 0.3
@@ -735,8 +736,16 @@ http://download.microsoft.com/download/b/e/6/be61cfa4-b59e-4f26-a641-5dbf906dee2
 An option at the end of the EdSharp installer lets you install this by simply marking a checkbox.
 
 Sped up time for subsequent invocations of EdSharp after the  initial one.  Improved the optional JAWS scripts for EdSharp so that titles of top-level windows are more reliably  read.
+----------
+
+EdSharp Version 4.0
+May 29, 2017
+
+Recompiled with .NET 4.0.  Elininated obsolete commands and 3rd party utilities.
+
+Changed user guide to Markdown format in EdSharp.md file.
+
+Moved source control to GitHub for better collaborative development.
 
 ----------
 End of Document
-
-

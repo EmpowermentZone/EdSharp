@@ -1,0 +1,13 @@
+Some good practices are to declare the following in each python script:
+
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+#Code goes here
+
+if __name__ == '__main__':
+     #Put module run only code here.
+
+-- 
+Brandon Keith Biggs
+http://www.brandonkeithbiggs.com/

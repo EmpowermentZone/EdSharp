@@ -1,0 +1,27 @@
+ASoft .NET Version Detector 15 R2 Report
+Download latest version at http://www.asoft.be
+
+==== INFO ====
+Created :2017/05/30 - 06:57:19
+Computer:DESKTOP-TLGF7GM
+
+==== FOLDERS ====
+<32Bit>
+2.0.50727.8745
+  ->C:\Windows\Microsoft.NET\Framework\v2.0.50727
+4.6.1648.0
+  ->C:\Windows\Microsoft.NET\Framework\v4.0.30319
+
+<64Bit>
+2.0.50727.8745
+  ->C:\Windows\Microsoft.NET\Framework64\v2.0.50727
+4.6.1648.0
+  ->C:\Windows\Microsoft.NET\Framework64\v4.0.30319
+
+==== Installed .NET Frameworks ====
+.NET FW 2.0 SP 2 (CLR 2.0)
+.NET FW 3.0 SP 2 (CLR 2.0)
+.NET FW 3.5 SP 1 (CLR 2.0)
+.NET FW 4.6 (CLR 4.0)
+.NET UNKNOWN_BUILD
+==== END REPORT ====

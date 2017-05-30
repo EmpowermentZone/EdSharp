@@ -1,7 +1,7 @@
-//EdSharp 3.3
-// February 22, 2012
-//Copyright 2007 - 2012 by Jamal Mazrui
-//Modified GPL License
+//EdSharp 4.0
+// May 29, 2017
+//Copyright 2007 - 2017 by Jamal Mazrui
+// GNU Lesser General Public License (LGPL)
 
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.ApplicationServices;
@@ -19,6 +19,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -31,10 +32,10 @@ using Tektosyne.Win32Api;
 
 [assembly: AssemblyTitle("EdSharp")]
 [assembly: AssemblyProduct("EdSharp")]
-[assembly: AssemblyVersion("3.3.*")]
+[assembly: AssemblyVersion("4.0.*")]
 [assembly: AssemblyDescription("EdSharp editor")]
 [assembly: AssemblyCompany("EmpowermentZone.com")]
-[assembly: AssemblyCopyright("Copyright 2007 - 2011 by Jamal Mazrui")]
+[assembly: AssemblyCopyright("Copyright 2007 - 2016 by Jamal Mazrui")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCulture("")]
@@ -50,6 +51,7 @@ public static string DataDir;
 public static string DefaultIniFile;
 public static string HotkeyIniFile;
 public static string IniFile;
+public static string IndentModeFile;
 public static string TempFile;
 public static List<string> TempFiles = new List<string>();
 //public static object Word = null;
@@ -58,6 +60,7 @@ public static object JAWS = null;
 public static object Wineyes = null;
 public static bool WordCreated = false;
 public static bool ExtraSpeech = true;
+public static bool IndentChange = true;
 public static bool CaptureOutput = false;
 public static string SpeechLog;
 public static string MatchChunk = @"\s+";
@@ -67,6 +70,8 @@ public static Dictionary<string, int> BomDictionary = null;
 
 [STAThread]
 public static void Main(string[] cmdLineArgs) {
+// Environment.SetEnvironmentVariable("EdSharpIndent", "", EnvironmentVariableTarget.User);
+if (System.IO.File.Exists(App.IndentModeFile)) System.IO.File.Delete(App.IndentModeFile);
 Application.EnableVisualStyles();
 //Application.SetCompatibleTextRenderingDefault(true);
 Application.SetCompatibleTextRenderingDefault(false);
@@ -83,7 +88,7 @@ base.IsSingleInstance = true;
 base.IsSingleInstance = true;
 App.ProgramName = GetAppName();
 App.NetDir = RuntimeEnvironment.GetRuntimeDirectory();
-App.ProgramDir = GetProgramDir();
+// App.ProgramDir = GetProgramDir();
 App.ProgramDir = GetProgramDir();
 App.DataDir = GetDataDir();
 App.TempFile = GetTempFile();
@@ -110,6 +115,7 @@ if (App.Boo != null) COM.Release(ref App.Boo);
 if (App.JAWS != null) COM.Release(ref App.JAWS);
 if (App.Wineyes != null) COM.Release(ref App.Wineyes);
 
+if (System.IO.File.Exists(App.IndentModeFile)) System.IO.File.Delete(App.IndentModeFile);
 foreach (string sFile in App.TempFiles) if (File.Exists(sFile)) File.Delete(sFile);
 };
 
@@ -160,12 +166,15 @@ App.TempFile = GetTempFile();
 App.DefaultIniFile = GetDefaultIniFile();
 App.HotkeyIniFile = Path.Combine(App.ProgramDir, "Hotkeys.ini");
 App.IniFile = GetIniFile();
+App.IndentModeFile = Path.Combine(App.DataDir, "IndentMode.tmp");
+// IniFile = GetIniFile();
 
 App.BomDictionary = Util.GetBomDictionary();
 SetConfigurationValues();
 App.SpeechLog = Path.Combine(App.DataDir, "Speech.log");
 if (File.Exists(App.SpeechLog)) File.Delete(App.SpeechLog);
 App.ExtraSpeech = (App.ReadOption("E&xtraSpeech", "Y").ToLower().Substring(0, 1) == "n") ? false : true;
+App.IndentChange = App.ReadOption("E&xtraSpeech", "Y").Contains("-") ? false : true;
 
 InitNetSdk();
 InitJFW();
@@ -559,6 +568,9 @@ App.Frame.KeyDescriber = false;
 }
 
 string sFile = this.File;
+bool b = System.IO.File.Exists(App.IndentModeFile);
+if (b && !this.RTB.IndentMode) System.IO.File.Delete(App.IndentModeFile);
+else if (!b && this.RTB.IndentMode) System.IO.File.Create(App.IndentModeFile).Close();
 if (this.FileTimeChecked || sFile.IndexOf(@"\") == -1 || !System.IO.File.Exists(sFile)) return;
 
 DateTime dt = System.IO.File.GetLastWriteTime(sFile);
@@ -955,7 +967,7 @@ menuMiscFormatCode = CreateMenuItem("Format Code", "Control+D4", menuItem_Click,
 menuMiscRepeatLine = CreateMenuItem("Repeat Line", "Control+Y", menuItem_Click, "child speak");
 menuMiscSectionBreak = CreateMenuItem("Section Break", "Control+Enter", menuItem_Click, "child speak");
 menuMiscPathToClipboard = CreateMenuItem("Path to Clipboard", "Alt+Shift+P", menuItem_Click, "child speak");
-menuMiscPathList = CreateMenuItem("Path List", "Control+Shift+P", menuItem_Click, "child speak");
+menuMiscPathList = CreateMenuItem("Path List", "Control+Shift+P", menuItem_Click, "frame speak");
 menuMiscInsertTime = CreateMenuItem("Insert Time", "Alt+Shift+OemSemicolon", menuItem_Click, "child speak");
 menuMiscCalculateDate = CreateMenuItem("Calculate Date ...", "Control+Shift+OemSemicolon", menuItem_Click, "child silent");
 menuMiscHTMLFormat = CreateMenuItem("HTML Format", "Control+H", menuItem_Click, "child speak");
@@ -1299,8 +1311,15 @@ if (sLine.Length == 0) return;
 string sComment = App.ReadOption("QuotePrefix", "> ");
 if (sLine.StartsWith(sComment)) return;
 int iLevels = GetIndent();
-if (rtb.IndentLevels == iLevels) return;
-Util.Say(GetDelta(rtb.IndentLevels, iLevels));
+if (rtb.IndentLevels == iLevels) {
+// Environment.SetEnvironmentVariable("EdSharpIndent", "", EnvironmentVariableTarget.User);
+// Ini.WriteValue(App.IndentModeFile, "Data", "IndentChange", "", false);
+System.IO.File.Create(App.IndentModeFile).Close();
+return;}
+string sDelta = GetDelta(rtb.IndentLevels, iLevels);
+// Environment.SetEnvironmentVariable("EdSharpIndent", sDelta, EnvironmentVariableTarget.User);
+Ini.WriteValue(App.IndentModeFile, "Data", "IndentChange", sDelta, false);
+if (App.IndentChange) Util.Say(sDelta);
 rtb.IndentLevels = iLevels;
 } // SetStatusAddress method
 
@@ -1412,7 +1431,7 @@ return sFont;
 } // GetFontText method
 
 public string[] GetSnippetFiles(out string[] aValues) {
-string sBaseDir = @"Snippet\" + App.ReadData("Compiler", "Default");
+string sBaseDir = @"Snippets\" + App.ReadData("Compiler", "Default");
 string sDir = Path.Combine(App.DataDir, sBaseDir);
 if (!Directory.Exists(sDir)) Directory.CreateDirectory(sDir);
 string[] aResults = Directory.GetFiles(sDir);
@@ -1421,7 +1440,7 @@ List<string> listResults = new List<string>(aResults);
 List<string> listFiles = new List<string>();
 foreach (string s in aResults) listFiles.Add(Path.GetFileName(s).ToLower());
 
-sBaseDir = @"Snippet\Default";
+sBaseDir = @"Snippets\Default";
 sDir = Path.Combine(App.DataDir, sBaseDir);
 if (!Directory.Exists(sDir)) Directory.CreateDirectory(sDir);
 aResults = Directory.GetFiles(sDir);
@@ -1535,7 +1554,7 @@ App.CaptureOutput = false;
 } // TransForm files method
 
 public static string GetSnippetDir() {
-string sBaseDir = @"Snippet\" + App.ReadData("Compiler", "Default");
+string sBaseDir = @"Snippets\" + App.ReadData("Compiler", "Default");
 string sDir = Path.Combine(App.DataDir, sBaseDir);
 if (!Directory.Exists(sDir)) Directory.CreateDirectory(sDir);
 return sDir;
@@ -1558,7 +1577,7 @@ case "&Data" :
 sDir = App.DataDir;
 break;
 case "&Snippet" :
-sDir = App.DataDir + @"\Snippet\" + App.ReadData("Compiler", "Default");
+sDir = App.DataDir + @"\Snippets\" + App.ReadData("Compiler", "Default");
 if (!Directory.Exists(sDir)) Directory.CreateDirectory(sDir);
 break;
 case "&Other" :
@@ -2615,6 +2634,10 @@ AddMessage("Level " + this.GetIndent());
 if (menuItem == menuEditIndentMode) {
 rtb.IndentMode = !rtb.IndentMode;
 AddMessage(rtb.IndentMode ? "On" : "Off");
+// Environment.SetEnvironmentVariable("EdSharpIndent", "", EnvironmentVariableTarget.User);
+bool b = System.IO.File.Exists(App.IndentModeFile);
+if (b && !rtb.IndentMode) System.IO.File.Delete(App.IndentModeFile);
+else if (!b && rtb.IndentMode) System.IO.File.Create(App.IndentModeFile).Close();
 //return;
 }
 
@@ -4734,7 +4757,8 @@ AddMessage("Converting");
 for (int i = 0; i < aResults.Length; i++) {
 string sSource = aResults[i];
 string sTarget = Path.ChangeExtension(sSource, ".txt");
-AddMessage(Path.GetFileName(sSource));
+string sName = Path.GetFileName(sSource);
+AddMessage(sName);
 //sText = COM.WordFile2String(sSource);
 //sText = COM.ConvertFile2String(sSource);
 int iConvert = 2;
@@ -4748,8 +4772,8 @@ continue;
 
 iCount++;
 if (menuItem == menuMiscTextConvert) Util.String2File(sText, sTarget);
-else if (iCount == 1) sb.Append(sText);
-else sb.Append(SectionBreak + sText);
+else if (iCount == 1) sb.Append(sName + LB + LB + sText);
+else sb.Append(SectionBreak + sName + LB + LB + sText);
 }
 
 AddMessage("Converted " + Util.Pluralize(iCount, "file"), true);
@@ -5190,7 +5214,7 @@ iEnd = iStart + rtb.SelectionLength;
 }
 sText = rtb.GetRange(iStart, iEnd);
 
-string sDir = @"Snippet\" + App.ReadData("Compiler", "Default");
+string sDir = @"Snippets\" + App.ReadData("Compiler", "Default");
 sDir = Path.Combine(App.DataDir, sDir);
 if (!Directory.Exists(sDir)) Directory.CreateDirectory(sDir);
 sFile = Path.Combine(sDir, Path.GetFileName(child.File));
@@ -5514,6 +5538,7 @@ if (sDir.Length == 0) return;
 
 App.WriteData("DownloadFolder", sDir);
 Directory.SetCurrentDirectory(sDir);
+var wc = new WebClient();
 AddMessage("Downloading");
 foreach (string s in aResults) {
 int i = listItems.IndexOf(s);
@@ -5524,7 +5549,8 @@ sFile = Util.GetUniqueName(sFile);
 AddMessage(Path.GetFileName(sFile));
 //Win32.Url2File(sRef, sFile);
 try {
-VB.DownloadFile(sRef, sFile, "", "");
+// VB.DownloadFile(sRef, sFile, "", "");
+wc.DownloadFile(sRef, sFile);
 }
 catch (Exception ex) {
 Dialog.Show("Alert", ex.Message);
@@ -5567,8 +5593,9 @@ return;
 }
 
 if (menuItem == menuHelpAbout) {
-sText = "EdSharp 3.3\n\nFebruary 22, 2012\n\n";
-sText += "Copyright 2007 - 2011 by Jamal Mazrui\n\nGNU Lesser General Public License (LGPL)\n\n";
+sText = "EdSharp 4.0\nMay 29, 2017\n\n";
+sText += "Copyright 2007 - 2017 by Jamal Mazrui\nGNU Lesser General Public License (LGPL)\n\n";
+sText += ".NET Framework " + RuntimeEnvironment.GetSystemVersion() + "\n\n";
 sText += Util.GetPortableExecutableKind();
 Dialog.Show("About", sText);
 }
@@ -6400,7 +6427,7 @@ string sLocalTime = time.ToString("u");
 sLocalTime = sLocalTime.Substring(0, sLocalTime.Length - 4);
 // string sDir = Environment.GetFolderPath(Environment.SpecialFolder.InternetCache);
 string sDir = Path.GetTempPath();
-string sName = "edsetup.exe";
+string sName = "EdSharp_setup.exe";
 string sUrl = @"http://www.EmpowermentZone.com/" + sName;
 string sFile = Path.Combine(sDir, sName);
 
@@ -7523,6 +7550,7 @@ public HomerRichTextBox() {
 SectionBreak = App.ReadOption("SectionBreak", SectionBreak);
 string s = App.ReadOption("UseIndentModeDefault", "N").Trim().ToUpper();
 if (s == "Y" || s == "YES") this.IndentMode = true;
+Ini.WriteValue(App.IniFile, "Data", "IndentMode", (this.IndentMode ? "1" : "0"), false);
 } // HomerRichTextBox constructor
 
 public int GetIndexRow(int iIndex) {
@@ -9269,9 +9297,12 @@ iLoop--;
 // Ensure UTF8B
 // if (File.Exists(sTarget)) sText = Util.File2String(sTarget);
 if (File.Exists(sTarget)) {
-string sDir = Path.Combine(App.ProgramDir, "WebClient");
-string sExe = Path.Combine(sDir, "Encoding.exe");
-string sParams = "convert " + sTarget + " utf8b";
+// string sDir = Path.Combine(App.ProgramDir, "WebClient");
+string sDir = Path.Combine(App.ProgramDir, @"Convert\EasyEncode");
+// string sExe = Path.Combine(sDir, "Encoding.exe");
+string sExe = Path.Combine(sDir, "utf8b.exe");
+// string sParams = "convert " + sTarget + " utf8b";
+string sParams = Util.Quote(sTarget);
 sText = Util.GetProgramOutput(sExe, sParams);
 sText = Util.File2String(sTarget);
 }
