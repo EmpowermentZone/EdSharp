@@ -1,9 +1,10 @@
-#EdSharp
+# EdSharp
 [Modified GPL License](lgpl.md)
 
 ## Quick Links
 [Download Latest Release](https://github.com/EmpowermentZone/EdSharp/releases/download/4.0/EdSharp_setup.exe)
 [User Guide](EdSharp.md)
+<a href="mailto:edsharp-request@freelists.org?subject=subscribe">Subscribe to the EdSharp email list</a>
 
 ## Description
 
