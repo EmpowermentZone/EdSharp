@@ -1,5 +1,6 @@
 #EdSharp
 Modified GPL License
+
 ## Quick Links
 Latest Release
 [User Guide](EdSharp.md)
