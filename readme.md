@@ -1,8 +1,8 @@
 #EdSharp
-Modified GPL License
+[Modified GPL License](lgpl.md)
 
 ## Quick Links
-Latest Release
+[Download Latest Release](https://github.com/EmpowermentZone/EdSharp/releases/download/4.0/EdSharp_setup.exe)
 [User Guide](EdSharp.md)
 
 ## Description
@@ -11,11 +11,11 @@ EdSharp is a full featured text editor that is friendly, powerful,
 and open source. It uses a standard Windows interface for an
 application that supports multiple document windows. Though
 intended for sighted users as well, it seeks to enhance
-productivity for users of the JAWS, Window-Eyes, or System Access
+productivity for users of the NVDA, JAWS, Window-Eyes, System Access or other
 screen readers by automatically verbalizing relevant information.
 These speech messages supplement default speech heuristics,
 providing confirmation or results of commands without the need for
-manually interrogating the screen. If JAWS, Window-Eyes, or System
+manually interrogating the screen. If NVDA, JAWS, Window-Eyes, or System
 Access are not detected in memory, EdSharp uses the default SAPI
 voice, if available, which may be configured via the Speech applet
 in Control Panel.
