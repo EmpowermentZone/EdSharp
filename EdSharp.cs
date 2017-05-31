@@ -1,5 +1,5 @@
 //EdSharp 4.0
-// May 29, 2017
+// May 30, 2017
 //Copyright 2007 - 2017 by Jamal Mazrui
 // GNU Lesser General Public License (LGPL)
 
@@ -5593,7 +5593,7 @@ return;
 }
 
 if (menuItem == menuHelpAbout) {
-sText = "EdSharp 4.0\nMay 29, 2017\n\n";
+sText = "EdSharp 4.0\nMay 30, 2017\n\n";
 sText += "Copyright 2007 - 2017 by Jamal Mazrui\nGNU Lesser General Public License (LGPL)\n\n";
 sText += ".NET Framework " + RuntimeEnvironment.GetSystemVersion() + "\n\n";
 sText += Util.GetPortableExecutableKind();
