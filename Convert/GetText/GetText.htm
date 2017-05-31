@@ -1,0 +1,269 @@
+<html>
+<head>
+<title>The GetText utility of Kryloff Technologies, Inc.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<STYLE type=text/css>
+P,OL,UL,LI,TD,TH {font-family: Arial,Helvetica; font-size: 10pt; color: #003366}
+</STYLE>
+</head>
+<body bgcolor="#ffffff" text="#003366" vlink="#0000FF" link="#0000FF" leftmargin="8" rightmargin="8" topmargin="20" bottommargin="0" marginwidth="0" marginheight="0">
+<p align="justify"><table width="100%" border="0"><tr>
+<td>&nbsp;</td>
+<td align="center" valign="top"><img src="GETTEXTGIF" width="48" height="48" border="0" alt="" align="bottom"></td>
+<td align="center" valign="center">
+<h2>The &quot;GetText&quot; utility of Kryloff Technologies, Inc.<br><a href="http://www.kryltech.com" title="Click to visit the Kryloff Technologies Web site">http://www.kryltech.com</a></h2></td>
+<td>&nbsp;</td>
+</tr></table>
+
+<b><font size="+1">1. General information</font></b><br><br>
+&quot;GetText.exe&quot; is a free for your personal use console file-to-text conversion utility,
+which extracts textual content from HTML,
+MS Office<small><sup>&#174;</sup></small>, RTF,
+PDF<small><sup>&#174;</sup></small>, HLP and other documents, and saves it into
+text files. To perform text conversion, GetText uses
+<a href="http://www.kryltech.com/filters.htm" title="More about KT Text filters ...">KT Text Filters</a>.</p>
+
+<p align="justify">
+<b>Important: Text Filters are provided as free components
+for Kryloff's products only.</b> If you wish to use them in your own software applications, you should
+<a href="http://www.kryltech.com/ktfiltid.htm" title="Obtain a license to use KT Filters in your software products">purchase
+a corresponding license</a>. Apart from the right to use KT Text Filters in and distribute them along with
+your software products world-wide any royalty-free, upon purchasing a license
+you will be provided with:
+<li>enhanced versions of the filters along with full documentation disclosing
+additional capabilities that are not made publicly available (such as, the
+possibility to provide Unicode output, which has been excluded from GetText;
+proper selection of an applicable filter DLL, and some others);
+<li>sample code in C++, C#, Delphi for Win32
+and .NET, Visual Basic for Windows and for .NET demonstrating the use
+of KT Text Filters for memory-to-memory, memory-to-file, file-to-memory,
+and file-to-file filtering;
+<li>also, you will be enrolled into the Kryloff
+Technologies technical support.</p>
+
+<p align="justify">If you have not yet obtained a license from Kryloff Technologies,
+you may not distribute any of the filters nor you may count on our technical support.
+See also: <a href="License.htm" target="fltlicense" title="Read KT Text Filters End-User License Agreement">KT Text Filters End-User License Agreement</a>.
+</p>
+
+<p align="justify"><b>KT Text Filters are also used
+in the rest of the Kryloff Subject Search&trade;
+family of products, namely:</p></b>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" frame="void" rules="none">
+<tr><td><img src="SPDGIF" width="16" height="16" border="0" alt="" align="top"></td>
+<td>&nbsp;</td>
+<td nowrap><a href="http://www.kryltech.com/spider.htm" target=_blank title="More about Subject Search Spider ...">Subject Search Spider</a>&#8482;</td>
+<td>-&nbsp;</td>
+<td nowrap>your personal information retrieval intelligent Web engine.</td></tr>
+
+<tr><td><img src="SCNGIF" width="16" height="16" border="0" alt="" align="top"></td>
+<td>&nbsp;</td>
+<td nowrap><a href="http://www.kryltech.com/scanner.htm" target=_blank title="More about Subject Search Scanner ...">Subject Search Scanner</a>&#8482;</td>
+<td>-&nbsp;</td>
+<td nowrap>scans files on local and network drives looking for a given phrase.</td></tr>
+
+<tr><td><img src="STRGIF" width="16" height="16" border="0" alt="" align="top"></td>
+<td>&nbsp;</td>
+<td nowrap><a href="http://www.kryltech.com/siter.htm" target=_blank title="More about Subject Search Siter ...">Subject Search Siter</a>&#8482;</td>
+<td>-&nbsp;</td>
+<td nowrap>investigates Web sites looking for a phrase and finds information buried in them.</td></tr>
+
+<tr><td><img src="SSPADGIF" width="16" height="16" border="0" alt="" align="top"></td>
+<td>&nbsp;</td>
+<td nowrap><a href="http://www.kryltech.com/sspad.htm" target=_blank title="More about Subject Search Pad ...">Subject Search Pad</a>&#8482;</td>
+<td>-&nbsp;</td>
+<td nowrap>opens documents in text mode and locates files with similar contents.</td></tr>
+
+<tr><td><img src="SSSUMGIF" width="16" height="16" border="0" alt="" align="top"></td>
+<td>&nbsp;</td>
+<td nowrap><a href="http://www.kryltech.com/summarizer.htm" target=_blank title="More about Subject Search Summarizer ...">Subject Search Summarizer</a>&#8482;</td>
+<td>-&nbsp;</td>
+<td nowrap>creates brief summaries of and translates documents or Web pages you are reading.</td></tr>
+
+<tr><td><img src="SDKGIF" width="16" height="16" border="0" alt="" align="top"></td>
+<td>&nbsp;</td>
+<td nowrap><a href="http://www.kryltech.com/dkreadme.htm" target=_blank title="More about Subject Search Sleuth ...">Subject Search Sleuth</a>&#8482;</td>
+<td>-&nbsp;</td>
+<td nowrap>searches in huge collections of files on PC and LAN; includes API for developers.</td></tr>
+
+<tr><td><img src="SRVGIF" width="16" height="16" border="0" alt="" align="top"></td>
+<td>&nbsp;</td>
+<td nowrap><a href="http://www.kryltech.com/server.htm" target=_blank title="More about Subject Search Server ...">Subject Search Server</a>&#8482;</td>
+<td>-&nbsp;</td>
+<td nowrap>lets visitors search your Web site for the information they are looking for.</td></tr>
+</table></p>
+
+<hr color="#003366" size="1" noshade>
+
+<p align="justify"><b><font size="+1">2. Calling GetText</font></b><br><br>
+2.1. GetText.exe Free Edition accepts the following command-line parameters:
+<b>Source Document</b>,
+<b>Destination Text File</b>, and optionally,
+<b>Text Filter DLL File Name</b>.
+To extract textual contents from a single document, use the following command
+either under the Windows Command Prompt or in a batch file:<br>
+<font color="#003366"><b>GetText.exe&nbsp;&quot;Full&nbsp;or&nbsp;relative&nbsp;path&nbsp;to&nbsp;Source&nbsp;Document&quot;&nbsp;&quot;Full&nbsp;or&nbsp;relative&nbsp;path&nbsp;to&nbsp;Destination&nbsp;Text&nbsp;File&quot;</b></font> or<br>
+<font color="#003366"><b>GetText.exe&nbsp;&quot;Source&nbsp;Document&quot;&nbsp;&quot;Destination&nbsp;Text&nbsp;File&quot;&nbsp;&quot;KT&nbsp;Filter&nbsp;DLL&nbsp;File&nbsp;Name&quot;</b></font><br>
+
+Enclose command-line parameters into the quotation marks (<b>&quot;</b>) if they
+contain one or more spaces.</p>
+
+<p align="justify">If the optional parameter <b>Text Filter DLL File Name</b> is not specified, GetText scans the "Filters" subfolder
+of its root folder and locates an appropriate Text Filter in the following order:
+first, DLL's which do not contain &quot;98&quot; as part of the file name, after
+which the rest of the files; this order remains the same regardless of the platform.
+The required filter is selected solely upon the extension of the file being filtered
+<u>without reading its contents</u>. For example, to convert "MyFile.doc", GetText selects
+"DOCDLL.dll", etc.</p>
+
+<p align="justify">2.2. You may call GetText.exe directly for example, by selecting
+the Windows menu items &quot;Start&quot;, then &quot;Run&quot;, after which typing in
+the full path to GetText.exe following by corresponding command-line parameters. To extract
+text from several documents at a time, you may also use it in batch (.BAT) files.</p>
+
+<p align="justify">2.3. Examples:<br>
+a) to obtain textual contents of &quot;c:\My&nbsp;Documents\My&nbsp;File.htm&quot;
+and save it into the file &quot;c:\My&nbsp;Documents\My&nbsp;Filtered&nbsp;File.txt&quot;,
+issue the following command (it is assumed further that you have placed &quot;GetText.exe&quot; into the folder &quot;c:\Kryloff&quot;):<br>
+<b>c:\Kryloff\GetText.exe&nbsp;&quot;c:\My&nbsp;Documents\My&nbsp;File.htm&quot;&nbsp;&quot;c:\My&nbsp;Documents\My&nbsp;Filtered&nbsp;File.txt&quot;</b><br><br>
+
+b) If you want GetText to apply a particular KT Text Filter, specify the third parameter. For example:<BR>
+<b>c:\Kryloff\GetText.exe&nbsp;&quot;c:\My&nbsp;Documents\My&nbsp;File.htm&quot;&nbsp;&quot;c:\My&nbsp;Documents\My&nbsp;Filtered&nbsp;File.txt&quot;&nbsp;HTMDLL.dll</b><br><br>
+
+c) to filter several documents with one command, first, create a batch file
+(file with the &quot;.BAT&quot; extension) using any text editor. For example,
+this one:<table width="10%" border="1" cellspacing="0" cellpadding="0" frame="border" rules="none" bgcolor="#F0F7FF">
+<tr><td nowrap><b>c:\Kryloff\GetText.exe&nbsp;&quot;c:\My&nbsp;Documents\File1.htm&quot;&nbsp;&quot;c:\My&nbsp;Documents\File1.htm.txt&quot;&nbsp;HTML98ME.dll</b></td></tr>
+<tr><td nowrap><b>c:\Kryloff\GetText.exe&nbsp;&quot;c:\My&nbsp;Documents\File2.doc&quot;&nbsp;&quot;c:\My&nbsp;Documents\File2.doc.txt&quot;</b></td></tr>
+<tr><td nowrap><b>...</b></td></tr>
+<tr><td nowrap><b>c:\Kryloff\GetText.exe&nbsp;&quot;c:\My&nbsp;Documents\File100.xls&quot;&nbsp;&quot;c:\My&nbsp;Documents\File100.xls.txt&quot;&nbsp;XLSDLL.dll</b></td></tr>
+</table>
+
+After composing a batch file, just execute it: for example, double-click
+its icon in the Windows Explorer. Once you do it, all documents mentioned
+in the batch file will be processed, and corresponding textual (.txt) files
+will be created. You may compose even more complex batch files; for example,
+you may check the GetText.exe Exit Code by including the &quot;IF ERRORLEVEL&quot;
+statements after each call to GetText -- the utility terminates with a non-zero
+exit code when it fails to filter a particular file due to some reason (which
+GetText displays as well).
+</p>
+
+<p align="justify">GetText.exe displays this document only when you
+call it without command-line parameters; to prevent the appearance of
+this window, call the utility as specified above in this section.</p>
+
+<hr color="#003366" size="1" noshade>
+
+<p align="justify"><b><font size="+1">3. Filtering components included in the original shipment</font></b></p>
+
+<p align="center"><b>Kryloff Technologies supplies GetText with the following filters:</b></p>
+
+<table width="100%" border="1" cellspacing="0" bgcolor="#F0F0FF">
+<tr bgcolor="#99CCFF"><th>Filter file name</th><th align="center">Description</th><th align="center">Minimum platforms required</th><th align="center">File extensions supported</th></tr>
+<tr><td>HLP2TXT.dll</td><td>converts MS Help (.HLP) files into plain text</td><td nowrap>Windows 95 and later</td><td>HLP</td></tr>
+<tr><td>HTM2TXT.dll<sup><b>*</b></sup></td><td>converts HTML files into text</td><td nowrap>Windows 95 and later</td><td>HTM, HTML, HTW, ASCX, ASP, ASPX, HHC, HTX, ODC, STM, XML</td></tr>
+<tr><td>XML.dll</td><td>converts XML files into text</td><td nowrap>Windows 98 and later</td><td>XML, XSL</td></tr>
+<tr><td>PDF2TXT.dll</td><td>converts the Adobe PDF<small><sup>&#174;</sup></small> files into text</td><td nowrap>Windows 95 and later</td><td>PDF</td></tr>
+<tr><td>PPTDLL.dll</td><td>converts MS PowerPoint<small><sup>&#174;</sup></small> (.PPT) presentations into text</td><td nowrap>Windows 2000, XP and later</td><td>PPT, POT, PPS</td></tr>
+<tr><td>RTF2TXT.dll<sup><b>*</b></sup></td><td>extracts text from RTF (Rich Text) files</td><td nowrap>Windows 95 and later</td><td>RTF</td></tr>
+<tr><td>UNCD2TXT.dll<sup><b>*</b></sup></td><td>converts Unicode TXT files into plain text ones</td><td nowrap>Windows 95 and later</td><td>TXT, LST, INI, LOG, CSS, INF, SCP, SCT, WSC, WTX, ZAP</td></tr>
+<tr><td>WPD2TXT.dll</td><td>extracts plain text from WPD (Word Perfect<small><sup>&#174;</sup></small>) files</td><td nowrap>Windows 95 and later</td><td>WPD</td></tr>
+<tr><td>XLSDLL.dll</td><td>extracts text from MS Excel<small><sup>&#174;</sup></small> (.XLS) spreadsheets</td><td nowrap>Windows 2000, XP and later</td><td>XLS, XLB, XLC, XLT</td></tr>
+<tr><td>DOCDLL.dll<sup><b>**</b></sup></td><td>converts MS Word<small><sup>&#174;</sup></small> (.DOC) documents into text</td><td nowrap>Windows 2000, XP and later</td><td>DOC, DOT</td></tr>
+<tr><td>DOCXDLL.dll<sup><b>***</b></sup></td><td>converts MS Word<small><sup>&#174;</sup></small> 2007 (.DOCX) documents into text</td><td nowrap>Windows 2000, XP and later</td><td>DOCX, DOCM</td></tr>
+<tr><td>PPTXDLL.dll<sup><b>***</b></sup></td><td>converts MS PowerPoint<small><sup>&#174;</sup></small> 2007 (.PPTX) presentations into text</td><td nowrap>Windows 2000, XP and later</td><td>PPTX, PPTM</td></tr>
+<tr><td>XLSXDLL.dll<sup><b>***</b></sup></td><td>extracts text from MS Excel<small><sup>&#174;</sup></small> 2007 (.XLSX) spreadsheets</td><td nowrap>Windows 2000, XP and later</td><td>XLSX, XLSM</td></tr>
+</table>
+<sup><b>*&nbsp;&nbsp;&nbsp;&nbsp;</b></sup> Recommended for use under Windows 2000, XP, 2003, Vista, Windows 7, and higher editions.<br>
+<sup><b>**</b></sup> GetText.exe skips files which have the .DOC extension but are
+actually RTF ones. A more advanced procedure of selecting an appropriate KT
+Text Filter will be given to you upon
+<a href="http://www.kryltech.com/ktfiltid.htm" title="Obtain a license to use KT Filters in your software products">purchasing
+a license to use KT Text Filters</a>.<br>
+<sup><b>***</b></sup> Requires free
+<a href="http://www.kryltech.com/download/FilterPackx86.exe">Microsoft Filter Pack for Office 2007</a>
+to be pre-installed.</p>
+
+<p align="justify">GetText selects a required filter solely upon the extension of
+the file being filtered <u>without checking its contents</u>. For example, to convert
+&quot;MyFile.doc&quot;, applied is &quot;DOCDLL.dll&quot;, etc. If the filter which
+performs the required type of conversion is not found in the &quot;Filters&quot;
+subfolder, the utility copies the source file into the destination text file without
+any changes. If you execute GetText under an obsolete platform in which some
+of the filters do not function (for example, when you run GetText under Windows
+98 and instruct it to process a MS Word<small><sup>&#174;</sup></small>
+file), the utility produces a sound warning you of the necessity to execute it
+under a higher version of MS Windows<small><sup>&#174;</sup></small>.</p>
+
+<p align="justify">Some filters create .INI-files in the original filter
+folders, with the original filter file names but the &quot;<i>.INI</i>&quot;
+extension. This happens when GetText.exe calls such filters at least once.
+You may look into corresponding .INI-files and adjust filter settings as
+necessary to match your particular requirements. For example, the filter
+&quot;XML.dll&quot; provides an option whether it should extract the entire
+content of XML files being filtered (and, convert it into an appropriate
+code page if necessary) or, extract text only from XML tags bypassing the
+tags, themselves.</p>
+
+<p align="justify"><font color="#000000"><b>Important:
+As it has been mentioned above, GetText.exe builds single-byte (ANSI) or DBCS
+text files only (depending on the currently selected platform code page). The
+ability to generate text files in Unicode comes to you with
+<a href="http://www.kryltech.com/ktfiltid.htm" title="Obtain a license to use
+KT Filters in your software products">purchasing a license to use and
+distribute KT Text Filters</a>.</b></font></p>
+
+<hr color="#003366" size="1" noshade>
+
+<p align="justify"><b><font size="+1">4. Using, distributing, and purchasing KT Text Filters</font></b><br><br>
+If you have obtained the GetText utility or/and KT Text Filters from the Kryloff
+Technologies Web site or other sources, and have not purchased a license to
+use the filters yet, you may use GetText and KT Text Filters personally on
+one computer on the royalty-free basis (as long as you need).
+<b>To redistribute or reproduce any components of the software</b>,
+either in part or in whole, you must
+<a href="http://www.kryltech.com/ktfiltid.htm" title="Obtain a license to use KT Filters in your software products">purchase
+a license</a>. Any reproduction or redistribution of GetText, KT Text Filters,
+supplementary files and documentation not in accordance with the
+<a href="License.htm" target=target="fltlicense" title="Read KT Text Filters End-User License Agreement">
+KT Text Filters End-User License Agreement</a> is expressly prohibited by law,
+and may result in severe civil and criminal penalties.</p>
+
+<p align="justify">Additional information about your right to use and (re-)distribute
+GetText and KT Text Filters is provided in the
+<a href="License.htm" target=target="fltlicense" title="Read KT Text Filters End-User License Agreement">KT Text Filters End-User License Agreement</a>,
+Basic License. Should you wish to obtain the source code of KT Text Filters
+(for example, to use them under operating systems other than Windows, etc.),
+have any other questions or concerns regarding GetText or KT Text Filters,
+contact Kryloff Technologies at <a href="http://www.kryltech.com/feedback.htm">http://www.kryltech.com/feedback.htm</a></p>
+
+<hr color="#003366" size="1" noshade>
+
+<p align="justify"><b><font size="+1">5. System requirements</font></b><br><br>
+<li>Windows 95/98/ME or Windows NT 4.0/<b>2000/XP/2003/Vista/Windows 7</b>
+(painted in bold are platforms under which the entire functionality
+of the utility becomes available);</li>
+</ul></p>
+
+<p align="center">Copyright &copy; Kryloff Technologies, Inc.
+<a href="http://www.kryltech.com">http://www.kryltech.com</a></p>
+
+<p align="justify"><font size="-2" face="Small,Arial,Helvetica" color="#336699">
+KT Text filters&#8482;,
+Subject Search&#8482;,
+Subject Search Spider (SSSpider&#8482;),
+Subject Search Scanner (SSScanner&#8482;),
+Subject Search Siter (SSSiter&#8482;),
+Subject Search Pad&#8482; (SSPad&#8482;),
+Subject Search Summarizer (SSSummarizer&#8482;),
+Subject Search Sleuth (SSSleuth&#8482;),
+Subject Search Server (SSServer&#8482;), and
+Subject Search Suite&#8482; (SSSuite&#8482;) are trademarks of Kryloff
+Technologies, Inc. Other products or companies mentioned in this document
+are copyright and/or trademarks of the respective companies.</font></p>
+
+<p>&nbsp;</p>
+</body>
+</html>
