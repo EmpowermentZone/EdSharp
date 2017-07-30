@@ -1,0 +1,11 @@
+ 
+= F:\Projects\tidy-html5\build\win64 Release installed 2017-03-01 18:43:36.54 
+Installed to tempzip 
+F:/Projects/tidy-html5/build/win64/tempzip/lib/tidys.lib
+F:/Projects/tidy-html5/build/win64/tempzip/include/tidyplatform.h
+F:/Projects/tidy-html5/build/win64/tempzip/include/tidy.h
+F:/Projects/tidy-html5/build/win64/tempzip/include/tidyenum.h
+F:/Projects/tidy-html5/build/win64/tempzip/include/tidybuffio.h
+F:/Projects/tidy-html5/build/win64/tempzip/lib/tidy.lib
+F:/Projects/tidy-html5/build/win64/tempzip/bin/tidy.dll
+F:/Projects/tidy-html5/build/win64/tempzip/bin/tidy.exe 

@@ -14,6 +14,8 @@ GNU Lesser General Public License (LGPL)\
 - [Navigating](#navigating)
 - [Querying](#querying)
 - [Managing Files](#managing-files)
+- [File Conversions](#file-conversions)
+
 - [Invoking Snippets](#invoking-snippets)
 - [Working with Structured Text](#working-with-structured-text)
 - [Word Processing](#word-processing)
@@ -30,7 +32,7 @@ EdSharp is a full featured text editor that is friendly, powerful, and open sour
 Written in the C# (pronounced C Sharp) language, EdSharp implements the "Homer editor interface," which originally evolved with an editor called TextPal.  The same interface was also implemented in the package of JAWS scripts and tools called HomerKit.  EdSharp requires the .NET Framework 4.0 or above to run:  a free download from Microsoft that is also installed with Windows 7 or later.
 
 Almost every EdSharp command may be done through a mnemonic keystroke, as well as a menu or mouse operation.  These commands begin with the standard keys available in Notepad or most Windows-based editors.  EdSharp then adds many beneficial features.  Optional scripts for some screen readers provide further fine tuning of the speech interface for those users.
-
+ 
 ## Installation
 The installation program for EdSharp is called EdSharp_setup.exe.  When executed, it prompts for a program folder, the default being\
 `C:\Program Files (x86)\EdSharp`
@@ -44,23 +46,41 @@ An additional checkbox opens this manual in the default web browser.
 
 EdSharp may be safely installed over previous versions.  The About option from its Help menu, or Alt+F1 key, indicates the current version number and release date.  The History of Changes command, Shift+F1, summarizes fixes and improvements over time.
 
-EdSharp features may be explained in the following categories of activity:  editing, navigating, querying, managing files, invoking snippets, working with structured text, word processing, programming, doing math, and miscellaneous.
+EdSharp features may be explained in the following categories of activity:  
+
+- Editing
+- Navigating
+- Querying 
+- Managing files 
+- File conversions
+- Invoking snippets
+- Working with structured text
+- Word processing, programming, doing math, and miscellaneous.
 
 ## Editing
 ### Selecting, Copying, and Pasting
-As usual, you may press Control+C or Control+X to copy or cut selected text to the clipboard.  EdSharp tries to make an an intelligent guess when no text is selected.  In this case, the current line is assumed .  Press Alt+C or Alt+X to perform a copy or cut operation that appends rather than replaces text on the clipboard.  If the previous clipboard text did not end with a line break, EdSharp inserts one before the appended text.
+- To select text, add the **SHIFT** key to arrow keys, **END**, **HOME**, **PAGE UP**, **PAGEDOWN**, **CTRL+HOME**, and **CTRL+END**. Also use **CTRL+A** to select the entire file in the editor.
+- EdSharp also allows you to use An alternative way to select text. First, press **F8** to mark the start of a selection.  Navigate to the end point by whatever means (arrow keys, find command, etc.) without holding down the Shift key.  Place the caret one position past the last character you want to select.  Press **SHIFT+F8** to select text from the start position.  EdSharp says the number of characters selected.  You may subsequently select between the same positions again with **CTRL+SHIFT+F8**, or return to the start position with **ALT+SHIFT+F8**.
+- To select a chunk of text at the cursor, press **CTRL+SPACE**. EdSharp defines a chunk of text as a contiguous sequence of non-space characters.  It may be more than what the hotkey **CTRL+SHIFT+RIGHT ARROW** selects, since such word movement commands stop at punctuation marks.  Press **CTRL+SPACE** again to extend the selection to the next chunk.
+- To clear any text you have selected, press **CTRL+SHIFT+A**.  
+- To cut selected text, press **CTRL+X**.
+- To copy selected text, press **CTRL+C**.
+- To cut and append selected text to the clipboard, press **ALT+X**.
+- To copy and append selected text to the clipboard, press ALT+C**.
+- To cut the current line to the clipboard, press **CTRL+X** with no text selected.
+- To copy the current line to the clipboard, press *CTRL+C** with no text selected.
+- While performing an append operation, if the previous clipboard text did not end with a line break, EdSharp inserts one before the appended text.
+- Press **CTRL+F8** to copy all the text in the editor to the clipboard with one operation.        
+- To paste text from the clipboard, press **CTRL+V**
+- To paste a file on disk into the editor, press **CTRL+SHIFT+V**.
+- To use the clipboard to append text from another application into the editor, open a file in EdSharp and press **ALT+7**. Switch to the other application. EdSharp will append any text you cut or copy to the clipboard into the open document, and separate the pieces of text with a section break sequence. You can then navigate among the pieces of text by using the **Previous Section** and **Next Section** commands, which are **CTRL+PageUP** and CTRL+PageDown**. Turn off the append to clipboard mode by going back into the document where you have appended the text and press **ALT+7 again.
 
-An alternative way of selecting text uses F8 to mark the start of a selection.  Navigate to the end point by whatever means (arrow keys, find command, etc.) without having to hold down the Shift key.  Note that the caret should be placed one position past the last character to be selected.  Press Shift+F8 to select text from the start position.  EdSharp says the number of characters selected.  You may subsequently select between the same positions again with Control+Shift+F8, or return to the start position with Alt+Shift+F8.
+### Undo and Redo
 
-As usual, Control+A selects all text.  Control+Shift+A clears any selection.  Press Control+F8 to copy all text to the clipboard with a single command.  Control+V pastes clipboard text at the cursor position.  Control+Shift+V inserts the content of a file instead.
+- To undo the previous editing operation, press **CTRL+Z**.
+- To redo the last editing operation, press **CTRL+SHIFT+Z**.
 
-Press Control+Space to select a chunk of text at the cursor position.  A chunk is defined as a contiguous sequence of non-space characters.  It may be more than what the hotkey Control+Shift+RightArrow selects, since such word movement commands stop at punctuation marks.  Press Control+Space again to extend the selection to the next chunk.
 
-The Append From Clipboard command, Alt+7 (associate append with the ampersand character), is like the "paste board" feature of the NoteTab editor.  When this mode is toggled on for a document, each snippet of text copied to the Windows clipboard from any application will also be pasted into the document, which will then automatically be saved to disk.  EdSharp beeps to confirm this is happening.  Snippets are separated by a section break sequence, which makes it possible to navigate among them with the Control+PageDown and Control+PageUp commands.  Thus the feature may be used to conveniently collect and save information from applications that do not have a built-in appending mechanism.  When done, toggle off the mode with the same command, Alt+7.
-
-Press Control+Z to undo the last editing operation, or Control+Shift+Z to redo it.
-
-Press Control+N to start a new document, or Control+Shift+N to initialize one with text on the clipboard.
 
 ### Replacing
 Press Control+R to replace text and hear the number of matches.  Press Control+Shift+R to replace with a "regular expression" -- a complex but powerful syntax that permits almost any transformation of text.  EdSharp replaces within selected text, or all text if there is no selection.  Press Control+Shift+E to extract parts of text based on a regular expression.  The matching parts are placed in a new editing window separated by a section break sequence of characters.  EdSharp uses regular expressions of the .NET Framework, explained at\
@@ -122,12 +142,25 @@ Press Shift+Space to hear selected text.  Press Shift+Backspace to hear the chun
 Press Control+Shift+Y for the "yield," or number of results matching a regular expression, which you specify.  This may be useful before using Control+Shift+R to replace text or Control+Shift+E to extract it.
 
 ## Managing Files
-As usual, press Control+O to open a file.  Press Control+Shift+O to open a file in a format other than plain text.  A converter is invoked based on the file extension.
 
-File converters may be configured through the Manual Options command, Alt+Shift+M.  For example, an open source PDF converter is distributed with EdSharp and configured, by default, with the following line in the Import section:\
+When you open EdSharp for the first time, it opens a new file, ready for you to enter text. Use the below commends to manage files.
+
+- To start a new file from scratch, press **CTRL+N**.
+- To start a new file by using the text on the clipboard, press **CTRL+SHIFT+N**.
+- To open a file on disk, press **CTRL+O**.
+- To reload the current file from disk with the **Open Again** command, press **ALT+O**.
+- To open a file from the list of recently opened files, press **ALT+R**.
+- To use the **FileFind** command to pick a file from a list of those containing text and matching wildcards that you specify, press **Alt+Shift+F**.  Multiple wildcard patterns are possible, separated by a vertical bar (|) character.
+- To open a file in a format other than plain text, press **CTRL+SHIFT+O**.  EdSharp allows you to choose a conversion utility by looking at the extension of the file you want to open.
+
+## File Conversions
+
+EdSharp comes with a number of file converters that allow you to open, import, and export files among many common formats.  To open EdSharp.ini in your user application data so that you can edit or add conversions, press **ALT+SHIFT+M** to open the **Manual Options** dialog, then press **SPACE** when focus lands on the **Main** button. EdSharp opens EdSharp.ini. At that point, press **CTRL+F** and search for either //[import// or //[export//.
+
+The following is an example conversion. EdSharp uses an open source PDF converter. If you look in the **Import** section, you will see the following conversion line:\
 `pdf=%ProgDir%\pdftotext.exe %Source% %Target%`
 
-To configure a converter, specify the command line for converting an extension from a source, non-text format to a target, text format.  The following variables may be used:\
+EdSharp looks for a source--the input file--and a target--the output file. The items between percent characters are special variables it uses to substitute items it commonly looks for. Here is a list of variables EdSharp looks for.
 
 - %ProgDir% = Full path of the directory containing the EdSharp.exe program
 - %Source% = Full path of the source file
@@ -136,7 +169,7 @@ To configure a converter, specify the command line for converting an extension f
 - %SourceRoot% = Root name without extension of the source file
 - %SourceExt% = Extension of the source file
 
-The short path of a file or directory is used unless a variable includes a Long suffix, e.g., %ProgDirLong% or %SourceLong%.  Most utilities require long file names to be surrounded by quote marks, e.g., "%SourceLong%" syntax.  For technical reasons, if quotes are used within the command line, then a pair of quotes should also be added around it.  Variables for the Target file are like that of the source.
+EdSharp uses the short path of a file or directory, unless a variable includes a Long suffix, e.g., %ProgDirLong% or %SourceLong%.  Most utilities require long file names to be surrounded by quote marks, e.g., "%SourceLong%" syntax.  For technical reasons, if quotes are used within the command line, put the command in double quotes.  Variables for the Target file are like that of the source.
 
 External converters distributed with EdSharp are stored in the Convert subfolder of the EdSharp program folder, e.g., in (default installation)\
 `C:\Program Files (x86)\EdSharp\Convert`
@@ -144,9 +177,8 @@ External converters distributed with EdSharp are stored in the Convert subfolder
 A text format called Markdown is useful for various conversions, explained at\
 <http://en.wikipedia.org/wiki/Markdown>
 
-If EdSharp finds more than one converter available for a file extension, you are prompted which one to use.  If a converter entry does not contain the digit 2 and another extension, it is assumed to be .txt.
+If EdSharp finds more than one converter available for a file extension, it prompts which one to use.  If a converter entry does not contain the digit 2 and another extension, it is assumed to be .txt.
 
-Use the Open Again command, Alt+O, to reload the current file from disk.  Press Alt+R to open a file from the list of those recently used.  Use the FileFind command, Alt+Shift+F, to pick a file from a list of those containing text and matching wildcards that you specify.  Multiple wildcard patterns are possible, separated by a vertical bar (|) character, e.g.,\
 `*.txt|catalog*.htm`
 
 ### Handling Favorite Files and Bookmark Positions
