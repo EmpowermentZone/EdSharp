@@ -8,8 +8,7 @@
 
 ## Description
 
-EdSharp is a full featured text editor that is friendly, powerful,
-and open source. It uses a standard Windows interface for an
+EdSharp is a full featured, friendly, powerful, open source text editor. It uses a standard Windows interface for an
 application that supports multiple document windows. Though
 intended for sighted users as well, it seeks to enhance
 productivity for users of the NVDA, JAWS, Window-Eyes, System Access or other
