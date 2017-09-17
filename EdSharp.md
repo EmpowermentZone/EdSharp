@@ -25,11 +25,11 @@ GNU Lesser General Public License (LGPL)\
 - [Development Notes](#development-notes)
 
 ## Description
-EdSharp is a full featured text editor that is friendly, powerful, and open source.  It uses a standard Windows interface for an application that supports multiple document windows.  Though intended for sighted users as well, it seeks to enhance productivity for users of the JAWS, NVDA, Window-Eyes, or System Access screen readers by automatically verbalizing relevant information.  These speech messages supplement default speech heuristics, providing confirmation or results of commands without the need for manually interrogating the screen.  If a screen reader is not detected in memory, EdSharp uses the default SAPI voice, if available, which may be configured via the Speech applet in Control Panel.
+EdSharp is a full featured, friendly, powerful, open source text editor.  It uses a standard Windows interface for an application that supports multiple document windows.  Though intended for sighted users as well, it seeks to enhance productivity for screen reader users by automatically verbalizing relevant information.  These speech messages supplement default speech heuristics, providing confirmation or results of commands without the need for manually interrogating the screen.  If EdSharp does not detect a screen reader in memory, it uses the default SAPI voice, if available, which may be configured via the Speech applet in Control Panel.
 
-Written in the C# (pronounced C Sharp) language, EdSharp implements the "Homer editor interface," which originally evolved with an editor called TextPal.  The same interface was also implemented in the package of JAWS scripts and tools called HomerKit.  EdSharp requires the .NET Framework 4.0 or above to run:  a free download from Microsoft that is also installed with Windows 7 or later.
+Written in the C# (pronounced C Sharp) language, EdSharp implements the "Homer editor interface," which originally evolved with an editor called TextPal, and was also used   in the package of JAWS scripts and tools called HomerKit.  EdSharp requires the .NET Framework 4.0 or above to run:  a free download from Microsoft that is also installed with Windows 7 or later.
 
-Almost every EdSharp command may be done through a mnemonic keystroke, as well as a menu or mouse operation.  These commands begin with the standard keys available in Notepad or most Windows-based editors.  EdSharp then adds many beneficial features.  Optional scripts for some screen readers provide further fine tuning of the speech interface for those users.
+Almost every EdSharp command may be done through a mnemonic keystroke, and a menu or mouse operation.  These commands begin with the standard keys available in Notepad or most Windows-based editors.  EdSharp then adds many beneficial features.  Optional scripts for some screen readers provide further fine tuning of the speech interface for those users.
 
 ## Installation
 The installation program for EdSharp is called EdSharp_setup.exe.  When executed, it prompts for a program folder, the default being\
@@ -73,7 +73,7 @@ Press Control+U to convert the current character or selected text to upper case,
 
 The Yield Encoding command, Alt+Shift+Y, may be used to convert all or selected text according to a particular character encoding.  If text from a file or the clipboard appears to be rendered improperly in EdSharp, you can tell it to base its interpretation on a different encoding:  ASCII, Latin 1, UTF-7, UTF-8, UTF-16, UTF-32, or another encoding that you pick from a list of over 100 available.  You can also choose a conversion where the Unicode number of each character is put on a separate line.  This may be used to identify non-printing characters in the document.  The command replaces all or selected text, so put a copy in a new document window if you want to retain the original.
 
-Use the Quote command, Control+Q to add an email quote sequence (> ) at the start of the current or selected lines.  Control+Shift+Q removes this sequence, as well as any other leading space or tab characters.  
+Use the Quote command, Control+Q to add an email quote sequence (> ) at the start of the current or selected lines.  Control+Shift+Q removes this sequence, and any other leading space or tab characters.  
 
 F2 prompts for a character to insert based on its numeric value in the Unicode character set.  The number should have four hex digits (base 16).  This command is useful for inputting a character that does not have a corresponding keystroke.  You can specify a decimal (base 10) number instead by preceding it with the letter d.  For example, the ellipses symbol (...) may be specified either in hex as 2026 or in decimal as d8230.
 
@@ -176,7 +176,7 @@ Press Alt+0 to verify the current compiler and folder of EdSharp.  Control+0 let
 ## Invoking Snippets
 Press Alt+S to save all or selected text to a file that may be conveniently pasted into other documents.  You may give the file a descriptive name and an extension appropriate for its content.  It is saved in a subfolder of the EdSharp data folder.  Each programming compiler or interpreter may have its own set of snippets.  The subfolder name is the same as the current value of the Pick Compiler command, Control+Shift+F5.  If no compiler has been chosen, the "Default" subfolder is used.
 
-Press Alt+V to pick one of the available snippets and paste it into the current document.  This command lists snippets in the Default snippet folder, as well as those in the folder associated with a Compiler being used.  This lets you have a set of snippets that are available regardless of the programming language in use.  
+Press Alt+V to pick one of the available snippets and paste it into the current document.  This command lists snippets in the Default snippet folder, and those in the folder associated with a Compiler being used.  This lets you have a set of snippets that are available regardless of the programming language in use.  
 
 Use the View Snippet command, Alt+Shift+V, to load a snippet file into EdSharp for viewing or editing rather than execution.  You can also manage snippet files with the Explorer Folder command, Alt+Backslash, which lets you open Windows Explorer in the subfolder containing snippet files.
 
@@ -224,7 +224,7 @@ Sincerely,
 %UserName%
 ```
 
-EdSharp notices that this is a text type snippet because of the first word of the file.  It finds two other keywords on the header line:  form and caret.  It creates a dialog with two edit boxes, prompting for the Customer and Product -- defaulting to Super Widget.  It substitutes the values entered, as well as date and user name constants.  After pasting, the cursor is positioned after the first sentence.
+EdSharp notices that this is a text type snippet because of the first word of the file.  It finds two other keywords on the header line:  form and caret.  It creates a dialog with two edit boxes, prompting for the Customer and Product -- defaulting to Super Widget.  It substitutes the values entered, and date and user name constants.  After pasting, the cursor is positioned after the first sentence.
 
 A section of the configuration file that supports snippets is called Tokens.  Each of these user-defined tokens is an expression in Microsoft JScript .NET:  a version of JavaScript explained at\
 <http://msdn2.microsoft.com/en-us/library/t895bwkh(VS.80).aspx>
@@ -268,7 +268,7 @@ To create a structured text document, press Control+Enter to insert a section br
 You can adjust the LimitItem configuration setting to perform comparison operations on sections rather than lines of text.  For example, press Alt+Shift+C for Configuration Options, and Alt+S for the SectionBreak setting.  Since the text is initially selected, press Control+C to copy it to the clipboard.  Then press Alt+L for LimitItem, Control+V to paste, and Enter to save settings.  Now you can sort sections alphabetically with the Order Items command (Alt+Shift+O), reverse them with the Reverse Items command (Alt+Shift+Z), or eliminate duplicates with the Keep Unique Items command (Alt+Shift+U).
 
 ## Word Processing
-EdSharp supports several aspects of Rich Text Format (.rtf) as well as plain text (with optional structure).  In certain situations, EdSharp behaves differently if a file has a .rtf extension rather than any other one.  Specifically, the Open Other Format command, Control+Shift+O, imports a .rtf file with its formatting rather than converting it to plain text.  The Save, Save As, and Save Copy commands, Control+S, Control+Shift+S, and Alt+S, save a .rtf file with formatting preserved.  The Print command, Control+P, prints a .rtf file using the associated program for this operation in the Windows registry (typically Microsoft Word or WordPad).  Use the Copy Rich Text command, Control+Shift+C, to copy selected text with formatting to the clipboard.
+EdSharp supports several aspects of Rich Text Format (.rtf) and plain text (with optional structure).  In certain situations, EdSharp behaves differently if a file has a .rtf extension rather than any other one.  Specifically, the Open Other Format command, Control+Shift+O, imports a .rtf file with its formatting rather than converting it to plain text.  The Save, Save As, and Save Copy commands, Control+S, Control+Shift+S, and Alt+S, save a .rtf file with formatting preserved.  The Print command, Control+P, prints a .rtf file using the associated program for this operation in the Windows registry (typically Microsoft Word or WordPad).  Use the Copy Rich Text command, Control+Shift+C, to copy selected text with formatting to the clipboard.
 
 Formatting commands include the following.  Use the Justify command, Alt+Shift+J, to set the horizontal alignment of text as left, bullet, center, or right.  This formatting applies to either selected text or the current hard line -- a line of text terminated by a hard line break (created by pressing Enter rather than wrapping).
 
@@ -294,7 +294,7 @@ With that installation, EdSharp's LaTeX compiler option lets you check and corre
 <http://www.dessci.com/en/products/mathplayer/download.htm>
 
 ## Programming
-Press Tab to indent the current line of text, or Shift+Tab to outdent it.  If multiple lines of text are selected, these commands are applied to all of them.  The Trim Blanks command, Control+Shift+Enter, removes all indentation and trailing spaces at once, as well as removing more than two consecutive blank lines (when multiple lines are selected).
+Press Tab to indent the current line of text, or Shift+Tab to outdent it.  If multiple lines of text are selected, these commands are applied to all of them.  The Trim Blanks command, Control+Shift+Enter, removes all indentation and trailing spaces at once, and removing more than two consecutive blank lines (when multiple lines are selected).
 
 Press Alt+I to hear the number of indentation levels of the current line.  Alt+Shift+I toggles a mode in which you are alerted to changes in indentation level, such as when using the up and down arrow keys.  EdSharp will say how many levels in or out the indentation has changed.  This mode also reverses the rols of the Enter and Shift+Enter keys.
 
