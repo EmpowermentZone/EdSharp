@@ -65,7 +65,7 @@ public static bool CaptureOutput = false;
 public static string SpeechLog;
 public static string MatchChunk = @"\s+";
 public static string MatchParagraph = @"\n(\s*\n)+\s*";
-public static string MatchSentence = @"([.?!]\s+)|(" + MatchParagraph + ")";
+public static string MatchSentence = @"([.?!:]\s+)|(" + MatchParagraph + ")";
 public static Dictionary<string, int> BomDictionary = null;
 
 [STAThread]
